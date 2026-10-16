@@ -1,0 +1,667 @@
+{
+ "sco2_htd_ml": {
+  "q": "\"heat transfer deterioration\" \"machine learning\"",
+  "total": 3,
+  "top": [
+   {
+    "y": 2024,
+    "t": "Analysis of Heat Transfer at Supercritical Conditions With Explainable Machine Learning Model",
+    "v": "Volume 6: Thermal-Hydraulics and Safety Analysis"
+   },
+   {
+    "y": 2024,
+    "t": "Microscale physics and macroscale convective heat transfer in supercritical fluids",
+    "v": ""
+   },
+   {
+    "y": 2023,
+    "t": "Machine learning based prediction of heat transfer deterioration of supercritical fluid in upward vertical tubes",
+    "v": "Applied Thermal Engineering"
+   }
+  ]
+ },
+ "sco2_corr_ml": {
+  "q": "\"supercritical\" \"heat transfer correlation\" neural",
+  "total": 2,
+  "top": [
+   {
+    "y": 2022,
+    "t": "Comprehensive Review of Heat Transfer Correlations of Supercritical CO2 in Straight Tubes Near the Critical Point: A Historical Perspective",
+    "v": "Journal of heat transfer"
+   },
+   {
+    "y": 2024,
+    "t": "Neural Network Prediction of Cooling Heat Transfer Characteristics of Supercritical R1234ze (E) in Horizontal Tube",
+    "v": "Acta Physica Sinica"
+   }
+  ]
+ },
+ "dittus_corr": {
+  "q": "\"Dittus-Boelter\"",
+  "total": 266,
+  "top": [
+   {
+    "y": 2018,
+    "t": "Experimental and numerical investigation of heat and fluid flow in a square duct featuring criss-cross rib patterns",
+    "v": ""
+   },
+   {
+    "y": 2023,
+    "t": "Experimental investigation of a novel heat exchanger for optimizing heat transfer performance using Al2O3-water nanofluids",
+    "v": "Heat and Mass Transfer"
+   },
+   {
+    "y": 2016,
+    "t": "Effect of Seawater on Heat Transfer without Boiling in Internally Heated Annulus",
+    "v": ""
+   },
+   {
+    "y": 2016,
+    "t": "Thermal properties on nanofluids based on a high temperature-heat transfer fluid and metallic nanoparticles for concentrating solar energy",
+    "v": ""
+   },
+   {
+    "y": 2017,
+    "t": "New text comparison between CO2 and other supercritical working fluids (ethane, Xe, CH4 and N2) in line- focusing solar power plants coupled to supercritical Brayton power cycles",
+    "v": ""
+   },
+   {
+    "y": 2010,
+    "t": "Development of a Heat-Transfer Correlation for Supercritical Water Flowing in a Vertical Bare Tube",
+    "v": ""
+   },
+   {
+    "y": 2023,
+    "t": "Computational parametric investigation of solar air heater with dimple roughness in S-shaped pattern",
+    "v": "International Journal on Interactive Design and Manufacturing (ijidem)"
+   },
+   {
+    "y": 2014,
+    "t": "Thermally Transient Heat Transfer Performance of Rectangular Twin-Pass Ribbed Channel with Skewed Wavy Sidewalls",
+    "v": ""
+   }
+  ]
+ },
+ "dittus_ml": {
+  "q": "\"Dittus-Boelter\" neural network",
+  "total": 1,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Physics-Guided Machine Learning and Deep Neural Networks for Accurate and Robust Heat Transfer Predictions in Shell and Helical Coil Heat Exchangers",
+    "v": "The Arabian journal for science and engineering"
+   }
+  ]
+ },
+ "chf_ml": {
+  "q": "\"critical heat flux\" \"machine learning\"",
+  "total": 69,
+  "top": [
+   {
+    "y": 2022,
+    "t": "A framework for generalizing critical heat flux detection models using unsupervised image-to-image translation",
+    "v": "Expert systems with applications"
+   },
+   {
+    "y": 2025,
+    "t": "Critical heat flux prediction through machine learning model for narrow rectangular channels",
+    "v": "International journal of thermal sciences"
+   },
+   {
+    "y": 2024,
+    "t": "Prediction of Critical Heat Flux for Liquid Helium Using Machine Learning Models Assisted by Physics-Based Correlation",
+    "v": "ASME 2024 Heat Transfer Summer Conference"
+   },
+   {
+    "y": 2026,
+    "t": "Critical heat flux prediction for narrow rectangular channels: a machine learning model based on the Kalman filter",
+    "v": "Nuclear Techniques"
+   },
+   {
+    "y": 2025,
+    "t": "Deployment of Traditional and Hybrid Machine Learning for Critical Heat Flux Prediction in the CTF Thermal Hydraulics Code",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2023,
+    "t": "An Optimized Stacking Ensemble Learning Model Using 3-Pyramids Technique for the 2006 CHF Groeneveld Look Table Prediction",
+    "v": "2023 International Conference on Applied Mathematics & Computer Science (ICAMCS)"
+   },
+   {
+    "y": 2026,
+    "t": "Machine learning integrated higher-order model application for critical heat flux investigations in pressurised water reactors",
+    "v": "International Journal of Thermofluids"
+   },
+   {
+    "y": 2024,
+    "t": "Interpretable Machine Learning Approaches for Predicting Critical Heat Flux",
+    "v": "Transactions of the American Nuclear Society"
+   }
+  ]
+ },
+ "pool_boil_ml": {
+  "q": "\"pool boiling\" \"machine learning\"",
+  "total": 41,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Machine learning-based prediction of nucleate pool boiling heat transfer enhancement on micropillar surfaces",
+    "v": "International Communications in Heat and Mass Transfer"
+   },
+   {
+    "y": 2024,
+    "t": "Image-based quantification of pool boiling heat flux on varied heating surfaces: Enhancing prediction performance with automated machine learning",
+    "v": "Applied Thermal Engineering"
+   },
+   {
+    "y": 2024,
+    "t": "MACHINE LEARNING BASED MODELING AND IDENTIFICATION OF KEY INFLUENCING PARAMETERS FOR NUCLEATE POOL BOILING ON PLAIN AND ROUGHENED SURFACES",
+    "v": "Proceeding of 9th Thermal and Fluids Engineering Conference (TFEC)"
+   },
+   {
+    "y": 2024,
+    "t": "Prediction of Critical Heat Flux for Liquid Helium Using Machine Learning Models Assisted by Physics-Based Correlation",
+    "v": "ASME 2024 Heat Transfer Summer Conference"
+   },
+   {
+    "y": 2026,
+    "t": "Experimental investigation and data-driven modeling of nanofluid pool boiling under rotational hypergravity",
+    "v": "Heat and Mass Transfer"
+   },
+   {
+    "y": 2024,
+    "t": "MACHINE LEARNING BASED MODELING AND IDENTIFICATION OF KEY INFLUENCING PARAMETERS FOR NUCLEATE POOL BOILING ON PLAIN AND ROUGHENED SURFACES",
+    "v": "Proceeding of 9th Thermal and Fluids Engineering Conference (TFEC)"
+   },
+   {
+    "y": 2021,
+    "t": "Use of Machine Learning Tools to Assess Surface Dryout During Nucleate and Transition Boiling on Surfaces With Different Wetting and Substrate Properties",
+    "v": "ASME 2021 Heat Transfer Summer Conference"
+   },
+   {
+    "y": 2026,
+    "t": "A effect of biosurfactant additive on pool boiling of organic liquids over aluminium",
+    "v": "Journal of Thermal Analysis and Calorimetry"
+   }
+  ]
+ },
+ "condens_ml": {
+  "q": "\"condensation heat transfer\" \"machine learning\"",
+  "total": 29,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Reliable models for calculating the condensation heat transfer inside smooth helical tubes of different flow directions utilizing smart computational techniques",
+    "v": "Scientific Reports"
+   },
+   {
+    "y": 2020,
+    "t": "Machine learning algorithms to predict flow condensation heat transfer coefficient in mini/micro-channel utilizing universal data",
+    "v": "International Journal of Heat and Mass Transfer"
+   },
+   {
+    "y": 2024,
+    "t": "Prediction of Condensation Heat Transfer of Passive Cooling Systems in Nuclear Power Plants through Machine Learning",
+    "v": "International Conference on Electrical and Control Engineering"
+   },
+   {
+    "y": 2023,
+    "t": "Application of Machine Learning Algorithms to Predict the Condensation Heat Transfer Coefficient Inside Microfin Tubes",
+    "v": "Proceeding of International Heat Transfer Conference 17"
+   },
+   {
+    "y": 2024,
+    "t": "Machine learning-driven approach for predicting the condensation heat transfer coefficient (HTC) in the presence of non-condensable gases",
+    "v": "International Journal of Heat and Fluid Flow"
+   },
+   {
+    "y": 2022,
+    "t": "Machine learning enabled condensation heat transfer measurement",
+    "v": "International Journal of Heat and Mass Transfer"
+   },
+   {
+    "y": 2025,
+    "t": "Physics-Informed Machine Learning for Enhanced Prediction of Condensation Heat Transfer",
+    "v": "Energy and AI"
+   },
+   {
+    "y": 2021,
+    "t": "Application of Machine Learning Technique for Predicting the Condensation Heat Transfer on a Vertical-Tube External Surface Under the Presence of Noncondensable Gas",
+    "v": "Journal of Energy Engineering"
+   }
+  ]
+ },
+ "stefan_ml": {
+  "q": "\"Stefan problem\" \"machine learning\"",
+  "total": 3,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Physics-Informed Machine Learning for Two-Phase Moving-Interface and Stefan Problems",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "A Rapid Physics-Informed Machine Learning Framework Based on Extreme Learning Machine for Inverse Stefan Problems",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2022,
+    "t": "A machine learning approach for solving inverse Stefan problem",
+    "v": ""
+   }
+  ]
+ },
+ "stefan_pcm_ml": {
+  "q": "\"phase change\" \"similarity solution\" machine learning",
+  "total": 0,
+  "top": []
+ },
+ "rarefied_sr": {
+  "q": "\"rarefied gas\" surrogate",
+  "total": 15,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Analysis of the rarefied flow at micro-step using a DeepONet surrogate model with a physics-guided zonal loss function",
+    "v": "Microfluidics and Nanofluidics"
+   },
+   {
+    "y": 2026,
+    "t": "Physics Constrained Neural Collision Operators for Variable Hard Sphere Surrogates and Ab Initio Angle Prediction in Direct Simulation Monte Carlo",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Size effects of rarefied gas flows in nanochannels by simulations based on statistical surrogate model for atomistic collisions.",
+    "v": "Physical Review E"
+   },
+   {
+    "y": 2026,
+    "t": "Machine learning for rarefied gas transport in vacuum and micro/nano systems: promise, pitfalls, and a verification agenda",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Neural networks for rarefied gas dynamics: Relaxation problem, polyatomic shock waves, and hypersonic cylinder flow",
+    "v": "The Physics of Fluids"
+   },
+   {
+    "y": 2025,
+    "t": "Data-Driven Surrogate Modeling of DSMC Solutions Using Deep Neural Networks",
+    "v": "Aerospace Science and Technology"
+   },
+   {
+    "y": 2025,
+    "t": "AI-Accelerated Operator Learning Framework for Rarefied Microflows",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Learning Rarefied Gas Dynamics with Physics-Enforced Neural Networks",
+    "v": ""
+   }
+  ]
+ },
+ "knudsen_ml": {
+  "q": "\"Knudsen number\" \"machine learning\"",
+  "total": 6,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Topology of direct simulation Monte Carlo constitutive relations for neural network-accelerated finite-volume solutions of velocity-shear flows",
+    "v": "The Physics of Fluids"
+   },
+   {
+    "y": 2023,
+    "t": "Machine learning of hidden variables in multiscale fluid simulation",
+    "v": "Machine Learning: Science and Technology"
+   },
+   {
+    "y": 2025,
+    "t": "Physics-Based Machine Learning Closures and Wall Models for Hypersonic Transition-Continuum Boundary Layer Predictions",
+    "v": "Physical Review Fluids"
+   },
+   {
+    "y": 2019,
+    "t": "Abstracts of Invited Talks",
+    "v": ""
+   },
+   {
+    "y": 2021,
+    "t": "Data-driven nonlinear constitutive relations for rarefied flow computations",
+    "v": "Advances in Aerodynamics"
+   },
+   {
+    "y": 2025,
+    "t": "Learning the Optimal Hydrodynamic Closure",
+    "v": ""
+   }
+  ]
+ },
+ "nonfourier_ml": {
+  "q": "\"non-Fourier\" heat conduction \"machine learning\"",
+  "total": 3,
+  "top": [
+   {
+    "y": 2022,
+    "t": "Modeling heat conduction with dual-dissipative variables: A mechanism-data fusion method.",
+    "v": "Physical Review E"
+   },
+   {
+    "y": 2026,
+    "t": "A finite difference and machine learning framework for non-Fourier multilayer bioheat transfer under laser irradiation",
+    "v": "International Journal of Numerical Methods for Heat &amp; Fluid Flow"
+   },
+   {
+    "y": 2026,
+    "t": "Physics-informed neural network and data-driven modeling of non-Fourier heat transfer in laser-irradiated semiconductor media using bi-Helmhotz nonlocal theory",
+    "v": "Continuum Mechanics and Thermodynamics"
+   }
+  ]
+ },
+ "sizeeffect_ml": {
+  "q": "\"size effect\" fracture \"machine learning\"",
+  "total": 8,
+  "top": [
+   {
+    "y": 2026,
+    "t": "A Literature Review on Advances in Data‐Driven Research on Very High Cycle Fatigue: From Experiments to Prediction",
+    "v": "Fatigue &amp; Fracture of Engineering Materials &amp; Structures"
+   },
+   {
+    "y": 2024,
+    "t": "Size Effect on the Ductile Fracture of the Aluminium Alloy 2024-T351",
+    "v": "Experimental mechanics"
+   },
+   {
+    "y": 2026,
+    "t": "Enhancing Fracture Modeling in Heterogeneous Shale Reservoirs Using Scratch Test-Derived Strength Profiles and Machine Learning-Based Proxy Logs",
+    "v": "SPE Hydraulic Fracturing Technology Conference and Exhibition"
+   },
+   {
+    "y": 2021,
+    "t": "Microstructure-Based Modeling of the Effect of Inclusion on the Bendability of Advanced High Strength Dual-Phase Steels",
+    "v": "Metals"
+   },
+   {
+    "y": 2026,
+    "t": "Pultruded GFRP Translaminar Fracture Toughness Evaluation Using a Hybrid Approach of Size-Effect and Machine Learning",
+    "v": "Applied Sciences"
+   },
+   {
+    "y": 2019,
+    "t": "Analysis of dynamic compressive fracture of carbon composites by digital image correlation and machine learning",
+    "v": ""
+   },
+   {
+    "y": 2019,
+    "t": "Alteration of the Fracture Behavior in Host Rock during CO2 Geological Sequestration",
+    "v": "Proceedings of the 10th International Conference on Fracture Mechanics of Concrete and Concrete Structures"
+   },
+   {
+    "y": 2025,
+    "t": "Research on Fracture Energy Prediction and Size Effect of Concrete Based on Deep Learning with SHAP Interpretability Method",
+    "v": "Buildings"
+   }
+  ]
+ },
+ "ehl_ml": {
+  "q": "\"elastohydrodynamic lubrication\" \"machine learning\"",
+  "total": 13,
+  "top": [
+   {
+    "y": 2022,
+    "t": "Predicting EHL film thickness parameters by machine learning approaches",
+    "v": "Friction"
+   },
+   {
+    "y": 2024,
+    "t": "Machine-Learning-Assisted Identification and Formulation of High-Pressure Lubricant-Piezoviscous-Response Parameters for Minimum Film Thickness Determination in Elastohydrodynamic Circular Contacts",
+    "v": "Tribology letter"
+   },
+   {
+    "y": 2025,
+    "t": "Extrapolation of cavitation and hydrodynamic pressure in lubricated contacts: a physics-informed neural network approach",
+    "v": "Advanced Modeling and Simulation in Engineering Sciences"
+   },
+   {
+    "y": 2025,
+    "t": "Advancing deformation calculation: a physics-informed deep graph learning framework for hyperelastic materials",
+    "v": "Advanced Modeling and Simulation in Engineering Sciences"
+   },
+   {
+    "y": 2025,
+    "t": "Prediction of load-dependent power loss based on a machine learning approach in gear pairs with mixed elastohydrodynamic lubrication",
+    "v": "Tribology International"
+   },
+   {
+    "y": 2021,
+    "t": "Probing the Rheological Properties of Liquids Under Conditions of Elastohydrodynamic Lubrication Using Simulations and Machine Learning",
+    "v": "Tribology letter"
+   },
+   {
+    "y": 2023,
+    "t": "Machine Learning for Film Thickness Prediction in Elastohydrodynamic Lubricated Elliptical Contacts",
+    "v": "Lubricants"
+   },
+   {
+    "y": 2024,
+    "t": "Advancing Lubrication Calculation: A Physics-Informed Neural Network Framework for Transient Effects and Cavitation Phenomena in Reciprocating Seals",
+    "v": "22nd International Sealing Conference 2024"
+   }
+  ]
+ },
+ "nondarcy_ml": {
+  "q": "\"non-Darcy\" \"neural network\"",
+  "total": 27,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Machine-learning-based predictive assessment of inclined MHD micropolar bioconvection over curved porous stretching sheet",
+    "v": "Multiscale and Multidisciplinary Modeling Experiments and Design"
+   },
+   {
+    "y": 2025,
+    "t": "Modeling blood flow with tetra-hybrid Casson nanofluid in stenosed arteries: Numerical and machine learning approach",
+    "v": "Journal of thermal stresses"
+   },
+   {
+    "y": 2026,
+    "t": "Nonlinear Thermal Radiation in Magnetized Casson Fluid Flow: An Artificial Neural Network Analysis",
+    "v": "Journal of Computational and Nonlinear Dynamics"
+   },
+   {
+    "y": 2026,
+    "t": "Neural network analysis of electro-osmotic Sutterby nanofluidics in complex porous microsystem",
+    "v": "International Journal of Numerical Methods for Heat &amp; Fluid Flow"
+   },
+   {
+    "y": 2025,
+    "t": "Neural network modeling of non-Newtonian NEPCMs suspension in a non-Darcy porous medium under LTNE conditions",
+    "v": "Journal of the Taiwan Institute of Chemical Engineers / Elsevier"
+   },
+   {
+    "y": 2015,
+    "t": "Well spacing design for low and ultra-low permeability reservoirs developed by hydraulic fracturing",
+    "v": ""
+   },
+   {
+    "y": 2013,
+    "t": "The Precise Prediction of the Turbulence Coefficient Based on Neural Network Modeling",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Investigating the MHD Casson tetra-hybrid nanofluid flow in an inclined cylinder with radiative heat transport using numerical and neural network approach",
+    "v": ""
+   }
+  ]
+ },
+ "marangoni_ml": {
+  "q": "\"Marangoni convection\" \"machine learning\"",
+  "total": 10,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Machine learning investigation of marangoni convection in hybrid nanofluids with Darcy-Forchheimer",
+    "v": "Scientific Reports"
+   },
+   {
+    "y": 2026,
+    "t": "Machine Learning-driven optimization of laser cladding: Enhancing process efficiency and cladding quality",
+    "v": "Applied Physics A"
+   },
+   {
+    "y": 2025,
+    "t": "Machine learning-driven modeling and prediction of flow and heat transfer of water-based nanolayered nanofluid using Koo–Kleinstreuer–Li and Cattaneo–Christov heat flux models",
+    "v": "The Physics of Fluids"
+   },
+   {
+    "y": 2026,
+    "t": "Marangoni convection-driven squeezing flow and thermal transport of water-based pseudoplastic ternary hybrid nanofluid in a porous channel: machine-learning optimization",
+    "v": "Journal of Taibah University for Science"
+   },
+   {
+    "y": 2024,
+    "t": "Time-Lapse Quantitative Analysis of Drying Patterns and Machine Learning for Classifying Abnormalities in Sessile Blood Droplets",
+    "v": "medRxiv"
+   },
+   {
+    "y": 2020,
+    "t": "Visualization Techniques for Droplet Interfaces and Multiphase Flow",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Physics-Informed Machine Learning Regulated by Finite Element Analysis for Simulation Acceleration of Melt Pool Dynamics in Laser Powder Bed Fusion",
+    "v": ""
+   },
+   {
+    "y": 2021,
+    "t": "Entropy Optimized Second Grade Fluid with MHD and Marangoni Convection Impacts: An Intelligent Neuro-Computing Paradigm",
+    "v": "Coatings"
+   }
+  ]
+ },
+ "mixedconv_ml": {
+  "q": "\"mixed convection\" \"machine learning\"",
+  "total": 42,
+  "top": [
+   {
+    "y": 2020,
+    "t": "Using Deep Learning to Explore Local Physical Similarity for Global-scale Bridging in Thermal-hydraulic Simulation",
+    "v": "Annals of Nuclear Energy"
+   },
+   {
+    "y": 2025,
+    "t": "Numerical and Machine Learning Investigation of Mixed Convection in a Corrugated Enclosure with Dual Rotating Cylinders and Variable Port Arrangements",
+    "v": "Next Research"
+   },
+   {
+    "y": 2026,
+    "t": "Computational modeling of turbulent nanofluid heat transfer over a heated moving surface with local thermal non-equilibrium and machine-learned eddy viscosity",
+    "v": "Advances in Differential Equations and Control Processes"
+   },
+   {
+    "y": 2021,
+    "t": "Data-driven algebraic models of the turbulent Prandtl number for buoyancy-affected flow near a vertical surface",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Interpretable machine learning uncovers nonlinear and higher-order interactions in mixed convection jet impingement on protruded surfaces",
+    "v": "International Communications in Heat and Mass Transfer"
+   },
+   {
+    "y": 2026,
+    "t": "Machine learning surrogate models for mixed convection heat transfer in a lid-driven cavity with two counter-rotating cylinders",
+    "v": "International Communications in Heat and Mass Transfer"
+   },
+   {
+    "y": 2024,
+    "t": "Machine learning algorithms on predicting the turbulent mixed convection flow in a driven-cavity with two horizontal cylinders",
+    "v": "International Communications in Heat and Mass Transfer"
+   },
+   {
+    "y": 2025,
+    "t": "Thermal performance of DispersedInorganic magnetic hybrid nanomaterials into mixed convective flow through flexible porous disks",
+    "v": "ZAMM - Journal of Applied Mathematics and Mechanics / Zeitschrift für Angewandte Mathematik und Mechanik"
+   }
+  ]
+ },
+ "varprop_ml": {
+  "q": "\"variable properties\" \"natural convection\" \"machine learning\"",
+  "total": 0,
+  "top": []
+ },
+ "porous_conv_ml": {
+  "q": "\"porous medium\" \"natural convection\" \"machine learning\"",
+  "total": 2,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Mathematical modelling, numerical simulation and artificial neural network (ANN)-based model for nanofluid convection in a porous enclosure with obstacles",
+    "v": "Neural computing & applications (Print)"
+   },
+   {
+    "y": 2025,
+    "t": "Numerical investigation of buoyant convection in a porous C-shaped cavity using water-hybrid nanofluids: artificial neural network analysis for enhanced solar collector thermal management",
+    "v": "Applied Water Science"
+   }
+  ]
+ },
+ "simlaw_ml": {
+  "q": "\"similarity law\" \"machine learning\"",
+  "total": 3,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Knowledge-integrated additive learning for consistent near-wall modelling of turbulent flows",
+    "v": "Journal of Fluid Mechanics"
+   },
+   {
+    "y": 2023,
+    "t": "Machine Learning Techniques Promote the Study of Internal Solitary Wave Dynamics in the Global Oceans",
+    "v": ""
+   },
+   {
+    "y": 2022,
+    "t": "A Platform-Based Product Family Design Method Using Standardized Models with Physical Similarity Law and Its Application to Room Air Conditioners",
+    "v": ""
+   }
+  ]
+ },
+ "exp_recover": {
+  "q": "discovering scaling exponents from data neural network",
+  "total": 2,
+  "top": [
+   {
+    "y": 2023,
+    "t": "Extreme synchronization events in a model neuron-astrocyte network",
+    "v": "Genes &amp; Cells"
+   },
+   {
+    "y": 2024,
+    "t": "Data-driven discovery of self-similarity using neural networks",
+    "v": "Physical Review E"
+   }
+  ]
+ },
+ "corr_correct": {
+  "q": "machine learning correction empirical correlation heat transfer",
+  "total": 1,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Assessment of Machine Learning-Based Critical Heat Flux Models in the CTF Subchannel Code for Square Rod Bundle Prediction",
+    "v": ""
+   }
+  ]
+ },
+ "lowfi_correct_ht": {
+  "q": "low-fidelity high-fidelity correction heat transfer surrogate",
+  "total": 0,
+  "top": []
+ }
+}

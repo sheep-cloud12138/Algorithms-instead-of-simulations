@@ -1,0 +1,1164 @@
+{
+ "meta_total": {
+  "q": "\"mechanical metamaterial\"",
+  "total": 2578,
+  "top": [
+   {
+    "y": 2018,
+    "t": "Acoustic Metamaterials and Metadevices",
+    "v": ""
+   },
+   {
+    "y": 2018,
+    "t": "Thermally responsive mechanical metamaterials",
+    "v": ""
+   },
+   {
+    "y": 2021,
+    "t": "Elasticity Approach to Predict Shape Transformation of Functionally Graded Mechanical Metamaterial under Tension",
+    "v": "Materials"
+   },
+   {
+    "y": 2023,
+    "t": "Curvature screening in draped mechanical metamaterial sheets.",
+    "v": "Soft Matter"
+   },
+   {
+    "y": 2016,
+    "t": "Folding to Curved Surfaces: A Generalized Design Method and Mechanics of Origami-based Cylindrical Structures",
+    "v": "Scientific Reports"
+   },
+   {
+    "y": 2026,
+    "t": "Direct extraction of surface vibration profiles with optical beam deflection.",
+    "v": "Review of Scientific Instruments"
+   }
+  ]
+ },
+ "meta_no": {
+  "q": "\"metamaterial\" \"neural operator\"",
+  "total": 9,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Toward signed distance function based metamaterial design: Neural operator transformer for forward prediction and diffusion model for inverse design",
+    "v": "Computer Methods in Applied Mechanics and Engineering"
+   },
+   {
+    "y": 2026,
+    "t": "Learning Metamaterial Eigenmodes with Wavelet-Encoded Fourier Neural Operators",
+    "v": ""
+   },
+   {
+    "y": 2024,
+    "t": "A Surrogate Model for Rapid Solution of Acoustic Wave Equation Based on the Boundary Element Method and Fourier Neural Operators",
+    "v": "The International Conference on Computational &amp; Experimental Engineering and Sciences"
+   },
+   {
+    "y": 2026,
+    "t": "A multi-fidelity Bayesian neural operator for mechanics of spinodal metamaterial",
+    "v": "npj Computational Materials"
+   },
+   {
+    "y": 2026,
+    "t": "Symmetry-imbued Hamiltonian neural operator architecture for stress field prediction of porous metamaterials",
+    "v": "Advanced Manufacturing"
+   },
+   {
+    "y": 2025,
+    "t": "Characterization and Inverse Design of Stochastic Mechanical Metamaterials Using Neural Operators",
+    "v": "Advances in Materials"
+   }
+  ]
+ },
+ "meta_fno": {
+  "q": "\"metamaterial\" \"Fourier neural operator\"",
+  "total": 3,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Learning Metamaterial Eigenmodes with Wavelet-Encoded Fourier Neural Operators",
+    "v": ""
+   },
+   {
+    "y": 2024,
+    "t": "A Surrogate Model for Rapid Solution of Acoustic Wave Equation Based on the Boundary Element Method and Fourier Neural Operators",
+    "v": "The International Conference on Computational &amp; Experimental Engineering and Sciences"
+   },
+   {
+    "y": 2023,
+    "t": "Deep Neural Operator Enabled Concurrent Multitask Design for Multifunctional Metamaterials Under Heterogeneous Fields",
+    "v": "Advanced Optical Materials"
+   }
+  ]
+ },
+ "meta_homog_ml": {
+  "q": "\"metamaterial\" \"homogenization\" \"machine learning\"",
+  "total": 10,
+  "top": [
+   {
+    "y": 2024,
+    "t": "Similarity equivariant graph neural networks for homogenization of metamaterials",
+    "v": "Computer Methods in Applied Mechanics and Engineering"
+   },
+   {
+    "y": 2023,
+    "t": "Physics‐Informed Machine Learning for Inverse Design of Optical Metamaterials",
+    "v": "Advanced Photonics Research"
+   },
+   {
+    "y": 2026,
+    "t": "Machine learning-enabled inverse design of bimaterial thermoelastic lattice metamaterials",
+    "v": "Composite structures"
+   },
+   {
+    "y": 2020,
+    "t": "Data-driven topology optimization of spinodoid metamaterials with seamlessly tunable anisotropy",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2021,
+    "t": "Material modeling for parametric, anisotropic finite strain hyperelasticity based on machine learning with application in optimization of metamaterials",
+    "v": "International Journal for Numerical Methods in Engineering"
+   },
+   {
+    "y": 2024,
+    "t": "A review of structural diversity design and optimization for lattice metamaterials",
+    "v": "AIP Advances"
+   }
+  ]
+ },
+ "auxetic_ml": {
+  "q": "\"auxetic\" \"machine learning\"",
+  "total": 107,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Explainable Machine Learning for Human Activity Recognition Using Auxetic cTPU Knee-Worn Sensors",
+    "v": "Italian National Conference on Sensors"
+   },
+   {
+    "y": 2022,
+    "t": "Machine learning-based inverse design of auxetic metamaterial with zero Poisson's ratio",
+    "v": "Materials Today Communications"
+   },
+   {
+    "y": 2023,
+    "t": "AI-assisted study of auxetic structures",
+    "v": "Acta Polytechnica CTU Proceedings"
+   },
+   {
+    "y": 2026,
+    "t": "Machine Learning‐Based Prediction of Mechanical Behavior for S‐Shaped Auxetic Structure",
+    "v": "physica status solidi (b)"
+   },
+   {
+    "y": 2026,
+    "t": "Design, machine learning based optimization, experimental validation and numerical analysis for free vibration of multi-auxetic sandwich structures with porosity-dependent GPL-reinforced core",
+    "v": "Aerospace Science and Technology"
+   },
+   {
+    "y": 2023,
+    "t": "A sequential cross-product knowledge accumulation, extraction and transfer framework for machine learning-based production process modelling",
+    "v": "International Journal of Production Research"
+   }
+  ]
+ },
+ "origami_ml": {
+  "q": "\"origami\" \"machine learning\"",
+  "total": 82,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Predicting DNA origami stability in physiological media by machine learning",
+    "v": "bioRxiv"
+   },
+   {
+    "y": 2026,
+    "t": "Conflict Mitigation of Xapps and Interoperability of O-RAN Components: The ORIGAMI Approach",
+    "v": "2026 Joint European Conference on Networks and Communications & 6G Summit (EuCNC/6G Summit)"
+   },
+   {
+    "y": 2026,
+    "t": "A physics-based hybrid machine learning method for frequency band-gaps analysis of Love-Bishop elastic wave propagation in graphene origami-enabled phononic crystals",
+    "v": "Mechanics of Advanced Materials and Structures"
+   },
+   {
+    "y": 2025,
+    "t": "Re‐Purposing a Modular Origami Manipulator Into an Adaptive Physical Computer for Machine Learning and Robotic Perception",
+    "v": "Advancement of science"
+   },
+   {
+    "y": 2026,
+    "t": "From Blueprint to Breakthrough: How Far Can We Fold DNA Origami for Nano-Enabled Technologies?",
+    "v": "JACS Au"
+   },
+   {
+    "y": 2022,
+    "t": "Machine Learning of Combinatorial Rules in Mechanical Metamaterials",
+    "v": ""
+   }
+  ]
+ },
+ "kirigami_ml": {
+  "q": "\"kirigami\" \"machine learning\"",
+  "total": 30,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Rapid Design and Fabrication of Body Conformable Surfaces with Kirigami Cutting and Machine Learning",
+    "v": "Advancement of science"
+   },
+   {
+    "y": 2020,
+    "t": "Forward and inverse design of kirigami via supervised autoencoder",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Dynamic pressure mapping of infant cervical spines using a wearable magnetoelastic patch",
+    "v": "Matter"
+   },
+   {
+    "y": 2025,
+    "t": "Design optimisation of kirigami-based auxetic metamaterials with multistability and shape-morphing capability",
+    "v": "Virtual and Physical Prototyping"
+   },
+   {
+    "y": 2026,
+    "t": "A kirigami-enabled mechanoreceptor-inspired tactile sensor with spatially multidirectional force decoding",
+    "v": "Soft Science"
+   },
+   {
+    "y": 2022,
+    "t": "Machine learning assisted design of shape-programmable 3D kirigami metamaterials",
+    "v": "npj Computational Materials"
+   }
+  ]
+ },
+ "tensegrity": {
+  "q": "\"tensegrity\"",
+  "total": 3516,
+  "top": [
+   {
+    "y": 2014,
+    "t": "An approach to the dynamics and control of a planar tensegrity structure with application in locomotion systems",
+    "v": "International Journal of Dynamics and Control"
+   },
+   {
+    "y": 2010,
+    "t": "Pretensado de columnas Tensegrity para el incremento de rigidez axil",
+    "v": ""
+   },
+   {
+    "y": 2018,
+    "t": "Should Anthropomorphic Systems be \"Redundant\"?",
+    "v": "Biomechanics of Anthropomorphic Systems"
+   },
+   {
+    "y": 2017,
+    "t": "Forward kinematic analysis of tensegrity mechanism using hybrid method",
+    "v": "International Conference on Robotics and Mechatronics"
+   },
+   {
+    "y": 2011,
+    "t": "Innovative design in tensegrity field",
+    "v": ""
+   },
+   {
+    "y": 2014,
+    "t": "LMI Control Design With Input Covariance Constraint for a Tensegrity Simplex Structure",
+    "v": "IEEE/ACM International Conference on Human-Robot Interaction"
+   }
+  ]
+ },
+ "compliant_ml": {
+  "q": "\"compliant mechanism\" \"machine learning\"",
+  "total": 27,
+  "top": [
+   {
+    "y": 2022,
+    "t": "An Optimized Design of New XYθ Mobile Positioning Microrobotic Platform for Polishing Robot Application Using Artificial Neural Network and Teaching‐Learning Based Optimization",
+    "v": "Complex"
+   },
+   {
+    "y": 2023,
+    "t": "Evolution, Design, and Future Trajectories on Bipedal Wheel-legged Robot: A Comprehensive Review",
+    "v": "International Journal of Robotics and Control Systems"
+   },
+   {
+    "y": 2024,
+    "t": "Automatic hyperparameter tuning of topology optimization algorithms using surrogate optimization",
+    "v": "Structural And Multidisciplinary Optimization"
+   },
+   {
+    "y": 2024,
+    "t": "Data-Driven and Machine-Learning-Based Real-Time Viscosity Measurement Using a Compliant Mechanism",
+    "v": "Applied Sciences"
+   },
+   {
+    "y": 2026,
+    "t": "Machine learning–driven design of engineered cilia enables hybrid operations in acoustic microrobots",
+    "v": "Nature Communications"
+   },
+   {
+    "y": 2024,
+    "t": "An Efficient Design Model for Parallel-Guided Layer Jamming Compliant Mechanisms",
+    "v": "2024 6th International Conference on Reconfigurable Mechanisms and Robots (ReMAR)"
+   }
+  ]
+ },
+ "deployable_ml": {
+  "q": "\"deployable structure\" \"machine learning\"",
+  "total": 12,
+  "top": [
+   {
+    "y": 2017,
+    "t": "Design of ultra-thin composite deployable shell structures through machine learning",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Optimization of optical fiber monitoring technology and its rock pressure early warning mechanism in deep mining development environments",
+    "v": "Engineering Research Express"
+   },
+   {
+    "y": 2025,
+    "t": "Smart Wearable-Based Detection of Sleep Apnea in Pregnant Women Using Machine Learning Model",
+    "v": "International Conference on Computational Intelligence and Communication Networks"
+   },
+   {
+    "y": 2026,
+    "t": "Turing problems in otolaryngology: a scoping review of the principal challenges of artificial ıntelligence and large language models.",
+    "v": "European archives of oto-rhino-laryngology : official journal of the European Federation of Oto-Rhino-Laryngological Societies (EUFOS) : affiliated with the German Society for Oto-Rhino-Laryngology - Head and Neck Surgery"
+   },
+   {
+    "y": 2025,
+    "t": "Secure and Scalable AI-Powered Data Governance Models for Salesforce Cloud-Based Enterprises",
+    "v": "International Journal of Artificial Intelligence, Data Science and Machine Learning"
+   },
+   {
+    "y": 2022,
+    "t": "Harnessing Interpretable Machine Learning for Origami Feature Design and Pattern Selection",
+    "v": "arXiv.org"
+   }
+  ]
+ },
+ "lattice_ml": {
+  "q": "\"lattice structure\" \"machine learning\"",
+  "total": 226,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Development of Patient-Specific Lattice Structured Femoral Stems Based on Finite Element Analysis and Machine Learning",
+    "v": "Crystals"
+   },
+   {
+    "y": 2024,
+    "t": "A framework for design optimization across multiple concepts",
+    "v": "Scientific Reports"
+   },
+   {
+    "y": 2021,
+    "t": "Formalising Concepts as Grounded Abstractions",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Revolutionizing Footwear Design: A Review of Lattice Engineering, Biomechanics and Additive Manufacturing in 3D Printed Shoes",
+    "v": "Advances in Materials Science and Engineering"
+   },
+   {
+    "y": 2019,
+    "t": "Hierarchical Adaptive Multi-task Learning Framework for Patient Diagnoses and Diagnostic Category Classification",
+    "v": "IEEE International Conference on Bioinformatics and Biomedicine"
+   },
+   {
+    "y": 2024,
+    "t": "Optimal Lattice Structure Thermal Conductivity Design using Machine Learning-based Design Optimization",
+    "v": "Journal of the Computational Structural Engineering Institute of Korea"
+   }
+  ]
+ },
+ "lattice_no": {
+  "q": "\"lattice structure\" \"neural operator\"",
+  "total": 3,
+  "top": [
+   {
+    "y": 2024,
+    "t": "LatticeGraphNet: a two-scale graph neural operator for simulating lattice structures",
+    "v": "Engineering computations"
+   },
+   {
+    "y": 2024,
+    "t": "Multi-Lattice Topology Optimization With Lattice Representation Learned by Generative Models",
+    "v": "Design Automation Conference"
+   },
+   {
+    "y": 2024,
+    "t": "Multi-lattice Topology Optimization via Generative Lattice Modeling",
+    "v": "Journal of Mechanical Design"
+   }
+  ]
+ },
+ "sma_ml": {
+  "q": "\"shape memory alloy\" \"machine learning\"",
+  "total": 153,
+  "top": [
+   {
+    "y": 2019,
+    "t": "Artificial neural network assisted by first-principles calculations for predicting transformation temperatures in shape memory alloys",
+    "v": "International Journal of Modern Physics B"
+   },
+   {
+    "y": 2025,
+    "t": "Shape-Based Force Prediction of a Soft SMA Planar Actuator Using Machine Learning",
+    "v": "IEEE Transactions on Instrumentation and Measurement"
+   },
+   {
+    "y": 2024,
+    "t": "Machine-Learning-Driven Design of High-Elastocaloric NiTi-Based Shape Memory Alloys",
+    "v": "Metals"
+   },
+   {
+    "y": 2025,
+    "t": "Review of Bio-Inspired Actuators and Their Potential for Adaptive\n Vehicle Control",
+    "v": "SAE International Journal of Connected and Automated Vehicles"
+   },
+   {
+    "y": 2025,
+    "t": "Re‐Purposing a Modular Origami Manipulator Into an Adaptive Physical Computer for Machine Learning and Robotic Perception",
+    "v": "Advancement of science"
+   },
+   {
+    "y": 2025,
+    "t": "Advances in Nitinol Laser Cutting: Exploring Mixed Gas Applications and Process Optimization",
+    "v": "International Journal of Advanced Research in Science, Communication and Technology"
+   }
+  ]
+ },
+ "de_ml": {
+  "q": "\"dielectric elastomer\" \"machine learning\"",
+  "total": 18,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Enhancing self-sensing in dielectric elastomers through random forest regression",
+    "v": "SPIE Smart Structures and Materials + Nondestructive Evaluation"
+   },
+   {
+    "y": 2025,
+    "t": "Review of Bio-Inspired Actuators and Their Potential for Adaptive\n Vehicle Control",
+    "v": "SAE International Journal of Connected and Automated Vehicles"
+   },
+   {
+    "y": 2023,
+    "t": "Improving diver-robot empathy with a haptic feedback smart glove",
+    "v": "Smart Structures and Materials + Nondestructive Evaluation and Health Monitoring"
+   },
+   {
+    "y": 2025,
+    "t": "A Review of Bio-Inspired Actuators and Their Potential for Adaptive Vehicle Control",
+    "v": "Actuators"
+   },
+   {
+    "y": 2019,
+    "t": "Design and attitude control of a novel robotic jellyfish capable of 3D motion",
+    "v": "Science China Information Sciences"
+   },
+   {
+    "y": 2017,
+    "t": "A Deformable Interface for Human Touch Recognition Using Stretchable Carbon Nanotube Dielectric Elastomer Sensors and Deep Neural Networks",
+    "v": "Soft Robotics"
+   }
+  ]
+ },
+ "mr_ml": {
+  "q": "\"magnetorheological\" \"machine learning\"",
+  "total": 64,
+  "top": [
+   {
+    "y": 2019,
+    "t": "Recent progress on the simulation technology of magnetic fluid",
+    "v": "Chinese Science Bulletin"
+   },
+   {
+    "y": 2023,
+    "t": "Gait Phase Identification and Damping Control for Knee Orthosis Using Time Series Forest Classifier",
+    "v": "Applied Sciences"
+   },
+   {
+    "y": 2025,
+    "t": "Machine-learning-based optimization of hybrid electrochemical magnetorheological finishing process to achieve nano finishing on additively manufactured biomaterial",
+    "v": "Advances in Materials and Processing Technologies"
+   },
+   {
+    "y": 2022,
+    "t": "Takagi–Sugeno Fuzzy Observer-Based Magnetorheological Damper Fault Diagnosis Using a Support Vector Machine",
+    "v": "IEEE Transactions on Control Systems Technology"
+   },
+   {
+    "y": 2022,
+    "t": "Non-parametric multiple inputs prediction model for magnetic field dependent complex modulus of magnetorheological elastomer",
+    "v": "Scientific Reports"
+   },
+   {
+    "y": 2025,
+    "t": "The Application of Machine Learning and Optimisation Algorithm for Magnetorheological Damper Dynamics Behaviour: A Review",
+    "v": "Journal of Vibration Engineering & Technologies"
+   }
+  ]
+ },
+ "softact_ml": {
+  "err": "HTTP Error 429: "
+ },
+ "4dprint_ml": {
+  "q": "\"4D printing\" \"machine learning\"",
+  "total": 68,
+  "top": [
+   {
+    "y": 2025,
+    "t": "An overview of recent advancements in 4D printing of alginate hydrogels for tissue regeneration",
+    "v": "Journal of Biomaterials Science. Polymer Edition"
+   },
+   {
+    "y": 2020,
+    "t": "Trends in 3D Printing Processes for Biomedical Field: Opportunities and Challenges",
+    "v": "Journal of Polymers and the Environment"
+   },
+   {
+    "y": 2025,
+    "t": "Advancements and Applications of 3DP Printing in Pharmaceutical Development and Biomedical Sciences",
+    "v": "Asian Journal of Research in Medical and Pharmaceutical Sciences"
+   },
+   {
+    "y": 2025,
+    "t": "Magnetoactive Metamaterials: A State‐of‐the‐Art Review",
+    "v": "Advanced Engineering Materials"
+   },
+   {
+    "y": 2021,
+    "t": "4D Printing Soft Robots Guided by Machine Learning and Finite Element Models",
+    "v": ""
+   },
+   {
+    "y": 2024,
+    "t": "Recent Advances in 4D Printing of Advanced Materials and Structures for Functional Applications",
+    "v": "Advances in Materials"
+   }
+  ]
+ },
+ "tpms_total": {
+  "q": "\"triply periodic minimal surface\"",
+  "total": 2364,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Influence of triply periodic minimal surface (TPMS) lattice structures on the shear strength of PLA-Based 3D-printed adhesive joints",
+    "v": "The International Journal of Advanced Manufacturing Technology"
+   },
+   {
+    "y": 2022,
+    "t": "Mechanical properties of triply periodic minimal surface (TPMS) scaffolds: considering the influence of spatial angle and surface curvature",
+    "v": "Biomechanics and Modeling in Mechanobiology"
+   },
+   {
+    "y": 2025,
+    "t": "Acoustic performances of triply periodic minimal surfaces fabricated by additive manufacturing: Effects of cell geometry, aspect ratio, and wall thickness",
+    "v": "Additive Manufacturing"
+   },
+   {
+    "y": 2025,
+    "t": "Investigation of the Sound Insulation Properties of Schwarz-P, a Triply Periodic Minimal Surface",
+    "v": "INTER-NOISE and NOISE-CON Congress and Conference Proceedings"
+   },
+   {
+    "y": 2005,
+    "t": "Schwarz Meets Schwann: Design and Fabrication of Biomorphic Tissue Engineering Scaffolds",
+    "v": "International Conference on Medical Image Computing and Computer-Assisted Intervention"
+   },
+   {
+    "y": 2021,
+    "t": "Different Approaches for Manufacturing Ti-6Al-4V Alloy with Triply Periodic Minimal Surface Sheet-Based Structures by Electron Beam Melting",
+    "v": "Materials"
+   }
+  ]
+ },
+ "tpms_ht": {
+  "q": "\"triply periodic minimal surface\" heat transfer",
+  "total": 229,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Heat and mass transfer in a channel with fins based on a triply periodic surface of the Schoen’s IWP type",
+    "v": "Urban Construction and Architecture"
+   },
+   {
+    "y": 2025,
+    "t": "Numerical study on the flow and heat transfer characteristics of marine seawater heat exchanger based on triply periodic minimal surface (TPMS)",
+    "v": "Applied Thermal Engineering"
+   },
+   {
+    "y": 2021,
+    "t": "Using triply periodic minimal surfaces (TPMS)-based metal foams structures as skeleton for metal-foam-PCM composites for thermal energy storage and energy management applications",
+    "v": "International Communications in Heat and Mass Transfer"
+   },
+   {
+    "y": 2026,
+    "t": "Study on Convective Heat Transfer Enhancement in Hybrid Triply Periodic Minimal Surface Lattice Structure",
+    "v": "Energy Technology"
+   },
+   {
+    "y": 2026,
+    "t": "Flow organization and hydraulic-loss-aware design of additively manufactured heat exchangers",
+    "v": "Frontiers of Mechanical Engineering"
+   },
+   {
+    "y": 2023,
+    "t": "Comparative Study of the Flow and Thermal Characteristics of Non-Stochastic Lattice and Bio-Inspired Multi-Scale Structures for Gas Turbine Engine Applications",
+    "v": "Volume 11B: Structures and Dynamics — Emerging Methods in Engineering Design, Analysis, and Additive Manufacturing; Fatigue, Fracture, and Life Prediction; Probabilistic Methods; Rotordynamics; Structural Mechanics and Vibration"
+   }
+  ]
+ },
+ "tpms_ml": {
+  "q": "\"triply periodic minimal surface\" \"machine learning\"",
+  "total": 42,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Flow organization and hydraulic-loss-aware design of additively manufactured heat exchangers",
+    "v": "Frontiers of Mechanical Engineering"
+   },
+   {
+    "y": 2026,
+    "t": "Machine learning-enhanced analysis of triply periodic minimal surface structures integrating topological features and hypergravity effects",
+    "v": "MechanoEngineering"
+   },
+   {
+    "y": 2025,
+    "t": "Intelligent generative design: a transfer learning-enhanced bidirectional mapping framework for customised parametric structural design",
+    "v": "Virtual and Physical Prototyping"
+   },
+   {
+    "y": 2026,
+    "t": "Additive Manufacturing of Functionally Graded Lattice Structures: Process–Structure–Property Relationships, Design Strategies, and Future Perspectives",
+    "v": "Journal of Manufacturing and Materials Processing"
+   },
+   {
+    "y": 2024,
+    "t": "Enhancing energy capacity of the car’s hood door under excitation frequency via functionally graded triply periodic minimal surface material: Application of machine learning and mathematical simulation",
+    "v": "Mechanics of Advanced Materials and Structures"
+   },
+   {
+    "y": 2025,
+    "t": "Machine Learning Model Development for Optimizing Surface Temperature of TPMS Geometries in Atmospheric Water Generation Systems",
+    "v": "IISE Annual Conference &amp; Expo 2025"
+   }
+  ]
+ },
+ "lattic_hex_ml": {
+  "q": "\"lattice\" \"heat exchanger\" \"machine learning\"",
+  "total": 9,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Flow organization and hydraulic-loss-aware design of additively manufactured heat exchangers",
+    "v": "Frontiers of Mechanical Engineering"
+   },
+   {
+    "y": 2024,
+    "t": "Recent Advances in Metal Additive Manufacturing, In Situ Sensing, Intelligent Process Control, and Thermal Management Systems: A Review",
+    "v": "Frontora"
+   },
+   {
+    "y": 2024,
+    "t": "Innovative Computational Fluid Dynamics Techniques for Enhanced Predictive Modeling in Multiphase Flow and Heat Exchanger Optimization",
+    "v": "2024 OPJU International Technology Conference (OTCON) on Smart Computing for Innovation and Advancement in Industry 4.0"
+   },
+   {
+    "y": 2026,
+    "t": "Computational Entropy Modeling for Sustainable Energy Systems: A Review of Numerical Techniques, Optimization Methods, and Emerging Applications",
+    "v": "Energies"
+   },
+   {
+    "y": 2025,
+    "t": "Application of machine learning in additive manufacturing of a novel Al alloy heat exchanger",
+    "v": "The International Journal of Advanced Manufacturing Technology"
+   },
+   {
+    "y": 2022,
+    "t": "Adaptive Control of Data Center Cooling using Deep Reinforcement Learning",
+    "v": "2022 IEEE International Conference on Autonomic Computing and Self-Organizing Systems Companion (ACSOS-C)"
+   }
+  ]
+ },
+ "hex_no": {
+  "q": "\"heat exchanger\" \"neural operator\"",
+  "total": 5,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Targeted search shows that random-device testing underestimates worst-case error in a simulated wave-based neural operator",
+    "v": ""
+   },
+   {
+    "y": 2024,
+    "t": "Virtual Sensing to Enable Real-Time Monitoring of Inaccessible Locations & Unmeasurable Parameters",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Low-Latency Activation-Regularized Sparse Neural Operators with Distillation Assistance Towards Real-Time Neuromorphic Virtual Sensing",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Virtual sensing to enable real-time monitoring of inaccessible locations & unmeasurable parameters",
+    "v": "Nature Communications"
+   },
+   {
+    "y": 2026,
+    "t": "Energy-efficient operation of neural operators for virtual sensing",
+    "v": ""
+   }
+  ]
+ },
+ "hex_ml": {
+  "q": "\"heat exchanger\" \"machine learning\"",
+  "total": 447,
+  "top": [
+   {
+    "y": 2023,
+    "t": "Optimization of ultrasonic-excited double-pipe heat exchanger with machine learning and PSO",
+    "v": "International Communications in Heat and Mass Transfer"
+   },
+   {
+    "y": 2025,
+    "t": "Machine Learning Framework for Efficiency and System Optimization in Solar-Powered Absorption Cooling Systems",
+    "v": "2025 Global Conference on Sustainable Energy and Net-Zero Emissions (SENZE)"
+   },
+   {
+    "y": 2025,
+    "t": "Meteorological effects on the thermal performance of earth–air heat exchanger: Insights from interpretable Machine learning",
+    "v": "Energy and Buildings"
+   },
+   {
+    "y": 2016,
+    "t": "Design and optimization of a thermoacoustic heat engine using reinforcement learning",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Asymmetry in Heat Transfer and Phase Change Materials: A Review of Modeling, Simulation, and Applications in Energy Systems",
+    "v": "Symmetry"
+   },
+   {
+    "y": 2024,
+    "t": "Optimization of a Biomass-Based Power and Fresh Water-Generation System by Machine Learning Using Thermoeconomic Assessment",
+    "v": "Sustainability"
+   }
+  ]
+ },
+ "heatsink_ml": {
+  "q": "\"heat sink\" \"topology optimization\" \"machine learning\"",
+  "total": 4,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Machine learning-driven hotspot thermal management in chip heat sinks through topology optimization",
+    "v": "International Communications in Heat and Mass Transfer"
+   },
+   {
+    "y": 2022,
+    "t": "An artificial intelligence pipeline for critical equipment thermal conditioning system design",
+    "v": "EPE"
+   },
+   {
+    "y": 2025,
+    "t": "Recent Developments in Novel TPMS Lattice Materials: Design Optimization, Performance Control, and Applications in Biomimetic Scaffolds",
+    "v": "Materials"
+   },
+   {
+    "y": 2023,
+    "t": "An adaptive sampling augmented Lagrangian method for stochastic optimization with deterministic constraints",
+    "v": "Computers and Mathematics with Applications"
+   }
+  ]
+ },
+ "topopt_ht": {
+  "q": "\"topology optimization\" \"heat transfer\"",
+  "total": 539,
+  "top": [
+   {
+    "y": 2021,
+    "t": "Topology Optimization of Homogeneous Molybdenum-Copper Heat Sink in Phased Array Radar T/R Module",
+    "v": "2021 Asia-Pacific Conference on Communications Technology and Computer Science (ACCTCS)"
+   },
+   {
+    "y": 2025,
+    "t": "Generative Design for Lightweight and High-Performance Cooling Manifolds in Power Electronics",
+    "v": "International Conference on Humanoid, Nanotechnology, Information Technology,Communication and Control, Environment and Management"
+   },
+   {
+    "y": 2020,
+    "t": "Multi-objective and multi-load topology optimization and experimental validation of homogenized coupled fluid flow and heat transfer and structural stiffness",
+    "v": "Structural And Multidisciplinary Optimization"
+   },
+   {
+    "y": 2022,
+    "t": "Topology optimization of porous solid structures for heat transfer and flow channels in reactors with fluid-solid reaction coupling",
+    "v": "International journal of thermal sciences"
+   },
+   {
+    "y": 2018,
+    "t": "Thermal Measurements in Conductive Heat Transfer Tree-LikeStructures Obtained by Topology Optimization",
+    "v": ""
+   },
+   {
+    "y": 2009,
+    "t": "Topology Optimized Design, Microfabrication and Characterization of Electro-Thermally Driven Microgripper",
+    "v": ""
+   }
+  ]
+ },
+ "topopt_ht_ml": {
+  "q": "\"topology optimization\" \"heat transfer\" \"machine learning\"",
+  "total": 5,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Flow organization and hydraulic-loss-aware design of additively manufactured heat exchangers",
+    "v": "Frontiers of Mechanical Engineering"
+   },
+   {
+    "y": 2024,
+    "t": "A Review of Thermal Management and Heat Transfer of Lithium-Ion Batteries",
+    "v": "Energies"
+   },
+   {
+    "y": 2024,
+    "t": "Design for Additive Manufacturing Constrained Topology Optimization of Liquid-to-Air Heat Exchangers With ML-Based Turbulent Flow Considerations",
+    "v": "Volume 1"
+   },
+   {
+    "y": 2020,
+    "t": "Self-directed online machine learning for topology optimization",
+    "v": "Nature Communications"
+   },
+   {
+    "y": 2026,
+    "t": "Latest Advances in Metal Foam-Enhanced Heat Transfer for Phase Change Energy Storage: A Quantitative Review of Performance Boundaries and Optimization Strategies",
+    "v": "Processes"
+   }
+  ]
+ },
+ "flywheel_ml": {
+  "q": "\"flywheel energy storage\" \"machine learning\"",
+  "total": 5,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Interactions linear-Based Prediction of Kinetic Energy in Flywheel Energy Storage for Enhanced Grid Stabilization",
+    "v": "2025 International Conference on Power Electronics Converters for Transportation and Energy Applications (PECTEA)"
+   },
+   {
+    "y": 2023,
+    "t": "Faulty Diagnoses of PMSM in Flywheel Energy Storage Based on Phase Current Signal and Convolutional Neural Network",
+    "v": "2023 IEEE/IAS Industrial and Commercial Power System Asia (I&CPS Asia)"
+   },
+   {
+    "y": 2025,
+    "t": "Machine Learning in Maglev Transportation Systems: Review and Prospects",
+    "v": "Actuators"
+   },
+   {
+    "y": 2023,
+    "t": "A Review of Flywheel Energy Storage System Technologies",
+    "v": "Energies"
+   },
+   {
+    "y": 2026,
+    "t": "Resilient frequency stabilization of renewable-penetrated microgrids via deep learning and machine learning",
+    "v": "Scientific Reports"
+   }
+  ]
+ },
+ "caes_ml": {
+  "q": "\"compressed air energy storage\" \"machine learning\"",
+  "total": 6,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Optimization of Ex/Energy Efficiencies in an Integrated Compressed Air Energy Storage System (CAES) using Machine Learning Algorithms: A Multi-Objective Approach based on Analysis of Variance",
+    "v": "Energy"
+   },
+   {
+    "y": 2026,
+    "t": "Recent Advances in Adiabatic Compressed Air Energy Storage Systems with Thermal Energy Storage: Classification and Control Strategies",
+    "v": "ACS Omega"
+   },
+   {
+    "y": 2024,
+    "t": "Thermoeconomical, wind assessments and environmental analysis of compressed air energy storage (CAES) integrated with a wind farm by using RSM as a machine learning optimization technique - case study - Denmark",
+    "v": "Journal of Energy Storage"
+   },
+   {
+    "y": 2024,
+    "t": "Optimizing Energy Efficiency and Emission Reduction: Leveraging the Power of Machine Learning in an Integrated Compressed Air Energy Storage-Solid Oxide Fuel Cell System",
+    "v": "Energy"
+   },
+   {
+    "y": 2025,
+    "t": "Assessment of a wind energy installation for powering a residential building in Rome, Italy: incorporating wind turbines, compressed air energy storage, and a compression chiller based on a machine learning model",
+    "v": "Energy"
+   },
+   {
+    "y": 2025,
+    "t": "Evaluation of Energy Storage Strategies Using Artificial Intelligence to Enhance the Stability of Power Grids Integrated with Renewable Energy",
+    "v": "2025 3rd International Conference on Business Analytics for Technology and Security (ICBATS)"
+   }
+  ]
+ },
+ "electrolyzer_ml": {
+  "q": "\"electrolyzer\" \"machine learning\"",
+  "total": 168,
+  "top": [
+   {
+    "y": 2022,
+    "t": "Machine Learning-Based Ethylene Concentration Estimation, Real-Time Optimization and Feedback Control of an Experimental Electrochemical Reactor",
+    "v": "Chemical engineering research & design"
+   },
+   {
+    "y": 2026,
+    "t": "Polymer Membranes for Energy-Efficient Separation and Clean Energy Applications: Materials Design, Performance Trade-Offs, and Future Perspectives",
+    "v": "Journal of Green Chemical and  Environmental Engineering"
+   },
+   {
+    "y": 2025,
+    "t": "(Invited) Data-Driven Insights into Hydrogen Generation: Machine Learning Meets Nel’s PEM Electrolyzers",
+    "v": "ECS Meeting Abstracts"
+   },
+   {
+    "y": 2025,
+    "t": "Predictive analytics for efficient green hydrogen production: machine learning applied to thermoelectric condensation-based atmospheric moisture capture",
+    "v": "International Journal of Energy and Water Resources"
+   },
+   {
+    "y": 2026,
+    "t": "High Polarity Doping of CoFe Layered Hydroxides: Bifunctional and Corrosion-Resistant Anion Exchange Membrane Seawater Electrolyzers",
+    "v": "Nano-Micro Letters"
+   },
+   {
+    "y": 2026,
+    "t": "Understanding Pulsed Electrolysis Effects in Flow Cell Architecture for Low-Concentration Pollutants.",
+    "v": "Environmental Science and Technology"
+   }
+  ]
+ },
+ "pemfc_ml": {
+  "q": "\"proton exchange membrane fuel cell\" \"machine learning\"",
+  "total": 137,
+  "top": [
+   {
+    "y": 2022,
+    "t": "Path Integral Quantum Mechanics: from the basics to the latest developments",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Machine-learning assisted screening MXene-supported single-atom catalysts for oxygen reduction",
+    "v": "Journal of Materials Chemistry A"
+   },
+   {
+    "y": 2022,
+    "t": "Effectively Increasing Pt Utilization Efficiency of the Membrane Electrode Assembly in Proton Exchange Membrane Fuel Cells through Multiparameter Optimization Guided by Machine Learning.",
+    "v": "ACS Applied Materials and Interfaces"
+   },
+   {
+    "y": 2025,
+    "t": "Feature Engineering Method Based on Secure Multiparty Computation and Applications",
+    "v": "2025 International Conference on Big Data and Data Mining (BDDM)"
+   },
+   {
+    "y": 2022,
+    "t": "Numerical study and prediction of water transfer in gas diffusion layer of proton exchange membrane fuel cells under vibrating conditions",
+    "v": "International Journal of Energy Research"
+   },
+   {
+    "y": 2024,
+    "t": "Machine learning and Bayesian optimization for performance prediction of proton-exchange membrane fuel cells",
+    "v": "Energy and AI"
+   }
+  ]
+ },
+ "mems_ml": {
+  "q": "\"MEMS\" \"machine learning\"",
+  "total": 692,
+  "top": [
+   {
+    "y": 2022,
+    "t": "An Intelligent IoT Sensing System for Rail Vehicle Running States Based on TinyML",
+    "v": "IEEE Access"
+   },
+   {
+    "y": 2026,
+    "t": "Intelligent Fault Detection in the Mechanical Structure of a Wheeled Mobile Robot",
+    "v": "Technologies"
+   },
+   {
+    "y": 2026,
+    "t": "Explainable AI for impact detection in smart composites: insights into transfer learning and model robustness",
+    "v": "Smart materials and structures (Print)"
+   },
+   {
+    "y": 2026,
+    "t": "Machine Learning Enabled MEMS Reconfigurable Intelligent Surface for Terahertz Beam Steering and Wireless Communication",
+    "v": "IEEE/LEOS International Conference on Optical MEMS"
+   },
+   {
+    "y": 2026,
+    "t": "Enhancing quantum computation accuracy on IBM quantum hardware through advanced error mitigation strategies",
+    "v": "Discover Quantum Science"
+   },
+   {
+    "y": 2025,
+    "t": "Feature Ranking Methods for Classifying Vehicle Motion and Immobility States",
+    "v": "2025 7th International Youth Conference on Radio Electronics, Electrical and Power Engineering (REEPE)"
+   }
+  ]
+ },
+ "nems_ml": {
+  "q": "\"NEMS\" OR \"nanoelectromechanical\" \"machine learning\"",
+  "total": 4,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Nanomechanical Systems for Reservoir Computing Applications",
+    "v": "Advanced Intelligent Systems"
+   },
+   {
+    "y": 2024,
+    "t": "Casimir Effect in MEMS: Materials, Geometries, and Metrologies—A Review",
+    "v": "Materials"
+   },
+   {
+    "y": 2022,
+    "t": "A Novel Reservoir Computing Platform Constructed by Laser Controlled GaAs Resonator",
+    "v": "IEEE Electron Device Letters"
+   },
+   {
+    "y": 2025,
+    "t": "Nanoelectromechanical Binary Comparator for Edge-Computing Applications",
+    "v": "Design, Automation and Test in Europe"
+   }
+  ]
+ },
+ "optomech": {
+  "q": "\"optomechanics\" \"machine learning\"",
+  "total": 31,
+  "top": [
+   {
+    "y": 2020,
+    "t": "The Raspberry Pi auto-aligner: Machine learning for automated alignment of laser beams.",
+    "v": "Review of Scientific Instruments"
+   },
+   {
+    "y": 2020,
+    "t": "Machine learning reveals complex behaviours in optically trapped particles",
+    "v": "Machine Learning: Science and Technology"
+   },
+   {
+    "y": 2024,
+    "t": "Bayesian reconstruction of sparse raster-scanned mid-infrared optoacoustic signals enables fast, label-free chemical microscopy",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Machine Learning Enables Inverse Design of Optically Driven Microscopic Metavehicles",
+    "v": "Advanced Optical Materials"
+   },
+   {
+    "y": 2021,
+    "t": "Ultra-High-Q Nanomechanics Through Dissipation Dilution: Trends and Perspectives",
+    "v": "International Conference on Solid-State Sensors, Actuators and Microsystems"
+   },
+   {
+    "y": 2020,
+    "t": "Machine learning for characterization of quantum states and processes (Conference Presentation)",
+    "v": ""
+   }
+  ]
+ },
+ "bionic_ml": {
+  "q": "\"bionic robot\" \"machine learning\"",
+  "total": 21,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Real-Time Control of a Low-Cost Robotic Arm Using EMG Signal Classification by AI-Based Machine Learning on Raspberry Pi",
+    "v": "2026 World Conference on Computational Science and Technology (WcCST)"
+   },
+   {
+    "y": 2024,
+    "t": "Adaptive Trajectory Compensation of Large Inertia Robot",
+    "v": "International Journal of Control, Automation and Systems"
+   },
+   {
+    "y": 2024,
+    "t": "Machine Learning Enhanced Spider Bionic Robot",
+    "v": "2024 International Conference on Communication, Computing and Internet of Things (IC3IoT)"
+   },
+   {
+    "y": 2022,
+    "t": "Research Development on Fish Swimming",
+    "v": "Chinese Journal of Mechanical Engineering"
+   },
+   {
+    "y": 2021,
+    "t": "ON CLUSTERIZATION OF BIONIC ROBOTS BY THEIR FUNCTIONAL BY METHODS OF MACHINE LEARNING",
+    "v": "Defense Industry Achievements - Russian Scientific and Technical Progress"
+   },
+   {
+    "y": 2024,
+    "t": "Comparative Evaluation of Learning Models for Bionic Robots",
+    "v": "International Symposium on Intelligent Signal Processing and Communication Systems"
+   }
+  ]
+ },
+ "bioinsp_ml": {
+  "q": "\"bio-inspired\" \"machine learning\" design",
+  "total": 310,
+  "top": [
+   {
+    "y": 2022,
+    "t": "A study on the Application of Bio-Inspired Algorithms in the Diagnosis of Efficient Ultrasound Liver Images",
+    "v": "International Conferences on Contemporary Computing and Informatics"
+   },
+   {
+    "y": 2025,
+    "t": "GiAnt: A Bio-Inspired Hexapod for Adaptive Terrain Navigation and Object Detection",
+    "v": "Engineering"
+   },
+   {
+    "y": 2017,
+    "t": "A SVM optimization tool and FPGA system architecture applied to NMPC",
+    "v": "Symposium on Integrated Circuits and Systems Design"
+   },
+   {
+    "y": 2025,
+    "t": "Review of surface engineering through wettability control: innovations, sustainability, and interdisciplinary impact",
+    "v": "Journal of Coatings Technology and Research"
+   },
+   {
+    "y": 2025,
+    "t": "A Review on Influx of Bio-Inspired Algorithms: Critique and Improvement Needs",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "A Firefly Algorithm Optimized Hybrid Ensemble Model for Accurate Detection of Polycystic Ovarian Disease (PCOD)",
+    "v": "2026 International Conference on Emerging Trends and Innovations in ICT (ICEI)"
+   }
+  ]
+ }
+}

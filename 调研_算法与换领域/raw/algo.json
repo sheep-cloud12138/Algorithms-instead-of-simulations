@@ -1,0 +1,1962 @@
+{
+ "fno": {
+  "term": "\"Fourier neural operator\"",
+  "year_from": null,
+  "count": 1914,
+  "top": [
+   {
+    "t": "Fourier Neural Operator for Parametric Partial Differential Equations",
+    "y": 2020,
+    "c": 1020,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2010.08895"
+   },
+   {
+    "t": "Fourier Neural Operator for Parametric Partial Differential Equations",
+    "y": 2021,
+    "c": 214,
+    "v": "CaltechAUTHORS (California Institute of Technology)",
+    "doi": ""
+   },
+   {
+    "t": "Fourier Neural Operator with Learned Deformations for PDEs on General Geometries",
+    "y": 2022,
+    "c": 148,
+    "v": "CaltechAUTHORS (California Institute of Technology)",
+    "doi": "10.48550/arxiv.2207.05209"
+   },
+   {
+    "t": "Factorized Fourier Neural Operators",
+    "y": 2021,
+    "c": 9,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2111.13802"
+   },
+   {
+    "t": "Fourier Neural Operator for Image Classification",
+    "y": 2022,
+    "c": 19,
+    "v": "Iberian Conference on Information Systems and Technologies (",
+    "doi": "10.23919/cisti54924.2022.9820128"
+   },
+   {
+    "t": "Amortized Fourier Neural Operators",
+    "y": 2024,
+    "c": 5,
+    "v": "neural information processing systems",
+    "doi": "10.52202/079017-3651"
+   }
+  ]
+ },
+ "deeponet": {
+  "term": "\"DeepONet\"",
+  "year_from": null,
+  "count": 1333,
+  "top": [
+   {
+    "t": "KPCA-DeepONet",
+    "y": 2024,
+    "c": 3,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2403.18735"
+   },
+   {
+    "t": "Combustion chemistry acceleration with DeepONets",
+    "y": 2024,
+    "c": 32,
+    "v": "Fuel",
+    "doi": "10.1016/j.fuel.2024.131212"
+   },
+   {
+    "t": "SVD perspectives for augmenting DeepONet flexibility and interpretability",
+    "y": 2022,
+    "c": 53,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2022.115718"
+   },
+   {
+    "t": "B-DeepONet: An enhanced Bayesian DeepONet for solving noisy parametric PDEs using accelerated replica exchange SGLD",
+    "y": 2022,
+    "c": 45,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2022.111713"
+   },
+   {
+    "t": "Learning the solution operator of parametric partial differential equations with physics-informed DeepONets",
+    "y": 2021,
+    "c": 836,
+    "v": "Science Advances",
+    "doi": "10.1126/sciadv.abi8605"
+   },
+   {
+    "t": "Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators",
+    "y": 2021,
+    "c": 3426,
+    "v": "Nature Machine Intelligence",
+    "doi": "10.1038/s42256-021-00302-5"
+   }
+  ]
+ },
+ "neural_op": {
+  "term": "\"neural operator\"",
+  "year_from": null,
+  "count": 4598,
+  "top": [
+   {
+    "t": "Spectral Neural Operators",
+    "y": 2023,
+    "c": 53,
+    "v": "Doklady Mathematics",
+    "doi": "10.1134/s1064562423701107"
+   },
+   {
+    "t": "Fourier Neural Operator for Parametric Partial Differential Equations",
+    "y": 2020,
+    "c": 1020,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2010.08895"
+   },
+   {
+    "t": "Neural operators for accelerating scientific simulations and design",
+    "y": 2024,
+    "c": 316,
+    "v": "Nature Reviews Physics",
+    "doi": "10.1038/s42254-024-00712-5"
+   },
+   {
+    "t": "Super-Resolution Neural Operator",
+    "y": 2023,
+    "c": 82,
+    "v": "IEEE Computer Society Conference on Computer Vision and Patt",
+    "doi": "10.1109/cvpr52729.2023.01750"
+   },
+   {
+    "t": "Wavelet neural operator: a neural operator for parametric partial differential equations",
+    "y": 2022,
+    "c": 28,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2205.02191"
+   },
+   {
+    "t": "Laplace neural operator for solving differential equations",
+    "y": 2024,
+    "c": 153,
+    "v": "Nature Machine Intelligence",
+    "doi": "10.1038/s42256-024-00844-4"
+   }
+  ]
+ },
+ "op_learning": {
+  "term": "\"operator learning\"",
+  "year_from": null,
+  "count": 2108,
+  "top": [
+   {
+    "t": "Operator learning",
+    "y": 2024,
+    "c": 13,
+    "v": "Handbook of numerical analysis",
+    "doi": "10.1016/bs.hna.2024.05.009"
+   },
+   {
+    "t": "Characterization of Operator Learning Curve for Transradial Coronary Interventions",
+    "y": 2011,
+    "c": 184,
+    "v": "Circulation Cardiovascular Interventions",
+    "doi": "10.1161/circinterventions.110.960864"
+   },
+   {
+    "t": "A mathematical guide to operator learning",
+    "y": 2024,
+    "c": 26,
+    "v": "Handbook of numerical analysis",
+    "doi": "10.1016/bs.hna.2024.05.003"
+   },
+   {
+    "t": "Operator learning for predicting multiscale bubble growth dynamics",
+    "y": 2021,
+    "c": 142,
+    "v": "The Journal of Chemical Physics",
+    "doi": "10.1063/5.0041203"
+   },
+   {
+    "t": "Analysis Operator Learning and its Application to Image Reconstruction",
+    "y": 2013,
+    "c": 143,
+    "v": "IEEE Transactions on Image Processing",
+    "doi": "10.1109/tip.2013.2246175"
+   },
+   {
+    "t": "Analysis operator learning and its application to image reconstruction",
+    "y": 2013,
+    "c": 123,
+    "v": "",
+    "doi": ""
+   }
+  ]
+ },
+ "pinn": {
+  "term": "\"physics-informed neural network\"",
+  "year_from": null,
+  "count": 16005,
+  "top": [
+   {
+    "t": "fPINNs: Fractional Physics-Informed Neural Networks",
+    "y": 2019,
+    "c": 1095,
+    "v": "SIAM Journal on Scientific Computing",
+    "doi": "10.1137/18m1229845"
+   },
+   {
+    "t": "Self-Adaptive Physics-Informed Neural Networks",
+    "y": 2022,
+    "c": 676,
+    "v": "SSRN Electronic Journal",
+    "doi": "10.2139/ssrn.4086448"
+   },
+   {
+    "t": "Physics-informed neural networks for high-speed flows",
+    "y": 2019,
+    "c": 1281,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2019.112789"
+   },
+   {
+    "t": "Physics-Informed Neural Networks for Heat Transfer Problems",
+    "y": 2021,
+    "c": 1312,
+    "v": "ASME Journal of Heat and Mass Transfer",
+    "doi": "10.1115/1.4050542"
+   },
+   {
+    "t": "Physics-Informed Neural Networks for Power Systems",
+    "y": 2020,
+    "c": 281,
+    "v": "IEEE Power & Energy Society General Meeting (PESGM)",
+    "doi": "10.1109/pesgm41954.2020.9282004"
+   },
+   {
+    "t": "Physics informed neural networks for continuum micromechanics",
+    "y": 2022,
+    "c": 236,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2022.114790"
+   }
+  ]
+ },
+ "pinn_2025": {
+  "term": "\"physics-informed neural network\"",
+  "year_from": 2025,
+  "count": 11221,
+  "top": [
+   {
+    "t": "Physics-informed neural networks for PDE problems: a comprehensive review",
+    "y": 2025,
+    "c": 213,
+    "v": "Artificial Intelligence Review",
+    "doi": "10.1007/s10462-025-11322-7"
+   },
+   {
+    "t": "Physics-Informed Neural Networks in Polymers: A Review",
+    "y": 2025,
+    "c": 50,
+    "v": "Polymers",
+    "doi": "10.3390/polym17081108"
+   },
+   {
+    "t": "A Review of Physics-Informed Neural Networks",
+    "y": 2025,
+    "c": 24,
+    "v": "Applied and Computational Engineering",
+    "doi": "10.54254/2755-2721/2025.20636"
+   },
+   {
+    "t": "Physics-Informed Neural Networks",
+    "y": 2025,
+    "c": 0,
+    "v": "Zenodo (CERN European Organization for Nuclear Research)",
+    "doi": "10.5281/zenodo.18735802"
+   },
+   {
+    "t": "Physics-Informed Neural Networks",
+    "y": 2026,
+    "c": 0,
+    "v": "Zenodo (CERN European Organization for Nuclear Research)",
+    "doi": "10.5281/zenodo.21737078"
+   },
+   {
+    "t": "Physics-Informed Neural Networks",
+    "y": 2025,
+    "c": 0,
+    "v": "Encyclopedia of Optimization",
+    "doi": "10.1007/978-3-030-54621-2_907-1"
+   }
+  ]
+ },
+ "gnn_mesh": {
+  "term": "\"graph neural network\" AND \"mesh\" AND \"simulation\"",
+  "year_from": null,
+  "count": 407,
+  "top": [
+   {
+    "t": "Multiscale graph neural networks with adaptive mesh refinement for accelerating mesh-based simulations",
+    "y": 2024,
+    "c": 35,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2024.117152"
+   },
+   {
+    "t": "Evaluating mesh quality with graph neural networks",
+    "y": 2022,
+    "c": 21,
+    "v": "Engineering With Computers",
+    "doi": "10.1007/s00366-022-01720-8"
+   },
+   {
+    "t": "Intelligent mesh generation for crack simulation using graph neural networks",
+    "y": 2023,
+    "c": 10,
+    "v": "Computers & Structures",
+    "doi": "10.1016/j.compstruc.2023.107234"
+   },
+   {
+    "t": "Adaptive Mesh Refinement for Fluid Simulation using Graph Neural Networks",
+    "y": 2026,
+    "c": 0,
+    "v": "Zenodo (CERN European Organization for Nuclear Research)",
+    "doi": "10.5281/zenodo.22198083"
+   },
+   {
+    "t": "TCAD Device Simulation With Graph Neural Network",
+    "y": 2023,
+    "c": 25,
+    "v": "IEEE Electron Device Letters",
+    "doi": "10.1109/led.2023.3290930"
+   },
+   {
+    "t": "Graph Neural Networks (GNNs) based accelerated numerical simulation",
+    "y": 2023,
+    "c": 78,
+    "v": "Engineering Applications of Artificial Intelligence",
+    "doi": "10.1016/j.engappai.2023.106370"
+   }
+  ]
+ },
+ "meshgraphnet": {
+  "term": "\"MeshGraphNet\"",
+  "year_from": null,
+  "count": 103,
+  "top": [
+   {
+    "t": "MultiScale MeshGraphNets",
+    "y": 2022,
+    "c": 22,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2210.00612"
+   },
+   {
+    "t": "MeshGraphNets",
+    "y": 2021,
+    "c": 1,
+    "v": "OSTI OAI (U.S. Department of Energy Office of Scientific and",
+    "doi": "10.11578/dc.20211208.5"
+   },
+   {
+    "t": "MeshGraphNet: An Effective 3D Polygon Mesh Recognition With Topology Reconstruction",
+    "y": 2020,
+    "c": 15,
+    "v": "IEEE Access",
+    "doi": "10.1109/access.2020.3037236"
+   },
+   {
+    "t": "Generalization capabilities of MeshGraphNets to unseen geometries for fluid dynamics",
+    "y": 2024,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2408.06101"
+   },
+   {
+    "t": "Condition-Aware MeshGraphNets for Aerodynamic Surface Pressure Prediction",
+    "y": 2026,
+    "c": 0,
+    "v": "International Conference on Recent Advances in Air and Space",
+    "doi": "10.1109/rast69551.2026.11672530"
+   },
+   {
+    "t": "MeshGraphNets for 3D atmospheric flow in Urban Environment for Atmospheric Dispersion",
+    "y": 2025,
+    "c": 0,
+    "v": "",
+    "doi": "10.5194/egusphere-egu25-10297"
+   }
+  ]
+ },
+ "transformer_pde": {
+  "term": "\"transformer\" AND \"partial differential equation\" AND \"surrogate\"",
+  "year_from": null,
+  "count": 58,
+  "top": [
+   {
+    "t": "Multi-scale time-stepping of Partial Differential Equations with transformers",
+    "y": 2024,
+    "c": 17,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2024.116983"
+   },
+   {
+    "t": "Sequential neural operator transformer for high-fidelity surrogates of time-dependent non-linear partial differential equations",
+    "y": 2026,
+    "c": 6,
+    "v": "Engineering Applications of Artificial Intelligence",
+    "doi": "10.1016/j.engappai.2026.114428"
+   },
+   {
+    "t": "Geometry-informed neural operator transformer for partial differential equations on arbitrary geometries",
+    "y": 2025,
+    "c": 6,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2025.118668"
+   },
+   {
+    "t": "GITO: Graph-Informed Transformer Operator for Learning Complex Partial Differential Equations",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2506.13906"
+   },
+   {
+    "t": "From Specialized Surrogates to Generalized Physics Intelligence: A Comprehensive Synthesis of Foundation Models for Partial Differential Equations",
+    "y": 2026,
+    "c": 0,
+    "v": "Zenodo (CERN European Organization for Nuclear Research)",
+    "doi": "10.5281/zenodo.22993774"
+   },
+   {
+    "t": "Scalable Transformer for PDE Surrogate Modeling",
+    "y": 2023,
+    "c": 27,
+    "v": "neural information processing systems",
+    "doi": "10.52202/075280-1216"
+   }
+  ]
+ },
+ "gnot": {
+  "term": "\"Galerkin transformer\" OR \"gnot\"",
+  "year_from": null,
+  "count": 44,
+  "top": [
+   {
+    "t": "gnot",
+    "y": 2025,
+    "c": 0,
+    "v": "",
+    "doi": "10.24894/sprengglossarium_g10742"
+   },
+   {
+    "t": "Memory of Stanisław Gnot",
+    "y": 2023,
+    "c": 0,
+    "v": "Discussiones Mathematicae Probability and Statistics",
+    "doi": "10.7151/dmps.1038"
+   },
+   {
+    "t": "It's gnot signal processing",
+    "y": 1991,
+    "c": 1,
+    "v": "IEEE International Conference on Acoustics Speech and Signal",
+    "doi": "10.1109/icassp.1991.151064"
+   },
+   {
+    "t": "It's Gnot Just a Synthesizer",
+    "y": 1989,
+    "c": 0,
+    "v": "Journal of the Audio Engineering Society",
+    "doi": ""
+   },
+   {
+    "t": "GNOT: A General Neural Operator Transformer for Operator Learning",
+    "y": 2023,
+    "c": 35,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2302.14376"
+   },
+   {
+    "t": "Gnot Music: A Flexible Workstation for Orchestral Synthesis",
+    "y": 1992,
+    "c": 2,
+    "v": "Computer Music Journal",
+    "doi": "10.2307/3680850"
+   }
+  ]
+ },
+ "kan": {
+  "term": "\"Kolmogorov-Arnold network\"",
+  "year_from": null,
+  "count": 4400,
+  "top": [
+   {
+    "t": "KAN: Kolmogorov-Arnold Networks",
+    "y": 2024,
+    "c": 531,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2404.19756"
+   },
+   {
+    "t": "A Survey on Kolmogorov-Arnold Network",
+    "y": 2025,
+    "c": 176,
+    "v": "ACM Computing Surveys",
+    "doi": "10.1145/3743128"
+   },
+   {
+    "t": "Kolmogorov-Arnold Networks Meet Science",
+    "y": 2025,
+    "c": 286,
+    "v": "Physical Review X",
+    "doi": "10.1103/4t7t-v19l"
+   },
+   {
+    "t": "TKAN: Temporal Kolmogorov-Arnold Networks",
+    "y": 2024,
+    "c": 178,
+    "v": "SSRN Electronic Journal",
+    "doi": "10.2139/ssrn.4825654"
+   },
+   {
+    "t": "Formal Semantics for Kolmogorov-Arnold Network Representations of Operational Games",
+    "y": 2025,
+    "c": 3211,
+    "v": "Zenodo (CERN European Organization for Nuclear Research)",
+    "doi": "10.5281/zenodo.15206559"
+   },
+   {
+    "t": "Wav-KAN: Wavelet Kolmogorov-Arnold Networks",
+    "y": 2024,
+    "c": 200,
+    "v": "SSRN Electronic Journal",
+    "doi": "10.2139/ssrn.4835325"
+   }
+  ]
+ },
+ "kan_pde": {
+  "term": "\"Kolmogorov-Arnold network\" AND (\"partial differential equation\" OR \"PDE\")",
+  "year_from": null,
+  "count": 172,
+  "top": [
+   {
+    "t": "Kolmogorov-Arnold Networks for Free-Boundary Partial Differential Equations",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2610.02084"
+   },
+   {
+    "t": "KAN: Kolmogorov-Arnold Networks",
+    "y": 2024,
+    "c": 531,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2404.19756"
+   },
+   {
+    "t": "A Survey on Kolmogorov-Arnold Network",
+    "y": 2025,
+    "c": 176,
+    "v": "ACM Computing Surveys",
+    "doi": "10.1145/3743128"
+   },
+   {
+    "t": "Weak-Form Evolutionary Kolmogorov-Arnold Networks for Solving Partial Differential Equations",
+    "y": 2026,
+    "c": 1,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2602.18515"
+   },
+   {
+    "t": "Weak-Form Evolutionary Kolmogorov–Arnold Networks for Solving Partial Differential Equations",
+    "y": 2026,
+    "c": 0,
+    "v": "SSRN Electronic Journal",
+    "doi": "10.2139/ssrn.6277624"
+   },
+   {
+    "t": "Weak-Form Evolutionary Kolmogorov-Arnold Networks for Solving Partial Differential Equations",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": ""
+   }
+  ]
+ },
+ "mamba_pde": {
+  "term": "\"Mamba\" AND (\"partial differential equation\" OR \"PDE\")",
+  "year_from": null,
+  "count": 25,
+  "top": [
+   {
+    "t": "Latent Mamba Operator for Partial Differential Equations",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2505.19105"
+   },
+   {
+    "t": "GeoMaNO: Geometric Mamba Neural Operator for Partial Differential Equations",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2505.12020"
+   },
+   {
+    "t": "MBNO: Mamba-based neural operators for solving partial differential equations",
+    "y": 2026,
+    "c": 1,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2025.114639"
+   },
+   {
+    "t": "PGMNO: A physics-Guided mamba neural operator framework for partial differential equations",
+    "y": 2026,
+    "c": 1,
+    "v": "Neural Networks",
+    "doi": "10.1016/j.neunet.2026.108845"
+   },
+   {
+    "t": "LE-PDE++: Mamba for accelerating PDEs Simulations",
+    "y": 2024,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2411.01897"
+   },
+   {
+    "t": "Towards a Foundation Model for Partial Differential Equations Across Physics Domains",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2511.21861"
+   }
+  ]
+ },
+ "diffusion_pde": {
+  "term": "\"diffusion model\" AND \"partial differential equation\" AND \"surrogate\"",
+  "year_from": null,
+  "count": 16,
+  "top": [
+   {
+    "t": "Physics-Informed Diffusion Model for Super-Resolution and Surrogate Modelling of Time-Dependent Partial Differential Equations",
+    "y": 2025,
+    "c": 1,
+    "v": "",
+    "doi": "10.3997/2214-4609.202576020"
+   },
+   {
+    "t": "Taming transformers to learn high-resolution partial differential equation distributions via conditional latent diffusion priors",
+    "y": 2025,
+    "c": 1,
+    "v": "Physics of Fluids",
+    "doi": "10.1063/5.0283580"
+   },
+   {
+    "t": "Diffusion models for robust full-field prediction of soliton propagation",
+    "y": 2026,
+    "c": 0,
+    "v": "SPIE Conference on Nonlinear Optics and its Applications",
+    "doi": "10.1117/12.3100164"
+   },
+   {
+    "t": "PEDM: A 3D Position Encoding Diffusion Model for Industrial Cracking Furnace Scalar Field Data Generation",
+    "y": 2024,
+    "c": 3,
+    "v": "Industrial & Engineering Chemistry Research",
+    "doi": "10.1021/acs.iecr.4c01478"
+   },
+   {
+    "t": "Latent Diffusion Posterior Sampling with Surrogate Likelihood Guidance for PDE Inverse Problems",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2606.26592"
+   },
+   {
+    "t": "Residual-based error corrector operator to enhance accuracy and reliability of neural operator surrogates of nonlinear variational boundary-value prob",
+    "y": 2023,
+    "c": 11,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2023.116595"
+   }
+  ]
+ },
+ "neural_ode": {
+  "term": "\"neural ordinary differential equation\"",
+  "year_from": null,
+  "count": 1904,
+  "top": [
+   {
+    "t": "Neural Ordinary Differential Equations",
+    "y": 2018,
+    "c": 542,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.1806.07366"
+   },
+   {
+    "t": "Stiff neural ordinary differential equations",
+    "y": 2021,
+    "c": 156,
+    "v": "Chaos An Interdisciplinary Journal of Nonlinear Science",
+    "doi": "10.1063/5.0060697"
+   },
+   {
+    "t": "Structural identification with physics-informed neural ordinary differential equations",
+    "y": 2021,
+    "c": 220,
+    "v": "Journal of Sound and Vibration",
+    "doi": "10.1016/j.jsv.2021.116196"
+   },
+   {
+    "t": "On Robustness of Neural Ordinary Differential Equations",
+    "y": 2019,
+    "c": 39,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.1910.05513"
+   },
+   {
+    "t": "Stiff neural ordinary differential equations",
+    "y": 2021,
+    "c": 35,
+    "v": "DSpace@MIT (Massachusetts Institute of Technology)",
+    "doi": ""
+   },
+   {
+    "t": "Modeling Trajectories with Neural Ordinary Differential Equations",
+    "y": 2021,
+    "c": 41,
+    "v": "",
+    "doi": "10.24963/ijcai.2021/207"
+   }
+  ]
+ },
+ "koopman": {
+  "term": "\"Koopman\" AND (\"machine learning\" OR \"deep learning\")",
+  "year_from": null,
+  "count": 503,
+  "top": [
+   {
+    "t": "Deep Learning of Koopman Representation for Control",
+    "y": 2020,
+    "c": 101,
+    "v": "Proceedings of the IEEE Conference on Decision & Control, in",
+    "doi": "10.1109/cdc42340.2020.9304238"
+   },
+   {
+    "t": "Deep learning Markov and Koopman models with physical constraints",
+    "y": 2019,
+    "c": 17,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.1912.07392"
+   },
+   {
+    "t": "WITHDRAWN: Deep learning for Koopman Operator Optimal Control",
+    "y": 2021,
+    "c": 13,
+    "v": "ISA Transactions",
+    "doi": "10.1016/j.isatra.2021.01.005"
+   },
+   {
+    "t": "Deep learning nonlinear multiscale dynamic problems using Koopman operator",
+    "y": 2021,
+    "c": 34,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2021.110660"
+   },
+   {
+    "t": "Koopman-based Deep Learning for Nonlinear System Estimation",
+    "y": 2024,
+    "c": 4,
+    "v": "Proceedings of the IEEE Conference on Decision & Control, in",
+    "doi": "10.1109/cdc56724.2024.10886796"
+   },
+   {
+    "t": "DLKoopman: A deep learning software package for Koopman theory",
+    "y": 2022,
+    "c": 1,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2211.08992"
+   }
+  ]
+ },
+ "hyena_ssm": {
+  "term": "\"state space model\" AND \"partial differential equation\"",
+  "year_from": null,
+  "count": 237,
+  "top": [
+   {
+    "t": "On state-space models for systems described by partial differential equations",
+    "y": 1984,
+    "c": 21,
+    "v": "",
+    "doi": "10.1109/cdc.1984.272066"
+   },
+   {
+    "t": "Latent selective state-space models for partial differential equations via progressive learning",
+    "y": 2026,
+    "c": 1,
+    "v": "Neurocomputing",
+    "doi": "10.1016/j.neucom.2026.133000"
+   },
+   {
+    "t": "Two-dimensional state-space discrete models for hyperbolic partial differential equations",
+    "y": 1984,
+    "c": 240,
+    "v": "Applied Mathematical Modelling",
+    "doi": "10.1016/0307-904x(84)90170-7"
+   },
+   {
+    "t": "Latent Mamba Operator for Partial Differential Equations",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2505.19105"
+   },
+   {
+    "t": "Approximation of integro-partial differential equations of hyperbolic type",
+    "y": 1986,
+    "c": 1,
+    "v": "VTechWorks (Virginia Tech)",
+    "doi": ""
+   },
+   {
+    "t": "Hyperbolic partial differential equations generalize LSSL with the HiPPO matrix",
+    "y": 2025,
+    "c": 0,
+    "v": "Japan Journal of Industrial and Applied Mathematics",
+    "doi": "10.1007/s13160-025-00731-4"
+   }
+  ]
+ },
+ "fm_sci": {
+  "term": "\"foundation model\" AND (\"scientific machine learning\" OR \"PDE\" OR \"partial differential equation\")",
+  "year_from": null,
+  "count": 199,
+  "top": [
+   {
+    "t": "Recent progress in scientific machine learning for numerical solutions of partial differential equations",
+    "y": 2025,
+    "c": 8,
+    "v": "JMST Advances",
+    "doi": "10.1007/s42791-025-00098-0"
+   },
+   {
+    "t": "Towards a foundation model for partial differential equations: Multioperator learning and extrapolation",
+    "y": 2025,
+    "c": 20,
+    "v": "Physical review. E",
+    "doi": "10.1103/physreve.111.035304"
+   },
+   {
+    "t": "Physics-informed fine-tuning of foundation models for partial differential equations",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2603.15431"
+   },
+   {
+    "t": "Physics-informed fine-tuning of foundation models for partial differential equations",
+    "y": 2026,
+    "c": 0,
+    "v": "Fraunhofer-Publica (Fraunhofer-Gesellschaft)",
+    "doi": "10.24406/publica-9395"
+   },
+   {
+    "t": "Physics-informed fine-tuning of foundation models for partial differential equations",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": ""
+   },
+   {
+    "t": "PDEformer: Towards a Foundation Model for One-Dimensional Partial Differential Equations",
+    "y": 2024,
+    "c": 4,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2402.12652"
+   }
+  ]
+ },
+ "fm_2025": {
+  "term": "\"foundation model\" AND (\"scientific machine learning\" OR \"PDE\" OR \"partial differential equation\")",
+  "year_from": 2025,
+  "count": 142,
+  "top": [
+   {
+    "t": "Recent progress in scientific machine learning for numerical solutions of partial differential equations",
+    "y": 2025,
+    "c": 8,
+    "v": "JMST Advances",
+    "doi": "10.1007/s42791-025-00098-0"
+   },
+   {
+    "t": "Towards a foundation model for partial differential equations: Multioperator learning and extrapolation",
+    "y": 2025,
+    "c": 20,
+    "v": "Physical review. E",
+    "doi": "10.1103/physreve.111.035304"
+   },
+   {
+    "t": "Physics-informed fine-tuning of foundation models for partial differential equations",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2603.15431"
+   },
+   {
+    "t": "Physics-informed fine-tuning of foundation models for partial differential equations",
+    "y": 2026,
+    "c": 0,
+    "v": "Fraunhofer-Publica (Fraunhofer-Gesellschaft)",
+    "doi": "10.24406/publica-9395"
+   },
+   {
+    "t": "Physics-informed fine-tuning of foundation models for partial differential equations",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": ""
+   },
+   {
+    "t": "Towards a Foundation Model for Partial Differential Equations Across Physics Domains",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2511.21861"
+   }
+  ]
+ },
+ "llm_pde": {
+  "term": "\"large language model\" AND (\"partial differential equation\" OR \"PDE\" OR \"simulation\")",
+  "year_from": null,
+  "count": 9515,
+  "top": [
+   {
+    "t": "Large language models for partial differential equation workflows",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": ""
+   },
+   {
+    "t": "Large language models for partial differential equation workflows",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2608.03600"
+   },
+   {
+    "t": "Large language models for partial differential equation workflows",
+    "y": 2026,
+    "c": 0,
+    "v": "",
+    "doi": "10.13140/rg.2.2.18739.59680"
+   },
+   {
+    "t": "PINNsAgent: Automated PDE Surrogation with Large Language Models",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2501.12053"
+   },
+   {
+    "t": "Decoding Partial Differential Equations: Cross-Modal Adaptation of Decoder-only Models to PDEs",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2510.05278"
+   },
+   {
+    "t": "Large language models empowered agent-based modeling and simulation: a survey and perspectives",
+    "y": 2024,
+    "c": 280,
+    "v": "Humanities and Social Sciences Communications",
+    "doi": "10.1057/s41599-024-03611-3"
+   }
+  ]
+ },
+ "pos_emb": {
+  "term": "\"PDE\" AND \"pre-trained\" AND \"neural operator\"",
+  "year_from": null,
+  "count": 21,
+  "top": [
+   {
+    "t": "Safe PDE Boundary Control with Neural Operators",
+    "y": 2024,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2411.15643"
+   },
+   {
+    "t": "Origo: Interpretable multi-physics PDE foundation model through neural operator splitting",
+    "y": 2026,
+    "c": 0,
+    "v": "Kent Academic Repository (University of Kent)",
+    "doi": ""
+   },
+   {
+    "t": "NESTOR: A Nested MOE-based Neural Operator for Large-Scale PDE Pre-Training",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2602.22059"
+   },
+   {
+    "t": "Reliable Extrapolation of Deep Neural Operators Informed by Physics or Sparse Observations",
+    "y": 2023,
+    "c": 128,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2023.116064"
+   },
+   {
+    "t": "On the locality of local neural operator in learning fluid dynamics",
+    "y": 2024,
+    "c": 15,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2024.117035"
+   },
+   {
+    "t": "Local neural operator for solving transient partial differential equations on varied domains",
+    "y": 2024,
+    "c": 12,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2024.117062"
+   }
+  ]
+ },
+ "equiv_pde": {
+  "term": "\"equivariant\" AND (\"neural operator\" OR \"operator learning\")",
+  "year_from": null,
+  "count": 54,
+  "top": [
+   {
+    "t": "Equivariant Neural Operator Learning with Graphon Convolution",
+    "y": 2023,
+    "c": 1,
+    "v": "neural information processing systems",
+    "doi": "10.52202/075280-2709"
+   },
+   {
+    "t": "Equivariant Hypergraph Diffusion Neural Operators",
+    "y": 2022,
+    "c": 5,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2207.06680"
+   },
+   {
+    "t": "Measure-Equivariant Neural Operators on Wasserstein Space",
+    "y": 2026,
+    "c": 0,
+    "v": "Figshare",
+    "doi": "10.6084/m9.figshare.32490636"
+   },
+   {
+    "t": "Equivariant Graph Neural Operator for Modeling 3D Dynamics",
+    "y": 2024,
+    "c": 3,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2401.11037"
+   },
+   {
+    "t": "Equivariant neural operators for gradient-consistent topology optimization",
+    "y": 2024,
+    "c": 2,
+    "v": "Journal of Computational Design and Engineering",
+    "doi": "10.1093/jcde/qwae039"
+   },
+   {
+    "t": "Neural Operator Learning for Collision-Aware Trajectory Planning of Spacecraft Swarms",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2608.00320"
+   }
+  ]
+ },
+ "equiv_nn": {
+  "term": "\"equivariant neural network\"",
+  "year_from": null,
+  "count": 528,
+  "top": [
+   {
+    "t": "Geometric deep learning and equivariant neural networks",
+    "y": 2023,
+    "c": 68,
+    "v": "Artificial Intelligence Review",
+    "doi": "10.1007/s10462-023-10502-7"
+   },
+   {
+    "t": "Equivariant neural networks",
+    "y": 2026,
+    "c": 0,
+    "v": "Brno University of Technology Digital Library (Brno Universi",
+    "doi": ""
+   },
+   {
+    "t": "What is... an Equivariant Neural Network?",
+    "y": 2023,
+    "c": 11,
+    "v": "Notices of the American Mathematical Society",
+    "doi": "10.1090/noti2666"
+   },
+   {
+    "t": "Equivariant neural networks and equivarification",
+    "y": 2019,
+    "c": 5,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.1906.07172"
+   },
+   {
+    "t": "Lorentz Group Equivariant Neural Network for Particle Physics",
+    "y": 2020,
+    "c": 71,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2006.04780"
+   },
+   {
+    "t": "Diffeomorphism-Equivariant Neural Networks",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2602.06695"
+   }
+  ]
+ },
+ "dim_ml": {
+  "term": "\"dimensional analysis\" AND (\"machine learning\" OR \"neural network\")",
+  "year_from": null,
+  "count": 937,
+  "top": [
+   {
+    "t": "A dimensional analysis on chaotic neural networks",
+    "y": 1990,
+    "c": 3,
+    "v": "Electronics and Communications in Japan (Part III Fundamenta",
+    "doi": "10.1002/ecjc.4430731110"
+   },
+   {
+    "t": "A new pruning algorithm for neural network dimension analysis",
+    "y": 2008,
+    "c": 14,
+    "v": "IEEE International Joint Conference on Neural Networks (IJCN",
+    "doi": "10.1109/ijcnn.2008.4634268"
+   },
+   {
+    "t": "DIMENSIONAL ANALYSIS ON ASYNCHRONOUS CHAOTIC NEURAL NETWORKS",
+    "y": 1995,
+    "c": 0,
+    "v": "Proceedings of the IEICE General Conference",
+    "doi": ""
+   },
+   {
+    "t": "Multi-Scale Fractal Dimension Analysis with Machine Learning",
+    "y": 2026,
+    "c": 0,
+    "v": "Zenodo (CERN European Organization for Nuclear Research)",
+    "doi": "10.5281/zenodo.22296066"
+   },
+   {
+    "t": "Artificial neural network based response surface for data-driven dimensional analysis",
+    "y": 2022,
+    "c": 33,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2022.111145"
+   },
+   {
+    "t": "Dimensional analysis-guided neural network for nanoindentation tests of composites",
+    "y": 2026,
+    "c": 0,
+    "v": "AIP Publishing",
+    "doi": "10.60893/figshare.jap.c.8226640"
+   }
+  ]
+ },
+ "buckingham_ml": {
+  "term": "\"Buckingham\" AND (\"machine learning\" OR \"neural network\")",
+  "year_from": null,
+  "count": 116,
+  "top": [
+   {
+    "t": "Multi-scale physics-informed machine learning using the Buckingham Pi theorem",
+    "y": 2022,
+    "c": 27,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2022.111810"
+   },
+   {
+    "t": "Buckingham theorem application to machine learning algorithms : methodology and practical examples",
+    "y": 2019,
+    "c": 1,
+    "v": "",
+    "doi": ""
+   },
+   {
+    "t": "Exploring the landscape of Buckingham potentials for silica by machine learning: Soft vs hard interatomic forcefields",
+    "y": 2020,
+    "c": 22,
+    "v": "The Journal of Chemical Physics",
+    "doi": "10.1063/1.5136041"
+   },
+   {
+    "t": "A new paradigm in critical flow analysis: Combining Buckingham Pi theorem with neural network for improved predictions in microchannels",
+    "y": 2024,
+    "c": 16,
+    "v": "Chemical Engineering Science",
+    "doi": "10.1016/j.ces.2024.120483"
+   },
+   {
+    "t": "Improved estimation of uniaxial compressive strength and elastic modulus for carbonate rocks using back propagation neural network and buckingham pi t",
+    "y": 2024,
+    "c": 1,
+    "v": "Materials Express",
+    "doi": "10.1166/mex.2024.2608"
+   },
+   {
+    "t": "Data-driven nonlinear turbulent flow scaling with Buckingham Pi variables",
+    "y": 2024,
+    "c": 37,
+    "v": "Journal of Fluid Mechanics",
+    "doi": "10.1017/jfm.2024.211"
+   }
+  ]
+ },
+ "symplectic": {
+  "term": "\"Hamiltonian neural network\" OR \"symplectic neural network\"",
+  "year_from": null,
+  "count": 226,
+  "top": [
+   {
+    "t": "Hamiltonian Neural Networks",
+    "y": 2019,
+    "c": 418,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.1906.01563"
+   },
+   {
+    "t": "Adaptable Hamiltonian neural networks",
+    "y": 2021,
+    "c": 45,
+    "v": "Physical Review Research",
+    "doi": "10.1103/physrevresearch.3.023156"
+   },
+   {
+    "t": "Hamiltonian neural networks for solving equations of motion",
+    "y": 2022,
+    "c": 117,
+    "v": "Physical review. E",
+    "doi": "10.1103/physreve.105.065305"
+   },
+   {
+    "t": "Hamiltonian Neural Networks",
+    "y": 2019,
+    "c": 1,
+    "v": "",
+    "doi": ""
+   },
+   {
+    "t": "Class of Hamiltonian neural networks",
+    "y": 1993,
+    "c": 16,
+    "v": "Physical review. E, Statistical physics, plasmas, fluids, an",
+    "doi": "10.1103/physreve.47.1392"
+   },
+   {
+    "t": "Symplectic learning for Hamiltonian neural networks",
+    "y": 2023,
+    "c": 31,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2023.112495"
+   }
+  ]
+ },
+ "structure_preserving": {
+  "term": "\"structure-preserving\" AND (\"neural network\" OR \"neural operator\")",
+  "year_from": null,
+  "count": 472,
+  "top": [
+   {
+    "t": "Structure-preserving neural networks",
+    "y": 2020,
+    "c": 93,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2020.109950"
+   },
+   {
+    "t": "Structure-Preserving Neural Operators: Symplecticity, Dissipativity, and Positivity as",
+    "y": 2026,
+    "c": 0,
+    "v": "Figshare",
+    "doi": "10.6084/m9.figshare.32181300"
+   },
+   {
+    "t": "Selection of structure preserving features with neural networks",
+    "y": 2004,
+    "c": 2,
+    "v": "Proceedings of ... IEEE International Conference on Fuzzy Sy",
+    "doi": "10.1109/fuzz.2003.1206536"
+   },
+   {
+    "t": "Structure-Preserving Neural Networks for Scientific Computing",
+    "y": 2025,
+    "c": 0,
+    "v": "MPG.PuRe (Max Planck Society)",
+    "doi": ""
+   },
+   {
+    "t": "Structure-Preserving Neural Networks for Hamiltonian Systems",
+    "y": 2026,
+    "c": 0,
+    "v": "TU/e Research Portal",
+    "doi": ""
+   },
+   {
+    "t": "Neuron Selection for RBF Neural Network Classifier Based on Data Structure Preserving Criterion",
+    "y": 2005,
+    "c": 97,
+    "v": "IEEE Transactions on Neural Networks",
+    "doi": "10.1109/tnn.2005.853575"
+   }
+  ]
+ },
+ "multifidelity": {
+  "term": "\"multi-fidelity\" AND (\"neural network\" OR \"surrogate\" OR \"machine learning\")",
+  "year_from": null,
+  "count": 2277,
+  "top": [
+   {
+    "t": "Multi-fidelity deep neural network surrogate model for aerodynamic shape optimization",
+    "y": 2020,
+    "c": 380,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2020.113485"
+   },
+   {
+    "t": "Remarks on multi-fidelity surrogates",
+    "y": 2016,
+    "c": 232,
+    "v": "Structural and Multidisciplinary Optimization",
+    "doi": "10.1007/s00158-016-1550-y"
+   },
+   {
+    "t": "A MULTI-FIDELITY NEURAL NETWORK SURROGATE SAMPLING METHOD FOR UNCERTAINTY QUANTIFICATION",
+    "y": 2020,
+    "c": 53,
+    "v": "International Journal for Uncertainty Quantification",
+    "doi": "10.1615/int.j.uncertaintyquantification.2020031957"
+   },
+   {
+    "t": "Multi-fidelity optimization via surrogate modelling",
+    "y": 2007,
+    "c": 1016,
+    "v": "Proceedings of the Royal Society A Mathematical Physical and",
+    "doi": "10.1098/rspa.2007.1900"
+   },
+   {
+    "t": "A BAYESIAN NEURAL NETWORK APPROACH TO MULTI-FIDELITY SURROGATE MODELING",
+    "y": 2023,
+    "c": 10,
+    "v": "International Journal for Uncertainty Quantification",
+    "doi": "10.1615/int.j.uncertaintyquantification.2023044584"
+   },
+   {
+    "t": "Multi-fidelity Bayesian neural networks: Algorithms and applications",
+    "y": 2021,
+    "c": 196,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2021.110361"
+   }
+  ]
+ },
+ "lowfi_correction": {
+  "term": "\"low-fidelity\" AND \"high-fidelity\" AND (\"correction\" OR \"residual\")",
+  "year_from": null,
+  "count": 368,
+  "top": [
+   {
+    "t": "Multi-Fidelity Optimization with High-Fidelity Analysis and Low-Fidelity Gradients",
+    "y": 2004,
+    "c": 35,
+    "v": "AIAA/ISSMO Multidisciplinary Analysis and Optimization Confe",
+    "doi": "10.2514/6.2004-4459"
+   },
+   {
+    "t": "Multi-fidelity robust design optimisation for composite structures based on low-fidelity models using successive high-fidelity corrections",
+    "y": 2020,
+    "c": 13,
+    "v": "Composite Structures",
+    "doi": "10.1016/j.compstruct.2020.113477"
+   },
+   {
+    "t": "Bridged SBI: Correcting Biased Low-Fidelity Posteriors for Cost-Efficient High-Fidelity Inference",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2606.09155"
+   },
+   {
+    "t": "Machine learning-augmented low-fidelity simulations for high-fidelity accuracy in VVER-1000 reactor physics",
+    "y": 2026,
+    "c": 1,
+    "v": "Annals of Nuclear Energy",
+    "doi": "10.1016/j.anucene.2026.112220"
+   },
+   {
+    "t": "Bayesian-Enhanced Low-Fidelity Correction Approach to Multifidelity Aerospace Design",
+    "y": 2018,
+    "c": 12,
+    "v": "AIAA Journal",
+    "doi": "10.2514/1.j056529"
+   },
+   {
+    "t": "Use of low-fidelity models with machine-learning error correction for well placement optimization",
+    "y": 2022,
+    "c": 29,
+    "v": "Computational Geosciences",
+    "doi": "10.1007/s10596-022-10153-7"
+   }
+  ]
+ },
+ "transfer_sim": {
+  "term": "\"transfer learning\" AND \"surrogate\" AND (\"simulation\" OR \"CFD\")",
+  "year_from": null,
+  "count": 353,
+  "top": [
+   {
+    "t": "Transfer learning of neural surrogates on multifidelity groundwater simulations",
+    "y": 2025,
+    "c": 8,
+    "v": "Advances in Water Resources",
+    "doi": "10.1016/j.advwatres.2025.105140"
+   },
+   {
+    "t": "A transfer learning method in press hardening surrogate modeling: From simulations to real-world",
+    "y": 2024,
+    "c": 8,
+    "v": "Journal of Manufacturing Systems",
+    "doi": "10.1016/j.jmsy.2024.09.012"
+   },
+   {
+    "t": "Adaptive AI-based surrogate modelling via transfer learning for DEM simulation of multi-component segregation",
+    "y": 2024,
+    "c": 14,
+    "v": "Scientific Reports",
+    "doi": "10.1038/s41598-024-78455-7"
+   },
+   {
+    "t": "Transfer learning for neural network surrogates of flow and transport",
+    "y": 2025,
+    "c": 0,
+    "v": "AMS Dottorato Institutional Doctoral Theses Repository (Univ",
+    "doi": "10.48676/unibo/amsdottorato/12165"
+   },
+   {
+    "t": "Multi-fidelity convolutional neural network surrogate model for aerodynamic optimization based on transfer learning",
+    "y": 2021,
+    "c": 87,
+    "v": "Physics of Fluids",
+    "doi": "10.1063/5.0076538"
+   },
+   {
+    "t": "Transfer learning for efficient meta-modeling of process simulations",
+    "y": 2018,
+    "c": 21,
+    "v": "Process Safety and Environmental Protection",
+    "doi": "10.1016/j.cherd.2018.07.008"
+   }
+  ]
+ },
+ "active_learn": {
+  "term": "\"active learning\" AND (\"simulation\" OR \"CFD\") AND (\"surrogate\" OR \"neural\")",
+  "year_from": null,
+  "count": 1031,
+  "top": [
+   {
+    "t": "Active learning methodologies for surrogate model development in CFD applications",
+    "y": 2019,
+    "c": 2,
+    "v": "APS Division of Fluid Dynamics Meeting Abstracts",
+    "doi": ""
+   },
+   {
+    "t": "Active Learning for Deep Gaussian Process Surrogates",
+    "y": 2021,
+    "c": 101,
+    "v": "Technometrics",
+    "doi": "10.1080/00401706.2021.2008505"
+   },
+   {
+    "t": "Feasibility Study on Active Learning of Smart Surrogates for Scientific Simulations",
+    "y": 2024,
+    "c": 1,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2407.07674"
+   },
+   {
+    "t": "Active-learning-driven surrogate modeling for efficient simulation of parametric nonlinear systems",
+    "y": 2023,
+    "c": 25,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2023.116657"
+   },
+   {
+    "t": "Active Learning - CFD Integrated Surrogate-Based Framework for Shape Optimization of LTA Systems",
+    "y": 2024,
+    "c": 3,
+    "v": "",
+    "doi": "10.2514/6.2024-4120"
+   },
+   {
+    "t": "Active learning of deep surrogates for PDEs: application to metasurface design",
+    "y": 2020,
+    "c": 93,
+    "v": "npj Computational Materials",
+    "doi": "10.1038/s41524-020-00431-2"
+   }
+  ]
+ },
+ "bayes_opt_sim": {
+  "term": "\"Bayesian optimization\" AND (\"simulation\" OR \"CFD\")",
+  "year_from": null,
+  "count": 3999,
+  "top": [
+   {
+    "t": "Batch Bayesian Optimization via Simulation Matching",
+    "y": 2010,
+    "c": 79,
+    "v": "",
+    "doi": ""
+   },
+   {
+    "t": "Simulation based Bayesian Optimization",
+    "y": 2025,
+    "c": 3,
+    "v": "Statistics and Computing",
+    "doi": "10.1007/s11222-025-10715-6"
+   },
+   {
+    "t": "Geometry optimization of a continuous millireactor via CFD and Bayesian optimization",
+    "y": 2023,
+    "c": 14,
+    "v": "Computers & Chemical Engineering",
+    "doi": "10.1016/j.compchemeng.2023.108140"
+   },
+   {
+    "t": "Applying Bayesian Optimization for Calibration of Transportation Simulation Models",
+    "y": 2020,
+    "c": 55,
+    "v": "Transportation Research Record Journal of the Transportation",
+    "doi": "10.1177/0361198120936252"
+   },
+   {
+    "t": "A study of mass transfer on CFD-PBM simulation and Bayesian optimization in magnesium electrolysis multipolar cell",
+    "y": 2025,
+    "c": 0,
+    "v": "Chemical Engineering Science",
+    "doi": "10.1016/j.ces.2025.122682"
+   },
+   {
+    "t": "Bayesian Optimization for Materials Design",
+    "y": 2015,
+    "c": 228,
+    "v": "Springer series in materials science",
+    "doi": "10.1007/978-3-319-23871-5_3"
+   }
+  ]
+ },
+ "extrap_op": {
+  "term": "\"extrapolation\" AND (\"neural operator\" OR \"operator learning\")",
+  "year_from": null,
+  "count": 255,
+  "top": [
+   {
+    "t": "Reliable Extrapolation of Deep Neural Operators Informed by Physics or Sparse Observations",
+    "y": 2023,
+    "c": 128,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2023.116064"
+   },
+   {
+    "t": "High-frequency wavefield extrapolation using the Fourier neural operator",
+    "y": 2022,
+    "c": 44,
+    "v": "Journal of Geophysics and Engineering",
+    "doi": "10.1093/jge/gxac016"
+   },
+   {
+    "t": "Neural Operator Learning for Long-Time Integration in Dynamical Systems with Recurrent Neural Networks",
+    "y": 2024,
+    "c": 22,
+    "v": "",
+    "doi": "10.1109/ijcnn60899.2024.10650331"
+   },
+   {
+    "t": "Physics-informed Neural Operator Learning for Nonlinear Grad-Shafranov Equation",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2511.19114"
+   },
+   {
+    "t": "IB-UQ: Information bottleneck based uncertainty quantification for neural function regression and neural operator learning",
+    "y": 2024,
+    "c": 26,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2024.113089"
+   },
+   {
+    "t": "A Physics-Guided Neural Operator Learning Approach to Model Biological Tissues From Digital Image Correlation Measurements",
+    "y": 2022,
+    "c": 26,
+    "v": "Journal of Biomechanical Engineering",
+    "doi": "10.1115/1.4055918"
+   }
+  ]
+ },
+ "ood_pde": {
+  "term": "\"out-of-distribution\" AND (\"neural operator\" OR \"operator learning\" OR \"surrogate model\")",
+  "year_from": null,
+  "count": 322,
+  "top": [
+   {
+    "t": "Darcy and Airfoil Datasets for Varying-Geometry Neural Operator Learning",
+    "y": 2026,
+    "c": 0,
+    "v": "Zenodo (CERN European Organization for Nuclear Research)",
+    "doi": "10.5281/zenodo.21960265"
+   },
+   {
+    "t": "Out-of-distributional risk bounds for neural operators with applications to the Helmholtz equation",
+    "y": 2024,
+    "c": 13,
+    "v": "Journal of Computational Physics",
+    "doi": "10.1016/j.jcp.2024.113168"
+   },
+   {
+    "t": "Dual-branch neural operator for enhanced out-of-distribution generalization",
+    "y": 2024,
+    "c": 3,
+    "v": "Engineering Analysis with Boundary Elements",
+    "doi": "10.1016/j.enganabound.2024.106082"
+   },
+   {
+    "t": "Out-of-Distributional Risk Bounds for Neural Operators with Applications to Thehelmholtz Equation",
+    "y": 2023,
+    "c": 3,
+    "v": "SSRN Electronic Journal",
+    "doi": "10.2139/ssrn.4527168"
+   },
+   {
+    "t": "Out-of-distributional risk bounds for neural operators with applications to the Helmholtz equation",
+    "y": 2023,
+    "c": 2,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.1016/j.jcp.2024.113168"
+   },
+   {
+    "t": "Spectral-Inspired Neural Operator Learning with Limited Data and Unknown Physics",
+    "y": 2026,
+    "c": 0,
+    "v": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "doi": "10.1145/3770855.3817831"
+   }
+  ]
+ },
+ "generalize_adv": {
+  "term": "\"generalization\" AND \"neural operator\" AND \"geometry\"",
+  "year_from": null,
+  "count": 116,
+  "top": [
+   {
+    "t": "Geometry-Informed Neural Operator Transformer",
+    "y": 2025,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2504.19452"
+   },
+   {
+    "t": "Geometry-informed neural operator transformer for partial differential equations on arbitrary geometries",
+    "y": 2025,
+    "c": 6,
+    "v": "Computer Methods in Applied Mechanics and Engineering",
+    "doi": "10.1016/j.cma.2025.118668"
+   },
+   {
+    "t": "Geometric Generalization of Neural Operators from a Kernel Integral Perspective",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2602.01498"
+   },
+   {
+    "t": "Zero-shot generalization of transformer neural operators to larger domains",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2606.14597"
+   },
+   {
+    "t": "Physics and geometry informed neural operator network with application to acoustic scattering",
+    "y": 2025,
+    "c": 8,
+    "v": "Mechanical Systems and Signal Processing",
+    "doi": "10.1016/j.ymssp.2025.113293"
+   },
+   {
+    "t": "EqGINO: Equivariant Geometry-Informed Fourier Neural Operators for 3D PDEs",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2606.03260"
+   }
+  ]
+ },
+ "uq_surr": {
+  "term": "\"uncertainty quantification\" AND \"surrogate\" AND \"simulation\"",
+  "year_from": null,
+  "count": 1746,
+  "top": [
+   {
+    "t": "Surrogate models for uncertainty quantification: An overview",
+    "y": 2017,
+    "c": 153,
+    "v": "European Conference on Antennas and Propagation",
+    "doi": "10.23919/eucap.2017.7928679"
+   },
+   {
+    "t": "Surrogate model uncertainty quantification for reliability-based design optimization",
+    "y": 2019,
+    "c": 121,
+    "v": "Reliability Engineering & System Safety",
+    "doi": "10.1016/j.ress.2019.03.039"
+   },
+   {
+    "t": "Uncertainty quantification in reliability estimation with limit state surrogates",
+    "y": 2016,
+    "c": 30,
+    "v": "Structural and Multidisciplinary Optimization",
+    "doi": "10.1007/s00158-016-1487-1"
+   },
+   {
+    "t": "Uncertainty quantification of dynamical systems by a POD–Kriging surrogate model",
+    "y": 2022,
+    "c": 54,
+    "v": "Journal of Computational Science",
+    "doi": "10.1016/j.jocs.2022.101602"
+   },
+   {
+    "t": "NEURAL NETWORK SURROGATES FOR AIR DEFENSE SIMULATION WITH BAYESIAN UNCERTAINTY QUANTIFICATION",
+    "y": 2026,
+    "c": 0,
+    "v": "Calhoun: The Naval Postgraduate School Institutional Archive",
+    "doi": ""
+   },
+   {
+    "t": "Uncertainty Quantification Using Surrogate Models",
+    "y": 2012,
+    "c": 0,
+    "v": "elib (German Aerospace Center)",
+    "doi": ""
+   }
+  ]
+ },
+ "conformal": {
+  "term": "\"conformal prediction\" AND (\"surrogate\" OR \"simulation\" OR \"PDE\")",
+  "year_from": null,
+  "count": 529,
+  "top": [
+   {
+    "t": "Local Conformal Predictions for Calibrated Surrogates",
+    "y": 2026,
+    "c": 0,
+    "v": "arXiv (Cornell University)",
+    "doi": "10.48550/arxiv.2607.01354"
+   },
+   {
+    "t": "Conformal prediction beyond exchangeability",
+    "y": 2023,
+    "c": 307,
+    "v": "The Annals of Statistics",
+    "doi": "10.1214/23-aos2276"
+   },
+   {
+    "t": "Uncertainty quantification of surrogate models using conformal prediction",
+    "y": 2025,
+    "c": 6,
+    "v": "Machine Learning Science and Technology",
+    "doi": "10.1088/2632-2153/ae2e7b"
+   },
+   {
+    "t": "Surrogate model approach for efficient conformal prediction approximation",
+    "y": 2024,
+    "c": 0,
+    "v": "IISE Annual Conference & Expo",
+    "doi": "10.21872/2024iise_7463"
+   },
+   {
+    "t": "Conformal Prediction for Time Series",
+    "y": 2023,
+    "c": 73,
+    "v": "IEEE Transactions on Pattern Analysis and Machine Intelligen",
+    "doi": "10.1109/tpami.2023.3272339"
+   },
+   {
+    "t": "Trustworthy direct interval propagation via conformal prediction in neural network surrogates",
+    "y": 2026,
+    "c": 0,
+    "v": "Lirias",
+    "doi": "10.17877/tudobooks-11.195"
+   }
+  ]
+ },
+ "cae_dl": {
+  "term": "\"CAE\" AND (\"deep learning\" OR \"neural network\")",
+  "year_from": null,
+  "count": 1623,
+  "top": [
+   {
+    "t": "Automated CAE System Using Neural Network",
+    "y": 1998,
+    "c": 0,
+    "v": "한국정밀공학회 학술발표대회 논문집",
+    "doi": ""
+   },
+   {
+    "t": "Integrating deep learning into CAD/CAE system: generative design and evaluation of 3D conceptual wheel",
+    "y": 2021,
+    "c": 181,
+    "v": "Structural and Multidisciplinary Optimization",
+    "doi": "10.1007/s00158-021-02953-9"
+   },
+   {
+    "t": "DEEP LEARNING–ENABLED PREDICTIVE MAINTENANCE FOR AUTOMOTIVE COMPONENTS USING CAE-INFORMED CONVOLUTIONAL NEURAL NETWORKS AND RELIABILITY ENGINEERING TE",
+    "y": 2025,
+    "c": 0,
+    "v": "Zenodo (CERN European Organization for Nuclear Research)",
+    "doi": "10.5281/zenodo.17760385"
+   },
+   {
+    "t": "Optimization Design of Drawbead Based on CAE and Neural Network",
+    "y": 2012,
+    "c": 0,
+    "v": "Advanced materials research",
+    "doi": "10.4028/www.scientific.net/amr.538-541.2727"
+   },
+   {
+    "t": "Deep Learning Based Adaptive Recurrent Neural Network for Detection of Myocardial Infarction",
+    "y": 2021,
+    "c": 13,
+    "v": "Journal of Medical Imaging and Health Informatics",
+    "doi": "10.1166/jmihi.2021.3913"
+   },
+   {
+    "t": "Optimization of blank holder force based on CAE and neural network",
+    "y": 2011,
+    "c": 2,
+    "v": "",
+    "doi": "10.1109/emeit.2011.6023034"
+   }
+  ]
+ },
+ "digital_twin": {
+  "term": "\"digital twin\" AND (\"surrogate\" OR \"reduced order\")",
+  "year_from": null,
+  "count": 2492,
+  "top": [
+   {
+    "t": "Digital twins for soft pneumatic actuators via reduced-order surrogate modeling",
+    "y": 2026,
+    "c": 0,
+    "v": "International Journal of Solids and Structures",
+    "doi": "10.1016/j.ijsolstr.2026.114190"
+   },
+   {
+    "t": "Modelling for Digital Twins—Potential Role of Surrogate Models",
+    "y": 2021,
+    "c": 146,
+    "v": "Processes",
+    "doi": "10.3390/pr9030476"
+   },
+   {
+    "t": "Reduced-order digital twin and latent data assimilation for global wildfire prediction",
+    "y": 2023,
+    "c": 66,
+    "v": "Natural hazards and earth system sciences",
+    "doi": "10.5194/nhess-23-1755-2023"
+   },
+   {
+    "t": "Data‐driven physics‐based digital twins via a library of component‐based reduced‐order models",
+    "y": 2020,
+    "c": 234,
+    "v": "International Journal for Numerical Methods in Engineering",
+    "doi": "10.1002/nme.6423"
+   },
+   {
+    "t": "The importance of reduced order modeling for building a digital twin",
+    "y": 2022,
+    "c": 4,
+    "v": "International Conference on Mechatronics - Mechatronika",
+    "doi": "10.1109/me54704.2022.9982890"
+   },
+   {
+    "t": "Application of reduced-order models based on PCA & Kriging for the development of digital twins of reacting flow applications",
+    "y": 2018,
+    "c": 110,
+    "v": "Computers & Chemical Engineering",
+    "doi": "10.1016/j.compchemeng.2018.09.022"
+   }
+  ]
+ },
+ "rl_design": {
+  "term": "\"reinforcement learning\" AND (\"design optimization\" OR \"flow control\")",
+  "year_from": null,
+  "count": 835,
+  "top": [
+   {
+    "t": "Reinforcement learning for bluff body active flow control in experiments and simulations",
+    "y": 2020,
+    "c": 270,
+    "v": "Proceedings of the National Academy of Sciences",
+    "doi": "10.1073/pnas.2004939117"
+   },
+   {
+    "t": "Strain design optimization using reinforcement learning",
+    "y": 2022,
+    "c": 46,
+    "v": "PLoS Computational Biology",
+    "doi": "10.1371/journal.pcbi.1010177"
+   },
+   {
+    "t": "Framework for design optimization using deep reinforcement learning",
+    "y": 2019,
+    "c": 74,
+    "v": "Structural and Multidisciplinary Optimization",
+    "doi": "10.1007/s00158-019-02276-w"
+   },
+   {
+    "t": "Active flow control on airfoils by reinforcement learning",
+    "y": 2023,
+    "c": 26,
+    "v": "Ocean Engineering",
+    "doi": "10.1016/j.oceaneng.2023.115775"
+   },
+   {
+    "t": "Applying deep reinforcement learning to active flow control in weakly turbulent conditions",
+    "y": 2021,
+    "c": 168,
+    "v": "Physics of Fluids",
+    "doi": "10.1063/5.0037371"
+   },
+   {
+    "t": "Robust flow control and optimal sensor placement using deep reinforcement learning",
+    "y": 2021,
+    "c": 162,
+    "v": "Journal of Fluid Mechanics",
+    "doi": "10.1017/jfm.2020.1170"
+   }
+  ]
+ }
+}

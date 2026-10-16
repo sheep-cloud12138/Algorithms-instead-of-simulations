@@ -1,0 +1,427 @@
+{
+ "no_elasticity": {
+  "q": "\"neural operator\" \"elasticity\"",
+  "total": 34,
+  "top": [
+   {
+    "y": 2023,
+    "t": "Variational operator learning: A unified paradigm for training neural operators and solving partial differential equations",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Efficient Modelisation for Complex Geometries of Tumor Growth via Thermo-Elastic Diffusion Partial Differential Equations and Artificial Neural Networks",
+    "v": "Brain: Broad Research in Artificial Intelligence and Neuroscience"
+   },
+   {
+    "y": 2025,
+    "t": "A comprehensive comparison of neural operators for 3D industry-scale engineering designs",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Effective behavior of heterogeneous media governed by strain gradient elasticity",
+    "v": "Journal of the mechanics and physics of solids"
+   },
+   {
+    "y": 2025,
+    "t": "Neural Preconditioning Operator for Efficient PDE Solves",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Physics-Informed Neural Operators for Tissue Elasticity Reconstruction",
+    "v": "International Conference on Medical Image Computing and Computer-Assisted Intervention"
+   }
+  ]
+ },
+ "no_solidmech": {
+  "q": "\"neural operator\" \"solid mechanics\"",
+  "total": 36,
+  "top": [
+   {
+    "y": 2026,
+    "t": "PI-GINOT: Data-free geometry-informed neural operator learning for finite-strain hyperelasticity on parametric DogBone specimens",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Neural‐Initialized Newton: Accelerating Nonlinear Finite Elements via Operator Learning",
+    "v": "International Journal for Numerical Methods in Engineering"
+   },
+   {
+    "y": 2023,
+    "t": "Comparison of neural FEM and neural operator methods for applications in solid mechanics",
+    "v": "Neural computing & applications (Print)"
+   },
+   {
+    "y": 2022,
+    "t": "Physics-Informed Deep Neural Operator Networks",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "NeuberNet: a neural operator solving elastic-plastic partial differential equations at V-notches from low-fidelity elastic simulations",
+    "v": "Communications Engineer"
+   },
+   {
+    "y": 2025,
+    "t": "Two‐Dimensional Vehicle–Bridge Interaction Neural Operator for Digital Twin of Bridge Structures",
+    "v": "Structural Control & Health Monitoring"
+   }
+  ]
+ },
+ "no_plasticity": {
+  "q": "\"neural operator\" \"plasticity\"",
+  "total": 18,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Toward signed distance function based metamaterial design: Neural operator transformer for forward prediction and diffusion model for inverse design",
+    "v": "Computer Methods in Applied Mechanics and Engineering"
+   },
+   {
+    "y": 2025,
+    "t": "A comprehensive comparison of neural operators for 3D industry-scale engineering designs",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Temperature-Aware Recurrent Neural Operator for Temperature-Dependent Anisotropic Plasticity in HCP Materials",
+    "v": "Journal of the mechanics and physics of solids"
+   },
+   {
+    "y": 2025,
+    "t": "NeuberNet: a neural operator solving elastic-plastic partial differential equations at V-notches from low-fidelity elastic simulations",
+    "v": "Communications Engineer"
+   },
+   {
+    "y": 2022,
+    "t": "Learning macroscopic internal variables and history dependence from microscopic models",
+    "v": "Journal of the mechanics and physics of solids"
+   },
+   {
+    "y": 2026,
+    "t": "LLT: Local Linear Transformer for PDE Operator Learning",
+    "v": "arXiv.org"
+   }
+  ]
+ },
+ "no_fatigue": {
+  "q": "\"neural operator\" \"fatigue\"",
+  "total": 9,
+  "top": [
+   {
+    "y": 2026,
+    "t": "AI-optimized design of hybrid functionally graded metal matrix composites for additive manufacturing and multifunctional engineering applications",
+    "v": "International Journal on Interactive Design and Manufacturing (ijidem)"
+   },
+   {
+    "y": 2025,
+    "t": "Pseudo-Physics-Informed Neural Operators: Enhancing Operator Learning from Limited Data",
+    "v": "Trans. Mach. Learn. Res."
+   },
+   {
+    "y": 2025,
+    "t": "SIFBench: An Extensive Benchmark for Fatigue Analysis",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2024,
+    "t": "Neural Operator Simulation of Turbulent Multiphase Flow with Applications in Ocean Wave Modeling",
+    "v": "Oceans"
+   },
+   {
+    "y": 2025,
+    "t": "WNOTNet: A Hybrid Wavelet Neural Operator and Transformer Framework for Enhanced EEG Denoising",
+    "v": "IEEE Transactions on Instrumentation and Measurement"
+   },
+   {
+    "y": 2026,
+    "t": "Rapid Vibration Suppression and Trajectory Tracking of a Serial Manipulator with Multi-Flexible Links",
+    "v": "arXiv.org"
+   }
+  ]
+ },
+ "no_fracture": {
+  "q": "\"neural operator\" \"fracture\"",
+  "total": 31,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Parametric phase-field brittle fracture computations with convolutional Fourier neural operators",
+    "v": "Computational Mechanics"
+   },
+   {
+    "y": 2024,
+    "t": "Learning nonlinear operators in latent spaces for real-time predictions of complex dynamics in physical systems",
+    "v": "Nature Communications"
+   },
+   {
+    "y": 2024,
+    "t": "Extension of Fourier Neural Operator from Three-Dimensional (x, y, t) to Four-Dimensional (x, y, z, t) Subsurface Flow Simulation",
+    "v": "Mathematical Geosciences"
+   },
+   {
+    "y": 2023,
+    "t": "An enrichment approach for enhancing the expressivity of neural operators with applications to seismology",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Prediction of fracture and vug parameters in carbonate reservoirs using a combined T-GNO-PINN approach",
+    "v": "Journal of Seismic Exploration"
+   },
+   {
+    "y": 2023,
+    "t": "Learning CO2 plume migration in faulted reservoirs with Graph Neural Networks",
+    "v": "arXiv.org"
+   }
+  ]
+ },
+ "no_contact": {
+  "q": "\"neural operator\" \"contact mechanics\"",
+  "total": 1,
+  "top": [
+   {
+    "y": 2025,
+    "t": "ЗАСТОСУВАННЯ ГЛИБОКОГО НАВЧАННЯ ДЛЯ ПІДВИЩЕННЯ ЕФЕКТИВНОСТІ РОЗВ’ЯЗАННЯ ЗАДАЧ КОНТАКТНОЇ МЕХАНІКИ МЕТОДОМ СКІНЧЕННИХ ЕЛЕМЕНТІВ",
+    "v": "Systems and Technologies"
+   }
+  ]
+ },
+ "fno_solid": {
+  "q": "\"Fourier neural operator\" \"solid mechanics\"",
+  "total": 10,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Neural‐Initialized Newton: Accelerating Nonlinear Finite Elements via Operator Learning",
+    "v": "International Journal for Numerical Methods in Engineering"
+   },
+   {
+    "y": 2022,
+    "t": "Physics-Informed Deep Neural Operator Networks",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Two‐Dimensional Vehicle–Bridge Interaction Neural Operator for Digital Twin of Bridge Structures",
+    "v": "Structural Control & Health Monitoring"
+   },
+   {
+    "y": 2022,
+    "t": "Physics-Informed Neural Operators",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "PINNA: Physics‐Informed Neural Networks Architecture for Implicit Governing Physics With Interpretability",
+    "v": "International Journal for Numerical Methods in Engineering"
+   },
+   {
+    "y": 2025,
+    "t": "Geometry physics neural operator solver for solid mechanics",
+    "v": "Comput. Aided Civ. Infrastructure Eng."
+   }
+  ]
+ },
+ "deeponet_solid": {
+  "q": "\"DeepONet\" \"elasticity\" OR \"DeepONet\" \"solid\"",
+  "total": 1,
+  "top": [
+   {
+    "y": 2026,
+    "t": "A Non-Overlapping Schwarz Hybrid Finite Element-Neural Operator Framework for Solid Mechanics on Irregular Domains",
+    "v": "Computer Methods in Applied Mechanics and Engineering"
+   }
+  ]
+ },
+ "no_multiscale": {
+  "q": "\"neural operator\" \"multiscale\" materials",
+  "total": 26,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Deep Learning-based Surrogate Modelling of the LOD Method for Multiscale Problems",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2024,
+    "t": "Learning nonlinear operators in latent spaces for real-time predictions of complex dynamics in physical systems",
+    "v": "Nature Communications"
+   },
+   {
+    "y": 2026,
+    "t": "Multiscale modeling of materials and neural operators",
+    "v": "MRS bulletin"
+   },
+   {
+    "y": 2024,
+    "t": "HomoGenius: a Foundation Model of Homogenization for Rapid Prediction of Effective Mechanical Properties using Neural Operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Physics-informed AI framework for multiscale design, discovery, and optimization of polymer nanocomposite microstructures using neural operators",
+    "v": "Scientific Reports"
+   },
+   {
+    "y": 2022,
+    "t": "Learning macroscopic internal variables and history dependence from microscopic models",
+    "v": "Journal of the mechanics and physics of solids"
+   }
+  ]
+ },
+ "no_micro": {
+  "q": "\"neural operator\" \"microstructure\"",
+  "total": 44,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Multi-Head Neural Operator for Modelling Interfacial Dynamics",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "A Hybrid Conditional Diffusion-DeepONet Framework for High-Fidelity Stress Prediction in Hyperelastic Materials",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2022,
+    "t": "Comparison of two artificial neural networks trained for the surrogate modeling of stress in materially heterogeneous elastoplastic solids",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Physics-Informed Reduced-Order Operator Learning for Hyperelasticity in Continuum Micromechanics",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Neural-network closures for complex-shaped particles in the force-coupling method",
+    "v": "Computers &amp; Fluids"
+   },
+   {
+    "y": 2026,
+    "t": "Attaining physics-driven convolutional operators by architecture design",
+    "v": "Communications Physics"
+   }
+  ]
+ },
+ "no_gearbox": {
+  "q": "\"neural operator\" \"gear\"",
+  "total": 2,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Multiphysics synergistic optimization for heterogeneous gear systems: a spatiotemporal-decoupled AI framework for integrated diagnosis and design",
+    "v": "Measurement science and technology"
+   },
+   {
+    "y": 2026,
+    "t": "Learnable-embedding Waveletformer: signal process and data dual-driven interpretable network for rotating machinery fault diagnosis",
+    "v": "Measurement science and technology"
+   }
+  ]
+ },
+ "no_machinetool": {
+  "q": "\"neural operator\" \"machine tool\"",
+  "total": 2,
+  "top": [
+   {
+    "y": 2025,
+    "t": "“Dynamic Cutting Force Estimation via Fourier Neural Operator (FNO) with Inferred 1 Machine Tool Dynamics: A Proof of Concept”",
+    "v": "Journal of manufacturing science and engineering"
+   },
+   {
+    "y": 2025,
+    "t": "Research on CNC Machine Tool Thermal Error Prediction Based on Improved ACO-Optimized LSTM-FNO Model",
+    "v": "2025 International Conference on Mechanical Engineering, Intelligent Manufacturing, and Automation Technology (MEMAT)"
+   }
+  ]
+ },
+ "no_therm_err": {
+  "q": "\"neural operator\" \"thermal error\"",
+  "total": 1,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Research on CNC Machine Tool Thermal Error Prediction Based on Improved ACO-Optimized LSTM-FNO Model",
+    "v": "2025 International Conference on Mechanical Engineering, Intelligent Manufacturing, and Automation Technology (MEMAT)"
+   }
+  ]
+ },
+ "no_vehicle": {
+  "q": "\"neural operator\" \"vehicle\"",
+  "total": 56,
+  "top": [
+   {
+    "y": 2022,
+    "t": "PINO-MBD: Physics-informed Neural Operator for Solving Coupled ODEs in Multi-body Dynamics",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Nonlinear optimal control for flight vehicles using neural operators and physics-informed neural networks",
+    "v": "Proceedings of the Institution of Mechanical Engineers, Part G: Journal of Aerospace Engineering"
+   },
+   {
+    "y": 2026,
+    "t": "MTL-FNO: A Lightweight Multi-Task Fourier Neural Operator for Sparse Field Reconstruction",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2022,
+    "t": "Solving coupled differential equation groups using PINO-CDE",
+    "v": "Mechanical systems and signal processing"
+   },
+   {
+    "y": 2026,
+    "t": "Neural Operator-Enabled Aerodynamic Load Estimation for Hypersonics",
+    "v": "AIAA SCITECH 2026 Forum"
+   },
+   {
+    "y": 2024,
+    "t": "A branched Fourier neural operator for efficient calculation of vehicle–track spatially coupled dynamics",
+    "v": "Comput. Aided Civ. Infrastructure Eng."
+   }
+  ]
+ },
+ "no_battery": {
+  "q": "\"neural operator\" \"battery\"",
+  "total": 20,
+  "top": [
+   {
+    "y": 2023,
+    "t": "A Robust State of Charge Estimator Based on the Fourier Neural Operator for xEV Batteries",
+    "v": "Journal of the Electrochemical Society"
+   },
+   {
+    "y": 2025,
+    "t": "Bridging the Physics-Data Gap with FNO-Guided Conditional Flow Matching: Designing Inductive Bias through Hierarchical Physical Constraints",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Physics Informed Neural Operator for Battery Health Prediction and Lifecycle Management",
+    "v": "2026 1st International Conference on AI, Data Science, Cyber Security and Smart Manufacturing for Sustainable Development (ICADCS)"
+   },
+   {
+    "y": 2026,
+    "t": "Generalizable Fourier Neural Operator for estimation of lithium-ion battery temperature distribution",
+    "v": "eTransportation"
+   },
+   {
+    "y": 2026,
+    "t": "Physics-guided neural thermal framework for real-time electro-thermal optimization in ultra-fast charging lithium-ion cells",
+    "v": "Ionics (Kiel)"
+   },
+   {
+    "y": 2026,
+    "t": "Conformal Prediction for Neural Operators: Distribution-Free Uncertainty Quantification in Physics Simulation",
+    "v": "arXiv.org"
+   }
+  ]
+ }
+}

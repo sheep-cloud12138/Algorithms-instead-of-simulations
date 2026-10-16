@@ -1,0 +1,40 @@
+====================================================================================================
+10.1016/j.ijheatmasstransfer.2023.124593 | 2023 | International Journal of Heat and Mass Transfer
+  Physics-informed graph convolutional neural network for modeling geometry-adaptive steady-state natural convection
+  ABS: None
+====================================================================================================
+10.1016/j.ijheatmasstransfer.2023.124336 | 2023 | International Journal of Heat and Mass Transfer
+  Thermal surrogate model for spacecraft systems using physics-informed machine learning with POD data reduction
+  ABS: None
+====================================================================================================
+10.1016/j.ijheatmasstransfer.2024.126585 | 2025 | International Journal of Heat and Mass Transfer
+  Multi-fidelity topology optimization of flow boiling heat transfer in microchannels
+  ABS: None
+====================================================================================================
+10.1016/j.ijheatmasstransfer.2025.128205 | 2026 | International Journal of Heat and Mass Transfer
+  Multi-fidelity flow boiling heat transfer topology optimization for arbitrary design domain
+  ABS: None
+====================================================================================================
+10.1016/j.ijheatmasstransfer.2022.123608 | 2023 | International Journal of Heat and Mass Transfer
+  Improving the one-dimensional interfacial area transport equation using a physics-informed machine learning method
+  ABS: None
+====================================================================================================
+10.1016/j.ijheatmasstransfer.2024.125441 | 2024 | International Journal of Heat and Mass Transfer
+  Dependence of critical heat flux in vertical flow systems on dimensional and dimensionless parameters using machine learning
+  ABS: None
+====================================================================================================
+10.1016/j.applthermaleng.2024.124258 | 2024 | Applied Thermal Engineering
+  Heat transfer by jet impingement: A review of heat transfer correlations and high-fidelity simulations
+  ABS: None
+====================================================================================================
+10.1016/j.icheatmasstransfer.2024.107808 | 2024 | International Communications in Heat and Mass Transfer
+  Optimization of the flow channel in proton exchange membrane fuel cells using multi-regression surrogate model based on artificial neural network
+  ABS: None
+====================================================================================================
+10.1016/j.ijheatmasstransfer.2019.05.014 | 2019 | International Journal of Heat and Mass Transfer
+  Uncertainty quantification in three dimensional natural convection using polynomial chaos expansion and deep neural networks
+  ABS: None
+====================================================================================================
+10.1016/j.ijheatmasstransfer.2026.128921 | 2026 | International Journal of Heat and Mass Transfer
+  Assessment of multi-fidelity material response models for FiberForm under arc-jet conditions using coupled flow–material framework
+  ABS: None

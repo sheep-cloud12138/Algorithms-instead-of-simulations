@@ -1,0 +1,78 @@
+==============================================================================================================
+QUERY[Boussinesq + 神经算子] -> count=3
+   - (2026) Tsunami-Surrogate Benchmark: Processed Multi-Reference Dataset for Neural-Operator Emulation of Tsunami-Like Wave Propagation | Zenodo (CERN European Organization for Nuclear Research) | https://doi.org/10.5281/zenodo.20974603
+       ABS: Processed benchmark data and result artifacts for “Tsunami-Surrogate: A Controlled Multi-Fidelity Benchmark for Neural-Operator Emulation of Tsunami-Like Wave Propagation.” This archive contains model-ready processed datasets for 
+   - (2026) A Neural Surrogate Approach for Simulating Natural Convection Problems | arXiv (Cornell University) | https://doi.org/10.48550/arxiv.2606.25259
+       ABS: This paper presents a neural surrogate approach for improving the accuracy of natural convection problems simulated with a Boussinesq flow model (incompressible flow with heat transfer). Our approach, based on Fourier neural opera
+   - (2026) FUNWAVE-Duck Nearshore Wave Benchmark (128x128) | Zenodo (CERN European Organization for Nuclear Research) | https://doi.org/10.5281/zenodo.21403830
+       ABS: A benchmark of 81 phase-resolving nearshore wave simulations produced with the FUNWAVE-TVD Boussinesq model (v3.6) over the nearshore bathymetry of the Field Research Facility (FRF) at Duck, North Carolina. Each simulation provide
+==============================================================================================================
+QUERY[Boussinesq + 代理模型] -> count=21
+   - (2023) Blending machine learning and sequential data assimilation over latent spaces for surrogate modeling of Boussinesq systems | Physica D Nonlinear Phenomena | https://doi.org/10.1016/j.physd.2023.133711
+   - (2021) Deep learning for surrogate modelling of 2D mantle convection | None | https://doi.org/10.5194/epsc2021-218
+       ABS: IntroductionMantle convection is a key driver of the long-term thermal evolution of terrestrial planets. Caused by the buoyancy-driven creeping flow of silicate rocks, mantle convection can be quantified through equations of conse
+   - (2022) Accelerating the simulation of elastohydrodynamic lubrication in a line contact using a surrogate model | European Congress on Computational Methods in Applied Sciences and Engineering (ECCOMAS) | https://doi.org/10.23967/eccomas.2022.036
+       ABS: Elastohydrodynamically lubricated contacts are an example of a strongly coupled fluid-structure interaction problem. Typically, these problems are solved in a partitioned way and require multiple flow-structure iterations per time
+   - (2026) Generalization capabilities and failure modes of parametric surrogate models for harbor wave fields | Ocean Engineering | https://doi.org/10.1016/j.oceaneng.2026.126551
+   - (2020) Mars’ thermal evolution from machine-learning-based 1D surrogate modelling | None | https://doi.org/10.5194/egusphere-egu2020-16162
+       ABS: The parameters and initial conditions governing mantle convection in terrestrial planets like Mars are poorly known meaning that one often needs to randomly vary several parameters to test which ones satisfy observational constrai
+   - (2022) Numerical Assessment of a Nonintrusive Surrogate Model Based on Recurrent Neural Networks and Proper Orthogonal Decomposition: Rayleigh–Bénard Convection | International journal of computational fluid dynamics | https://doi.org/10.1080/10618562.2022.2154918
+       ABS: Recent developments in diagnostic and computing technologies offer to leverage numerous forms of nonintrusive modelling approaches from data where machine learning can be used to build computationally cheap and accurate surrogate 
+   - (2021) Use of an Efficient Proxy Solution for the Hillslope‐Storage Boussinesq Problem in Upscaling of Subsurface Stormflow | Water Resources Research | https://doi.org/10.1029/2020wr029105
+       ABS: Abstract The hillslope‐storage Boussinesq (hsB) equation is a modification of the one‐dimensional Boussinesq representation of saturated subsurface flow that accommodates the impact of converging and diverging flows resulting from
+   - (2026) Predicting Rutting Deformation in Flexible Pavements of Southwest Nigeria: A Machine Learning-Based Surrogate Model Derived from 3D Finite Element Analysis | LAUTECH Journal of Civil and Environmental Studies | https://doi.org/10.36108/laujoces/6202.71.0140
+       ABS: Rutting deformation in flexible pavements of Southwest Nigeria constitutes a persistent infrastructure failure. Existing CBR-based design methods do not adequately capture the multi-variable interaction between subgrade stiffness,
+   - (2026) Quadratic Boussinesq approximation and quadratic thermal radiation effects on thermal transport analysis of unsteady Casson hybrid nanofluid flow | International Journal of Numerical Methods for Heat &amp Fluid Flow | https://doi.org/10.1108/hff-10-2025-0790
+       ABS: Purpose This research aims to investigate the unsteady magnetohydrodynamic (MHD) flow and heat transfer of a Casson gold-silver/water hybrid nanofluid over an inclined stretching surface. The study is specifically designed to opti
+   - (2017) Multi-fidelity Gaussian process regression for prediction of random fields | Journal of Computational Physics | https://doi.org/10.1016/j.jcp.2017.01.047
+==============================================================================================================
+QUERY[Boussinesq + 数据驱动] -> count=72
+   - (2024) Data-Driven Solutions of the Nonlinear Boussinesq and Schr\"{O}Dinger Equations with Neural Networks | SSRN Electronic Journal | https://doi.org/10.2139/ssrn.4700368
+   - (2020) Data-driven robust state estimation for reduced-order models of 2D boussinesq equations with parametric uncertainties | Computers & Fluids | https://doi.org/10.1016/j.compfluid.2020.104773
+   - (2024) Data-driven solutions of the nonlinear Boussinesq and Schrödinger equations of second order in time with physics-informed neural networks | Research Square | https://doi.org/10.21203/rs.3.rs-3974638/v1
+   - (2025) Data-Driven Modeling of Boussinesq-Burgers Equations: Comparing Physics-Informed Neural Networks (PINNs) with Exact Solutions | European Journal of Pure and Applied Mathematics | https://doi.org/10.29020/nybg.ejpam.v18i4.6803
+       ABS: This paper presents a novel deep neural network-based scheme for generating approximate solutions of the coupled Boussinesq-Burgers equations of integer order. Standard numerical techniques can face challenges in the case of these
+   - (2016) Uncertainty Analysis and Data-Driven Model Advances for a Jet-in-Crossflow | Journal of Turbomachinery | https://doi.org/10.1115/1.4034556
+       ABS: For film cooling of combustor linings and turbine blades, it is critical to be able to accurately model jets-in-crossflow. Current Reynolds-averaged Navier–Stokes (RANS) models often give unsatisfactory predictions in these flows,
+   - (2015) Data-driven RANS for simulations of large wind farms | Journal of Physics Conference Series | https://doi.org/10.1088/1742-6596/625/1/012025
+       ABS: In the wind energy industry there is a growing need for real-time predictions of wind turbine wake flows in order to optimize power plant control and inhibit detrimental wake interactions. To this aim, a data-driven RANS approach 
+   - (2016) Uncertainty Analysis and Data-Driven Model Advances for a Jet-in-Crossflow | None | https://doi.org/10.1115/gt2016-56191
+       ABS: For film cooling of combustor linings and turbine blades, it is critical to be able to accurately model jets-in-crossflow. Current Reynolds Averaged Navier Stokes (RANS) models often give unsatisfactory predictions in these flows,
+   - (2024) Data-driven models for turbulent separated flows | None | https://doi.org/10.70675/0bc2bda9zd3a5z4f9bzab2dzbbb044123770
+       ABS: Modèles basés sur les données pour les écoulements turbulents séparés Les modèles de Navier-Stokes moyennés de Reynolds (RANS) sont couramment utilisés dans les applications industrielles en raison de leur efficacité pour simuler 
+   - (2021) Data-driven turbulence modelling using symbolic regression | Journal of Physics Conference Series | https://doi.org/10.1088/1742-6596/2099/1/012020
+       ABS: Abstract The study is focused on the performance of machine-learning methods applied to improve the velocity field predictions in canonical turbulent flows by the Reynolds-averaged Navier–Stokes (RANS) equation models. A key issue
+   - (2015) The development of data driven approaches to further turbulence closures | ePrints Soton (University of Southampton) | None
+       ABS: The closure of turbulence models at all levels of fidelity is addressed, using unconventional methods that rely on data. The purpose of the thesis is not to present new models of turbulence per se, but rather the main focus is to 
+==============================================================================================================
+QUERY[自然对流 + 多保真] -> count=5
+   - (2017) Multi-fidelity Gaussian process regression for prediction of random fields | Journal of Computational Physics | https://doi.org/10.1016/j.jcp.2017.01.047
+   - (2016) Multi-fidelity modelling of mixed convection based on experimental correlations and numerical simulations | Journal of Fluid Mechanics | https://doi.org/10.1017/jfm.2016.718
+       ABS: For thermal mixed-convection flows, the Nusselt number is a function of Reynolds number, Grashof number and the angle between the forced- and natural-convection directions. We consider flow over a heated cylinder for which there i
+   - (2024) Data-driven multi-fidelity topology design of fin structures for latent heat thermal energy storage | Applied Energy | https://doi.org/10.1016/j.apenergy.2024.124596
+   - (2025) Statistical and machine learning approaches integrated with CFD for effective thermal conductivity prediction of NEPCMs in natural convection between horizontal concentric cylinders | Journal of Energy Storage | https://doi.org/10.1016/j.est.2025.119340
+   - (2025) Transient thermal modeling of air zones with embedded cylindrical phase change materials: A comparative study of lumped and distributed approaches | Journal of Energy Storage | https://doi.org/10.1016/j.est.2025.119821
+==============================================================================================================
+QUERY[RB 对流 + 神经网络] -> count=10
+   - (2023) Reconstructing Rayleigh-Benard flows out of temperature-only measurements using Physics-Informed Neural Networks | arXiv (Cornell University) | https://doi.org/10.48550/arxiv.2301.07769
+       ABS: We investigate the capabilities of Physics-Informed Neural Networks (PINNs) to reconstruct turbulent Rayleigh-Benard flows using only temperature information. We perform a quantitative analysis of the quality of the reconstruction
+   - (2023) Downscaling Using CDAnet Under Observational and Model Noises: The Rayleigh-Benard Convection Paradigm | arXiv (Cornell University) | https://doi.org/10.48550/arxiv.2310.11945
+       ABS: Efficient downscaling of large ensembles of coarse-scale information is crucial in several applications, such as oceanic and atmospheric modeling. The determining form map is a theoretical lifting function from the low-resolution 
+   - (2024) Rayleigh–Benard Convection of Carbopol Yield Stress Fe3O4 Nanofluids Under Magnetic Field: An Experimental Investigation and ANN Modelling | International Journal of Thermophysics | https://doi.org/10.1007/s10765-024-03390-8
+   - (1995) 3-D Temperature Measurement by Image Processing Technique | Journal of the Visualization Society of Japan | https://doi.org/10.3154/jvs.15.supplement1_177
+       ABS: This paper presents a new measurement system for three-dimensional temperature distribution in a rotating Rayleigh-Benard convection based on color image processing. This system is an extension of two-dimensional temperature measu
+   - (2001) 3-D Velocity Measurement of Natural Convection Using Image Processing. | JSME International Journal Series B | https://doi.org/10.1299/jsmeb.44.395
+       ABS: This paper describes quantitative three-dimensional measurement method for flow field of a rotating Rayleigh-Benard convection in a cylindrical cell heated below and cooled above. A correlation method for two-dimensional measureme
+   - (2025) A Physics-Informed Spatiotemporal Deep Learning Framework for Turbulent Systems | arXiv (Cornell University) | https://doi.org/10.48550/arxiv.2505.10919
+       ABS: Fluid thermodynamics underpins atmospheric dynamics, climate science, industrial applications, and energy systems. However, direct numerical simulations (DNS) of such systems can be computationally prohibitive. To address this, we
+   - (2024) Approximate Solution of Newell-Whitehead-Segel Equation Using Deep Learning Method | Lecture notes in networks and systems | https://doi.org/10.1007/978-981-99-9043-6_33
+   - (2025) Active passive control and discharge concentration analysis of inter particle spacing radius of nanofluid: Ratio of momentum to thermal diffusivities | Case Studies in Thermal Engineering | https://doi.org/10.1016/j.csite.2025.106310
+       ABS: Significance This research introduces a novel investigation of the thermal and hydrodynamic behavior of copper nanoparticles with larger radii and increasing interparticle spacing under varying ratios of momentum to thermal diffus
+   - (2012) Universalities in Condensed Matter: Proceedings of the Workshop, Les Houches, France, March 15-25, 1988 | Medical Entomology and Zoology | None
+       ABS: I Geometrical Approaches.- Hierarchy of Line Defects in Structures.- Are There Universalities in Systems with Frustrated Local Order?.- Contribution to the Theory of Quasicrystal Approximants.- Beyond Quasiperiodicity: Scaling Pro
+   - (2025) Reorientations in cubic Rayleigh-Bénard convection studied with probabilistic particle tracking velocimetry and the assimilation of pressure and temperature | Common Library Network (Der Gemeinsame Bibliotheksverbund) | https://doi.org/10.22032/dbt.68094
+       ABS: Die zentrale Fragestellung dieser Dissertation lautet: Wie können kohärente Strukturen in turbulenter Rayleigh-Benard-Konvektion (RBC) über lange Zeiträume hinweg gemessen werden? RBC ist durch die Kopplung von Geschwindigkeits- u
+==============================================================================================================
+QUERY[非Boussinesq + neural] -> count=0
+==============================================================================================================
+QUERY[可压缩 RB + ML] -> count=0

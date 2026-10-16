@@ -1,0 +1,446 @@
+{
+ "scalinglaw_disc": {
+  "q": "abs:\"discovering scaling laws\" OR abs:\"data-driven scaling law\" OR ti:\"scaling law\" AND abs:\"symbolic regression\"",
+  "hits": [
+   {
+    "id": "2510.26064v2",
+    "t": "Towards Scaling Laws for Symbolic Regression",
+    "y": "2025-10"
+   },
+   {
+    "id": "2511.08784v1",
+    "t": "Symbolic Regression Is All You Need: From Simulations to Scaling Laws in Binary Neutron Star Mergers",
+    "y": "2025-11"
+   },
+   {
+    "id": "2507.21184v5",
+    "t": "Can Language Models Discover Scaling Laws?",
+    "y": "2025-07"
+   },
+   {
+    "id": "2306.08055v1",
+    "t": "Tune As You Scale: Hyperparameter Optimization For Compute Efficient Training",
+    "y": "2023-06"
+   },
+   {
+    "id": "cond-mat/0605304v1",
+    "t": "Thermodynamic interpretation of the scaling of the dynamics of supercooled liquids",
+    "y": "2006-05"
+   },
+   {
+    "id": "2602.23152v1",
+    "t": "The Trinity of Consistency as a Defining Principle for General World Models",
+    "y": "2026-02"
+   },
+   {
+    "id": "2312.14504v2",
+    "t": "Theory of Hallucinations based on Equivariance",
+    "y": "2023-12"
+   },
+   {
+    "id": "1104.2070v1",
+    "t": "What do generalized entropies look like? An axiomatic approach for complex, non-ergodic systems",
+    "y": "2011-04"
+   },
+   {
+    "id": "2610.16297v1",
+    "t": "SLDBench v2: Active Scaling Law Discovery",
+    "y": "2026-10"
+   }
+  ]
+ },
+ "cross_phys": {
+  "q": "ti:\"Cross-Physics\" OR abs:\"cross-physics mapping\"",
+  "hits": [
+   {
+    "id": "2609.16853v1",
+    "t": "Can Deep Learning Achieve Cross-Physics Mapping?",
+    "y": "2026-09"
+   },
+   {
+    "id": "2603.27195v2",
+    "t": "AutoMS: Multi-Agent Evolutionary Search for Cross-Physics Inverse Microstructure Design",
+    "y": "2026-03"
+   },
+   {
+    "id": "2506.23385v1",
+    "t": "A Closed-Form Approach to Oscillatory Integrals in Level-Crossing Physics",
+    "y": "2025-06"
+   },
+   {
+    "id": "2609.30805v2",
+    "t": "XPhysICS: Cross-Physical-Domain Threat Grounding for Industrial Control Systems Security",
+    "y": "2026-09"
+   },
+   {
+    "id": "2609.34716v2",
+    "t": "From Pixel Generation to Topological Inference: Structural Dual Super-Resolution for Trustworthy Cross-Physical-Domain Trabecular Morphology Learning",
+    "y": "2026-09"
+   },
+   {
+    "id": "1607.02360v3",
+    "t": "Nuclear Magnetic Resonance Reveals Disordered Level-Crossing Physics in the Bose-Glass Regime of the Br-doped Ni(Cl$_{1-x}$Br$_x$)$_2$-4SC(NH$_2$)$_2$",
+    "y": "2016-07"
+   }
+  ]
+ },
+ "correction_law": {
+  "q": "abs:\"correction\" AND abs:\"empirical correlation\" AND abs:\"neural\"",
+  "hits": [
+   {
+    "id": "2505.15934v1",
+    "t": "Improving the Predictability of the Madden-Julian Oscillation at Subseasonal Scales with Gaussian Process Models",
+    "y": "2025-05"
+   },
+   {
+    "id": "2512.22248v1",
+    "t": "Amortized Inference for Model Rocket Aerodynamics: Learning to Estimate Physical Parameters from Simulation",
+    "y": "2025-12"
+   }
+  ]
+ },
+ "knudsen_surr": {
+  "q": "abs:\"Knudsen\" AND abs:\"surrogate\"",
+  "hits": [
+   {
+    "id": "2506.22453v1",
+    "t": "Data-Driven Surrogate Modeling of DSMC Solutions Using Deep Neural Networks",
+    "y": "2025-06"
+   },
+   {
+    "id": "2512.15085v1",
+    "t": "AI-Accelerated Operator Learning Framework for Rarefied Microflows",
+    "y": "2025-12"
+   },
+   {
+    "id": "2606.14039v1",
+    "t": "Machine learning for rarefied gas transport in vacuum and micro/nano systems: promise, pitfalls, and a verification agenda",
+    "y": "2026-06"
+   },
+   {
+    "id": "2509.17254v1",
+    "t": "Analysis of the Rarefied Flow at Micro-Step using a DeepONet Surrogate Model with a Physics-Guided Zonal Loss Function",
+    "y": "2025-09"
+   },
+   {
+    "id": "2512.24205v1",
+    "t": "Micro-Macro Tensor Neural Surrogates for Uncertainty Quantification in Collisional Plasma",
+    "y": "2025-12"
+   },
+   {
+    "id": "2510.11840v1",
+    "t": "Learning interpretable closures for thermal radiation transport in optically-thin media using WSINDy",
+    "y": "2025-10"
+   },
+   {
+    "id": "2605.12723v1",
+    "t": "Shock-Centered Low-Rank Structure and Neural-Operator Representation of Rarefied Micro-Nozzle Flows",
+    "y": "2026-05"
+   }
+  ]
+ },
+ "stefan_ml": {
+  "q": "abs:\"Stefan problem\" AND abs:\"machine learning\"",
+  "hits": []
+ },
+ "stefan_nn": {
+  "q": "abs:\"phase change\" AND abs:\"similarity solution\"",
+  "hits": [
+   {
+    "id": "2012.13818v1",
+    "t": "Stefan problems for the diffusion-convection equation with temperature-dependent thermal coefficients",
+    "y": "2020-12"
+   },
+   {
+    "id": "1910.04534v2",
+    "t": "Auxiliary functions in the study of Stefan-like problems with variable thermal properties",
+    "y": "2019-10"
+   },
+   {
+    "id": "2503.06360v2",
+    "t": "Analytical and numerical solutions to the three-phase Stefan problem with simultaneous occurrences of melting, solidification, boiling, and condensati",
+    "y": "2025-03"
+   }
+  ]
+ },
+ "size_effect_ml": {
+  "q": "abs:\"size effect\" AND abs:\"machine learning\"",
+  "hits": [
+   {
+    "id": "2509.05876v1",
+    "t": "Self-learning QMC: application to the classical Holstein-Spin-Fermion model",
+    "y": "2025-09"
+   },
+   {
+    "id": "2001.11322v1",
+    "t": "Machine learning plastic deformation of crystals",
+    "y": "2020-01"
+   },
+   {
+    "id": "2112.06735v2",
+    "t": "Unsupervised machine learning approaches to the $q$-state Potts model",
+    "y": "2021-12"
+   },
+   {
+    "id": "1709.08225v2",
+    "t": "Learning crystal plasticity using digital image correlation: Examples from discrete dislocation dynamics",
+    "y": "2017-09"
+   },
+   {
+    "id": "2502.09214v1",
+    "t": "Machine-Learning Detection of the Berezinskii-Kosterlitz-Thouless Transitions",
+    "y": "2025-02"
+   },
+   {
+    "id": "2107.03330v2",
+    "t": "Machine-learning approach to finite-size effects in systems with strongly interacting fermions",
+    "y": "2021-07"
+   },
+   {
+    "id": "1910.09719v1",
+    "t": "Spatiotemporal Emotion Recognition using Deep CNN Based on EEG during Music Listening",
+    "y": "2019-10"
+   },
+   {
+    "id": "2311.07059v1",
+    "t": "Application of deep learning methods to the study of magnetic phenomena",
+    "y": "2023-11"
+   },
+   {
+    "id": "2601.17427v1",
+    "t": "The dimensionality of the Hopfield model",
+    "y": "2026-01"
+   },
+   {
+    "id": "2604.00386v1",
+    "t": "Machine-learning extraction of size-dependent temperature scales in the 2D XY model",
+    "y": "2026-04"
+   },
+   {
+    "id": "2610.13265v1",
+    "t": "Quantitative modeling of acid-base equilibria",
+    "y": "2026-10"
+   },
+   {
+    "id": "2006.03320v3",
+    "t": "Deep Potential generation scheme and simulation protocol for the Li10GeP2S12-type superionic conductors",
+    "y": "2020-06"
+   },
+   {
+    "id": "2301.08073v1",
+    "t": "Glass Hardness: Predicting Composition and Load Effects via Symbolic Reasoning-Informed Machine Learning",
+    "y": "2023-01"
+   },
+   {
+    "id": "1908.03175v1",
+    "t": "Effects of Rate, Size and Prior Deformation in Microcrystal Plasticity",
+    "y": "2019-08"
+   },
+   {
+    "id": "2404.11442v1",
+    "t": "Structural properties of amorphous Na$_3$OCl electrolyte by first-principles and machine learning molecular dynamics",
+    "y": "2024-04"
+   }
+  ]
+ },
+ "nonnewton_ml": {
+  "q": "abs:\"non-Newtonian\" AND abs:\"surrogate\"",
+  "hits": [
+   {
+    "id": "2401.07121v1",
+    "t": "Structure-preserving neural networks in data-driven rheological models",
+    "y": "2024-01"
+   },
+   {
+    "id": "2608.08547v1",
+    "t": "Data-Driven Surrogate Modeling for Micromixing of Non-Newtonian Fluids in Sinusoidal Converging-Diverging Microchannels",
+    "y": "2026-08"
+   },
+   {
+    "id": "2606.23251v1",
+    "t": "Attention mechanism for scalable mesh-based neural surrogates of free-surface fluids",
+    "y": "2026-06"
+   },
+   {
+    "id": "2308.04405v2",
+    "t": "Nonlinear parametric models of viscoelastic fluid flows",
+    "y": "2023-08"
+   },
+   {
+    "id": "2509.15900v2",
+    "t": "A Flow-rate-conserving CNN-based Domain Decomposition Method for Blood Flow Simulations",
+    "y": "2025-09"
+   },
+   {
+    "id": "2510.01365v2",
+    "t": "RheOFormer: A generative transformer model for simulation of complex fluids and flows",
+    "y": "2025-10"
+   },
+   {
+    "id": "2006.12216v1",
+    "t": "Combined effects of fluid type and particle shape on particles flow in microfluidic platforms",
+    "y": "2020-06"
+   },
+   {
+    "id": "2608.21575v1",
+    "t": "A Data-Driven Computational Framework for Incompressible Flow in Hydraulic Networks",
+    "y": "2026-08"
+   },
+   {
+    "id": "2605.30659v2",
+    "t": "Neural-Network-based Viscosity Closure for Non-Newtonian Multiphase Flows",
+    "y": "2026-05"
+   }
+  ]
+ },
+ "marangoni_ml": {
+  "q": "abs:\"Marangoni\" AND abs:\"surrogate\" OR abs:\"Marangoni\" AND abs:\"neural network\"",
+  "hits": [
+   {
+    "id": "2002.00517v1",
+    "t": "Three-dimensional particle tracking velocimetry using shallow neural network for real-time analysis",
+    "y": "2020-02"
+   },
+   {
+    "id": "2506.20537v3",
+    "t": "Physics-Informed Machine Learning Regulated by Finite Element Analysis for Simulation Acceleration of Melt Pool Dynamics in Laser Powder Bed Fusion",
+    "y": "2025-06"
+   },
+   {
+    "id": "2303.09749v2",
+    "t": "Surrogate models for the magnitude of convection in droplets levitated through EML, ADL, and ESL methods",
+    "y": "2023-03"
+   }
+  ]
+ },
+ "ehl_ml": {
+  "q": "abs:\"elastohydrodynamic\" AND abs:\"machine learning\"",
+  "hits": [
+   {
+    "id": "2311.01973v2",
+    "t": "Emergence of odd elasticity in a microswimmer using deep reinforcement learning",
+    "y": "2023-11"
+   }
+  ]
+ },
+ "forchheimer_ml": {
+  "q": "abs:\"Forchheimer\" AND abs:\"neural\"",
+  "hits": [
+   {
+    "id": "2408.00533v1",
+    "t": "Predicting nonlinear-flow regions in highly heterogeneous porous media using adaptive constitutive laws and neural networks",
+    "y": "2024-08"
+   },
+   {
+    "id": "2307.11419v1",
+    "t": "Solving flows in porous media with a POD-Galerkin reduced order model coupled with multilayer perceptron",
+    "y": "2023-07"
+   },
+   {
+    "id": "2112.13792v1",
+    "t": "Investigating Steady Unconfined Groundwater Flow using Physics Informed Neural Networks",
+    "y": "2021-12"
+   },
+   {
+    "id": "2510.08745v1",
+    "t": "Intelligent backpropagated neural networks application on Couette-Poiseuille flow of variable viscosity in a composite porous channel filled with an a",
+    "y": "2025-10"
+   },
+   {
+    "id": "2604.14201v1",
+    "t": "LSTM-PINN for Steady-State Electrothermal Transport: Preserving Multi-Field Consis tency in Strongly Coupled Heat and Fluid Flow",
+    "y": "2026-04"
+   },
+   {
+    "id": "2602.14108v1",
+    "t": "Geometry-Aware Physics-Informed PointNets for Modeling Flows Across Porous Structures",
+    "y": "2026-02"
+   }
+  ]
+ },
+ "multifid_law": {
+  "q": "abs:\"multi-fidelity\" AND abs:\"scaling\" AND abs:\"physical model\"",
+  "hits": [
+   {
+    "id": "2505.24708v2",
+    "t": "Efficient Bayesian multi-fidelity inverse analysis for expensive and non-differentiable physics-based simulations in high stochastic dimensions",
+    "y": "2025-05"
+   },
+   {
+    "id": "2204.09157v2",
+    "t": "Multifidelity Deep Operator Networks For Data-Driven and Physics-Informed Problems",
+    "y": "2022-04"
+   },
+   {
+    "id": "1609.00871v1",
+    "t": "Scale-Bridging Model Development for Coal Particle Devolatilization",
+    "y": "2016-09"
+   },
+   {
+    "id": "2306.05471v2",
+    "t": "PRIYA: A New Suite of Lyman-alpha Forest Simulations for Cosmology",
+    "y": "2023-06"
+   },
+   {
+    "id": "2603.04697v2",
+    "t": "A Multi-Fidelity Tensor Emulator for Spatiotemporal Outputs: Emulation of Arctic Sea-Ice Dynamics",
+    "y": "2026-03"
+   }
+  ]
+ },
+ "nonlocal_ml": {
+  "q": "abs:\"nonlocal\" AND abs:\"constitutive\" AND abs:\"neural network\"",
+  "hits": [
+   {
+    "id": "2010.10491v2",
+    "t": "Learning nonlocal constitutive models with neural networks",
+    "y": "2020-10"
+   },
+   {
+    "id": "2103.06685v4",
+    "t": "Frame-independent vector-cloud neural network for nonlocal constitutive modeling on arbitrary grids",
+    "y": "2021-03"
+   },
+   {
+    "id": "2509.04321v2",
+    "t": "Physics-Informed Neural Networks for Nonlocal Beam Eigenvalue Problems",
+    "y": "2025-09"
+   },
+   {
+    "id": "2201.01287v2",
+    "t": "An equivariant neural operator for developing nonlocal tensorial constitutive models",
+    "y": "2022-01"
+   },
+   {
+    "id": "2403.18597v2",
+    "t": "Heterogeneous Peridynamic Neural Operators: Discover Biotissue Constitutive Law and Microstructure From Digital Image Correlation Measurements",
+    "y": "2024-03"
+   },
+   {
+    "id": "2505.01060v1",
+    "t": "Monotone Peridynamic Neural Operator for Nonlinear Material Modeling with Conditionally Unique Solutions",
+    "y": "2025-05"
+   },
+   {
+    "id": "2401.06070v1",
+    "t": "Peridynamic Neural Operators: A Data-Driven Nonlocal Constitutive Model for Complex Material Responses",
+    "y": "2024-01"
+   },
+   {
+    "id": "2402.13908v5",
+    "t": "Critical analyses of RVE concepts in local and peridynamic micromechanics of composites",
+    "y": "2024-02"
+   },
+   {
+    "id": "1810.11086v1",
+    "t": "Sign-changing photon-mediated atom interactions in multimode cavity QED",
+    "y": "2018-10"
+   },
+   {
+    "id": "2608.26657v2",
+    "t": "Heat equations in spectral Barron spaces",
+    "y": "2026-08"
+   }
+  ]
+ }
+}

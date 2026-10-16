@@ -1,0 +1,19 @@
+import urllib.request, urllib.parse, json, io, sys, time
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+def oa(q, n=6):
+    url="https://api.openalex.org/works?"+urllib.parse.urlencode({"search":q,"per_page":n,"mailto":"research@example.com"})
+    req=urllib.request.Request(url,headers={"User-Agent":"research"})
+    for _ in range(3):
+        try: return json.loads(urllib.request.urlopen(req,timeout=45).read())
+        except Exception as e:
+            time.sleep(6)
+    return {"results":[]}
+qs=["natural convection square cavity de Vahl Davis benchmark Nusselt number values",
+    "neural network surrogate natural convection square cavity Nusselt number prediction",
+    "invariance dimensional analysis neural network benefit dimension reduction versus scale invariance"]
+for q in qs:
+    print("="*95); print("Q:",q)
+    for w in oa(q).get("results",[]):
+        src=((w.get("primary_location") or {}).get("source") or {}).get("display_name")
+        print(f"  {w.get('publication_year')} | cited {w.get('cited_by_count')} | {(w.get('title') or '')[:100]} | {src}")
+    time.sleep(3)

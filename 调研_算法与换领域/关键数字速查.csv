@@ -1,0 +1,122 @@
+﻿来源,类别,标签,检索式,命中数
+OpenAlex,ML算法族,fno,"""Fourier neural operator""",1914
+OpenAlex,ML算法族,deeponet,"""DeepONet""",1333
+OpenAlex,ML算法族,neural_op,"""neural operator""",4598
+OpenAlex,ML算法族,op_learning,"""operator learning""",2108
+OpenAlex,ML算法族,pinn,"""physics-informed neural network""",16005
+OpenAlex,ML算法族,pinn_2025,"""physics-informed neural network""",11221
+OpenAlex,ML算法族,gnn_mesh,"""graph neural network"" AND ""mesh"" AND ""simulation""",407
+OpenAlex,ML算法族,meshgraphnet,"""MeshGraphNet""",103
+OpenAlex,ML算法族,transformer_pde,"""transformer"" AND ""partial differential equation"" AND ""surrogate""",58
+OpenAlex,ML算法族,gnot,"""Galerkin transformer"" OR ""gnot""",44
+OpenAlex,ML算法族,kan,"""Kolmogorov-Arnold network""",4400
+OpenAlex,ML算法族,kan_pde,"""Kolmogorov-Arnold network"" AND (""partial differential equation"" OR ""PDE"")",172
+OpenAlex,ML算法族,mamba_pde,"""Mamba"" AND (""partial differential equation"" OR ""PDE"")",25
+OpenAlex,ML算法族,diffusion_pde,"""diffusion model"" AND ""partial differential equation"" AND ""surrogate""",16
+OpenAlex,ML算法族,neural_ode,"""neural ordinary differential equation""",1904
+OpenAlex,ML算法族,koopman,"""Koopman"" AND (""machine learning"" OR ""deep learning"")",503
+OpenAlex,ML算法族,hyena_ssm,"""state space model"" AND ""partial differential equation""",237
+OpenAlex,ML算法族,fm_sci,"""foundation model"" AND (""scientific machine learning"" OR ""PDE"" OR ""partial differential equation"")",199
+OpenAlex,ML算法族,fm_2025,"""foundation model"" AND (""scientific machine learning"" OR ""PDE"" OR ""partial differential equation"")",142
+OpenAlex,ML算法族,llm_pde,"""large language model"" AND (""partial differential equation"" OR ""PDE"" OR ""simulation"")",9515
+OpenAlex,ML算法族,pos_emb,"""PDE"" AND ""pre-trained"" AND ""neural operator""",21
+OpenAlex,ML算法族,equiv_pde,"""equivariant"" AND (""neural operator"" OR ""operator learning"")",54
+OpenAlex,ML算法族,equiv_nn,"""equivariant neural network""",528
+OpenAlex,ML算法族,dim_ml,"""dimensional analysis"" AND (""machine learning"" OR ""neural network"")",937
+OpenAlex,ML算法族,buckingham_ml,"""Buckingham"" AND (""machine learning"" OR ""neural network"")",116
+OpenAlex,ML算法族,symplectic,"""Hamiltonian neural network"" OR ""symplectic neural network""",226
+OpenAlex,ML算法族,structure_preserving,"""structure-preserving"" AND (""neural network"" OR ""neural operator"")",472
+OpenAlex,ML算法族,multifidelity,"""multi-fidelity"" AND (""neural network"" OR ""surrogate"" OR ""machine learning"")",2277
+OpenAlex,ML算法族,lowfi_correction,"""low-fidelity"" AND ""high-fidelity"" AND (""correction"" OR ""residual"")",368
+OpenAlex,ML算法族,transfer_sim,"""transfer learning"" AND ""surrogate"" AND (""simulation"" OR ""CFD"")",353
+OpenAlex,ML算法族,active_learn,"""active learning"" AND (""simulation"" OR ""CFD"") AND (""surrogate"" OR ""neural"")",1031
+OpenAlex,ML算法族,bayes_opt_sim,"""Bayesian optimization"" AND (""simulation"" OR ""CFD"")",3999
+OpenAlex,ML算法族,extrap_op,"""extrapolation"" AND (""neural operator"" OR ""operator learning"")",255
+OpenAlex,ML算法族,ood_pde,"""out-of-distribution"" AND (""neural operator"" OR ""operator learning"" OR ""surrogate model"")",322
+OpenAlex,ML算法族,generalize_adv,"""generalization"" AND ""neural operator"" AND ""geometry""",116
+OpenAlex,ML算法族,uq_surr,"""uncertainty quantification"" AND ""surrogate"" AND ""simulation""",1746
+OpenAlex,ML算法族,conformal,"""conformal prediction"" AND (""surrogate"" OR ""simulation"" OR ""PDE"")",529
+OpenAlex,ML算法族,cae_dl,"""CAE"" AND (""deep learning"" OR ""neural network"")",1623
+OpenAlex,ML算法族,digital_twin,"""digital twin"" AND (""surrogate"" OR ""reduced order"")",2492
+OpenAlex,ML算法族,rl_design,"""reinforcement learning"" AND (""design optimization"" OR ""flow control"")",835
+OpenAlex,候选领域,pcm_ml,"""phase change material"" AND (""machine learning"" OR ""neural network"" OR ""surrogate"")",1314
+OpenAlex,候选领域,stefan_ml,"""Stefan problem"" AND (""machine learning"" OR ""neural network"" OR ""surrogate"")",39
+OpenAlex,候选领域,solidif_ml,"""solidification"" AND (""machine learning"" OR ""neural network"")",1534
+OpenAlex,候选领域,porous_conv_ml,"""porous media"" AND (""natural convection"" OR ""mixed convection"") AND (""machine learning"" OR ""neural network"" OR ""surrogate"")",37
+OpenAlex,候选领域,darcy_break,"""non-Darcy"" AND (""machine learning"" OR ""neural network"")",41
+OpenAlex,候选领域,forchheimer_ml,"""Forchheimer"" AND (""machine learning"" OR ""neural network"")",255
+OpenAlex,候选领域,combust_ml,"""combustion"" AND ""surrogate"" AND (""neural network"" OR ""chemistry"")",913
+OpenAlex,候选领域,flame_ml,"""flame"" AND ""machine learning"" AND (""LES"" OR ""large eddy simulation"")",59
+OpenAlex,候选领域,batt_ml,"""lithium-ion battery"" AND (""surrogate"" OR ""machine learning"") AND (""thermal"" OR ""electrochemical"")",1246
+OpenAlex,候选领域,batt_peukert,"""Peukert""",537
+OpenAlex,候选领域,fuelcell_ml,"""fuel cell"" AND (""surrogate"" OR ""neural network"")",2984
+OpenAlex,候选领域,fracture_ml,"""fracture"" AND (""machine learning"" OR ""neural network"") AND ""surrogate""",363
+OpenAlex,候选领域,sizeeffect_ml,"""size effect"" AND (""machine learning"" OR ""neural network"") AND (""fracture"" OR ""strength"")",74
+OpenAlex,候选领域,hphenvelope,"""Hall-Petch""",6173
+OpenAlex,候选领域,micro_homog,"""microstructure"" AND ""homogenization"" AND (""machine learning"" OR ""neural network"")",315
+OpenAlex,候选领域,crystal_plast,"""crystal plasticity"" AND (""machine learning"" OR ""neural network"")",312
+OpenAlex,候选领域,plasma_ml,"""plasma"" AND (""surrogate"" OR ""neural operator"")",10314
+OpenAlex,候选领域,mhd_ml,"""magnetohydrodynamic"" AND (""machine learning"" OR ""neural network"")",870
+OpenAlex,候选领域,acoustics_ml,"""acoustics"" AND (""surrogate"" OR ""neural operator"" OR ""neural network"")",1170
+OpenAlex,候选领域,wave_scat_ml,"""wave scattering"" AND (""neural operator"" OR ""machine learning"")",43
+OpenAlex,候选领域,seismic_ml,"""seismic"" AND (""neural operator"" OR ""surrogate"")",1264
+OpenAlex,候选领域,tcad_ml,"""TCAD"" AND (""machine learning"" OR ""neural network"")",537
+OpenAlex,候选领域,chip_thermal,"""chip"" AND ""thermal"" AND (""surrogate"" OR ""machine learning"")",497
+OpenAlex,候选领域,rans_ml,"""RANS"" AND (""machine learning"" OR ""data-driven"") AND ""closure""",243
+OpenAlex,候选领域,les_closure,"""large eddy simulation"" AND ""subgrid"" AND (""machine learning"" OR ""neural network"")",196
+OpenAlex,候选领域,turb_scaling,"""turbulence"" AND (""scaling law"" OR ""similarity"") AND (""machine learning"" OR ""neural network"")",139
+OpenAlex,候选领域,phasefield_ml,"""phase field"" AND (""machine learning"" OR ""neural network"" OR ""surrogate"")",858
+OpenAlex,候选领域,microfluid_ml,"""microfluidics"" AND (""machine learning"" OR ""neural network"")",2702
+OpenAlex,候选领域,hemo_ml,"""hemodynamics"" AND (""surrogate"" OR ""machine learning"")",4240
+OpenAlex,候选领域,oceanwave_ml,"""ocean waves"" AND (""machine learning"" OR ""neural network"")",484
+OpenAlex,候选领域,wavebreak_ml,"""wave breaking"" AND (""machine learning"" OR ""neural network"")",110
+OpenAlex,候选领域,multiphase_ml,"""multiphase flow"" AND (""machine learning"" OR ""neural network"" OR ""surrogate"")",1311
+OpenAlex,候选领域,rarefied_ml,"""rarefied gas"" AND (""machine learning"" OR ""neural network"")",55
+OpenAlex,候选领域,knudsen_ml,"""Knudsen number"" AND (""machine learning"" OR ""neural network"")",35
+OpenAlex,候选领域,nonfourier_ml,"""non-Fourier"" AND (""heat conduction"" OR ""thermal"") AND (""machine learning"" OR ""neural network"")",61
+OpenAlex,候选领域,phonon_ml,"""phonon transport"" AND (""machine learning"" OR ""neural network"")",184
+OpenAlex,候选领域,bte_ml,"""Boltzmann transport equation"" AND (""machine learning"" OR ""neural network"")",171
+OpenAlex,候选领域,airfoil_ml,"""airfoil"" AND (""neural operator"" OR ""surrogate"")",1284
+OpenAlex,候选领域,ehl_ml,"""elastohydrodynamic"" AND (""machine learning"" OR ""neural network"")",66
+OpenAlex,候选领域,am_meltpool,"""additive manufacturing"" AND ""melt pool"" AND (""machine learning"" OR ""neural network"")",406
+OpenAlex,候选领域,heatexch_ml,"""heat exchanger"" AND (""surrogate"" OR ""machine learning"")",1288
+OpenAlex,候选领域,nanofluid_ml,"""nanofluid"" AND (""machine learning"" OR ""neural network"")",2895
+OpenAlex,候选领域,marangoni_ml,"""Marangoni"" AND (""machine learning"" OR ""neural network"")",75
+OpenAlex,候选领域,closure_data,"""data-driven closure""",130
+OpenAlex,候选领域,simlaw_break,"""similarity law"" AND (""breakdown"" OR ""breaking"" OR ""departure"")",117
+OpenAlex,候选领域,scaling_break,"""scaling law"" AND (""breakdown"" OR ""breaks down"")",657
+OpenAlex,候选领域,mixture_conv,"""mixed convection"" AND (""machine learning"" OR ""neural network"" OR ""surrogate"")",301
+OpenAlex,候选领域,varprop_nc,"""variable properties"" AND (""natural convection"" OR ""Rayleigh-Benard"")",164
+SemanticScholar,缺口核查,sco2_htd_ml,"""heat transfer deterioration"" ""machine learning""",3
+SemanticScholar,缺口核查,sco2_corr_ml,"""supercritical"" ""heat transfer correlation"" neural",2
+SemanticScholar,缺口核查,dittus_corr,"""Dittus-Boelter""",266
+SemanticScholar,缺口核查,dittus_ml,"""Dittus-Boelter"" neural network",1
+SemanticScholar,缺口核查,chf_ml,"""critical heat flux"" ""machine learning""",69
+SemanticScholar,缺口核查,pool_boil_ml,"""pool boiling"" ""machine learning""",41
+SemanticScholar,缺口核查,condens_ml,"""condensation heat transfer"" ""machine learning""",29
+SemanticScholar,缺口核查,stefan_ml,"""Stefan problem"" ""machine learning""",3
+SemanticScholar,缺口核查,stefan_pcm_ml,"""phase change"" ""similarity solution"" machine learning",0
+SemanticScholar,缺口核查,rarefied_sr,"""rarefied gas"" surrogate",15
+SemanticScholar,缺口核查,knudsen_ml,"""Knudsen number"" ""machine learning""",6
+SemanticScholar,缺口核查,nonfourier_ml,"""non-Fourier"" heat conduction ""machine learning""",3
+SemanticScholar,缺口核查,sizeeffect_ml,"""size effect"" fracture ""machine learning""",8
+SemanticScholar,缺口核查,ehl_ml,"""elastohydrodynamic lubrication"" ""machine learning""",13
+SemanticScholar,缺口核查,nondarcy_ml,"""non-Darcy"" ""neural network""",27
+SemanticScholar,缺口核查,marangoni_ml,"""Marangoni convection"" ""machine learning""",10
+SemanticScholar,缺口核查,mixedconv_ml,"""mixed convection"" ""machine learning""",42
+SemanticScholar,缺口核查,varprop_ml,"""variable properties"" ""natural convection"" ""machine learning""",0
+SemanticScholar,缺口核查,porous_conv_ml,"""porous medium"" ""natural convection"" ""machine learning""",2
+SemanticScholar,缺口核查,simlaw_ml,"""similarity law"" ""machine learning""",3
+SemanticScholar,缺口核查,exp_recover,discovering scaling exponents from data neural network,2
+SemanticScholar,缺口核查,corr_correct,machine learning correction empirical correlation heat transfer,1
+SemanticScholar,缺口核查,lowfi_correct_ht,low-fidelity high-fidelity correction heat transfer surrogate,0
+SemanticScholar,缺口核查(补),htd_total,"""heat transfer deterioration""",849
+SemanticScholar,缺口核查(补),sco2_ht_total,"""supercritical"" ""heat transfer deterioration""",507
+SemanticScholar,缺口核查(补),sco2_nn_total,"""supercritical"" ""heat transfer"" ""neural network""",48
+SemanticScholar,缺口核查(补),sco2_op,"""supercritical"" ""operator learning""/""FNO""",0
+SemanticScholar,缺口核查(补),pseudo_crit,"""pseudocritical"" ""machine learning""",3
+SemanticScholar,缺口核查(补),nob_ml,"""non-Oberbeck-Boussinesq""",107
+SemanticScholar,缺口核查(补),nob_ml2,"""non-Oberbeck-Boussinesq"" ""machine learning""",0
+SemanticScholar,缺口核查(补),rb_surrogate,"""Rayleigh-Benard"" ""surrogate model""",12
+SemanticScholar,缺口核查(补),fno_ht,"""Fourier neural operator"" ""heat transfer""",9
+SemanticScholar,缺口核查(补),stefan_pinn,"""Stefan problem"" ""physics-informed""",13

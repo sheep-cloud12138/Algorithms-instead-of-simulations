@@ -1,0 +1,616 @@
+{
+ "th_approx": {
+  "q": "\"neural operator\" approximation theory OR \"neural operator\" approximation rate",
+  "total": 12,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Stability and Discretization Error of State Space Model Neural Operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Theory-to-Practice Gap for Neural Networks and Neural Operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "From Spectral Methods to Sample Complexity Bounds for Fourier Neural Operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Ramanujan-Santos-Sales Hypermodular Operator Theorem and Spectral Kernels for Geometry-Adaptive Neural Operators in Anisotropic Besov Spaces",
+    "v": "Axioms"
+   },
+   {
+    "y": 2026,
+    "t": "Variation Spaces for Encoder--Decoder Neural Operators: Approximation and Generalization",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Symmetrized Neural Network Operators in Fractional Calculus: Caputo Derivatives, Asymptotic Analysis, and the Voronovskaya-Santos-Sales Theorem",
+    "v": "Axioms"
+   }
+  ]
+ },
+ "th_gen": {
+  "q": "\"generalization bound\" \"neural operator\" OR \"generalization bound\" \"operator learning\"",
+  "total": 0,
+  "top": []
+ },
+ "th_disc": {
+  "q": "\"discretization invariance\" OR \"discretization-invariant\" neural operator",
+  "total": 4,
+  "top": [
+   {
+    "y": 2022,
+    "t": "Discretization Invariant Networks for Learning Maps between Neural Fields",
+    "v": "Trans. Mach. Learn. Res."
+   },
+   {
+    "y": 2022,
+    "t": "A PPROXIMATE D ISCRETIZATION I NVARIANCE FOR D EEP L EARNING ON N EURAL F IELDS",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "GIST: Gauge-Invariant Spectral Transformers for Scalable Graph Neural Operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2023,
+    "t": "A discretization-invariant extension and analysis of some deep operator networks",
+    "v": "Journal of Computational and Applied Mathematics"
+   }
+  ]
+ },
+ "th_physics": {
+  "q": "\"physics-informed\" \"convergence\" \"neural network\" analysis",
+  "total": 413,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Physics-Informed Neural Networks for Advanced Thermal Management in Electronics and Battery Systems: A Review of Recent Developments and Future Prospects",
+    "v": "Batteries"
+   },
+   {
+    "y": 2026,
+    "t": "Enhancing Physics-Informed Neural Networks with Domain-aware Fourier Features: Towards Improved Performance and Interpretable Results",
+    "v": "Computers &amp; Structures"
+   },
+   {
+    "y": 2026,
+    "t": "A Sensitivity Analysis Framework for Gerchberg-Saxton Based Physics-Inspired Neural Networks in Computer-Generated Holography",
+    "v": "IEEE Transactions on Computational Imaging"
+   },
+   {
+    "y": 2026,
+    "t": "Adaptive Hybrid B-Spline PINN for Fractional Equations",
+    "v": "Annals of Mathematics and Computer Science"
+   },
+   {
+    "y": 2025,
+    "t": "Advances in Battery Modeling and Management Systems: A Comprehensive Review of Techniques, Challenges, and Future Perspectives",
+    "v": "Batteries"
+   },
+   {
+    "y": 2026,
+    "t": "Physics-informed neural network with hard constraints based on dual-step training strategy for periodic orbits in the CR3BP",
+    "v": "Nonlinear dynamics"
+   }
+  ]
+ },
+ "th_scale": {
+  "q": "\"scaling law\" \"neural operator\" OR \"scaling laws\" \"scientific machine learning\"",
+  "total": 1,
+  "top": [
+   {
+    "y": 2026,
+    "t": "SINO: Scale-Invariant Neural Operator",
+    "v": ""
+   }
+  ]
+ },
+ "uq_no": {
+  "q": "\"uncertainty quantification\" \"neural operator\"",
+  "total": 133,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Huge ensembles – Part 2: Properties of a huge ensemble of hindcasts generated with spherical Fourier neural operators",
+    "v": "Geoscientific Model Development"
+   },
+   {
+    "y": 2025,
+    "t": "Infinite Neural Operators: Gaussian processes on functions",
+    "v": "Neural Information Processing Systems"
+   },
+   {
+    "y": 2024,
+    "t": "An enhanced fourier neural operator surrogate for radioactive plume transport forecasting",
+    "v": "Stochastic environmental research and risk assessment (Print)"
+   },
+   {
+    "y": 2022,
+    "t": "Industry-scale CO 2 Flow Simulations with Model-Parallel Fourier Neural Operators",
+    "v": ""
+   },
+   {
+    "y": 2024,
+    "t": "Point-DeepONet: A Deep Operator Network Integrating PointNet for Nonlinear Analysis of Non-Parametric 3D Geometries and Load Conditions",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "DU-NO: A Parameter-Efficient Double U-Shaped Neural Operator for Phase-Resolving Wave Modeling",
+    "v": ""
+   }
+  ]
+ },
+ "trust_region": {
+  "q": "\"trustworthy\" OR \"reliable\" \"neural operator\"",
+  "total": 4,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Adapting neural operators for mechanics decisions under changing operating conditions",
+    "v": ""
+   },
+   {
+    "y": 2023,
+    "t": "Uncertainty quantification for noisy inputs-outputs in physics-informed neural networks and neural operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Distribution-Free Uncertainty-Aware Virtual Sensing via Conformalized Neural Operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "From the Radon Transform to Deep Learning in Medical Image Reconstruction",
+    "v": "Mathematics"
+   }
+  ]
+ },
+ "ood_bound": {
+  "q": "\"out-of-distribution\" \"neural operator\" bound",
+  "total": 9,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Physics-Informed Digital Twins in Computational Engineering: a PRISMA-ScR Review of Physics-Informed Learning, Neural Operators, Uncertainty Quantification, Real-Time Updating, and Deployment Readiness",
+    "v": "Archives of Computational Methods in Engineering"
+   },
+   {
+    "y": 2026,
+    "t": "FFT-Free Neural Operators for Helmholtz Scattering via Adaptive Coefficient Modulation",
+    "v": "Applied Sciences"
+   },
+   {
+    "y": 2026,
+    "t": "Hybrid Iterative Neural Low-Regularity Integrator for Nonlinear Dispersive Equations",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Low-Rank Kolmogorov-Arnold Generator Flows for Interpretable Operator Learning",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "HERO: History-Enriched Rollout Training for Long-Horizon Autoregressive Neural Operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2023,
+    "t": "Out-of-distributional risk bounds for neural operators with applications to the Helmholtz equation",
+    "v": "Journal of Computational Physics"
+   }
+  ]
+ },
+ "certified": {
+  "q": "\"certified\" OR \"verified\" neural network PDE",
+  "total": 6,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Towards Learning and Verifying Maximal Lyapunov-Barrier Functions with a Zubov PDE Formulation",
+    "v": "European Control Conference"
+   },
+   {
+    "y": 2023,
+    "t": "Quantum-Inspired PINNs in MATLAB: Certified Neural PDE Solvers with Error Bound",
+    "v": "International Journal of Academic and Industrial Research Innovations(IJAIRI)"
+   },
+   {
+    "y": 2022,
+    "t": "A design of neural networks to study MHD and heat transfer in two phase model of nano-fluid flow in the presence of thermal radiation",
+    "v": "Waves in Random and Complex Media"
+   },
+   {
+    "y": 2022,
+    "t": "MHD-hybrid nanofluidic model on rotating plate with impact of thermal slip and heat absorption: a solution predictive neuro-computing approach",
+    "v": "Waves in Random and Complex Media"
+   },
+   {
+    "y": 2024,
+    "t": "Compositionally Verifiable Vector Neural Lyapunov Functions for Stability Analysis of Interconnected Nonlinear Systems",
+    "v": "American Control Conference"
+   },
+   {
+    "y": 2025,
+    "t": "Certified Approximate Reachability (CARe): Formal Error Bounds on Deep Learning of Reachable Sets",
+    "v": "IEEE Conference on Decision and Control"
+   }
+  ]
+ },
+ "active_theory": {
+  "q": "\"active learning\" \"surrogate\" \"theoretical\" OR \"active learning\" \"sample complexity\"",
+  "total": 4,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Informative Perturbation Selection for Uncertainty-Aware Post-hoc Explanations",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2024,
+    "t": "Agnostic Active Learning of Single Index Models with Linear Sample Complexity",
+    "v": "Annual Conference Computational Learning Theory"
+   },
+   {
+    "y": 2021,
+    "t": "Deep Bayesian Active Learning for Accelerating Stochastic Simulation",
+    "v": "Knowledge Discovery and Data Mining"
+   },
+   {
+    "y": 2021,
+    "t": "Accelerating Stochastic Simulation with Interactive Neural Processes",
+    "v": "arXiv.org"
+   }
+  ]
+ },
+ "bench_sciml": {
+  "q": "\"benchmark\" \"scientific machine learning\"",
+  "total": 175,
+  "top": [
+   {
+    "y": 2025,
+    "t": "A Machine Learning Framework for Predicting Solutions to Nonlinear Differential Equations",
+    "v": "2025 IEEE 5th International Conference on ICT in Business Industry & Government (ICTBIG)"
+   },
+   {
+    "y": 2026,
+    "t": "Joint Spatiotemporal Spectral Neural Operators for Learning PDEs on Irregular Domains",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Real-Time Sensing of Inaccessible Physical Fields via an Edge-Deployable Hardware-Portable Graph Neural Operator",
+    "v": ""
+   },
+   {
+    "y": 2025,
+    "t": "Optimal Linear Baseline Models for Scientific Machine Learning",
+    "v": "Foundations of Data Science"
+   },
+   {
+    "y": 2025,
+    "t": "A Scientometric Review of Neural Differential Equations: Mapping Research Impact and Collaborative Networks",
+    "v": "International Journal of Basic and Applied Sciences"
+   },
+   {
+    "y": 2025,
+    "t": "ATHENA: Agentic Team for Hierarchical Evolutionary Numerical Algorithms",
+    "v": "arXiv.org"
+   }
+  ]
+ },
+ "bench_pde": {
+  "q": "\"PDE\" benchmark \"neural operator\"",
+  "total": 261,
+  "top": [
+   {
+    "y": 2026,
+    "t": "Joint Spatiotemporal Spectral Neural Operators for Learning PDEs on Irregular Domains",
+    "v": ""
+   },
+   {
+    "y": 2022,
+    "t": "Towards Multi-spatiotemporal-scale Generalized PDE Modeling",
+    "v": "Trans. Mach. Learn. Res."
+   },
+   {
+    "y": 2026,
+    "t": "Stable by Construction: Variational Latent Markov Operators for Long-Horizon PDE Prediction",
+    "v": ""
+   },
+   {
+    "y": 2024,
+    "t": "Latent Neural Operator for Solving Forward and Inverse PDE Problems",
+    "v": "Neural Information Processing Systems"
+   },
+   {
+    "y": 2026,
+    "t": "Interpolating Neural Operator (INO): A Data-Free and Efficient Approach for Learning PDE Solution Operators",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "ELADO: Elliptic PDE Assessment Datasets for Operator Learning",
+    "v": "arXiv.org"
+   }
+  ]
+ },
+ "bench_fair": {
+  "q": "\"fair comparison\" OR \"fair benchmark\" neural operator",
+  "total": 0,
+  "top": []
+ },
+ "reproduc": {
+  "q": "\"reproducibility\" \"scientific machine learning\" OR \"reproducibility\" \"neural operator\"",
+  "total": 5,
+  "top": [
+   {
+    "y": 2023,
+    "t": "Fourier Neural Operator Surrogate Model to Predict 3D Seismic Waves Propagation",
+    "v": "5th International Conference on Uncertainty Quantification in Computational Sciences and Engineering"
+   },
+   {
+    "y": 2026,
+    "t": "SIMR-NO: A Spectrally-Informed Multi-Resolution Neural Operator for Turbulent Flow Super-Resolution",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Разработка и интеграция цифрового лабораторного модуля CardioSimLab для обучения вычислительной кардиологии и научному машинному обучению",
+    "v": "Computer Tools in Education"
+   },
+   {
+    "y": 2026,
+    "t": "Elucidating the Conformal Structure of the Brinkman Penalisation Method for Geometry-Adapted, Structure-Preserving Operator Learning of Hamiltonian PDEs",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Solution-space heterogeneity shapes federated learning dynamics across partial differential equations",
+    "v": ""
+   }
+  ]
+ },
+ "neurips_sciml": {
+  "q": "\"neural operator\" NeurIPS OR ICML OR ICLR",
+  "total": 0,
+  "top": []
+ },
+ "foundation_pde": {
+  "q": "\"PDE foundation model\" OR \"foundation model\" \"neural operator\"",
+  "total": 9,
+  "top": [
+   {
+    "y": 2026,
+    "t": "AOT-POT: Adaptive Operator Transformation for Large-Scale PDE Pre-training",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "SPEAR: A Spectral-Disentangled MoE Neural Operator with Knowledge-Guided Expert Aggregation for Large-Scale PDE Pretraining",
+    "v": ""
+   },
+   {
+    "y": 2024,
+    "t": "DPOT: Auto-Regressive Denoising Operator Transformer for Large-Scale PDE Pre-Training",
+    "v": "International Conference on Machine Learning"
+   },
+   {
+    "y": 2026,
+    "t": "Unsupervised Adaptation of PDE Foundation Models",
+    "v": ""
+   },
+   {
+    "y": 2026,
+    "t": "Generalization Bounds and Statistical Guarantees for Multi-Task and Multiple Operator Learning with MNO Networks",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "jNO: A JAX Library for Neural Operator and Foundation Model Training",
+    "v": "arXiv.org"
+   }
+  ]
+ },
+ "llm_sciml": {
+  "q": "\"large language model\" \"scientific machine learning\"",
+  "total": 15,
+  "top": [
+   {
+    "y": 2023,
+    "t": "ChatGPT for Programming Numerical Methods",
+    "v": "Journal of Machine Learning for Modeling and Computing"
+   },
+   {
+    "y": 2026,
+    "t": "LLM-PDESR: Robust PDE Discovery via Subdomain Weighted Residuals and LLM-Guided Symbolic Hypothesis Generation",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "ATHENA: Agentic Team for Hierarchical Evolutionary Numerical Algorithms",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Decoding Partial Differential Equations: Cross-Modal Adaptation of Decoder-only Models to PDEs",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "DeepSeek vs. ChatGPT: A Comparative Study for Scientific Computing and Scientific Machine Learning Tasks",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "PRISM: A Predictive Protocol for Permutation Optimization via Landscape Diagnostics",
+    "v": ""
+   }
+  ]
+ },
+ "agent_sciml": {
+  "q": "\"LLM agent\" simulation OR \"agent\" \"scientific discovery\"",
+  "total": 5,
+  "top": [
+   {
+    "y": 2026,
+    "t": "LLMs, RAG s﻿﻿ystems, and agents in crystalline materials discovery and characterization: A systematic review",
+    "v": "MRS bulletin"
+   },
+   {
+    "y": 2025,
+    "t": "Empowering Real-World: A Survey on the Technology, Practice, and Evaluation of LLM-driven Industry Agents",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "A Survey of AI for Materials Science: Foundation Models, LLM Agents, Datasets, and Tools",
+    "v": "ACM Computing Surveys"
+   },
+   {
+    "y": 2026,
+    "t": "Simulon: An AI‐Assisted, PyTorch‐Native Framework of Molecular Dynamics and Modeling",
+    "v": "Journal of Computational Chemistry"
+   },
+   {
+    "y": 2026,
+    "t": "Applications of Generative AI for Advancing Scientific Content Production, Evaluation and Dissemination",
+    "v": "Proceedings of the 26th ACM/IEEE Joint Conference on Digital Libraries"
+   }
+  ]
+ },
+ "kan_total": {
+  "q": "\"Kolmogorov-Arnold network\"",
+  "total": 3258,
+  "top": [
+   {
+    "y": 2026,
+    "t": "An AI-assisted acoustics model for medium-frequency solid-state transformers based on Physics-Informed Fourier Kolmogorov-Arnold Networks",
+    "v": "Measurement"
+   },
+   {
+    "y": 2026,
+    "t": "Hyperspectral characterization of tunnel lining strength: A spatially-aware framework via Kolmogorov-Arnold Networks and geostatistics",
+    "v": "Construction and Building Materials"
+   },
+   {
+    "y": 2025,
+    "t": "Model Risk in Machine-Learning Distributional IV Estimation",
+    "v": ""
+   },
+   {
+    "y": 2024,
+    "t": "Kolmogorov-Arnold Networks in Transformer Attention for Low-Light Image Enhancement",
+    "v": "International Symposium on Electronics and Telecommunications"
+   },
+   {
+    "y": 2025,
+    "t": "Localized Intra- and Inter-Tumoral Heterogeneity for Predicting Treatment Response to Neoadjuvant Chemotherapy in Breast Cancer",
+    "v": "IEEE journal of biomedical and health informatics"
+   },
+   {
+    "y": 2026,
+    "t": "KAN-FIF: Spline-Parameterized Lightweight Physics-based Tropical Cyclone Estimation on Meteorological Satellite",
+    "v": "Knowledge Discovery and Data Mining"
+   }
+  ]
+ },
+ "diffusion_sci": {
+  "q": "\"diffusion model\" \"scientific machine learning\" OR \"diffusion model\" PDE",
+  "total": 2,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Unifying and extending Diffusion Models through PDEs for solving Inverse Problems",
+    "v": "Computer Methods in Applied Mechanics and Engineering"
+   },
+   {
+    "y": 2025,
+    "t": "Physics vs Distributions: Pareto Optimal Flow Matching with Physics Constraints",
+    "v": ""
+   }
+  ]
+ },
+ "gnn_sci": {
+  "q": "\"graph neural network\" \"partial differential equation\"",
+  "total": 146,
+  "top": [
+   {
+    "y": 2022,
+    "t": "Learning the Solution Operator of Boundary Value Problems using Graph Neural Networks",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Adaptive Graph Learning for Efficient Thermal Analysis of Multi-Stacking Chiplet Systems under Interface Variations",
+    "v": "2025 IEEE/ACM International Conference On Computer Aided Design (ICCAD)"
+   },
+   {
+    "y": 2024,
+    "t": "End-to-End Mesh Optimization of a Hybrid Deep Learning Black-Box PDE Solver",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "Convolutional neural network-driven preconditioners for conjugate gradients",
+    "v": "Machine Learning: Science and Technology"
+   },
+   {
+    "y": 2025,
+    "t": "An Operator-Consistent Graph Neural Network for Learning Diffusion Dynamics on Irregular Meshes",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "Learning Geometric-Aware Quadrature Rules for Functional Minimization",
+    "v": "Numerical Algorithms"
+   }
+  ]
+ },
+ "mamba_sci": {
+  "q": "\"Mamba\" \"partial differential equation\" OR \"state space model\" PDE",
+  "total": 7,
+  "top": [
+   {
+    "y": 2025,
+    "t": "Latent Mamba Operator for Partial Differential Equations",
+    "v": "International Conference on Machine Learning"
+   },
+   {
+    "y": 2024,
+    "t": "Mamba Neural Operator: Who Wins? Transformers vs. State-Space Models for PDEs",
+    "v": "Journal of Computational Physics"
+   },
+   {
+    "y": 2026,
+    "t": "When Attention Beats Fourier: Multi-Scale Transformers for PDE Solving on Irregular Domains",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2026,
+    "t": "PGMNO: A physics-Guided mamba neural operator framework for partial differential equations",
+    "v": "Neural Networks"
+   },
+   {
+    "y": 2026,
+    "t": "Adaptive Mamba Neural Operators",
+    "v": "arXiv.org"
+   },
+   {
+    "y": 2025,
+    "t": "SiMBA-Augmented Physics-Informed Neural Networks for Industrial Remaining Useful Life Prediction",
+    "v": "Machines"
+   }
+  ]
+ }
+}

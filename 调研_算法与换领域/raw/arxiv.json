@@ -1,0 +1,962 @@
+{
+ "ax_nob_ml": {
+  "q": "abs:\"non-Oberbeck-Boussinesq\" OR abs:\"non-Boussinesq\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2207.05427v2",
+    "t": "Beyond the Oberbeck-Boussinesq and long wavelength approximation",
+    "y": "2022-07",
+    "c": ""
+   },
+   {
+    "id": "0712.0079v3",
+    "t": "Non-Oberbeck-Boussinesq effects in turbulent thermal convection in ethane close to the critical point",
+    "y": "2007-12",
+    "c": ""
+   },
+   {
+    "id": "0812.3957v1",
+    "t": "Flow organization in non-Oberbeck-Boussinesq Rayleigh-Benard convection in water",
+    "y": "2008-12",
+    "c": ""
+   },
+   {
+    "id": "2305.14112v1",
+    "t": "Assessing non-Oberbeck-Boussinesq effects of convection in cryogenic helium",
+    "y": "2023-05",
+    "c": ""
+   },
+   {
+    "id": "0811.0471v1",
+    "t": "Large scale dynamics in turbulent Rayleigh-Benard convection",
+    "y": "2008-11",
+    "c": ""
+   },
+   {
+    "id": "0707.0116v2",
+    "t": "Non-Oberbeck-Boussinesq effects in two-dimensional Rayleigh-Benard convection in glycerol",
+    "y": "2007-07",
+    "c": ""
+   },
+   {
+    "id": "1108.6262v1",
+    "t": "Statistics and scaling properties of temperature field in symmetrical non-Oberbeck-Boussinesq turbulent convection",
+    "y": "2011-08",
+    "c": ""
+   },
+   {
+    "id": "1807.03013v1",
+    "t": "Non-Oberbeck-Boussinesq zonal flow generation",
+    "y": "2018-07",
+    "c": ""
+   },
+   {
+    "id": "1111.0905v1",
+    "t": "Convection in multiphase flows using Lattice Boltzmann methods",
+    "y": "2011-11",
+    "c": ""
+   },
+   {
+    "id": "2207.09223v1",
+    "t": "Molecular hints of two-step transition to convective flow via streamline percolation",
+    "y": "2022-07",
+    "c": ""
+   },
+   {
+    "id": "2010.11120v2",
+    "t": "Non-Boussinesq low-Prandtl number convection with a temperature-dependent thermal diffusivity",
+    "y": "2020-10",
+    "c": ""
+   },
+   {
+    "id": "2405.01721v3",
+    "t": "Symmetry breaking of rotating convection due to Non-Oberbeck-Boussinesq effects",
+    "y": "2024-05",
+    "c": ""
+   }
+  ]
+ },
+ "ax_bouss_corr": {
+  "q": "abs:\"Boussinesq\" AND abs:\"correction\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "1607.06005v1",
+    "t": "Oscillatory convection and limitations of the Boussinesq approximation",
+    "y": "2016-07",
+    "c": ""
+   },
+   {
+    "id": "2609.33961v2",
+    "t": "PV-Wave Decomposition and Combined Wave Effects for Stratified Couette Flows",
+    "y": "2026-09",
+    "c": ""
+   },
+   {
+    "id": "0804.1086v4",
+    "t": "Visco-potential free-surface flows and long wave modelling",
+    "y": "2008-04",
+    "c": ""
+   },
+   {
+    "id": "2608.29448v1",
+    "t": "SS-ESOAP: Self-Scaled Adaptive Preconditioning for Physics-Informed Learning",
+    "y": "2026-08",
+    "c": ""
+   },
+   {
+    "id": "1608.05632v2",
+    "t": "The KdV, the Burgers, and the Whitham limit for a spatially periodic Boussinesq model",
+    "y": "2016-08",
+    "c": ""
+   },
+   {
+    "id": "2403.04295v1",
+    "t": "Local well-posedness for a generalized sixth-order Boussinesq equation",
+    "y": "2024-03",
+    "c": ""
+   },
+   {
+    "id": "0712.0079v3",
+    "t": "Non-Oberbeck-Boussinesq effects in turbulent thermal convection in ethane close to the critical point",
+    "y": "2007-12",
+    "c": ""
+   },
+   {
+    "id": "math/0207148v1",
+    "t": "Higher Order Modulation Equations for a Boussinesq Equation",
+    "y": "2002-07",
+    "c": ""
+   },
+   {
+    "id": "1805.05158v2",
+    "t": "Temporal stability of free liquid threads with surface viscoelasticity",
+    "y": "2018-05",
+    "c": ""
+   },
+   {
+    "id": "1903.04890v3",
+    "t": "What kinds of KdV-type equations are allowed by an uneven bottom",
+    "y": "2019-03",
+    "c": ""
+   },
+   {
+    "id": "1011.5071v3",
+    "t": "Thermodynamics/dynamics coupling and thermodynamic consistency of Boussinesq and anelastic binary fluids with an arbitrary nonlinear equation of state",
+    "y": "2010-11",
+    "c": ""
+   },
+   {
+    "id": "2301.11848v1",
+    "t": "Combination of Multi-Fidelity Data Sources For Uncertainty Quantification: A Lightweight CNN Approach",
+    "y": "2023-01",
+    "c": ""
+   }
+  ]
+ },
+ "ax_lowfi_corr": {
+  "q": "abs:\"low-fidelity\" AND abs:\"correction\" AND abs:\"neural\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2410.17913v1",
+    "t": "Deep learning for model correction of dynamical systems with data scarcity",
+    "y": "2024-10",
+    "c": ""
+   },
+   {
+    "id": "1910.00925v2",
+    "t": "Neural network augmented wave-equation simulation",
+    "y": "2019-09",
+    "c": ""
+   },
+   {
+    "id": "2111.15597v1",
+    "t": "Surrogate-based optimization using an artificial neural network for a parameter identification in a 3D marine ecosystem model",
+    "y": "2021-11",
+    "c": ""
+   },
+   {
+    "id": "2503.14222v5",
+    "t": "Vanishing Stacked-Residual PINN for State Reconstruction of Hyperbolic Systems",
+    "y": "2025-03",
+    "c": ""
+   },
+   {
+    "id": "2512.02868v1",
+    "t": "Assessing the performance of correlation-based multi-fidelity neural emulators",
+    "y": "2025-12",
+    "c": ""
+   },
+   {
+    "id": "2607.24345v1",
+    "t": "Perturbative-NeuSA: A Structured Spectral Framework for Time-Dependent PDEs",
+    "y": "2026-07",
+    "c": ""
+   },
+   {
+    "id": "2307.02349v4",
+    "t": "Error Approximation and Bias Correction in Dynamic Problems using a Recurrent Neural Network/Finite Element Hybrid Model",
+    "y": "2023-07",
+    "c": ""
+   },
+   {
+    "id": "2112.00581v1",
+    "t": "Using deep generative neural networks to account for model errors in Markov chain Monte Carlo inversion",
+    "y": "2021-12",
+    "c": ""
+   },
+   {
+    "id": "2609.12018v2",
+    "t": "Toward Reliable Railway-Bogie Response Prediction Using Multifidelity TDNN and Physics-Informed Residual Learning",
+    "y": "2026-09",
+    "c": ""
+   },
+   {
+    "id": "2605.08232v1",
+    "t": "Hierarchical Multi-Fidelity Learning for Predicting Three-Dimensional Flame Wrinkling and Turbulent Burning Velocity",
+    "y": "2026-05",
+    "c": ""
+   },
+   {
+    "id": "2201.02172v1",
+    "t": "Reliability Estimation of an Advanced Nuclear Fuel using Coupled Active Learning, Multifidelity Modeling, and Subset Simulation",
+    "y": "2022-01",
+    "c": ""
+   },
+   {
+    "id": "2512.05241v1",
+    "t": "Bridging quantum and classical computing for partial differential equations through multifidelity machine learning",
+    "y": "2025-12",
+    "c": ""
+   }
+  ]
+ },
+ "ax_multifid_hx": {
+  "q": "abs:\"multi-fidelity\" AND abs:\"convection\"",
+  "n": 3,
+  "hits": [
+   {
+    "id": "2405.13519v1",
+    "t": "Multi-fidelity topology optimization of flow boiling heat transfer in microchannels",
+    "y": "2024-05",
+    "c": ""
+   },
+   {
+    "id": "2311.03823v2",
+    "t": "Data-informed uncertainty quantification for laser-based powder bed fusion additive manufacturing",
+    "y": "2023-11",
+    "c": ""
+   },
+   {
+    "id": "2207.11842v1",
+    "t": "$\\textit{FastSVD-ML-ROM}$: A Reduced-Order Modeling Framework based on Machine Learning for Real-Time Applications",
+    "y": "2022-07",
+    "c": ""
+   }
+  ]
+ },
+ "ax_dimless": {
+  "q": "abs:\"dimensional analysis\" AND abs:\"neural\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2411.15919v2",
+    "t": "Enhancing Symbolic Regression and Universal Physics-Informed Neural Networks with Dimensional Analysis",
+    "y": "2024-11",
+    "c": ""
+   },
+   {
+    "id": "2410.05894v5",
+    "t": "DimINO: Dimension-Informed Neural Operator Learning",
+    "y": "2024-10",
+    "c": ""
+   },
+   {
+    "id": "2509.21393v1",
+    "t": "Impact of Loss Weight and Model Complexity on Physics-Informed Neural Networks for Computational Fluid Dynamics",
+    "y": "2025-09",
+    "c": ""
+   },
+   {
+    "id": "2610.17969v1",
+    "t": "Neural Dimensional Analysis: Foundations of Dimensionless and Scale-Consistent Computation",
+    "y": "2026-10",
+    "c": ""
+   },
+   {
+    "id": "2311.06147v1",
+    "t": "Incorporating sufficient physical information into artificial neural networks: a guaranteed improvement via physics-based Rao-Blackwellization",
+    "y": "2023-11",
+    "c": ""
+   },
+   {
+    "id": "2201.08082v1",
+    "t": "Kernel Methods and Multi-layer Perceptrons Learn Linear Models in High Dimensions",
+    "y": "2022-01",
+    "c": ""
+   },
+   {
+    "id": "1912.05452v1",
+    "t": "Solving the Reaction-Diffusion equation based on analytical methods and deep learning algorithm; the Case study of sulfate attack to concrete",
+    "y": "2019-12",
+    "c": ""
+   },
+   {
+    "id": "2504.10754v1",
+    "t": "auto-fpt: Automating Free Probability Theory Calculations for Machine Learning Theory",
+    "y": "2025-04",
+    "c": ""
+   },
+   {
+    "id": "2608.21051v2",
+    "t": "NestyNet. III. Symbolic Regression from Analytic Neural Surrogates",
+    "y": "2026-08",
+    "c": ""
+   },
+   {
+    "id": "2505.08900v6",
+    "t": "Generalizable neural-network parameterization of mesoscale eddies in idealized and global ocean models",
+    "y": "2025-05",
+    "c": ""
+   },
+   {
+    "id": "2405.20593v1",
+    "t": "Excitable crawling",
+    "y": "2024-05",
+    "c": ""
+   },
+   {
+    "id": "2509.14518v2",
+    "t": "White-box machine learning for uncovering physically interpretable dimensionless governing equations for granular materials",
+    "y": "2025-09",
+    "c": ""
+   }
+  ]
+ },
+ "ax_units_eq": {
+  "q": "abs:\"units equivariance\" OR abs:\"dimensionless\" AND abs:\"neural operator\"",
+  "n": 2,
+  "hits": [
+   {
+    "id": "2204.00887v2",
+    "t": "Dimensionless machine learning: Imposing exact units equivariance",
+    "y": "2022-04",
+    "c": ""
+   },
+   {
+    "id": "2609.16853v1",
+    "t": "Can Deep Learning Achieve Cross-Physics Mapping?",
+    "y": "2026-09",
+    "c": ""
+   }
+  ]
+ },
+ "ax_extrap_no": {
+  "q": "abs:\"neural operator\" AND abs:\"extrapolation\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2212.06347v1",
+    "t": "Reliable extrapolation of deep neural operators informed by physics or sparse observations",
+    "y": "2022-12",
+    "c": ""
+   },
+   {
+    "id": "2506.01598v1",
+    "t": "PMNO: A novel physics guided multi-step neural operator predictor for partial differential equations",
+    "y": "2025-06",
+    "c": ""
+   },
+   {
+    "id": "2509.01416v2",
+    "t": "MD-PNOP: Equation-Recast Neural Operators for Minimal-Data Extrapolation and PDE Solver Acceleration",
+    "y": "2025-09",
+    "c": ""
+   },
+   {
+    "id": "2511.10829v1",
+    "t": "Towards Universal Neural Operators through Multiphysics Pretraining",
+    "y": "2025-11",
+    "c": ""
+   },
+   {
+    "id": "2511.06451v1",
+    "t": "A Risk-Neutral Neural Operator for Arbitrage-Free SPX-VIX Term Structures",
+    "y": "2025-11",
+    "c": ""
+   },
+   {
+    "id": "2312.05410v1",
+    "t": "Rethinking materials simulations: Blending direct numerical simulations with neural operators",
+    "y": "2023-12",
+    "c": ""
+   },
+   {
+    "id": "2607.23337v1",
+    "t": "Neural operator discovery from heterogeneous trajectories",
+    "y": "2026-07",
+    "c": ""
+   },
+   {
+    "id": "2504.20249v1",
+    "t": "Temporal Neural Operator for Modeling Time-Dependent Physical Phenomena",
+    "y": "2025-04",
+    "c": ""
+   },
+   {
+    "id": "2604.16721v1",
+    "t": "Late Fusion Neural Operators for Extrapolation Across Parameter Space in Partial Differential Equations",
+    "y": "2026-04",
+    "c": ""
+   },
+   {
+    "id": "2602.00884v2",
+    "t": "Test-time Generalization for Physics through Neural Operator Splitting",
+    "y": "2026-01",
+    "c": ""
+   },
+   {
+    "id": "2401.02311v1",
+    "t": "Fourier neural operator based fluid-structure interaction for predicting the vesicle dynamics",
+    "y": "2024-01",
+    "c": ""
+   },
+   {
+    "id": "2409.16572v1",
+    "t": "Efficient and generalizable nested Fourier-DeepONet for three-dimensional geological carbon sequestration",
+    "y": "2024-09",
+    "c": ""
+   }
+  ]
+ },
+ "ax_fm_pde": {
+  "q": "abs:\"foundation model\" AND abs:\"PDE\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2603.15431v1",
+    "t": "Physics-informed fine-tuning of foundation models for partial differential equations",
+    "y": "2026-03",
+    "c": ""
+   },
+   {
+    "id": "2510.01370v1",
+    "t": "SPUS: A Lightweight and Parameter-Efficient Foundation Model for PDEs",
+    "y": "2025-10",
+    "c": ""
+   },
+   {
+    "id": "2608.07053v1",
+    "t": "Unsupervised Adaptation of PDE Foundation Models",
+    "y": "2026-08",
+    "c": ""
+   },
+   {
+    "id": "2512.23056v1",
+    "t": "PI-MFM: Physics-informed multimodal foundation model for solving partial differential equations",
+    "y": "2025-12",
+    "c": ""
+   },
+   {
+    "id": "2510.13665v2",
+    "t": "Axial Neural Networks for Dimension-Free Foundation Models",
+    "y": "2025-10",
+    "c": ""
+   },
+   {
+    "id": "2610.03265v1",
+    "t": "SPEAR: A Spectral-Disentangled MoE Neural Operator with Knowledge-Guided Expert Aggregation for Large-Scale PDE Pretraining",
+    "y": "2026-10",
+    "c": ""
+   },
+   {
+    "id": "2507.15409v3",
+    "t": "PDEformer-2: A Versatile Foundation Model for Two-Dimensional Partial Differential Equations",
+    "y": "2025-07",
+    "c": ""
+   },
+   {
+    "id": "2509.18611v2",
+    "t": "Flow marching for a generative PDE foundation model",
+    "y": "2025-09",
+    "c": ""
+   },
+   {
+    "id": "2409.09811v1",
+    "t": "PROSE-FD: A Multimodal PDE Foundation Model for Learning Multiple Operators for Forecasting Fluid Dynamics",
+    "y": "2024-09",
+    "c": ""
+   },
+   {
+    "id": "2603.04606v1",
+    "t": "PDE foundation model-accelerated inverse estimation of system parameters in inertial confinement fusion",
+    "y": "2026-03",
+    "c": ""
+   },
+   {
+    "id": "2405.19101v2",
+    "t": "Poseidon: Efficient Foundation Models for PDEs",
+    "y": "2024-05",
+    "c": ""
+   },
+   {
+    "id": "2605.10159v1",
+    "t": "jNO: A JAX Library for Neural Operator and Foundation Model Training",
+    "y": "2026-05",
+    "c": ""
+   }
+  ]
+ },
+ "ax_scaling_law": {
+  "q": "abs:\"scaling law\" AND abs:\"neural operator\"",
+  "n": 9,
+  "hits": [
+   {
+    "id": "2610.11120v1",
+    "t": "Numerical Neural Operator: Connection Between Numerical Analysis and the Operator Learning and Building Discretized Neural Operators from Finite Element Methods",
+    "y": "2026-10",
+    "c": ""
+   },
+   {
+    "id": "2605.09189v2",
+    "t": "Practical Scaling Laws: Converting Compute into Performance in a Data-Constrained World",
+    "y": "2026-05",
+    "c": ""
+   },
+   {
+    "id": "2605.22724v1",
+    "t": "Multiple Neural Operators Achieve Near-Optimal Rates for Multi-Task Learning",
+    "y": "2026-05",
+    "c": ""
+   },
+   {
+    "id": "2609.36890v1",
+    "t": "SINO: Scale-Invariant Neural Operator",
+    "y": "2026-09",
+    "c": ""
+   },
+   {
+    "id": "2607.21954v1",
+    "t": "Anomalous Diffusion of Tropical Cyclones Observed in Huge Ensembles of Hindcasts",
+    "y": "2026-07",
+    "c": ""
+   },
+   {
+    "id": "2512.24897v1",
+    "t": "Self-Supervised Amortized Neural Operators for Optimal Control: Scaling Laws and Applications",
+    "y": "2025-12",
+    "c": ""
+   },
+   {
+    "id": "2510.25379v1",
+    "t": "A Deep Learning Framework for Multi-Operator Learning: Architectures and Approximation Theory",
+    "y": "2025-10",
+    "c": ""
+   },
+   {
+    "id": "2604.01961v1",
+    "t": "Generalization Bounds and Statistical Guarantees for Multi-Task and Multiple Operator Learning with MNO Networks",
+    "y": "2026-04",
+    "c": ""
+   },
+   {
+    "id": "2507.04090v2",
+    "t": "Effective behavior of heterogeneous media governed by strain gradient elasticity",
+    "y": "2025-07",
+    "c": ""
+   }
+  ]
+ },
+ "ax_active_surr": {
+  "q": "abs:\"active learning\" AND abs:\"surrogate\" AND abs:\"simulation\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2106.02770v7",
+    "t": "Deep Bayesian Active Learning for Accelerating Stochastic Simulation",
+    "y": "2021-06",
+    "c": ""
+   },
+   {
+    "id": "2407.07674v2",
+    "t": "Feasibility Study on Active Learning of Smart Surrogates for Scientific Simulations",
+    "y": "2024-07",
+    "c": ""
+   },
+   {
+    "id": "2301.08789v4",
+    "t": "Active Learning of Piecewise Gaussian Process Surrogates",
+    "y": "2023-01",
+    "c": ""
+   },
+   {
+    "id": "2511.03756v2",
+    "t": "Bifidelity Karhunen-Loève Expansion Surrogate with Active Learning for Random Fields",
+    "y": "2025-11",
+    "c": ""
+   },
+   {
+    "id": "2601.21390v1",
+    "t": "Surrogate model of a HVAC system for PV self-consumption maximisation",
+    "y": "2026-01",
+    "c": ""
+   },
+   {
+    "id": "2311.10550v1",
+    "t": "RONAALP: Reduced-Order Nonlinear Approximation with Active Learning Procedure",
+    "y": "2023-11",
+    "c": ""
+   },
+   {
+    "id": "2303.10022v1",
+    "t": "Hierarchical-Hyperplane Kernels for Actively Learning Gaussian Process Models of Nonstationary Systems",
+    "y": "2023-03",
+    "c": ""
+   },
+   {
+    "id": "2610.12076v1",
+    "t": "Exploiting Gradients in Bayesian Inference of Expensive Simulators",
+    "y": "2026-10",
+    "c": ""
+   },
+   {
+    "id": "2310.00261v2",
+    "t": "A physics and data co-driven surrogate modeling method for high-dimensional rare event simulation",
+    "y": "2023-09",
+    "c": ""
+   },
+   {
+    "id": "2501.13841v1",
+    "t": "Efficient Active Learning Strategies for Computer Experiments",
+    "y": "2025-01",
+    "c": ""
+   },
+   {
+    "id": "2503.03453v2",
+    "t": "Active Learning for Deep Learning-Based Hemodynamic Parameter Estimation",
+    "y": "2025-03",
+    "c": ""
+   },
+   {
+    "id": "2305.04392v3",
+    "t": "Disentangled Multi-Fidelity Deep Bayesian Active Learning",
+    "y": "2023-05",
+    "c": ""
+   }
+  ]
+ },
+ "ax_rom_llm": {
+  "q": "abs:\"reduced order\" AND abs:\"large language model\"",
+  "n": 9,
+  "hits": [
+   {
+    "id": "2312.07046v1",
+    "t": "Rethinking Compression: Reduced Order Modelling of Latent Features in Large Language Models",
+    "y": "2023-12",
+    "c": ""
+   },
+   {
+    "id": "2607.10994v1",
+    "t": "A Multi-Agent Framework for Zero-Dimensional Reduced-Order Model Planning",
+    "y": "2026-07",
+    "c": ""
+   },
+   {
+    "id": "2602.01493v2",
+    "t": "OpInf-LLM: Parametric PDE Solving with LLMs via Operator Inference",
+    "y": "2026-02",
+    "c": ""
+   },
+   {
+    "id": "2601.21681v1",
+    "t": "LLM4Fluid: Large Language Models as Generalizable Neural Solvers for Fluid Dynamics",
+    "y": "2026-01",
+    "c": ""
+   },
+   {
+    "id": "2510.04076v1",
+    "t": "From Shadow to Light: Toward Safe and Efficient Policy Learning Across MPC, DeePC, RL, and LLM Agents",
+    "y": "2025-10",
+    "c": ""
+   },
+   {
+    "id": "2604.00260v1",
+    "t": "Learning to Shuffle: Block Reshuffling and Reversal Schemes for Stochastic Optimization",
+    "y": "2026-03",
+    "c": ""
+   },
+   {
+    "id": "2608.26882v1",
+    "t": "PLCBench: Can Autonomous LLM Agents Turn PLC Access into Sustained Physical Impact?",
+    "y": "2026-08",
+    "c": ""
+   },
+   {
+    "id": "2509.11447v1",
+    "t": "Large language model-empowered next-generation computer-aided engineering",
+    "y": "2025-09",
+    "c": ""
+   },
+   {
+    "id": "2608.07838v1",
+    "t": "Counterfactual Benchmarking and Training for Factuality Consistency and Order-Robust Grounded Reasoning in LLMs over Heterogeneous Knowledge",
+    "y": "2026-08",
+    "c": ""
+   }
+  ]
+ },
+ "ax_knudsen_ml": {
+  "q": "abs:\"rarefied\" AND abs:\"neural\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2509.06231v1",
+    "t": "Learning Rarefied Gas Dynamics with Physics-Enforced Neural Networks",
+    "y": "2025-09",
+    "c": ""
+   },
+   {
+    "id": "2512.15085v1",
+    "t": "AI-Accelerated Operator Learning Framework for Rarefied Microflows",
+    "y": "2025-12",
+    "c": ""
+   },
+   {
+    "id": "2305.06222v2",
+    "t": "Learning of viscosity functions in rarefied gas flows with physics-informed neural networks",
+    "y": "2023-05",
+    "c": ""
+   },
+   {
+    "id": "2602.21244v1",
+    "t": "Physics Constrained Neural Collision Operators for Variable Hard Sphere Surrogates and Ab Initio Angle Prediction in Direct Simulation Monte Carlo",
+    "y": "2026-02",
+    "c": ""
+   },
+   {
+    "id": "2501.13108v1",
+    "t": "Physics-Informed Neural Networks for microflows: Rarefied Gas Dynamics in Cylinder Arrays",
+    "y": "2025-01",
+    "c": ""
+   },
+   {
+    "id": "2010.09147v1",
+    "t": "Physics-informed neural networks for solving forward and inverse flow problems via the Boltzmann-BGK formulation",
+    "y": "2020-10",
+    "c": ""
+   },
+   {
+    "id": "2606.15622v1",
+    "t": "Accelerating Kinetic Fokker-Planck Simulations via a GPU-Native Deep Neural Network Surrogate: Application to Rarefied Internal and Hypersonic External Flows",
+    "y": "2026-06",
+    "c": ""
+   },
+   {
+    "id": "2012.05343v1",
+    "t": "Thermodynamically consistent physics-informed neural networks for hyperbolic systems",
+    "y": "2020-12",
+    "c": ""
+   },
+   {
+    "id": "1911.09843v1",
+    "t": "Trend to Equilibrium for the Kinetic Fokker-Planck Equation via the Neural Network Approach",
+    "y": "2019-11",
+    "c": ""
+   },
+   {
+    "id": "2609.27975v1",
+    "t": "FlowMLLab: An open-source framework for reproducible computational-fluid-dynamics and scientific-machine-learning experiments",
+    "y": "2026-08",
+    "c": ""
+   },
+   {
+    "id": "2606.25752v3",
+    "t": "Bulk-to-Wall Observability in Rarefied Hypersonic Flow: Moment Limits and Incident Half-Range Sufficiency",
+    "y": "2026-06",
+    "c": ""
+   },
+   {
+    "id": "2505.04627v2",
+    "t": "Is the end of Insight in Sight ?",
+    "y": "2025-05",
+    "c": ""
+   }
+  ]
+ },
+ "ax_nonfourier": {
+  "q": "abs:\"non-Fourier\" AND abs:\"neural\"",
+  "n": 2,
+  "hits": [
+   {
+    "id": "2109.07063v1",
+    "t": "Recent Advances in Conservation-Dissipation Formalism for Irreversible Processes",
+    "y": "2021-09",
+    "c": ""
+   },
+   {
+    "id": "2601.05418v2",
+    "t": "Group-Patch Joint Compression: Compressing Dynamic B0 and Static RF Spatial Modulations Across k-Space Subregion Groups for Highly Accelerated MRI",
+    "y": "2026-01",
+    "c": ""
+   }
+  ]
+ },
+ "ax_phasefield_ml": {
+  "q": "abs:\"phase field\" AND abs:\"neural operator\" OR abs:\"phase field\" AND abs:\"machine learning\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2503.14568v1",
+    "t": "Teaching Artificial Intelligence to Perform Rapid, Resolution-Invariant Grain Growth Modeling via Fourier Neural Operator",
+    "y": "2025-03",
+    "c": ""
+   },
+   {
+    "id": "2305.00938v1",
+    "t": "Accelerating microstructure modelling via machine learning: a new method combining Autoencoder and ConvLSTM",
+    "y": "2023-05",
+    "c": ""
+   },
+   {
+    "id": "2508.20216v1",
+    "t": "Reverse Designing Ferroelectric Capacitors with Machine Learning-based Compact Modeling",
+    "y": "2025-08",
+    "c": ""
+   },
+   {
+    "id": "1806.00503v4",
+    "t": "Machine learning materials physics: Surrogate optimization and multi-fidelity algorithms predict precipitate morphology in an alternative to phase field dynamic",
+    "y": "2018-06",
+    "c": ""
+   },
+   {
+    "id": "2208.14364v3",
+    "t": "Dynamic and adaptive mesh-based graph neural network framework for simulating displacement and crack fields in phase field models",
+    "y": "2022-08",
+    "c": ""
+   },
+   {
+    "id": "2604.06881v2",
+    "t": "MENO: MeanFlow-Enhanced Neural Operators for Dynamical Systems",
+    "y": "2026-04",
+    "c": ""
+   },
+   {
+    "id": "2511.03884v1",
+    "t": "Scalable Autoregressive Deep Surrogates for Dendritic Microstructure Dynamics",
+    "y": "2025-11",
+    "c": ""
+   },
+   {
+    "id": "2405.06119v2",
+    "t": "Gradient Flow Based Phase-Field Modeling Using Separable Neural Networks",
+    "y": "2024-05",
+    "c": ""
+   },
+   {
+    "id": "2202.01051v2",
+    "t": "Element selection for functional materials discovery by integrated machine learning of elemental contributions to properties",
+    "y": "2022-02",
+    "c": ""
+   },
+   {
+    "id": "2507.07237v2",
+    "t": "Towards Robust Surrogate Models: Benchmarking Machine Learning Approaches to Expediting Phase Field Simulations of Brittle Fracture",
+    "y": "2025-07",
+    "c": ""
+   },
+   {
+    "id": "2302.08991v1",
+    "t": "Bridging scales with Machine Learning: From first principles statistical mechanics to continuum phase field computations to study order disorder transitions in ",
+    "y": "2023-02",
+    "c": ""
+   },
+   {
+    "id": "2103.00513v4",
+    "t": "Accelerated design of linear-superelastic Ti-Nb nanocomposite alloys with ultralow modulus via high-throughput phase-field simulations and machine learning",
+    "y": "2021-02",
+    "c": ""
+   }
+  ]
+ },
+ "ax_peukert": {
+  "q": "abs:\"battery\" AND abs:\"physics-informed\"",
+  "n": 12,
+  "hits": [
+   {
+    "id": "2411.09915v2",
+    "t": "Physics-informed Machine Learning for Battery Pack Thermal Management",
+    "y": "2024-11",
+    "c": ""
+   },
+   {
+    "id": "2404.04429v1",
+    "t": "Physics-Informed Machine Learning for Battery Degradation Diagnostics: A Comparison of State-of-the-Art Methods",
+    "y": "2024-04",
+    "c": ""
+   },
+   {
+    "id": "2602.03256v2",
+    "t": "Impact of Physics-Informed Features on Neural Network Complexity for Li-ion Battery Voltage Prediction in Electric Vertical Takeoff and Landing Aircrafts",
+    "y": "2026-02",
+    "c": ""
+   },
+   {
+    "id": "2511.12053v1",
+    "t": "Real-Time Physics-Aware Battery Health Monitoring from Partial Charging Profiles via Physics-Informed Neural Networks",
+    "y": "2025-11",
+    "c": ""
+   },
+   {
+    "id": "2501.14573v2",
+    "t": "A Transferable Physics-Informed Framework for Battery Degradation Diagnosis, Knee-Onset Detection and Knee Prediction",
+    "y": "2025-01",
+    "c": ""
+   },
+   {
+    "id": "2604.10362v2",
+    "t": "Battery health prognosis using Physics-informed neural network with Quantum Feature mapping",
+    "y": "2026-04",
+    "c": ""
+   },
+   {
+    "id": "2607.29095v1",
+    "t": "PiDDM: Physics-Informed Differentiable Degradation Modeling for Lithium-Ion Battery State-of-Health Prediction",
+    "y": "2026-07",
+    "c": ""
+   },
+   {
+    "id": "2602.18042v1",
+    "t": "PINEAPPLE: Physics-Informed Neuro-Evolution Algorithm for Prognostic Parameter Inference in Lithium-Ion Battery Electrodes",
+    "y": "2026-02",
+    "c": ""
+   },
+   {
+    "id": "2509.02366v2",
+    "t": "Towards Intelligent Systems for Battery Management: A Five-Tier Digital Twin Architecture",
+    "y": "2025-09",
+    "c": ""
+   },
+   {
+    "id": "2510.07902v2",
+    "t": "Degradation-Aware Model Predictive Control for Battery Swapping Stations under Energy Arbitrage",
+    "y": "2025-10",
+    "c": ""
+   },
+   {
+    "id": "2512.09780v2",
+    "t": "Physics-Aware Heterogeneous GNN Architecture for Real-Time BESS Optimization in Unbalanced Distribution Systems",
+    "y": "2025-12",
+    "c": ""
+   },
+   {
+    "id": "2601.01466v1",
+    "t": "Physics-informed neural network surrogate modeling of single particle model for lithium-ion batteries",
+    "y": "2026-01",
+    "c": ""
+   }
+  ]
+ }
+}

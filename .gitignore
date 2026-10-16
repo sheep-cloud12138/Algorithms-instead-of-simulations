@@ -1,0 +1,14 @@
+# ---- 大体积原始数据：只存在本机，不进仓库 ----
+research/data/
+
+# ---- 嵌套的第三方仓库 ----
+research/repo/
+research/repo_nc/
+
+# ---- python 缓存 ----
+__pycache__/
+*.pyc
+
+# ---- 临时文件 ----
+*.tmp
+*.log

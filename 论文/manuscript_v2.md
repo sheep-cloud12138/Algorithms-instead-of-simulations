@@ -29,8 +29,8 @@ temperature contrast `ε = ΔT/T₀`, and we turn that fact into a design rule f
    prefactor is real and reproducible **in an independent second geometry** for `u_y`
    (`q = −0.083 ± 0.005` vs `−0.077 ± 0.019`) and `θ` (`+0.514 ± 0.015` vs `+0.447 ± 0.045`).
    A 6.2-fold change in Prandtl number - air to water, 104 strictly paired samples - leaves
-   both the exponent and the prefactor of every channel unchanged (median paired ratio
-   `R_water/R_air` = 1.006 / 0.999 / 0.999 / 0.951).
+   the exponent unchanged and the prefactor to within 5 % on the paired comparison
+   (median paired ratio `R_water/R_air` = 1.006 / 0.999 / 0.999 / 0.951).
 3. **Why.** Expanding the compressible member in ε gives an `O(1)` system that is term-by-term
    the Boussinesq equations and an `O(ε)` source from the density-modulated inertia and the
    non-solenoidal velocity field, `∇·u₁ = ∇·(θ₀u₀)`. Because the linearised operator is
@@ -48,7 +48,10 @@ temperature contrast `ε = ΔT/T₀`, and we turn that fact into a design rule f
    in all four channels, §5.5). With ε moved fully outside the network, so that it never enters
    the input, it is what makes a **single-ε data set reusable**: a surrogate trained on a public
    4000-pair data set that exists only at ε = 1.2 is applied, without retraining, to our own
-   ε ∈ [0.2, 1.9] data.
+   ε ∈ [0.2, 1.9] data and reaches 0.093 (`u_x`) at ε > 1.3 - better than the same prior trained
+   on our own data and 3.2× better than doing nothing. Across a different boundary-condition
+   family the same transfer fails (0.29, i.e. no better than doing nothing), because the
+   prefactor is a functional of the flow (§5.7-5.8).
 5. **External validation, five held-out data sets.** The law reproduces on that published data
    (independent group, independent generator, ε ≡ 1.2): `R = 0.180 / 0.244 / 0.023 / 0.186` for
    `(u_x, u_y, θ, p)` against `0.184 / 0.225 / 0.023 / 0.189` on our own ε ≈ 1.2 slice, even the
@@ -113,7 +116,8 @@ prefactor whose weak Rayleigh-number trend reproduces in a second geometry and i
 can predict `P(X)` and multiply by ε afterwards, keeping ε out of the input. The
 result is not a small accuracy gain in distribution (§5.6: parity with an ε-augmented
 baseline at n ≤ 200). It is a change of regime: a network trained on a public data set that
-exists at a single ε is applied, without retraining, to our ε in [0.2, 1.9] (§5.8),
+exists at a single ε is applied, without retraining, to our ε in [0.2, 1.9] and reaches
+relL2 = 0.093 (`u_x`) where the plain model of the same budget reaches 0.144 (§5.8),
 the extrapolation error falls by 1.62× relative to the plain architecture (§5.5), the network
 discovers the ε² curvature of the expansion on its own (learned β = 0.20–0.29 in all
 four channels), and the same prior transfers unchanged to a Fourier neural operator.
@@ -169,8 +173,9 @@ nor `ΔT` appears alone. Hence, with the thermal data prescribed in θ and Ra fi
 depend on ε**. Verified to solver precision: across 20 configurations × 5 ε (same Ra, bit-identical
 θ boundary stream), the maximum relative deviation of X is **9.77 × 10⁻⁸**.
 
-**Corollary.** The correction `Y − X` is information that is *absent from the surrogate's input*.
-No capacity or data can recover it. The limit is informational, not architectural (§5.3).
+**Corollary.** The correction `Y − X` is information that is *absent from the surrogate's input*:
+no amount of capacity or training data can recover it from X alone. The limit is informational,
+not architectural (§5.3).
 
 ## 3. Asymptotic theory: why the correction factorises as ε·P(X)
 
@@ -206,7 +211,7 @@ Five predictions follow, and all five hold:
 | prediction | measurement |
 |---|---|
 | `R → 0` as ε → 0 | intercept `+0.0003 ± 0.0047` (u_x); 0.06σ from zero |
-| `R ∝ ε` | p = 1.023±0.018 / 0.995±0.019 / 1.009±0.015 (u_x/u_y/p) |
+| `R ∝ ε` | p = 1.023±0.018 / 0.995±0.019 / 1.009±0.015 (u_x/u_y/p), window-averaged over the two decades; the residual is the `ε²` term (§5.1) |
 | the shape of D does not rotate with ε | `cos(D(ε),D(1.2)) = 0.95–1.00`, four channels × five ε |
 | `∇·u₁ = ∇·(θ₀u₀)` | `div(Y)` vs `ε∇·(θu_X)`: cosine **+0.994** for ε < 0.6, +0.965 overall, amplitudes 2.26e-2 vs 2.10e-2 |
 | the expansion converges fast | per configuration, ε¹ alone carries 86 % of the correction energy, ε¹+ε² **99.0 %**, ε³ 99.9 % |
@@ -347,9 +352,15 @@ U-Net, width 32, 200 epochs, identical protocol for all columns:
 
 Model A's error (0.2249) and the best possible ε-blind model on the paired set at ε = 1.9
 (0.2249, §5.3) coincide to three digits while being measured on two different data sets: the
-ceiling is informational, not architectural. Shallow alternatives fail the same way (kernel ridge
-regression on the same 600 samples gains nothing from ε, 0.296 → 0.301; a reduced-rank linear
-transfer of the reference correction gains ≤ 1.6× for velocity).
+ceiling is informational, not architectural. Shallow learners plateau in the same place. A linear ridge
+regression and an RBF kernel ridge on the raw four-field input - the same information the network
+gets - reach `u_x` 0.2282 and 0.2222 in extrapolation, and adding ε as an extra column barely
+moves them (0.2188 and 0.2171): within 2 % of the ε-blind U-Net, because neither can represent a
+product of an ε-scale with a spatial field. A classical POD-ROM (47-52 modes, 99.9 % of the
+snapshot energy) whose coefficients are regressed on (log₁₀Ra, ε) lands at 0.2937 with ε and
+0.3001 without, i.e. at the level of doing nothing, and a purely linear surrogate that also sees
+the POD coefficients of X reaches only 0.2318. The plateau is not capacity - it is that the
+quantity to be added is absent from the input (`code/exp_shallow.py`, `code/exp_pod.py`).
 
 ### 5.5 The physics prior: `D = ε·P(X)`
 
@@ -457,11 +468,45 @@ test pairs, CC BY 4.0), generated by another group with their own pipeline, at a
   41 % above the public random-wall median and 56 % above ours - gives `c = 2.06-2.10` (`code/exp_uhat_law.py`). The same reading explains the residual
   scatter in `u_x/u_y/p` in §5.1: A is a functional of the flow, and the flow is in the input.
 
-* *Cross-data-set transfer.* *(numbers in `~/nc_run/p7/public_transfer.json`; see §5.8)*
+* *Cross-data-set transfer.* The same data set gives the paper's practical test, §5.8.
 
-### 5.8 Cross-data-set transfer — the payoff of the prior
+### 5.8 Cross-data-set transfer: the payoff, and its boundary
 
-*(automatically generated table — `code/make_tables.py`)*
+Two public single-ε data sets are available: 4000 random-wall pairs (our boundary-condition
+family) and 5000 classical-cavity pairs (a different one). Both sit at ε ≡ 1.2. We train the same
+U-Net on each - once with the plain output (target `D`), once with the prior (target `D/ε`, and
+ε multiplied back outside the network) - and apply the result to **our own 600 samples with no
+retraining**, at ε from 0.2 to 1.9, values the training data never contained.
+
+| trained on | model | ε > 1.3, n=218 | full ε, n=200 |
+|---|---|---|---|
+| do nothing | `Ŷ = X` | 0.3018 / 0.3731 / 0.0556 / 0.3320 | 0.2203 / 0.2683 / 0.0381 / 0.2386 |
+| public 4000, random walls, ε ≡ 1.2 | plain | 0.1443 / 0.1730 / 0.0226 / 0.1838 | 0.1199 / 0.1441 / 0.0189 / 0.1435 |
+| public 4000, random walls, ε ≡ 1.2 | **prior** | **0.0932 / 0.1085 / 0.0119 / 0.1322** | **0.0657 / 0.0769 / 0.0077 / 0.0891** |
+| our own 382 training samples | prior | 0.1250 / 0.1321 / 0.0170 / 0.1719 | 0.0791 / 0.0811 / 0.0103 / 0.0947 |
+| public 5000, classical cavity, ε ≡ 1.2 | plain | 0.2919 / 0.3711 / 0.0490 / 0.3192 | 0.2444 / 0.3612 / 0.0484 / 0.3217 |
+| public 5000, classical cavity, ε ≡ 1.2 | prior | 0.3092 / 0.4730 / 0.0561 / 0.3280 | 0.2281 / 0.3498 / 0.0422 / 0.2584 |
+
+Three readings, in order of how much they matter for practice.
+
+* **Within the family, the prior is what makes a single-ε data set reusable.** The identical
+  architecture, budget and data give 0.1443 (`u_x`) with the plain output and 0.0932 with the
+  prior - a factor 1.55 - and 3.2× better than doing nothing, on ε the data never contained.
+  It is even better than the same prior trained on our own 382 samples (0.1250), because it sees
+  ten times more configurations. This is the concrete content of "the ε dependence need not be in
+  the data".
+* **The prior also fixes the failure mode of the plain model.** The plain model's error at unseen
+  ε is largest where the training ε is furthest away (its correction is a fixed field, §5.3),
+  whereas the prior's error stays proportional to how wrong `P` is, uniformly in ε.
+* **Across boundary-condition families the same trick fails, and the prior makes it worse.**
+  Trained on the classical cavity, the plain model lands at 0.2919 against a floor of 0.3018 -
+  it learned almost nothing transferable - and the prior model is *worse* than the plain one
+  (0.3092 at ε > 1.3): it confidently multiplies a `P` learnt on the wrong flow by an ε that
+  grows to 1.9. This is exactly what §5.7 predicts, and it is the same number: `A` is a functional
+  of the flow, the classical cavity's flow has `û` 41 % above the random-wall median, and a
+  surrogate trained on that family predicts the wrong `A`. Reusing published data therefore
+  requires the boundary-condition family to be represented; the law tells you in advance which
+  reuse will work (`code/exp_public_transfer.py`, `code/exp_public_legacy_transfer.py`).
 
 ### 5.9 A second geometry (aspect ratio 2:1, 104 samples)
 
@@ -520,8 +565,10 @@ On the 104 matched configurations the paired ratios `R_water/R_air` have medians
 Boussinesq-compressible discrepancy by less than 1 % on the same configuration.
 
 Pr is therefore not a break-symmetry axis either, and the law's two ingredients separate cleanly:
-ε sets the exponent, the flow sets the prefactor, and the fluid does neither (Table §5.9 shows a
-geometry changing A; §5.7 shows boundary-condition families changing it by 1.9×).
+ε sets the exponent, the flow sets the prefactor, and the fluid does neither. Keeping the strict
+pairing matters for the last digit - the unpaired fits give θ 0.0097 → 0.0082 (a 15 % move, the
+same direction as the 5 % paired move) and u_x/u_y +2-3 % - which is the same statement as §5.9
+(a geometry moves A) and §5.7 (boundary-condition families move it by up to 4×).
 
 ## 6. Limitations
 
@@ -569,8 +616,10 @@ by a single parameter in an exact and predictable way.
    lines of code — converts the law into a prior that (i) beats the plain architecture by 1.62× in
    extrapolation, (ii) lets the network discover the ε² term itself, (iii) works the same
    way for a Fourier neural operator, and (iv) makes a public data set that exists at a single
-   temperature contrast reusable at others, which is the difference between a surrogate that
-   must be retrained and one that can be applied.
+   temperature contrast reusable at others - 0.093 (`u_x`) on ε > 1.3 against 0.144 for the
+   plain model and 0.302 for doing nothing - which is the difference between a surrogate that
+   must be retrained and one that can be applied. The scope of that reuse is set by §5.7:
+   it holds within a boundary-condition family and fails across one, predictably.
 
 The honest limits are in §6: two dimensions, ε < 2, one-dimensional break symmetry, and a
 prefactor whose two-parameter fits leave 26 % (`u_x`), 23 % (`u_y`) and 28 % (θ) of the variance

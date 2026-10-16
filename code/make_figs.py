@@ -26,35 +26,39 @@ if d:
     fig.suptitle(r'Single-$\varepsilon$ training leaves an unreachable floor (paired set, 20 configurations)', fontsize=12)
     fig.tight_layout(rect=[0, 0, 1, .96]); f = P + '/fig2_floor.png'; fig.savefig(f); print('saved', f)
 
-# ---------------- 图 3：先验形式消融 ----------------
-d = J('prior_ablation.json')
+# ---------------- 图 3：统一口径下的先验消融（5 个变体，3 个种子）----------------
+d = J('exp_ml_final.json')
 if d:
-    fig, ax = plt.subplots(1, 2, figsize=(12, 4.6), dpi=170)
-    for j, (sp, spn) in enumerate([('extrap', 'extrapolation (test $\\varepsilon>1.3$)'), ('interp', 'interpolation')]):
-        a = ax[j]
-        tags = ['B_plain_no_prior', 'P1_scaled_eps', 'P2_scaled_eps_quad']
-        lab = ['plain U-Net\n($\\varepsilon$ as input)', r'$D=\varepsilon P(X)$', r'$D=(\varepsilon+\beta\varepsilon^2)P(X)$']
-        col = ['#7f8c8d', '#2c6fbb', '#27ae60']
-        x = np.arange(4); w = .26
-        for i, (t, l, c) in enumerate(zip(tags, lab, col)):
+    tags = [('A_eps_blind', 'A: ' + r'$\varepsilon$ blind', '#95a5a6'),
+            ('B_eps_input', 'B: ' + r'$\varepsilon$ as input', '#7f8c8d'),
+            ('P1_eps_in_x_eps', r'P1: $\varepsilon$ in net, $\times\varepsilon$ out', '#2c6fbb'),
+            ('P2_eps_in_x_quad', r'P2: $\times(\varepsilon+\beta\varepsilon^2)$', '#27ae60'),
+            ('P3_eps_not_in_net', r'P3: $\varepsilon$ never in net, $\times\varepsilon$ out', '#c0392b')]
+    fig, ax = plt.subplots(1, 2, figsize=(13.5, 4.9), dpi=170)
+    for j, (sp, spn) in enumerate([('extrap', 'extrapolation (train ' + r'$\varepsilon\leq1.3$)'),
+                                   ('interp', 'interpolation')]):
+        a = ax[j]; x = np.arange(4); w = .16
+        for i, (t, l, c) in enumerate(tags):
             if t not in d[sp]: continue
-            a.bar(x + (i - 1) * w, d[sp][t]['g'], w, label=l, color=c)
-        a.plot(x, d[sp]['floor'], 'k_', ms=18, mew=2, label='do nothing')
+            m = np.array(d[sp][t]['mean']); sd = np.array(d[sp][t]['std'])
+            a.bar(x + (i - 2) * w, m, w, yerr=sd, capsize=2, label=l, color=c)
+        a.plot(x, d[sp]['floor'], 'k_', ms=20, mew=2, label='do nothing')
         a.set_xticks(x); a.set_xticklabels(CH, fontsize=12)
         a.set_title(spn, fontsize=11); a.grid(alpha=.2, axis='y')
-        a.set_ylabel(r'rel. $L_2$ error', fontsize=11)
-        if j == 1: a.legend(fontsize=8.5)
+        a.set_ylabel(r'rel. $L_2$ error (mean of 3 seeds)', fontsize=11)
+        if j == 1: a.legend(fontsize=8.2)
     fig.tight_layout(); f = P + '/fig3_prior.png'; fig.savefig(f); print('saved', f)
 
 # ---------------- 图 4：学习曲线 ----------------
-d = J('learning_curve.json')
+d = J('exp_lc_final.json')
 if d:
     fig, ax = plt.subplots(1, 4, figsize=(15, 3.6), dpi=170)
-    ns = sorted(d['curves']['B_eps_input'], key=int); xn = np.array([int(v) for v in ns])
+    var_lab = [('B_eps_input', '-o', '#c0392b', r'B: $\varepsilon$ as input'),
+               ('P3_eps_not_in_net', '--s', '#2c6fbb', r'P3: predict $P(X)$, $\varepsilon$ outside')]
+    ns = sorted(d['curves'][var_lab[0][0]], key=int); xn = np.array([int(v) for v in ns])
     for k in range(4):
         a = ax[k]
-        for var, st, col, lb in [('B_eps_input', '-o', '#c0392b', r'B: $\varepsilon$ as input'),
-                                 ('C_prior', '--s', '#2c6fbb', r'C: predict $P(X)$, $\varepsilon$ outside')]:
+        for var, st, col, lb in var_lab:
             m = np.array([d['curves'][var][v]['mean'][k] for v in ns])
             s = np.array([d['curves'][var][v]['std'][k] for v in ns])
             a.errorbar(xn, m, yerr=s, fmt=st, color=col, lw=1.6, ms=5, capsize=3, label=lb)
@@ -62,7 +66,7 @@ if d:
         a.set_xscale('log'); a.set_title(CH[k], fontsize=12)
         a.set_xlabel('training samples', fontsize=10); a.grid(alpha=.25, which='both')
         if k == 0: a.set_ylabel(r'rel. $L_2$ error', fontsize=10); a.legend(fontsize=8)
-    fig.suptitle('In distribution the two are equivalent; the prior matters because $\\varepsilon$ never enters the network', fontsize=11)
+    fig.suptitle('In distribution the two are equivalent; the prior matters because ' + r'$\varepsilon$' + ' never enters the network', fontsize=11)
     fig.tight_layout(rect=[0, 0, 1, .93]); f = P + '/fig4_learning.png'; fig.savefig(f); print('saved', f)
 
 # ---------------- 图 5：律在三种流体/几何 + 独立数据集上 ----------------
@@ -118,25 +122,29 @@ if os.path.exists(B + '/p2/pairs600_fixedp.npz') and dw:
     fig.suptitle(r'One exponent, many prefactors', fontsize=12)
     fig.tight_layout(rect=[0, 0, 1, .96]); f = P + '/fig5_law_axes.png'; fig.savefig(f); print('saved', f)
 
-# ---------------- 图 6：跨数据集迁移 ----------------
-d = J('public_transfer.json')
+# ---------------- 图 6：跨数据集迁移（同族 / 跨 BC 族）----------------
+d = J('public_transfer.json'); dl = J('public_legacy_transfer.json')
 if d and 'extrap' in d:
-    fig, ax = plt.subplots(1, 2, figsize=(12, 4.6), dpi=170)
-    for j, (sp, spn) in enumerate([('extrap', 'our $\\varepsilon>1.3$ (extrapolation)'), ('interp', 'our full $\\varepsilon$ range (interpolation)')]):
-        a = ax[j]
-        if sp not in d: continue
-        keys = [('pub_naive', 'trained on public 4000\ntarget $D$'), ('pub_prior', 'trained on public 4000\ntarget $D/\\varepsilon$'),
-                ('own_prior', 'trained on ours\ntarget $D/\\varepsilon$')]
-        col = ['#7f8c8d', '#27ae60', '#2c6fbb']
-        x = np.arange(4); w = .26
-        for i, (kk, l) in enumerate(keys):
-            if kk not in d[sp]: continue
-            a.bar(x + (i - 1) * w, d[sp][kk]['g'], w, label=l, color=col[i])
-        a.plot(x, d[sp]['floor'], 'k_', ms=18, mew=2, label='do nothing')
-        a.set_xticks(x); a.set_xticklabels(CH, fontsize=12)
-        a.set_title('%s  (n=%d)' % (spn, d[sp].get('n_test', 0)), fontsize=10.5)
-        a.set_ylabel(r'rel. $L_2$ error', fontsize=11); a.grid(alpha=.2, axis='y')
-        if j == 0: a.legend(fontsize=8)
-    fig.suptitle('A surrogate trained on a single-$\\varepsilon$ public data set, applied to other $\\varepsilon$', fontsize=12)
-    fig.tight_layout(rect=[0, 0, 1, .94]); f = P + '/fig6_transfer.png'; fig.savefig(f); print('saved', f)
-print('figs done')
+    fig, ax = plt.subplots(2, 2, figsize=(12.5, 8.6), dpi=170)
+    keys = [('pub_naive', 'public, target ' + r'$D$'), ('pub_prior', 'public, target ' + r'$D/\varepsilon$'),
+            ('own_prior', 'ours, target ' + r'$D/\varepsilon$')]
+    keys_l = [('legacy_naive', 'public legacy, target ' + r'$D$'),
+              ('legacy_prior', 'public legacy, target ' + r'$D/\varepsilon$'),
+              ('own_prior', 'ours, target ' + r'$D/\varepsilon$')]
+    col = ['#7f8c8d', '#27ae60', '#2c6fbb']
+    for i, (dd, kk, title) in enumerate([(d, keys, 'same boundary-condition family (public 4000, random walls)'),
+                                         (dl, keys_l, 'different boundary-condition family (public 5000, classical cavity)')]):
+        for j, (sp, spn) in enumerate([('extrap', 'our ' + r'$\varepsilon>1.3$'), ('interp', 'our full ' + r'$\varepsilon$ range')]):
+            a = ax[i][j]
+            if not dd or sp not in dd: a.axis('off'); continue
+            x = np.arange(4); w = .26
+            for q, (key, lab) in enumerate(kk):
+                if key not in dd[sp]: continue
+                a.bar(x + (q - 1) * w, dd[sp][key]['g'], w, label=lab, color=col[q])
+            a.plot(x, dd[sp]['floor'], 'k_', ms=20, mew=2, label='do nothing')
+            a.set_xticks(x); a.set_xticklabels(CH, fontsize=12)
+            a.set_title(title + chr(10) + spn, fontsize=9.5)
+            a.set_ylabel(r'rel. $L_2$ error', fontsize=10); a.grid(alpha=.2, axis='y')
+            if i == 0 and j == 0: a.legend(fontsize=8)
+    fig.suptitle('Reusing a single-' + r'$\varepsilon$' + ' data set: the prior transfers within a boundary-condition family, not across', fontsize=11)
+    fig.tight_layout(rect=[0, 0, 1, .95]); f = P + '/fig6_transfer.png'; fig.savefig(f); print('saved', f)

@@ -44,7 +44,7 @@ for split in ['train_legacy', 'test_legacy']:
         s1, i1, r1, p1, e1 = stats.linregress(np.log10(Ra), R[:, k])
         s2, i2, r2, p2, e2 = stats.linregress(np.log10(umax), np.log10(R[:, k] / eps))
         print('%-7s %.4f (%.3f-%.3f)     r=%+.3f              a=%.3f c=%.3f r=%+.3f'
-              % (c, np.median(R[:, k]), np.percentile(R[:, k], 10), np.percentile(R[:, k], 90), r1, s2, np.exp(i2), r2))
+              % (c, np.median(R[:, k]), np.percentile(R[:, k], 10), np.percentile(R[:, k], 90), r1, s2, 10 ** i2, r2))
         d[c] = dict(median=float(np.median(R[:, k])), p10=float(np.percentile(R[:, k], 10)),
                     p90=float(np.percentile(R[:, k], 90)), r_logRa=float(r1),
                     umax_a=float(s2), umax_c=float(10 ** i2), umax_r=float(r2),   # 底数是 10，不是 e

@@ -37,7 +37,7 @@ tr = np.ones(N, bool)
 nets = {}
 for key, T in [('legacy_naive', D), ('legacy_prior', D / float(np.median(eps)))]:
     if key in cache:
-        net = UNet(4, 32); net.load_state_dict(cache[key]['sd'])
+        net = UNet(4, 32); net.load_state_dict(cache[key]['sd']); net = net.to(DEV)
         print('      [cache] %s' % key, flush=True)
         nets[key] = (net, cache[key]['sD'], cache[key].get('ts', 0.0)); continue
     net, sD, ts = train_net(UNet(4, 32), IN, T, tr, epochs=150, seed=0, DEV=DEV, bs=32, tag=key)
@@ -65,7 +65,7 @@ for split in ['extrap', 'interp']:
     IN6, _ = build_input(X6, eps6, False)
     key = 'own_prior_%s' % split
     if key in pcache:
-        net = UNet(4, 32); net.load_state_dict(pcache[key]['sd']); sD = pcache[key]['sD']
+        net = UNet(4, 32); net.load_state_dict(pcache[key]['sd']); net = net.to(DEV); sD = pcache[key]['sD']
     else:
         net, sD, _ = train_net(UNet(4, 32), IN6, D6 / ev6, tr6, epochs=150, seed=0, DEV=DEV, bs=32, tag=key)
         pcache[key] = dict(sd=net.state_dict(), sD=sD); torch.save(pcache, PC)

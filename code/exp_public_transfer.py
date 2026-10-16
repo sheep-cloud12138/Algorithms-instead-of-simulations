@@ -31,7 +31,7 @@ def to_theta(T):
 def train_cached(key, net, IN, T, tr, epochs=150):
     """带缓存的训练：同名 key 已训过就直接取权重。"""
     if key in cache:
-        net.load_state_dict(cache[key]['sd'])
+        net.load_state_dict(cache[key]['sd']); net = net.to(DEV)   # 缓存里的权重在 CPU，必须搬回 DEV
         print('      [cache] %s 直接复用（训练时 %.0fs）' % (key, cache[key].get('ts', -1)), flush=True)
         return net, cache[key]['sD'], cache[key].get('ts', 0.0)
     net, sD, ts = train_net(net, IN, T, tr, epochs=epochs, seed=0, DEV=DEV, bs=32, tag=key)

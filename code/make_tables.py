@@ -90,3 +90,94 @@ if d:
     row('推理 CPU 单线程', '%.1f ms'%(i['cpu_1thread_s']*1e3), '', '', '')
     sm = d['batch600']['median']
     print('\n加速比：单样本 %.0f×，批量 %.0f×' % (sm/i['gpu_batch1_s'], sm/i['gpu_batch256_per_sample_s']))
+
+# ================= 统一口径重跑（harness.py + exp_*_final.py）=================
+def fmt_ms(r):
+    m, sd = r['mean'], r['std']
+    return ['%.4f±%.4f' % (m[i], sd[i]) for i in range(4)]
+
+d = j('exp_ml_final.json')
+if d:
+    L('## 统一消融（U-Net width 32，200 epoch，3 个种子，归一化统计量只用训练子集）')
+    print('协议：%s' % d.get('note', ''))
+    hdr('划分', '变体', 'u_x', 'u_y', 'θ', 'p', '学到的 β')
+    for sp, spn in [('extrap', '外推'), ('interp', '内插')]:
+        if sp not in d: continue
+        for tag in ['A_eps_blind', 'B_eps_input', 'P1_eps_in_x_eps', 'P2_eps_in_x_quad', 'P3_eps_not_in_net']:
+            if tag not in d[sp]: continue
+            r = d[sp][tag]
+            b = r.get('beta')
+            bs = '—'
+            if b and isinstance(b[0], list) and any(abs(x) > 1e-9 for x in b[0]): bs = ' '.join('%.3f' % x for x in b[0])
+            row(spn if tag.startswith('A') else '', tag, *fmt_ms(r), bs)
+        row('', 'floor（什么都不做）', *['%.4f' % x for x in d[sp]['floor']], '')
+
+d = j('exp_fno_final.json')
+if d:
+    L('## 强基线 FNO2d（%0.0fk 参数，同协议、同划分、3 个种子）' % (d.get('n_params', 0) / 1e3))
+    hdr('划分', '变体', 'u_x', 'u_y', 'θ', 'p')
+    for sp, spn in [('extrap', '外推'), ('interp', '内插')]:
+        if sp not in d: continue
+        for tag in ['A_eps_blind', 'B_eps_input', 'P3_eps_not_in_net']:
+            if tag not in d[sp]: continue
+            row(spn if tag.startswith('A') else '', tag, *fmt_ms(d[sp][tag]))
+        row('', 'floor', *['%.4f' % x for x in d[sp]['floor']])
+
+d = j('exp_lc_final.json')
+if d:
+    L('## 学习曲线（3 个种子，归一化统计量只用抽中的 n 个样本）')
+    hdr('n', '变体', 'u_x', 'u_y', 'θ', 'p')
+    print('| 0 | 什么都不做 | ' + ' | '.join('%.4f' % x for x in d['floor']) + ' |')
+    for var in ['B_eps_input', 'P3_eps_not_in_net']:
+        if var not in d['curves']: continue
+        for n in sorted(d['curves'][var], key=int):
+            row(n, var, *fmt_ms(d['curves'][var][n]))
+
+d = j('pod_rom.json')
+if d:
+    L('## 经典 ROM 基线：POD 基 + 线性回归（k 模态覆盖训练集 99.9% 能量）')
+    print('m1 = 只用 (logRa)；m2 = (logRa, ε, ε·logRa)；m3 = m2 + X 的 POD 系数（信息量与网络相同）')
+    hdr('划分', '通道', 'k', 'm1 ε-blind', 'm2 ε-aware', 'm3 +X', 'floor')
+    for sp, spn in [('extrap', '外推'), ('interp', '内插')]:
+        if sp not in d: continue
+        for i, c in enumerate(CH):
+            r = d[sp]['ch'][c]
+            row(spn if i == 0 else '', c, r['k'], '%.4f' % r['m1'], '%.4f' % r['m2'], '%.4f' % r['m3'],
+                '%.4f' % d[sp]['floor'][i])
+
+d = j('shallow_baselines.json')
+if d:
+    L('## 浅层基线：线性岭回归 / RBF 核岭回归（输入与网络相同）')
+    hdr('划分', '模型', 'u_x', 'u_y', 'θ', 'p')
+    for sp, spn in [('extrap', '外推'), ('interp', '内插')]:
+        if sp not in d: continue
+        row(spn, 'floor', *['%.4f' % x for x in d[sp]['floor']])
+        for tag in ['ridge_blind', 'krr_blind', 'ridge_eps', 'krr_eps']:
+            if tag in d[sp]['models']: row('', tag, *['%.4f' % x for x in d[sp]['models'][tag]])
+
+d = j('public_legacy_transfer.json')
+if d:
+    L('## 跨 BC 族迁移：公开 5000 组经典方腔（ε≡1.2）训练 -> 本机随机壁面测试')
+    hdr('划分', '训练数据', 'u_x', 'u_y', 'θ', 'p')
+    for sp, spn in [('extrap', '外推'), ('interp', '内插')]:
+        if sp not in d: continue
+        row(spn, 'floor', *['%.4f' % x for x in d[sp]['floor']])
+        for tag in ['legacy_naive', 'legacy_prior', 'own_prior']:
+            if tag in d[sp]: row('', tag, *['%.4f' % x for x in d[sp][tag]['g']])
+
+d = j('audit_v2.json')
+if d:
+    L('## 稳健性审计（audit_v2.json）')
+    print('幂律指数 p 随拟合窗口（%s）：' % '627 组')
+    hdr('窗口', *CH)
+    for k in sorted(d['power_windows']):
+        row(k, *['%.3f±%.3f' % (d['power_windows'][k][c]['p'], d['power_windows'][k][c]['se']) for c in CH])
+    print('\n二次项 κ = c/a：' + '  '.join('%s %.2f' % (c, d['quadratic_kappa'][c]['kappa']) for c in CH))
+    print('压力通道配对（逐样本中位）：')
+    hdr('数据集', '|X_p|/|Y_p|', 'cos')
+    for k in d['pressure']:
+        row(k, '%.3f' % d['pressure'][k]['ratio_median'], '%+.3f' % d['pressure'][k]['cos_median'])
+    print('\nû 中位：' + '  '.join('%s %.4f' % (k, v) for k, v in d['uhat_median'].items()))
+    print('经典方腔/公开随机壁面 +%.0f%%，/本机 +%.0f%%' % (d['uhat_pct_vs_public_train'], d['uhat_pct_vs_ours']))
+    print('legacy/train 的 R 中位之比：' + '  '.join('%s %.2f' % (c, d['ratio_legacy_over_train'][c]) for c in CH))
+    print('2:1 几何指数与单位方腔之差：' + '  '.join('%s %.1fσ' % (c, d['aspect2_sigma'][c]) for c in CH))

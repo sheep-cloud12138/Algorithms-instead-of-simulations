@@ -60,8 +60,15 @@ for k,c in enumerate(CH):
 print('\n=== 近零核验：只用 ε≤0.5 的点（600 组 + eps→0 点）线性拟合 ===')
 for k,c in enumerate(CH):
     m = Eall<=0.5; y = Rall[m,k]; e = Eall[m]
-    a,b = np.polyfit(e,y,1); se_b = np.sqrt(((y-(a*e+b))**2).sum()/(m.sum()-2))
+    a,b = np.polyfit(e,y,1)
+    Xd = np.column_stack([e, np.ones_like(e)])
+    s2 = ((y - Xd @ np.array([a, b]))**2).sum() / (m.sum()-2)
+    se_b = float(np.sqrt(s2 * np.linalg.inv(Xd.T @ Xd)[1, 1]))   # 截距的标准误（不是残差 RMS）
     print('  %-7s n=%3d  a=%.4f  b=%+.5f  (R(0)=0 的偏离 %.2f sigma)' % (c,m.sum(),a,b,abs(b)/se_b))
-    out[c]['near_zero'] = dict(n=int(m.sum()), a=float(a), b=float(b), b_sigma=float(abs(b)/se_b))
+    out[c]['near_zero'] = dict(n=int(m.sum()), a=float(a), b=float(b), b_se=se_b,
+                                b_sigma=float(abs(b)/se_b), residual_rms=float(np.sqrt(s2)))
 json.dump(out, open(os.path.expanduser('~/nc_run/p7/eps_law.json'),'w'), indent=1)
+# 逐样本 R 落盘，供后续审计脚本复用（免得每次重算 eps→0 那批）
+np.savez(os.path.expanduser('~/nc_run/p7/eps_law_R.npz'), eps600=eps, R600=R, eps_all=Eall, R_all=Rall,
+         ra600=Ra, ra_all=np.concatenate([Ra, E0[:,1]]))
 print('\nsaved ~/nc_run/p7/eps_law.json')

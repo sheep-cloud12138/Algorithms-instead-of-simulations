@@ -59,6 +59,17 @@ for e in EPS:
     tab_b[e]={'A':ta.tolist(),'B':tb.tolist()}
     print('%-6.1f A: %-28s B: %s'%(e,' '.join('%.4f'%x for x in ta),' '.join('%.4f'%x for x in tb)))
 out['eps_blind']=tab_b
+print('\n=== 2b. eps-blind 迁移矩阵：拿 eps=t 的解当 eps 的预测（逐对精确值，对角线=0）===')
+tab_tr = {}
+for e_te in EPS:
+    for e_tr in EPS:
+        v = [rl(C[c][e_te][k][1], C[c][e_tr][k][1]) for c in cfgs for k in range(4)]
+        v = np.array(v).reshape(len(cfgs), 4)
+        tab_tr['%.1f_from_%.1f' % (e_te, e_tr)] = [float(np.median(v[:, k])) for k in range(4)]
+    print('  测试 eps=%.1f  ' % e_te + ' | '.join('用 %.1f 的解: %s' % (e_tr,
+          ' '.join('%.3f' % tab_tr['%.1f_from_%.1f' % (e_te, e_tr)][k] for k in range(4))) for e_tr in EPS))
+out['transfer_matrix'] = tab_tr
+
 print('\n=== 3. 修正场形状随 eps 的不变性（与 eps=1.2 的 cos，中位）===')
 tab_cs={}
 for k,name in enumerate(CH):

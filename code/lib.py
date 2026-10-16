@@ -20,9 +20,12 @@ def splits(eps, kind):
     order = np.argsort(eps); te = np.zeros(len(eps), bool); te[order[::3]] = True
     return ~te, te
 
-def build_input(X, eps, use_eps):
+def build_input(X, eps, use_eps, tr=None):
+    """tr: 训练子集掩码。给了就只用训练样本算 per-channel 归一化标量，
+    否则用传入的全部样本（历史行为）。避免把测试集统计量带进预处理。"""
     N, _, R, _ = X.shape
-    sx = X.reshape(N,4,-1).std(2).mean(0).view(1,4,1,1)
+    src = X[tr] if tr is not None else X
+    sx = src.reshape(src.shape[0],4,-1).std(2).mean(0).view(1,4,1,1)
     IN = X / sx
     if use_eps:
         ec = torch.tensor(eps).view(-1,1,1,1).repeat(1,1,R,R)
@@ -36,7 +39,7 @@ def sd_of(T, N, keep=4):
 def train_net(net, IN, T, tr, epochs=200, seed=0, DEV='cuda', bs=16, tag='', log=True, sD=None):
     torch.manual_seed(seed); np.random.seed(seed)
     N = IN.shape[0]
-    if sD is None: sD = sd_of(T, N)
+    if sD is None: sD = sd_of(T[tr], int(tr.sum()))   # 只用训练样本定目标尺度
     Tn = T / sD
     net = net.to(DEV)
     opt = torch.optim.Adam(net.parameters(), lr=2e-3, weight_decay=1e-5)

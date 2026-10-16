@@ -115,7 +115,7 @@ if os.path.exists(B + '/p2/pairs600_fixedp.npz') and dw:
         a.set_xlabel(r'$\varepsilon=\Delta T/T_0$', fontsize=11); a.set_ylabel(r'$\|Y-X\|/\|Y\|$   ' + CH[k], fontsize=11)
         a.grid(alpha=.25, which='both')
         if k == 0: a.legend(fontsize=8, loc='lower right')
-    fig.suptitle(r'The exponent is set by $\varepsilon$ alone: geometry and fluid move only the prefactor', fontsize=12)
+    fig.suptitle(r'One exponent, many prefactors', fontsize=12)
     fig.tight_layout(rect=[0, 0, 1, .96]); f = P + '/fig5_law_axes.png'; fig.savefig(f); print('saved', f)
 
 # ---------------- 图 6：跨数据集迁移 ----------------

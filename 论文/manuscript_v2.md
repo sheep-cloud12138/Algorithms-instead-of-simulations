@@ -17,13 +17,20 @@ temperature contrast `ε = ΔT/T₀`, and we turn that fact into a design rule f
    `O(Ma²)`, unmeasurable here (changing Ma by a factor 24 changes the correction by less than
    one part in 10⁵). The break-symmetry group is one-dimensional.
 2. **The law.** Over 600 random-boundary-condition samples plus 27 independent small-ε checks
-   (ε = 0.02 … 1.9, five decades), the relative correction obeys
-   `R = ‖Y−X‖/‖Y‖ = A ε^p` with `p = 1.023±0.018 (u_x), 0.995±0.019 (u_y), 1.021±0.077 (θ),
-   1.009±0.015 (p)` and `A = 0.147, 0.193, 0.010, 0.148`. The exponent is 1 within 2 %, the
-   intercept vanishes (`+0.0003 ± 0.0047` for `u_x`), and 134 distinct boundary-condition
-   families add only 3.5 % of explained variance beyond ε. A weak Rayleigh-number trend in the
+   (ε = 0.02 … 1.9, two decades), the relative correction obeys
+   `R = ‖Y−X‖/‖Y‖ = A ε^p` with `p = 1.023±0.018 (u_x), 0.995±0.019 (u_y), 1.024±0.077 (θ),
+   1.009±0.015 (p)` and `A = 0.147, 0.193, 0.010, 0.148`; the intercept vanishes
+   (`+0.0003 ± 0.0047` for `u_x`, i.e. 0.06σ). The exponent is window-averaged: over the full two
+   decades it is 1.02, and 1.23-1.32 if the same data are fitted from ε = 0.8 upwards, which is
+   the fingerprint of the positive ε² term (`R = Aε(1+κε)`, `κ = 0.42-0.83`, §5.1).
+   *Inside the random-wall family*, 134
+   wall-mode families add only 2-3 pp of adjusted R² to `u_x`/`u_y`/`p` (8.5 pp to θ, §5.1);
+   across families the prefactor does move (§5.7). A weak Rayleigh-number trend in the
    prefactor is real and reproducible **in an independent second geometry** for `u_y`
    (`q = −0.083 ± 0.005` vs `−0.077 ± 0.019`) and `θ` (`+0.514 ± 0.015` vs `+0.447 ± 0.045`).
+   A 6.2-fold change in Prandtl number - air to water, 104 strictly paired samples - leaves
+   both the exponent and the prefactor of every channel unchanged (median paired ratio
+   `R_water/R_air` = 1.006 / 0.999 / 0.999 / 0.951).
 3. **Why.** Expanding the compressible member in ε gives an `O(1)` system that is term-by-term
    the Boussinesq equations and an `O(ε)` source from the density-modulated inertia and the
    non-solenoidal velocity field, `∇·u₁ = ∇·(θ₀u₀)`. Because the linearised operator is
@@ -31,19 +38,27 @@ temperature contrast `ε = ΔT/T₀`, and we turn that fact into a design rule f
    ε — confirmed by `cos(D(ε), D(1.2)) = 0.95–1.00` and by a direct check of the divergence
    relation (cosine 0.994 for ε < 0.6). Two terms of the expansion carry 99.0 % of the
    correction energy per configuration.
-4. **Consequence for surrogates.** Any model that receives only the Boussinesq field has an
-   *unreachable* error floor of 8–35 % when ε leaves its training value — the correction is
-   simply absent from its input. Re-parametrising the output as `D = ε·P(X)` and letting the
-   network predict `P` removes ε from the input entirely: it beats the plain architecture by
-   1.62× in extrapolation, lets a network find the `ε²` correction on its own (learned curvature
-   β = 0.20–0.29 for all four channels), transfers unchanged to a Fourier neural operator
-   (1.57×), and is what makes a **single-ε dataset reusable**: a surrogate trained on a public
-   4000-pair dataset that exists only at ε = 1.2 is applied, without retraining, to our own
+4. **Consequence for surrogates.** Once ε leaves the value a surrogate was trained at, no model
+   that sees only the Boussinesq field can recover the difference: at the single ε a published
+   data set offers, the exact transfer error is 25 % (`u_x`), 30 % (`u_y`) and 35 % (`p`) at
+   ε = 1.9, and even the best single ε-blind field leaves 22-29 % there (§5.3).
+   Writing the output as `D = ε·P(X)` and letting the network predict `P` attacks exactly that:
+   it beats the ε-aware plain architecture by 1.62× in extrapolation and the ε-blind one by
+   2.45×, and it lets the network find the `ε²` term by itself (learned curvature β = 0.20–0.29
+   in all four channels, §5.5). With ε moved fully outside the network, so that it never enters
+   the input, it is what makes a **single-ε data set reusable**: a surrogate trained on a public
+   4000-pair data set that exists only at ε = 1.2 is applied, without retraining, to our own
    ε ∈ [0.2, 1.9] data.
-5. **External validation.** The law reproduces on that published dataset (independent group,
-   independent generator, ε ≡ 1.2): `R = 0.180 / 0.244 / 0.023 / 0.186` for
-   `(u_x, u_y, θ, p)` against `0.184 / 0.225 / 0.023 / 0.189` on our own ε ≈ 1.2 slice, and even
-   the secondary Rayleigh-number correlations match (`r = +0.65` for θ in both).
+5. **External validation, five held-out data sets.** The law reproduces on that published data
+   (independent group, independent generator, ε ≡ 1.2): `R = 0.180 / 0.244 / 0.023 / 0.186` for
+   `(u_x, u_y, θ, p)` against `0.184 / 0.225 / 0.023 / 0.189` on our own ε ≈ 1.2 slice, even the
+   secondary Rayleigh-number correlations match (`r = +0.65` for θ in both), and every published
+   `relL2` value of all five splits (38400 values: 9600 samples × 4 channels) reproduces to
+   within 1.2e-7, i.e. float32 round-off.    The prefactor is not universal - between boundary-condition families at fixed ε it moves by
+   1.66× (`u_x`), 1.38× (`u_y`), 4.05× (`θ`) and 1.07× (`p`) - and it is predictable:
+   `R_θ/ε = c·û^a` with `û = max‖u_X‖`, `a = 1.86-1.93`
+   and `c = 0.54-0.69` in four random-wall families spanning two independent generators
+   (R² = 0.90-0.92), against `c = 2.06-2.10` for the classical cavity. The surrogate reads `û` in its input.
 6. **Speed.** Measured on one machine: the paired solver costs 33.9 s per sample (median,
    64², Boussinesq + compressible) and the surrogate 6.3 ms — a factor 5.4×10³ per sample and
    6.9×10⁴ in batches.
@@ -88,8 +103,10 @@ that is term-by-term the Boussinesq system, plus an O(ε) source produced by the
 density-modulated inertia and by the non-solenoidal velocity field `∇·u₁ = ∇·(θ₀u₀)`.
 Because the linearised operator is ε-independent, the correction factorises,
 `Y − X = ε P(X) + ε² Q(X) + ...`, with a shape P that does not rotate as ε
-moves (§3). Measured over five decades of ε (627 samples, §5.1) the relative correction
-obeys `R = A ε^p` with p = 1 within 2 % in all four channels, a vanishing intercept, and a
+moves (§3). Measured over two decades of ε (627 samples, §5.1) the relative correction
+obeys `R = A ε^p` with p = 1.02 in all four channels (a window-averaged exponent: the same
+627 points give 1.23-1.32 when fitted from ε = 0.8 upwards, the ε² curvature of §5.1), a
+vanishing intercept, and a
 prefactor whose weak Rayleigh-number trend reproduces in a second geometry and in a third fluid.
 
 **What it buys.** Because the ε dependence can be written outside the network, a surrogate
@@ -107,7 +124,7 @@ four channels), and the same prior transfers unchanged to a Fourier neural opera
    Boussinesq-compressible pair and show the group is one-dimensional rather than two (§2).
 2. We derive the correction's factorisation from an ε-expansion and verify all five of its
    predictions numerically, including the divergence relation (§3).
-3. We calibrate the resulting law on 627 paired samples spanning five decades of ε, in two
+3. We calibrate the resulting law on 627 paired samples spanning two decades of ε, in two
    geometries and two Prandtl numbers, and validate it on an independently generated public data
    set — including the secondary Rayleigh-number trends (§5.1, §5.7, §5.9, §5.12).
 4. We turn the law into a surrogate design rule (`D = ε P(X)`), measure what it is worth
@@ -188,7 +205,7 @@ Five predictions follow, and all five hold:
 
 | prediction | measurement |
 |---|---|
-| `R → 0` as ε → 0 | intercept `+0.0003 ± 0.0047` (u_x); 0.01σ from zero |
+| `R → 0` as ε → 0 | intercept `+0.0003 ± 0.0047` (u_x); 0.06σ from zero |
 | `R ∝ ε` | p = 1.023±0.018 / 0.995±0.019 / 1.009±0.015 (u_x/u_y/p) |
 | the shape of D does not rotate with ε | `cos(D(ε),D(1.2)) = 0.95–1.00`, four channels × five ε |
 | `∇·u₁ = ∇·(θ₀u₀)` | `div(Y)` vs `ε∇·(θu_X)`: cosine **+0.994** for ε < 0.6, +0.965 overall, amplitudes 2.26e-2 vs 2.10e-2 |
@@ -208,7 +225,9 @@ exactly what the fifth line measures independently.
 | paired | 20×5 | only ε; Ra and the θ boundary stream fixed within a configuration | exact ε-blind floor, shape invariance |
 | aspect 2:1 | 104 | same law, geometry 2×1 | external validity |
 | tight rerun | 10 | the 10 worst-converged samples, tolerance 1e-6 → 1e-8 | noise control |
-| public (Menglik et al.) | 4000 + 200 | ε ≡ 1.2, Ra ~ logU[10²,3·10⁶] | external validation, cross-data-set transfer |
+| public, random walls (Menglik et al.) | 4000 + 3×200 | ε ≡ 1.2; the three held-out splits differ in wall dials and in whether the side walls are constant | external validation, cross-data-set transfer |
+| public, classical cavity (Menglik et al.) | 5000 + 200 | constant hot/cold side walls, adiabatic top and bottom, ε ≡ 1.2 | external validation of the prefactor |
+| water (this work) | 104 | Pr = 4.38; BC/Ra/ε draws bit-identical to 104 of the random-BC samples | test of the fluid axis |
 
 Surrogates use residual learning `Ŷ = X + N(...)`, a U-Net of width 32 (or an FNO2d with
 modes 12, width 32, four layers, 1.19 M parameters), Adam with cosine annealing, 200 epochs,
@@ -218,14 +237,27 @@ in ε, n = 200). Errors are the per-channel relative L2 error against Y; "floor"
 
 ## 5. Results
 
-### 5.1 The ε-law, calibrated over five decades
+### 5.1 The ε-law, calibrated over two decades
 
 | channel | `R = A ε^p` | A | R² | intercept (ε ≤ 0.5) |
 |---|---|---|---|---|
 | u_x | p = 1.023 ± 0.018 | 0.147 | 0.84 | +0.0003 ± 0.0047 |
 | u_y | p = 0.995 ± 0.019 | 0.193 | 0.82 | +0.0030 ± 0.0062 |
-| θ | p = 1.021 ± 0.077 | 0.010 | 0.22 | −0.0003 ± 0.0012 |
+| θ | p = 1.024 ± 0.077 | 0.010 | 0.22 | −0.0003 ± 0.0012 |
 | p | p = 1.009 ± 0.015 | 0.148 | 0.87 | +0.0016 ± 0.0030 |
+
+*The exponent is window-averaged, and the curvature is real.* The fit above uses the full two
+decades, including the 27 check points at ε ≤ 0.1 where R is closest to its linear limit.
+Fitting only ε ≥ 0.8 gives p = 1.23 ± 0.08 / 1.25 ± 0.08 / 1.21 ± 0.34 / 1.32 ± 0.06, and
+fitting each of the 20 paired configurations separately over ε ∈ [0.4, 1.9] gives a median
+p = 1.31 / 1.17 / 1.21 / 1.45 (median R² = 0.98, `code/audit_v2.py`). That is the signature of
+`R = Aε(1+κε)` rather than of an exact power: a power law fitted to a curved function over a
+window that excludes small ε returns `p ≈ 1 + κ⟨ε⟩`. The quadratic fit `R = aε + cε² + b`
+gives c > 0 in all four channels (u_x: `+0.0513 ± 0.0133`, 3.9σ; u_y `+0.0695`, θ `+0.0060`,
+p `+0.0539`) with `κ = c/a = 0.70 / 0.83 / 0.42 / 0.73`. We therefore state the law as
+**first order in ε**, `R = Aε(1 + O(ε))`, quote p = 1.02 as the number a wide-window fit
+returns, and note that the ε² curvature is independently recovered by the network (§5.5,
+β = 0.20-0.29) and by the mode expansion (§3, ε¹+ε² carry 99.0 % of the correction energy).
 
 Two-parameter refinement (the Ra trend is real; `q` for u_y and θ reproduces in the 2:1 geometry):
 
@@ -238,8 +270,10 @@ Two-parameter refinement (the Ra trend is real; `q` for u_y and θ reproduces in
 
 * ε-scaling is geometry-independent; the prefactor A is not (0.147→0.175 for u_x,
   0.148→0.222 for p, 0.193→0.175 for u_y, 0.010→0.008 for θ).
-* Boundary-condition families barely matter: 134 families, 133 free dummies, u_x R² only
-  0.613 → 0.719 (adjusted: +3.5 %).
+* Boundary-condition families barely matter *inside this family*: 134 wall-mode families, 133
+  free dummies. Adding them to the ε-only fit raises the adjusted R² by 2.3 pp (`p`), 2.9 pp
+  (`u_y`), 3.3 pp (`u_x`) and 8.5 pp (θ) — the ε-scaling is not an artefact of which wall modes
+  were drawn (`code/audit_numbers.py`).
 * The θ channel needs one extra, cheaply available parameter, the advection strength of the base
   flow `χ = ‖u‖‖∇θ‖/‖θ‖`: `R_θ = ε(−0.0037 + 0.226χ)`, R² 0.185 → **0.778**
   (Spearman 0.902), i.e. `R_θ ≈ 0.23 ε χ`. For u_x/u_y/p adding χ does nothing. (A single-input form of the same
@@ -251,20 +285,26 @@ Two-parameter refinement (the Ra trend is real; `q` for u_y and θ reproduces in
 
 Pairing the two members' *raw* pressures mixes units: the compressible raw pressure carries a
 hydrostatic ramp 12× larger than its dynamic part, and the two weak forms use opposite pressure
-sign conventions. Before the fix `|X_p|/|Y_p| = 0.053` and `cos(X_p, Y_p) = −0.109`, and the
-p-channel "law" was a constant (`R_p ≈ 1.0`). Applying the recipe used by the public data set —
-subtract the mean, remove a least-squares linear-in-y fit, flip the sign of the Boussinesq member
-— gives `|X_p|/|Y_p| = 0.931` and `cos = +0.993` (the public set gives 0.929), and the channel
+sign conventions. Before the fix the per-sample median of
+`|X_p|/|Y_p|` is 0.065 and of `cos(X_p, Y_p)` is −0.105, and the p-channel "law" was a constant
+(`R_p ≈ 1.0`). Applying the recipe used by the public data set — subtract the mean, remove a
+least-squares linear-in-y fit, flip the sign of the Boussinesq member — gives 0.960 and
+`cos = +0.991` under the same median convention, against 0.929 and +0.986 for the public
+training set, i.e. we now match their pairing to within 3 % (`code/audit_v2.py`), and the channel
 then obeys the same law as the velocities (`A = 0.148`, `p = 1.009`). All p-channel numbers
 reported here are post-fix.
 
-### 5.3 The ε-blind floor is exact and not cosmetic
+### 5.3 The ε-blind ceiling, measured exactly
 
 Within a configuration X is identical for all ε, so an ε-blind model must emit one field `F`
-for every ε; the best such `F` (available to any model, since X determines the configuration)
-gives an exact lower bound. Median over 20 configurations, channels `u_x/u_y/θ/p`:
+for every ε it is applied at. Two reference protocols are exact rather than fitted: (A) train at
+the one ε a published data set offers (here ε = 1.2) and apply it everywhere, error
+`‖Y(ε) − Y(1.2)‖/‖Y(ε)‖`; (B) the single field that best serves the whole range, the ε-mean of Y.
+(B) is a least-squares compromise over the ε-range, **not a per-ε lower bound** — a field tuned
+to ε = 0.8 gives 0.067 at ε = 0.4, better than (B)'s 0.170 there, and below ε ≈ 0.8 doing nothing
+beats both. Median over 20 configurations, channels `u_x/u_y/θ/p`:
 
-| ε | do nothing (`Ŷ=X`) | train at ε = 1.2 only | best ε-blind |
+| ε | do nothing (`Ŷ=X`) | (A) train at ε = 1.2 only | (B) ε-mean field |
 |---|---|---|---|
 | 0.4 | 0.060 / 0.098 / 0.009 / 0.061 | 0.143 / 0.219 / 0.021 / 0.146 | 0.170 / 0.244 / 0.023 / 0.177 |
 | 0.8 | 0.127 / 0.203 / 0.019 / 0.129 | 0.078 / 0.118 / 0.011 / 0.082 | 0.108 / 0.143 / 0.013 / 0.126 |
@@ -272,9 +312,23 @@ gives an exact lower bound. Median over 20 configurations, channels `u_x/u_y/θ/
 | 1.6 | 0.322 / 0.481 / 0.044 / 0.347 | 0.112 / 0.151 / 0.014 / 0.131 | 0.079 / 0.123 / 0.012 / 0.085 |
 | 1.9 | 0.472 / 0.616 / 0.058 / 0.547 | 0.251 / 0.304 / 0.031 / 0.346 | 0.225 / 0.286 / 0.028 / 0.281 |
 
-A surrogate built the way the published single-ε data set allows (train at ε = 1.2) therefore
-carries an irreducible 8–35 % error at any other ε. Note that at ε = 0.4–0.8 "do nothing" is
-*better* than that protocol.
+Protocol (A) is what a single-ε public data set forces: 25 % (`u_x`), 30 % (`u_y`) and 35 %
+(`p`) error at ε = 1.9, 8 % (`u_x`) already at ε = 0.8, and — the point for practice — at
+ε = 0.4–0.8 "do nothing" is *better* than it. Protocol (B), the best an ε-blind model could
+possibly do over the range, still leaves 22.5 / 28.6 / 28.1 % at ε = 1.9. The whole effect is one
+line of arithmetic, and the paired set measures it exactly (`code/exp_paired_final.py`;
+diagonal is identically zero because the same ε is the same solution):
+
+| `R(u_x)` applied at ↓ / taken from → | 0.4 | 0.8 | 1.2 | 1.6 | 1.9 |
+|---|---|---|---|---|---|
+| ε = 0.4 | 0 | 0.067 | 0.143 | 0.235 | 0.353 |
+| ε = 0.8 | 0.068 | 0 | 0.078 | 0.183 | 0.305 |
+| ε = 1.2 | 0.149 | 0.081 | 0 | 0.110 | 0.243 |
+| ε = 1.6 | 0.265 | 0.199 | 0.112 | 0 | 0.140 |
+| ε = 1.9 | 0.402 | 0.328 | 0.251 | 0.142 | 0 |
+
+The error is set by the distance in ε and by nothing else — which is precisely the quantity
+`ε·P(X)` puts back into the model.
 
 ### 5.4 Network baselines: the correction is information, not capacity
 
@@ -291,8 +345,9 @@ U-Net, width 32, 200 epochs, identical protocol for all columns:
 | | θ | 0.0253 | **0.0097** | 2.60× | 0.0381 | 94 % |
 | | p | 0.1735 | **0.0658** | 2.64× | 0.2386 | 92 % |
 
-Model A sits on the paired-set ε-blind bound (0.225 vs 0.2249 at ε > 1.3): the ceiling is
-informational, not architectural. Shallow alternatives fail the same way (kernel ridge
+Model A's error (0.2249) and the best possible ε-blind model on the paired set at ε = 1.9
+(0.2249, §5.3) coincide to three digits while being measured on two different data sets: the
+ceiling is informational, not architectural. Shallow alternatives fail the same way (kernel ridge
 regression on the same 600 samples gains nothing from ε, 0.296 → 0.301; a reduced-rank linear
 transfer of the reference correction gains ≤ 1.6× for velocity).
 
@@ -312,12 +367,14 @@ still D):
 
 Two things happen at once. In extrapolation the factorised output beats the plain one by
 **1.62×** (u_x), consistently across channels. And the network *discovers* a positive curvature
-on its own, β = 0.20–0.29, the same sign and order as the ε² term measured in §5.1 — an
+on its own, β = 0.20–0.29, the same sign and order as the ε² term of the expansion in §3 — an
 independent check of the asymptotic expansion.
 
-A Fourier neural operator (1.19 M parameters) behaves identically: u_x 0.2286 (no ε) → 0.1348
-(ε input) → **0.1454** (prior, X-only input, ε multiplied back outside the network), i.e. the
-prior is backbone-independent.
+A Fourier neural operator (1.19 M parameters) shows the same pattern against its ε-blind
+version: u_x 0.2286 → **0.1454** with the prior and ε multiplied back outside the network
+(1.57×), although on this backbone an explicit ε input channel does better (0.1348). The prior's
+value is therefore not that it beats an ε-aware model — it is that it needs no ε in the input
+(§5.6, §5.8).
 
 ### 5.6 Data efficiency, honestly
 
@@ -355,38 +412,50 @@ test pairs, CC BY 4.0), generated by another group with their own pipeline, at a
 | p | 0.1858 (0.117–0.246) | 0.1889 (0.128–0.262) |
 
 * *Even the secondary trends reproduce:* correlation of R with log₁₀Ra is
-  `+0.133 / −0.419 / +0.647 / −0.198` on their data and `+0.053 / −0.520 / +0.652 / −0.185` on
-  ours (u_x/u_y/θ/p). The θ channel — the one whose scatter we explain with χ — has `r = +0.65`
-  in both, from independently generated data.
-* *Four held-out splits, four prefactors, one predictable pattern.* The release publishes three
-  further held-out splits generated by the same generator and the same solver commit
-  (`v6_freefall_20260921`, `raw_both_deramp` pressure convention): `test_in_distribution` (200
+  `+0.133 / −0.419 / +0.647 / −0.198` on their ε ≡ 1.2 data and `+0.032 / −0.511 / +0.662 /
+  −0.263` on our ε ∈ [1.1,1.3] slice (64 samples, u_x/u_y/θ/p). The θ channel — the one whose
+  scatter we explain next — has `r = +0.66` on ours and `+0.65` on theirs, from independently
+  generated data.
+* *Five splits, four prefactors, one predictable pattern.* The release publishes three further
+  held-out splits generated by the same generator and the same solver commit
+  (`v6_freefall_20260921`, `raw_both_deramp` pressure convention; the OOD split carries the later tag `v6_freefall_ood_20260925`) - `test_in_distribution` (200
   random-wall pairs), `test_ood` (200 random-wall pairs whose vertical-wall Fourier dials lie
-  outside the training range), and `test_legacy` (200 pairs of the classical cavity: constant hot
-  and cold side walls, adiabatic top and bottom). Our recomputation reproduces every published
-  `relL2_*` column of all four splits exactly, so the comparison is convention-safe. At the fixed
-  ε = 1.2 the medians of `R = ‖Y−X‖/‖Y‖` are
+  outside the training range) and `test_legacy` (200 pairs of the classical cavity: constant hot
+  and cold side walls, adiabatic top and bottom) - and we had already downloaded `train_legacy`,
+  5000 classical-cavity pairs. Recomputing all of `relL2_u_x`, `relL2_u_y`, `relL2_T`, `relL2_p`
+  for **every sample of all five splits (38400 values: 9600 samples × 4 channels)** under our
+  conventions reproduces the published numbers to within 1.2e-7 (float32 round-off;
+  `code/verify_conventions.py`), so nothing below is a convention artefact. At the fixed ε = 1.2 the medians of `R = ‖Y−X‖/‖Y‖` are
 
 | split | n | `u_x` | `u_y` | `θ` | `p` |
 |---|---|---|---|---|---|
-| train | 4000 | 0.1797 | 0.2435 | 0.0228 | 0.1858 |
+| train (random walls) | 4000 | 0.1797 | 0.2435 | 0.0228 | 0.1858 |
 | test_in_distribution | 200 | 0.1822 | 0.2388 | 0.0220 | 0.1863 |
-| test_ood | 200 | 0.1567 | 0.2157 | 0.0214 | 0.1671 |
-| test_legacy | 200 | 0.2984 | 0.3390 | 0.0836 | 0.1983 |
+| test_ood (harder wall dials) | 200 | 0.1567 | 0.2157 | 0.0214 | 0.1671 |
+| train_legacy (classical cavity) | 5000 | 0.2988 | 0.3362 | 0.0926 | 0.1989 |
+| test_legacy (classical cavity) | 200 | 0.2984 | 0.3390 | 0.0836 | 0.1983 |
 
   The exponent cannot be re-tested here - every split sits at one ε - but the prefactor is put
-  under pressure and it moves: 1.9× between the classical cavity and the random-wall families at
-  the same ε. That is a statement about the flow, not a defect of the law, and the θ channel makes
-  the mechanism explicit. Writing `û = max|u_X|` (a property of the Boussinesq field, hence
-  available to any surrogate),
+  under pressure and it moves: by 1.66× (`u_x`), 1.38× (`u_y`), 4.05× (`θ`) and 1.07× (`p`)
+  between the classical cavity and the random-wall families at the same ε, and `train_legacy` and
+  `test_legacy` agree to three digits in `u_x` and `p` (θ: 0.0926 vs 0.0836, 10 %), which is the
+  internal consistency check for the whole comparison. That is a statement about the flow, not a defect of
+  the law, and the θ channel makes the mechanism explicit. Writing `û = max‖u_X‖`, the peak speed of the
+  Boussinesq field (hence available to any surrogate),
 
-`R_θ/ε = c·û^a`, with `a = 1.86 ± 0.03`, `c = 0.54` on our 600 samples;
-  `a = 1.90 ± 0.01`, `c = 0.60` on their 4000; `a = 1.93 ± 0.04`, `c = 0.56` on their OOD split.
-  Two independent generators, three families, R² = 0.90-0.92, coefficients agreeing to 25 %. The
-  classical cavity is the outlier (`a = 2.37`, `c = 2.10`) and is also the one whose flow is
-  qualitatively different: a single strong circulation with `û` 33 % above the random-wall median.
-  The same reading explains the residual scatter in `u_x/u_y/p` in §5.1: A is not a universal
-  constant, it is a functional of the flow, and the flow is in the input.
+| data set | n | `R_θ/ε = c·û^a` | R² |
+|---|---|---|---|
+| ours, random walls, Pr = 0.71 | 600 | a = 1.864 ± 0.026, c = 0.544 | 0.90 |
+| public train, random walls | 4000 | a = 1.902 ± 0.010, c = 0.602 | 0.91 |
+| public test_in_distribution | 200 | a = 1.977 ± 0.041, c = 0.691 | 0.92 |
+| public test_ood | 200 | a = 1.931 ± 0.041, c = 0.561 | 0.92 |
+| public train_legacy, classical cavity | 5000 | a = 2.360 ± 0.002, c = 2.063 | **0.995** |
+| public test_legacy, classical cavity | 200 | a = 2.368 ± 0.011, c = 2.095 | **0.996** |
+
+  Two independent groups, two independent generators, six data sets: the random-wall families all
+  give `c = 0.54-0.69`, the classical cavity - whose flow is a single strong circulation with `û`
+  41 % above the public random-wall median and 56 % above ours - gives `c = 2.06-2.10` (`code/exp_uhat_law.py`). The same reading explains the residual
+  scatter in `u_x/u_y/p` in §5.1: A is a functional of the flow, and the flow is in the input.
 
 * *Cross-data-set transfer.* *(numbers in `~/nc_run/p7/public_transfer.json`; see §5.8)*
 
@@ -397,11 +466,11 @@ test pairs, CC BY 4.0), generated by another group with their own pipeline, at a
 ### 5.9 A second geometry (aspect ratio 2:1, 104 samples)
 
 Same generator, same Ra and ε ranges, cavity twice as wide. The ε exponent is unchanged
-(p = 1.09 / 1.16 / 0.93 / 1.08 for u_x/u_y/θ/p, all within ~1σ of the unit-square values),
+(p = 1.09 / 1.16 / 0.93 / 1.08 for u_x/u_y/θ/p, 0.7σ, 1.8σ, 0.3σ and 0.7σ away from the unit-square values (u_x/u_y/θ/p)),
 while the prefactor moves (A = 0.175 / 0.175 / 0.008 / 0.222 versus 0.147 / 0.193 / 0.010 /
 0.148). The Rayleigh trend is stronger for u_x and p here (q = −0.14, −0.15 vs 0.00, −0.03) and
 reproduces for u_y and θ. **The ε-scaling is geometry-independent; calibration of A is not** —
-which is exactly why the surrogate takes X as input rather than a table of A.
+which is exactly why the surrogate takes X as input rather than a table of A. Changing the fluid instead (Pr 0.71 -> 4.38) moves neither the exponent nor the prefactor, §5.12.
 
 ### 5.10 Solver noise is not the source of the law
 
@@ -426,18 +495,52 @@ which is exactly why the surrogate takes X as input rather than a table of A.
 
 Factor **5.4×10³** per sample, **6.9×10⁴** in batches.
 
+### 5.12 A third fluid: Pr = 4.38 (water)
+
+Pr and ε do not mix. Pr enters the coefficients of both members (`Re⁻¹ = (Pr/Ra)^{1/2}`) and hence the Boussinesq solution X, but the ε-expansion of §3 never multiplies the two.
+The prediction is therefore sharp and asymmetric - the exponent must not move, while the prefactor
+may, because X itself has changed.
+
+We generated 104 further pairs at Pr = 4.38 (water at 20 C) that are **bit-identical to the first
+104 samples of the main batch in every other respect**: same seed stream, hence the same
+wall-temperature Fourier draws, the same Ra and the same ε. The two families are therefore a strict
+paired experiment in which the fluid is the only difference (the Mach-number law is unchanged, and
+Ma is inert, §2.2).
+
+| | ε | Ra | `u_x` | `u_y` | `θ` | `p` |
+|---|---|---|---|---|---|---|
+| Pr = 0.71, A (unit square, §5.1) | 0.2-1.9 | 10²-10⁶ | 0.1468 | 0.1934 | 0.0097 | 0.1482 |
+| Pr = 4.38, A (104 samples) | 0.21-1.89 | 1.1·10²-8.9·10⁵ | 0.1496 | 0.1985 | 0.0082 | 0.1426 |
+| Pr = 4.38, p | | | 1.150 ± 0.054 | 1.049 ± 0.063 | 1.686 ± 0.238 | 1.124 ± 0.054 |
+
+On the 104 matched configurations the paired ratios `R_water/R_air` have medians
+**1.006 / 0.999 / 0.999 / 0.951** (`u_x/u_y/θ/p`; p10-p90 0.99-1.12, 0.90-1.03, 0.95-1.06,
+0.82-1.00), and the paired exponents agree to three digits: `1.150 vs 1.157`, `1.049 vs 1.047`,
+`1.686 vs 1.668`, `1.124 vs 1.109`. A 6.2-fold change in Prandtl number - air to water - moves the
+Boussinesq-compressible discrepancy by less than 1 % on the same configuration.
+
+Pr is therefore not a break-symmetry axis either, and the law's two ingredients separate cleanly:
+ε sets the exponent, the flow sets the prefactor, and the fluid does neither (Table §5.9 shows a
+geometry changing A; §5.7 shows boundary-condition families changing it by 1.9×).
+
 ## 6. Limitations
 
 1. **Two dimensions only.** A three-dimensional pair at res = 16 costs ≥ 23 min for the
-   Boussinesq member alone (1386 s, 21 steps) and 3.4 GB of memory; the compressible member did
-   not complete within 40 min, and the historical res = 24 probe at ε = 1.2 never converged
+   Boussinesq member alone (1386 s for 21 steady steps) and the compressible member was still
+   unfinished when a 30-minute wall-clock cap killed it (`code/run_3d_probe.sh`, `timeout 1800`);
+   the historical res = 24 probe at ε = 1.2 never converged
    (Newton backtracking to dt = 3.7e-4). A 3-D ε-sweep is out of reach on this machine and we do
    not claim one.
 2. **Ma is inert here**, so the break-symmetry group is one-dimensional rather than two. At
    larger Ma this would have to be redone.
 3. **ε < 2**, imposed by the equation of state (cold wall must stay positive).
-4. The law leaves 25–40 % of the variance in u_x/u_y/p unexplained; χ closes that gap only for θ.
-5. The prefactor A is geometry-dependent and must be learned (or calibrated) per configuration.
+4. The two-parameter fits of §5.1 leave 26 / 23 / 28 % of the variance unexplained in
+   u_x / u_y / θ and 17 % in p; the `û` form of §5.7 closes that gap for θ and leaves the same
+   residual flow-dependence in the other three channels.
+5. The prefactor A is configuration-dependent and must be learned: it moves with the geometry
+   (§5.9) and by 1.66× (`u_x`) / 1.38× (`u_y`) / 4.05× (`θ`) / 1.07× (`p`) between
+   boundary-condition families of an independent data set (§5.7),
+   while it is insensitive to the fluid (Pr, §5.12).
 6. The public data set and ours differ by 0.08 % in Ra_eff at ε = 1.2 (1.2/1.095² = 1.000813);
    their v2 release corrects this and the two now agree.
 
@@ -451,9 +554,11 @@ by a single parameter in an exact and predictable way.
    break-symmetry axis is ε = ΔT/T₀ and nothing else; Mach-number effects are O(Ma²) and
    are invisible at the values reached here.
 2. **A clean law.** `R = ‖Y−X‖/‖Y‖ = A ε^p` with p = 1.023 ± 0.018, 0.995 ± 0.019,
-   1.021 ± 0.077, 1.009 ± 0.015 (u_x, u_y, θ, p), an intercept indistinguishable from zero,
-   and a seven-parameter boundary-condition description that adds only 3.5 % of explained
-   variance. The exponent is geometry-independent and fluid-independent; only the prefactor A
+   1.024 ± 0.077, 1.009 ± 0.015 (u_x, u_y, θ, p), an intercept indistinguishable from zero,
+   the exponent quoted over the full two-decade window (from ε = 0.8 upwards the same points
+   give 1.23-1.32, the ε² curvature of §5.1),
+   and a 134-family boundary-condition description (133 dummies) that adds only 2-3 pp of
+   adjusted R² to the velocity and pressure channels. The exponent is geometry-independent and fluid-independent; only the prefactor A
    must be calibrated, which is why the surrogate takes X as input rather than a table of A.
 3. **A reason.** The ε-expansion of the compressible member reproduces the Boussinesq system
    at O(1) and produces the correction through `∇·u₁ = ∇·(θ₀u₀)` and the density-modulated
@@ -468,7 +573,8 @@ by a single parameter in an exact and predictable way.
    must be retrained and one that can be applied.
 
 The honest limits are in §6: two dimensions, ε < 2, one-dimensional break symmetry, and a
-prefactor that carries 25–40 % unexplained variance in three of the four channels. None of them
+prefactor whose two-parameter fits leave 26 % (`u_x`), 23 % (`u_y`) and 28 % (θ) of the variance
+unexplained. None of them
 touch the claim that matters for practice, which is that the ε dependence is known in
 closed form and should not be left to the network to discover from data.
 
@@ -485,8 +591,27 @@ JSON results are under `~/nc_run/`:
 | `exp_paired_final.py` | the ε-blind floor and shape invariance (§5.3) |
 | `exp_modes.py` | the ε^k mode expansion (§3) |
 | `exp_chi.py` | the χ explanation for θ (§5.1) |
-| `lib.py`, `exp_p2_fixed.py`, `exp_prior_ablation.py`, `exp_fno.py`, `exp_learning_curve.py` | surrogates (§5.4–5.6) |
+| `harness.py`, `exp_ml_final.py` | the unified surrogate ablation: A/B/P1/P2/P3, 3 seeds (§5.4–5.6) |
+| `fno_lib.py`, `exp_fno_final.py` | the FNO baseline under the same protocol (§5.5) |
+| `exp_lc_final.py` | learning curves (§5.6) |
+| `exp_pod.py` | the POD-ROM / linear-surrogate baselines (§5.4) |
+| `exp_p2_fixed.py`, `exp_prior_ablation.py`, `exp_fno.py`, `exp_learning_curve.py` | first-generation runs of the same experiments (superseded by the three scripts above) |
 | `exp_public_transfer.py` | external validation and transfer (§5.7–5.8) |
 | `exp_aspect2.py` | the 2:1 geometry (§5.9) |
 | `exp_tight.py`, `exp_final_numbers.py` | noise control and timing (§5.10–5.11) |
+| `exp_water.py` | the strictly paired Pr = 4.38 fluid study (§5.12) |
+| `verify_conventions.py` | the 9600-value convention audit against the published `relL2` columns (§5.7) |
+| `exp_public_splits.py`, `exp_legacy5000.py`, `exp_uhat_law.py` | the five public splits and the `û` law (§5.7) |
+| `audit_v2.py` | every robustness number the review asked for: p vs fitting window, κ, pressure-pair conventions, `û` medians, the 2:1 σ distances |
+| `make_figs.py`, `make_figs2.py` | every figure, from the JSON results |
 | `make_tables.py` | regenerates every table from the JSON results |
+
+Code and every machine-readable result are mirrored at
+`https://github.com/sheep-cloud12138/Algorithms-instead-of-simulations` (working branch `dev`;
+`master` carries snapshots that have passed an independent review). The raw solver output
+(600 + 104 + 104 + 27 paired samples, ~6 GB) stays on the machine described above; every
+number in this paper is regenerated from the JSON results in `~/nc_run/p7/` by reporting
+scripts, not transcribed by hand. Figures: `fig1_破缺律_v6.png` (the law), `fig2_floor.png`
+(the ε-blind floor), `fig3_prior.png` (the prior ablation), `fig4_learning.png` (learning
+curves), `fig5_law_axes.png` (one exponent, many prefactors), `fig7_theta_flow.png` (the `û`
+law), `fig8_water_paired.png` (the paired fluid study).

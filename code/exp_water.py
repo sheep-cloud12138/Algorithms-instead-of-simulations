@@ -102,5 +102,8 @@ if pair:
         print('  %-6s 水 p=%.3f±%.3f | 空气 p=%.3f±%.3f' % (c, sl, se, sl2, se2))
 
 json.dump(dict(n=len(rows), Pr=4.38, law=law, ra_trend=ra_tr, eps=E.tolist(), Ra=RA.tolist(), R=R.tolist(),
-               n_paired=len(pair), paired=pr), open(B + '/p7/water.json', 'w'), indent=1)
+               n_paired=len(pair), paired=pr,
+               paired_R_water=R[pi].tolist() if pair else [],
+               paired_R_air=Ra_own[pj].tolist() if pair else [],
+               paired_eps=E[pi].tolist() if pair else []), open(B + '/p7/water.json', 'w'), indent=1)
 print('\nsaved ~/nc_run/p7/water.json')

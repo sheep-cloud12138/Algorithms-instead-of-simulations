@@ -47,7 +47,7 @@ for split in ['train_legacy', 'test_legacy']:
               % (c, np.median(R[:, k]), np.percentile(R[:, k], 10), np.percentile(R[:, k], 90), r1, s2, np.exp(i2), r2))
         d[c] = dict(median=float(np.median(R[:, k])), p10=float(np.percentile(R[:, k], 10)),
                     p90=float(np.percentile(R[:, k], 90)), r_logRa=float(r1),
-                    umax_a=float(s2), umax_c=float(np.exp(i2)), umax_r=float(r2),
+                    umax_a=float(s2), umax_c=float(10 ** i2), umax_r=float(r2),   # 底数是 10，不是 e
                     umax_R2=float(r2 ** 2))
     res[split] = d
 json.dump(res, open(OUT, 'w'), indent=1)

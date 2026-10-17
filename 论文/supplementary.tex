@@ -29,7 +29,7 @@ numbers in cross-references refer to the main text.
 \end{abstract}
 \end{frontmatter}
 
-The solver runs behind every number in the main text are: 600 main solutions
+The runs behind every number in the main text are: 600 main solutions
 (\path{run_batch.sh}), 100 paired (\path{run_paired.sh}), 27 at
 $\varepsilon\to0$ (\path{run_eps0.sh}), 104 at $Pr=4.38$ (\path{run_water.sh});
 \path{run_cpu_queue.sh} adds the 2:1 geometry and the tight-tolerance reruns.
@@ -44,7 +44,7 @@ $\varepsilon\to0$ (\path{run_eps0.sh}), 104 at $Pr=4.38$ (\path{run_water.sh});
 prediction & measurement\\
 \midrule
 $R\to0$ as $\varepsilon\to0$ & intercept $+0.0003\pm0.0047$ ($u_x$); $0.06\sigma$ from zero\\
-$R\propto\varepsilon$ & $p=1.023\pm0.018$ / $0.995\pm0.019$ / $1.009\pm0.015$
+$R\propto\varepsilon$ & $m=1.023\pm0.018$ / $0.995\pm0.019$ / $1.009\pm0.015$
 ($u_x/u_y/p$), window-averaged over the two decades; the residual is the $\varepsilon^2$ term
 (Sec.~\ref{sec:law})\\
 the shape of $D$ does not rotate with $\varepsilon$ & $\cos(D(\varepsilon),D(1.2))=0.95$--$1.00$,
@@ -61,12 +61,12 @@ correction energy, $\varepsilon^1+\varepsilon^2$ carries 99.0\%, $\varepsilon^3$
 \begin{table}[htbp]
 \centering
 \small
-\caption{Two-parameter refinement, $R=A\varepsilon^pRa^q$. The $Ra$ trend for $u_y$ and $\theta$
+\caption{Two-parameter refinement, $R=A\varepsilon^mRa^q$. The $Ra$ trend for $u_y$ and $\theta$
 reproduces in the 2:1 geometry.}
 \label{tab:two-param}
 \begin{tabular}{@{}lcc@{}}
 \toprule
-channel & unit cavity ($n=600$) $p$ / $q$ / $R^2$ & aspect 2:1 ($n=104$) $p$ / $q$ / $R^2$\\
+channel & unit cavity ($n=600$) $m$ / $q$ / $R^2$ & aspect 2:1 ($n=104$) $m$ / $q$ / $R^2$\\
 \midrule
 $u_x$ & $1.081$ / $+0.003\pm0.006$ / $0.74$ & $1.071$ / $-0.143\pm0.019$ / $0.71$\\
 $u_y$ & $1.016$ / $-0.083\pm0.005$ / $0.77$ & $1.146$ / $-0.077\pm0.019$ / $0.69$\\
@@ -187,7 +187,7 @@ and timing (Secs.~\ref{sec:noise}--\ref{sec:cost})\\
 \texttt{relL2} columns (Sec.~\ref{sec:public})\\
 \path{exp_public_splits.py},\newline \path{exp_legacy5000.py}, \path{exp_uhat_law.py} & the
 five public splits and the $\hat u$ law (Sec.~\ref{sec:public})\\
-\path{audit_v2.py} & every robustness number the review asked for: $p$ vs fitting window,
+\path{audit_v2.py} & every robustness number the review asked for: $m$ vs fitting window,
 $\kappa$, pressure-pair conventions, $\hat u$ medians, the 2:1 $\sigma$ distances\\
 \path{make_figs.py}, \path{make_figs2.py} & every figure, from the JSON results\\
 \path{make_tables.py} & regenerates every table from the JSON results\\

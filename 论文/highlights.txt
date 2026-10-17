@@ -1,0 +1,5 @@
+Boussinesq–compressible gap follows R = A ε^m with m = 1.02 in four channels
+Relative temperature contrast is the only axis; a 24× Ma change is unmeasurable
+627 paired solves fix the law; public data reproduce only its amplitude
+At ε = 1.2 integral Nu shifts 0.6% but local wall flux redistributes 4.25%
+Factored prior D = εP(X): 1.6× over plain and 1.9× over ε-blind networks

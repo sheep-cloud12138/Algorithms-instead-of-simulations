@@ -47,7 +47,7 @@ for k in range(4):
     a.set_xlabel(r'$\varepsilon=\Delta T/T_0$',fontsize=12); a.set_ylabel(r'$\|Y-X\|/\|Y\|$   '+CH[k],fontsize=12)
     a.grid(alpha=.25,which='both'); a.legend(fontsize=8,loc='lower right')
     if k==0: cb=fig.colorbar(sc,ax=a,pad=.02); cb.set_label(r'$\log_{10}Ra$',fontsize=10)
-fig.suptitle('Boussinesq-compressible discrepancy collapses on $\\varepsilon=\\Delta T/T_0$ over 5 decades (627 samples)',fontsize=12)
+fig.suptitle('Boussinesq-compressible discrepancy collapses on $\\varepsilon=\\Delta T/T_0$ over two decades (627 samples)',fontsize=12)
 fig.tight_layout(rect=[0,0,1,.96])
 p=os.path.expanduser('~/nc_run/p7/fig1_law_v2.png'); fig.savefig(p); print('saved',p)
 for k in range(4):

@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage{hyperref}
+\pagestyle{empty}
+\setlength{\parskip}{6pt}
+\begin{document}
+
+\noindent
+To the Editors,\\
+\emph{International Journal of Heat and Mass Transfer}
+
+\vspace{10pt}
+\noindent
+Dear Editors,
+
+\noindent
+Please consider our manuscript, ``The Boussinesq--compressible gap in two-dimensional steady
+Rayleigh--B\'enard convection is linear to leading order in the relative temperature contrast: a
+factorised physics prior for surrogates'', for publication in the \emph{International Journal of
+Heat and Mass Transfer} as a full-length article.
+
+\noindent
+Surrogates for thermal convection are trained overwhelmingly on Boussinesq data, yet the flows
+engineers need are compressible. The two are close in integral quantities such as the Nusselt
+number and differ in the local fields that surrogates are asked to reproduce. The manuscript
+establishes what sets the size of that difference and turns the answer into a design rule.
+
+\begin{itemize}\setlength{\itemsep}{2pt}
+\item \textbf{One axis.} In the non-dimensionalisation used by the released paired data and by our
+solver, the Froude number is pinned ($Fr^2=\varepsilon$ identically) and the Mach number enters at
+$O(Ma^2)$; a 24-fold change in $Ma$ moves the correction by less than $10^{-5}$. The
+break-symmetry group is therefore one-dimensional, spanned by $\varepsilon=\Delta T/T_0$.
+\item \textbf{A measured law.} Across 627 paired two-dimensional solves in the unit square at
+$Pr=0.71$ spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys
+$R=A\varepsilon^{m}$ with $m=1.02$ in all four fields, a vanishing intercept, and an
+$\varepsilon^2$ curvature that matches the asymptotic expansion. In 104-sample checks in a 2:1
+geometry and at $Pr=4.38$ the exponent is statistically unchanged; the amplitude reproduces on an
+independently generated public data set at $\varepsilon=1.2$.
+\item \textbf{A design rule.} Because the correction factorises as $D=\varepsilon P(X)$, a network
+that predicts only $P$ extrapolates $1.61\times$ better than the plain architecture, and
+$1.89\times$ better than an $\varepsilon$-blind network when $\varepsilon$ is withheld, which makes
+single-contrast public data reusable at other contrasts within one boundary-condition family, without
+retraining.
+\item \textbf{Wall heat transfer.} At $\varepsilon=1.2$ the integral Nusselt number changes by
+$0.6\%$, while the local wall heat flux is redistributed by $4.25\%$; the integral agreement
+therefore conceals a local error that a surrogate must be trained to resolve.
+\end{itemize}
+
+\noindent
+The study is two-dimensional and steady. We state this as a limitation and report the measured cost
+of a three-dimensional sample on the same hardware rather than extrapolating to it. Every number in
+the paper is regenerated from stored solver output by the scripts in the repository; the public
+data set of the companion study is used unchanged, and our scripts and machine-readable results are
+released with the manuscript; the raw solver output is available from the authors on request.
+
+\noindent
+The work is not under consideration elsewhere, and the authors declare no competing interests.
+
+\vspace{12pt}
+\noindent
+Yours sincerely,\\
+{[Corresponding author name]}\\
+{[Affiliation]}\\
+{[Email]}
+
+\end{document}

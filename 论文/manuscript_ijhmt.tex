@@ -297,7 +297,8 @@ D=Y-X=-\varepsilon L^{-1}S_1[X]-\varepsilon^2L^{-1}S_2[X]+\dots
 =\varepsilon P(X)+\varepsilon^2Q(X)+\dots
 \label{eq:factor}
 \end{equation}
-Five predictions follow, and all five hold (Table~S1 of the supplementary material):
+Five predictions follow, and all five hold; Table~S1 of the supplementary material lists them and
+their measured values.
 
 
 
@@ -331,7 +332,7 @@ configuration & exact $\varepsilon$-blind floor, shape invariance\\
 aspect 2:1 & 104 & same law, geometry $2\times1$ & external validity\\
 tight rerun & 10 & the 10 worst-converged samples, tolerance $10^{-6}\to10^{-8}$ & noise control\\
 public, random walls \citep{menglik2026neural} & $4000+2\times200$ & $\varepsilon\equiv1.2$; the
-three held-out splits differ in wall dials and in whether the side walls are constant & external
+two held-out splits differ in the range of the wall dials & external
 validation, cross-data-set transfer\\
 public, classical cavity \citep{menglik2026neural} & $5000+200$ & constant hot/cold side walls,
 adiabatic top and bottom, $\varepsilon\equiv1.2$ & external validation of the prefactor\\
@@ -560,7 +561,7 @@ added is absent from the input (\path{code/exp_shallow.py}, \path{code/exp_pod.p
 \label{sec:prior}
 
 Same backbone, only the output structure changes (Table~\ref{tab:ablation} of
-Sec.~\ref{sec:baselines}; $\varepsilon$ still read from a constant channel, target still $D$):
+Sec.~\ref{sec:baselines}; $\varepsilon$ still read from a constant channel, target still $D$).
 
 
 
@@ -688,9 +689,9 @@ put under pressure and it moves: by $1.66\times$ ($u_x$), $1.38\times$ ($u_y$), 
 same $\varepsilon$, and \path{train_legacy} and \path{test_legacy} agree to three digits in
 $u_x$ and $p$ ($\theta$: 0.0926 vs 0.0836, 10\%), which is the internal consistency check for the
 whole comparison. That is a statement about the flow, not a defect of the law, and the $\theta$
-channel makes the mechanism explicit. Writing $\hat u=\max\|\bm u_X\|$, the peak speed of the
-Boussinesq field (hence available to any surrogate; Fig.~\ref{fig:theta} and Table~S6 of the
-supplementary material):
+channel makes the mechanism explicit. Writing $\hat u=\max\|\bm u_X\|$ for the peak speed of the Boussinesq field, which is available to
+any surrogate, the $\theta$-channel prefactor collapses on $\hat u$ (Fig.~\ref{fig:theta}); the
+fits are in Table~S6 of the supplementary material.
 
 
 
@@ -734,7 +735,7 @@ quantity & value & spread over samples\\
 \midrule
 $Nu$, Boussinesq $X$ & 3.514 & ---\\
 $Nu$, compressible $Y$ & 3.538 & ---\\
-integral change $\Delta Nu/Nu$ & $+0.54\%$ & median $+0.58\%$, p10--p90 $+0.06$ to $+0.92\%$; $+0.35$ to $+0.62\%$ over stencils\\
+integral change $\Delta Nu/Nu$ & $+0.54\%$ & median $+0.58\%$, p10--p90 $+0.06$ to $+0.92\%$; per-sample mean $+0.35$ to $+0.62\%$ over stencils\\
 local change, $L_1$ norm over the wall & $4.25\%$ & p90 $7.33\%$; unchanged for two to eight points\\
 local change, pointwise & $-0.65\%$ (median) & p10--p90 $-9.1$ to $+9.8\%$\\
 \bottomrule
@@ -752,9 +753,11 @@ integral changes by less than $1\%$.}
 \end{figure}
 
 The two statements are different in kind. \textbf{The integral heat transfer is insensitive}: the
-compressible member carries more heat in all 200 samples, by $0.06$--$0.92\%$ (median $0.58\%$);
-the six-point stencil gives $+0.54\%$, and the value stays within $+0.35$ to $+0.62\%$ for
-stencils of two to eight points. \textbf{The local wall flux is not}: the correction redistributes
+compressible member carries more heat in all 200 samples, by $0.01$--$0.94\%$ (median $0.58\%$,
+10--90\% range $0.06$--$0.92\%$). The $+0.54\%$ of Table~\ref{tab:nu} is the mean of the per-sample ratios at the six-point
+stencil, and the ratio of the ensemble means is $+0.67\%$. Across two- to eight-point stencils the
+per-sample mean spans $+0.35$ to $+0.62\%$ and the ratio of the ensemble means $+0.30$ to
+$+0.90\%$. \textbf{The local wall flux is not}: the correction redistributes
 it by $4.25\%$ in $L_1$ (p90 $7.33\%$), with pointwise excursions of $\pm10\%$, and that number is
 the same for every stencil order. On average the correction adds heat over the lower half of the
 cavity and removes it over the upper half (Fig.~\ref{fig:wallflux}b); the integral is the
@@ -909,7 +912,7 @@ $Pr$ and $\varepsilon$ do not mix. $Pr$ enters the coefficients of both members
 Sec.~\ref{sec:theory} never multiplies the two. The prediction is therefore sharp and asymmetric:
 the exponent must not move, while the prefactor may, because $X$ itself has changed.
 
-We generated 104 further pairs at $Pr=4.38$, the Prandtl number of water at $20^\circ$C, keeping
+We generated 104 further pairs at $Pr=4.38$, the Prandtl number of water near $40^\circ$C, keeping
 the equation of state, $\gamma$ and the transport coefficients of the air run: the study isolates
 the $Pr$ axis and does not claim water properties (Table~\ref{tab:water}, Fig.~\ref{fig:water}).
 The pairs are \textbf{bit-identical to
@@ -942,12 +945,13 @@ $p$ & 0.1482 & 0.1426 & $1.109$ & $1.124$\\
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.96\textwidth]{fig8_water.png}
-\caption{Same configuration, same $\varepsilon$, only the fluid changed: air ($Pr=0.71$) against
-water ($Pr=4.38$), 104 paired samples.}
+\caption{Same configuration, same $\varepsilon$, only the Prandtl number changed: $Pr=0.71$ against
+$Pr=4.38$, 104 paired samples. The panel labels follow the original run names; both runs use the
+same equation of state and transport coefficients, and only $Pr$ differs.}
 \label{fig:water}
 \end{figure}
 
-On the 104 matched configurations the paired ratios $R_{\mathrm{water}}/R_{\mathrm{air}}$ have
+On the 104 matched configurations the paired ratios $R(Pr=4.38)/R(Pr=0.71)$ have
 medians $\mathbf{1.006}$, $\mathbf{0.999}$, $\mathbf{0.999}$ and $\mathbf{0.951}$ ($u_x/u_y/\theta/p$; p10--p90
 0.99--1.12, 0.90--1.03, 0.95--1.06, 0.82--1.00), and the paired exponents agree to $1$--$2\%$:
 $1.150$ vs $1.157$, $1.049$ vs $1.047$, $1.686$ vs $1.668$, $1.124$ vs $1.109$. A 6.2-fold change
@@ -1030,7 +1034,8 @@ network to discover from data.
 \section{Reproducibility}
 \label{sec:repro}
 
-All scripts are in the \path{code/} directory of the project (Chinese-path Windows workspace,
+Table~S7 of the supplementary material maps each script to the results it produces. All scripts
+are in the \path{code/} directory of the project (Chinese-path Windows workspace,
 executed in WSL2 with dolfinx 0.7.3 for the solver and PyTorch 2.10 for the surrogates); raw data,
 logs and JSON results are under \path{~/nc_run/}.
 

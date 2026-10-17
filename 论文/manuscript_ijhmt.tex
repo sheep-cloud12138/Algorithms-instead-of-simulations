@@ -1093,6 +1093,23 @@ by $3.8\times$ ($u_x$), $2.0\times$ ($u_y$), $10\times$ ($\theta$) and $2.0\time
 the same statement as Sec.~\ref{sec:public}, that $A$ is a functional of the flow. What transfers to
 three dimensions is the exponent, which is what the factorisation predicts.
 
+\paragraph{A POD-ROM check of the prior} The same twelve samples also support a
+linear surrogate check. We train a four-mode POD-ROM on three flows and three
+contrasts (nine samples) and test on the held-out contrast (three samples),
+repeating for each of the four contrasts. The plain ROM predicts $D$ from
+$[1,\varepsilon,\bm c_X]$, where $\bm c_X$ are four POD coefficients of the
+Boussinesq field; the prior ROM predicts $P=D/\varepsilon$ from
+$[1,\bm c_X]$ and multiplies by $\varepsilon$ outside. Four modes are fewer
+than the nine training samples. Averaged over the four held-out contrasts,
+the prior lowers the relative error in every channel (Table~\ref{tab:3drom}):
+$u_x$ from 0.118 to 0.054, $u_y$ from 0.136 to 0.110, $\theta$ from 0.024 to
+0.019 and $p$ from 0.108 to 0.064. The gain is largest at $\varepsilon=0.2$ and
+0.4 ($3$--$10\times$ in $u_x$) and is not uniform: at $\varepsilon=0.8$ the
+$\varepsilon$-aware plain ROM is better in all four channels. We read this as a
+check that the factorisation remains useful in three dimensions at small
+contrast, not as a claim of uniform superiority.
+
+
 The check is limited to $Ra=10^4$, $res=16$ and $\varepsilon\le1.2$. The twelve pairs cost
 13--29\,min each (median 16\,min) of outer wall-clock time on this machine. We therefore report the exponent transfer, not
 a three-dimensional sweep.
@@ -1117,6 +1134,28 @@ $p$ & $1.100\pm0.010$ & 1.10/1.11/1.09 & 0.094/0.177/0.183\\
 \end{tabular}
 \end{table}
 
+\begin{table}[htbp]
+\centering
+\small
+\caption{Three-dimensional POD-ROM check on the twelve paired samples.
+Leave-one-contrast-out: train on three flows $\times$ three $\varepsilon$
+(nine samples), test on the held-out $\varepsilon$ (three samples), repeated
+for the four contrasts. Entries are mean relative $L_2$ errors over the four
+folds; the ROM uses four POD modes and ridge regression ($\lambda=10^{-4}$).
+The gain is the plain-ROM error divided by the prior-ROM error.}
+\label{tab:3drom}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+channel & do nothing & plain ROM & prior ROM & gain\\
+\midrule
+$u_x$ & 0.1406 & 0.1181 & 0.0542 & 2.18\\
+$u_y$ & 0.1376 & 0.1357 & 0.1100 & 1.23\\
+$\theta$ & 0.0261 & 0.0244 & 0.0193 & 1.26\\
+$p$ & 0.1136 & 0.1078 & 0.0644 & 1.67\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig9_3d.png}
@@ -1132,7 +1171,7 @@ $\varepsilon$ of each flow.}
 \begin{enumerate}
 \item Two dimensions for the main sweep. The law is calibrated on 2-D solutions. The
 twelve-sample 3-D check of Sec.~\ref{sec:3d} reproduces the exponent, but covers one Rayleigh number,
-$res=16$ and $\varepsilon\le1.2$. Each 3-D pair costs 13--29\,min of outer wall-clock time (median 16) on this machine. A
+$res=16$ and $\varepsilon\le1.2$; the POD-ROM baseline is a four-mode linear model, not a deep operator. Each 3-D pair costs 13--29\,min of outer wall-clock time (median 16) on this machine. A
 3-D sweep at higher $Ra$ or resolution remains out of reach here.
 \item $Ma$ is inert here, so the break-symmetry group is one-dimensional rather than two.
 At larger $Ma$ this would have to be redone.
@@ -1184,6 +1223,8 @@ Sec.~\ref{sec:public}: it holds within a boundary-condition family and fails acr
 predictably.
 \end{enumerate}
 
+The same factorisation lowers the mean $u_x$ error of a four-mode POD-ROM on the 3-D samples from 0.118 to 0.054 over four held-out contrasts.
+
 Section~\ref{sec:limits} lists the limits: two dimensions for the main sweep, $\varepsilon<2$,
 one-dimensional break symmetry, and a prefactor whose two-parameter fits leave 26\% ($u_x$), 23\%
 ($u_y$) and 28\% ($\theta$) of the variance unexplained. None of them touch the claim that matters for practice,
@@ -1196,7 +1237,8 @@ network to discover from data.
 Table~S7 of the supplementary material maps each script to the results it produces. All scripts
 are in the \path{code/} directory of the project (executed in WSL2 with dolfinx 0.7.3 for the solver and PyTorch 2.10 for the
 surrogates); raw data,
-logs and JSON results are under \path{~/nc_run/}.
+logs and JSON results are under \path{~/nc_run/}. The 3-D POD-ROM check is
+\path{code/exp_3d_rom_eps.py}, with machine-readable output \path{论文/3d_rom_eps.json}.
 
 
 

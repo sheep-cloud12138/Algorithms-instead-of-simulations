@@ -159,6 +159,7 @@ public test\_legacy, classical cavity & 200 & $a=2.368\pm0.011$, $c=2.095$ & \te
 \setlength{\tabcolsep}{4pt}
 \caption{Scripts and the results they produce.}
 \label{tab:scripts}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.2cm}>{\raggedright\arraybackslash}p{10.4cm}@{}}
 \toprule
 script & what it produces\\
@@ -188,7 +189,7 @@ and timing (Secs.~\ref{sec:noise}--\ref{sec:cost})\\
 \path{exp_dnu_eps.py} & the integral $Nu$ gap versus $\varepsilon$
 (Sec.~\ref{sec:nu})\\
 \path{exp_film.py} & the FiLM-conditioned baseline (Sec.~\ref{sec:prior})\\
-\path{exp_3d_law.py},\newline \path{make_fig9.py} & the twelve-sample three-dimensional check (Sec.~\ref{sec:3d})\\
+\path{exp_3d_law.py},\newline \path{make_fig9.py},\newline \path{exp_3d_rom_eps.py} & the twelve-sample three-dimensional check and the POD-ROM baseline (Sec.~\ref{sec:3d})\\
 \path{verify_conventions.py} & the 38\,400-value convention audit against the published
 \texttt{relL2} columns (Sec.~\ref{sec:public})\\
 \path{exp_public_splits.py},\newline \path{exp_legacy5000.py}, \path{exp_uhat_law.py} & the
@@ -198,7 +199,7 @@ $\kappa$, pressure-pair conventions, $\hat u$ medians, the 2:1 $\sigma$ distance
 \path{make_figs.py}, \path{make_figs2.py} & every figure, from the JSON results\\
 \path{make_tables.py} & regenerates every table from the JSON results\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 \end{document}

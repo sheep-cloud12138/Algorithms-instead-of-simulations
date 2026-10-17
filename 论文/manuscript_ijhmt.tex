@@ -65,7 +65,7 @@ still beats an $\varepsilon$-blind network by
 $1.87\times$ channel-averaged ($1.89\times$ in $u_x$) and reuses single-$\varepsilon$ public
 data within a boundary family. One inference
 takes 6.3\,ms; replacing the compressible member cuts a paired solve from 33.9\,s to
-11.7\,s ($2.9\times$), the measured 20-flow $\times$ 5-contrast scan by $17\times$, and a
+11.7\,s ($2.9\times$), the measured 20-flow $\times$ 5-contrast scan by $13\times$, and a
 single flow swept over 100 contrasts by $2.3\times10^2$.
 \end{abstract}
 
@@ -263,7 +263,7 @@ at $Ra=10^4$ to $+28\%$ at $Ra=10^6$ (Sec.~\ref{sec:nu}).
 extrapolation, with $\theta$ and $p$ individually significant ($p$ in the fixed gauge) and the $u_x/u_y$ intervals
 including zero, and indistinguishable within seed scatter in interpolation), and show it makes an existing single-$\varepsilon$ public data set
 reusable, with the end-to-end saving measured per pair ($2.9\times$), for the 20-flow
-$\times$ 5-contrast scan ($17\times$) and for a single flow swept over 100 contrasts
+$\times$ 5-contrast scan ($13\times$) and for a single flow swept over 100 contrasts
 ($2.3\times10^2$)
 (Secs.~\ref{sec:baselines}--\ref{sec:transfer}, \ref{sec:cost}).
 \end{enumerate}
@@ -1191,8 +1191,9 @@ not unfinished iteration.
 \caption{Wall-clock cost, $64^2$ mesh. Solver rows use eight CPU threads; the surrogate runs on
 an RTX 4060 Laptop GPU (batch 1) or one CPU thread. The two members are timed separately over the
 600 samples; the rows below them are surrogate timings or totals derived from the measured medians.
-The 100-sample scan rows use that scan's own timings: Boussinesq 16.0\,s and compressible 37.5\,s
-per sample, 55.8\,s per pair.}
+The 100-sample scan rows use that scan's own timings: the component medians are 16.0\,s
+(Boussinesq) and 37.5\,s (compressible), while the median of their per-pair sum is 55.8\,s;
+medians are not additive.}
 \label{tab:cost}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -1220,11 +1221,14 @@ The amortised regime depends on how many flows are swept, because $X$ does not d
 $\varepsilon$. For a single flow and $N=100$ contrasts, one Boussinesq solve plus 100 inferences
 costs $16.0+0.63=16.6$\,s against $16.0+100\times37.5=3.77\times10^3$\,s, a factor
 $2.3\times10^2$. The scan measured here is 20 flows $\times$ 5 contrasts: its own timings are
-16.0\,s for the Boussinesq member and 37.5\,s for the compressible one (55.8\,s per pair), so the
-surrogate needs $20\times16.0+100\times0.0063=3.21\times10^2$\,s against
-$100\times55.8=5.58\times10^3$\,s, a factor $17$. We quote $17\times$ as the conservative, fully
-measured number. The solver runs on eight CPU threads and the surrogate on a GPU; the two are not
-the same hardware.
+16.0\,s for the Boussinesq member and 37.5\,s for the compressible one; the median of their
+per-pair sum is 55.8\,s. On the same-reuse basis used above, the baseline is
+$20\times16.0+100\times37.5=4.07\times10^3$\,s and the surrogate needs
+$20\times16.0+100\times0.0063=3.21\times10^2$\,s, a factor $13$. If the baseline is instead the
+scan as actually run, which repeats the Boussinesq solve at every contrast,
+$100\times55.8=5.58\times10^3$\,s, the ratio is $17$; we quote the conservative same-reuse
+$13\times$ in the abstract. The solver runs on eight CPU threads and the surrogate on a GPU; the
+two are not the same hardware.
 
 \subsection{A third Prandtl number: $Pr=4.38$}
 \label{sec:water}

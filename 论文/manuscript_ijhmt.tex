@@ -202,14 +202,14 @@ post-hoc correctors \citep{jha2023residual,cao2023residual}, physics fine-tuning
 \citep{zhu2023reliable}, transfer operator learning \citep{goswami2022deep}, dimension-informed
 operator \citep{song2024dimino}.}
 \label{tab:related}
-\begin{tabular}{@{}p{3.3cm}p{2.2cm}p{1.8cm}p{1.4cm}p{1.8cm}p{1.4cm}@{}}
+\begin{tabular}{@{}p{3.2cm}p{2.2cm}p{1.7cm}p{1.3cm}p{1.8cm}p{1.4cm}@{}}
 \toprule
 family & derived & learned & target data & per query & law\\
 \midrule
 post-hoc correctors & linear residual & none & no & one linear solve & no\\
 physics fine-tuning & residual / data & correction & yes & no & no\\
 transfer operator & none & operator & yes & no & no\\
-dimension-informed & unit equivariance & operator & no & no & no\\
+dimension-informed & equivariance & operator & no & no & no\\
 this work & $\varepsilon$ expansion & shape $P$ & no & no & $m$, $\kappa$\\
 \bottomrule
 \end{tabular}

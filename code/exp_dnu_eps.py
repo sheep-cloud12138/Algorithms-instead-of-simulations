@@ -40,10 +40,21 @@ for e in [0.4, 0.8, 1.2, 1.6, 1.9]:
                        pos=float((s > 0).mean()))
     print('eps %.1f  mean %+.4f  median %+.4f  p10 %+.4f  p90 %+.4f  frac>0 %.2f' %
           (e, s.mean(), np.median(s), np.percentile(s, 10), np.percentile(s, 90), (s > 0).mean()))
+
+by_ra = {}
+for ra in sorted({r['cfg'].split('_Ra')[1].split('_')[0] for r in rows}):
+    by_ra[ra] = {}
+    for e in [0.4, 0.8, 1.2, 1.6, 1.9]:
+        s = np.array([r['rel'] for r in rows
+                      if r['eps'] == e and r['cfg'].split('_Ra')[1].split('_')[0] == ra])
+        by_ra[ra][str(e)] = dict(n=len(s), mean=float(s.mean()), std=float(s.std()),
+                                 median=float(np.median(s)))
+    print('Ra %-5s  ' % ra + '  '.join('%+.4f' % by_ra[ra][str(e)]['mean']
+                                      for e in [0.4, 0.8, 1.2, 1.6, 1.9]))
 E = np.array([0.4, 0.8, 1.2, 1.6, 1.9]); Rm = np.array([res[str(e)]['mean'] for e in E])
 sl, ic = np.polyfit(E, Rm, 1)
 print('linear fit dNu/Nu = %.4f eps %+.4f' % (sl, ic))
 print('ratio to eps: %s' % ['%.4f' % (v / e) for v, e in zip(Rm, E)])
-json.dump(dict(n_cfg=len(cfg), stencil=M, by_eps=res,
+json.dump(dict(n_cfg=len(cfg), stencil=M, by_eps=res, by_ra=by_ra,
                fit=dict(slope=float(sl), intercept=float(ic))), open('论文/dnu_eps.json', 'w'), indent=1)
 print('saved 论文/dnu_eps.json')

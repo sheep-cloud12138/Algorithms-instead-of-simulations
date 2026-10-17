@@ -429,9 +429,9 @@ their measured values.
 
 
 
-The divergence check drifts from cosine $0.994$ to $0.901$ as $\varepsilon$ rises to $1.9$, so the
-$\varepsilon^2$ term is not negligible at the top of the range; the fifth row of Table~S1
-quantifies it independently.
+The divergence identity is not exact at the top of the range: the cosine between its two sides
+falls from $0.994$ to $0.901$ as $\varepsilon$ rises to $1.9$, which is the footprint of the
+$\varepsilon^2$ term. The fifth row of Table~S1 quantifies that term independently.
 
 \paragraph{Domain of validity} $\varepsilon<2$, since the cold wall $T_c=T_0-\Delta T/2$ must be
 positive. At $\varepsilon=1.9$ the cold wall is $T_c/T_0=0.05$, so the density expansion is close
@@ -609,20 +609,21 @@ exponent is claimed.
 \item The pressure channel required a gauge and hydrostatic correction before the two members
 could be compared (Sec.~\ref{sec:pressure}).
 \end{itemize}
-\subsection{A pressure-channel artefact, and why it mattered}
+\subsection{The pressure channel: gauge and hydrostatic alignment}
 \label{sec:pressure}
 
-Pairing the two members' \emph{raw} pressures mixes units: the compressible raw pressure carries a
+The two members store pressure in different conventions. The compressible raw pressure carries a
 hydrostatic ramp $12\times$ larger than its dynamic part, and the two weak forms use opposite
-pressure sign conventions. Before the fix the per-sample median of $|X_p|/|Y_p|$ was $0.065$ and
-that of $\cos(X_p,Y_p)$ was $-0.105$, and the $p$-channel ``law'' was a constant
-($R_p\approx1.0$). Applying the protocol used by the public data set---subtract the mean, remove a
-least-squares linear-in-$y$ fit, flip the sign of the Boussinesq member---gives $0.960$ and
-$\cos=+0.991$ under the same median convention, against $0.929$ and $+0.986$ for the public
-training set, i.e.\ we now match their pairing to within 3\%. The
-channel then obeys the same law as the velocities ($A=0.148$, $m=1.009$). All $p$-channel numbers
-reported here are post-fix. Pressure is gauge-dependent: this is a statement about the fixed
-post-processing gauge above, not a gauge-invariant law.
+sign conventions. Comparing raw pressures therefore measures the conventions rather than the flow:
+the per-sample median of $|X_p|/|Y_p|$ is $0.065$, that of $\cos(X_p,Y_p)$ is $-0.105$, and the
+$p$-channel ``law'' collapses to a constant ($R_p\approx1.0$). We align the members with the
+protocol used by the public data set---subtract the mean, remove a least-squares linear-in-$y$ fit,
+and flip the sign of the Boussinesq member. Under the same median convention the aligned pair gives
+$0.960$ and $\cos=+0.991$, against $0.929$ and $+0.986$ for the public training set, so the two
+pairings agree to within 3\%. The channel then follows the same law as the velocities
+($A=0.148$, $m=1.009$). All $p$-channel numbers in this paper use this gauge. Pressure is
+gauge-dependent: the exponent is a statement about this fixed post-processing gauge, not a
+gauge-invariant law.
 
 \subsection{The $\varepsilon$-blind ceiling, measured exactly}
 \label{sec:floor}
@@ -667,7 +668,7 @@ $\varepsilon$-mean field\\
 \centering
 \includegraphics[width=0.95\textwidth]{fig2_floor.png}
 \caption{Single-$\varepsilon$ training leaves an $\varepsilon$-blind floor. Curves show ``do nothing'',
-training at $\varepsilon=1.2$ only, and the best $\varepsilon$-blind field, for the 20 paired
+training at $\varepsilon=1.2$ only, and the unweighted $\varepsilon$-mean field, for the 20 paired
 configurations.}
 \label{fig:floor}
 \end{figure}
@@ -675,9 +676,8 @@ configurations.}
 Protocol (A) is what a single-$\varepsilon$ public data set forces: 24\% ($u_x$), 30\% ($u_y$),
 3.1\% ($\theta$) and 27\% ($p$) error at $\varepsilon=1.9$, 8\% ($u_x$) already at
 $\varepsilon=0.8$, and---in practice---at $\varepsilon=0.4$ ``do nothing'' is \emph{better} than
-it, and the two cross between $\varepsilon=0.4$ and $0.8$. Protocol (B), the least-squares
-compromise over the range and therefore the best a single $\varepsilon$-blind field can do on
-average, still leaves $20.9/26.8/2.8/23.5\%$ ($u_x/u_y/\theta/p$) at $\varepsilon=1.9$. The whole effect is one line of arithmetic, and the paired
+it, and the two cross between $\varepsilon=0.4$ and $0.8$. Protocol (B), the unweighted mean over
+the range, still leaves $20.9/26.8/2.8/23.5\%$ ($u_x/u_y/\theta/p$) at $\varepsilon=1.9$. The whole effect is one line of arithmetic, and the paired
 set measures it exactly (the diagonal is identically zero
 because the same $\varepsilon$ is the same solution): the full $5\times5$ matrix is Table~S3 of
 the supplementary material.
@@ -761,8 +761,8 @@ $-0.000$/$-0.003$/$-0.001$/$-0.003$ and all intervals include zero. We therefore
 advantage for the extrapolation mean, not for individual velocity channels and not in
 interpolation.
 
-Model A's error on the extrapolation split (0.2289) is 9\% above the best $\varepsilon$-blind field
-of the paired set at $\varepsilon=1.9$ (0.2091, Sec.~\ref{sec:floor}); the two are measured on
+Model A's error on the extrapolation split (0.2289) is 9\% above the $\varepsilon$-mean reference
+on the paired set at $\varepsilon=1.9$ (0.2091, Sec.~\ref{sec:floor}); the two are measured on
 different data sets and with different training sets, but their agreement in magnitude is
 consistent with a ceiling that is informational rather than architectural. Shallow learners plateau in
 the same place. A linear ridge regression and an RBF kernel ridge on the raw four-field
@@ -1499,26 +1499,16 @@ also learned by the network.
 \section{Reproducibility}
 \label{sec:repro}
 
-Table~S7 of the supplementary material maps each script to the results it produces. All scripts
-are in the \path{code/} directory of the project (executed in WSL2 with dolfinx 0.7.3 for the solver and PyTorch 2.10 for the
-surrogates); raw data,
-logs and JSON results are under \path{~/nc_run/}. The 3-D POD-ROM check is
-\path{code/exp_3d_rom_eps.py}, with machine-readable output \path{3d_rom_eps.json}.
-
-
-
-\begin{sloppypar}
-Code and every machine-readable result are mirrored at
-\url{https://github.com/sheep-cloud12138/Algorithms-instead-of-simulations} (working branch
-\texttt{dev}; \texttt{master} carries snapshots that have passed an independent review). The raw
-solver output (600 random-boundary-condition, 104 aspect-2:1, 104 $Pr=4.38$, 27 $\varepsilon\to0$,
+Table~S7 of the supplementary material maps each script to the results it produces. The solver,
+surrogate and reporting scripts (dolfinx 0.7.3 for the solver, PyTorch 2.10 for the surrogates),
+together with the machine-readable results used in the tables and figures, are mirrored in the
+repository listed under Data availability. The raw solver output (600 random-boundary-condition,
+104 aspect-2:1, 104 $Pr=4.38$, 27 $\varepsilon\to0$,
 100 paired and 10 tight-rerun two-dimensional samples---the tight rerun repeats ten of the 600---plus
 eight $128^2$ mesh-check pairs ($Ra=10^4$ over five contrasts, $Ra=10^6$ over three) and
-12 three-dimensional pairs, $\sim$6\,GB) stays on the machine described
-above; every number in this paper is regenerated from the JSON results in
-\path{~/nc_run/p7/} (and, for the mesh checks, \path{~/nc_run/grid128/} and
-\path{~/nc_run/grid_ra1e6/}) by reporting scripts, not transcribed by hand.
-\end{sloppypar}
+12 three-dimensional pairs, $\sim$6\,GB) stays on the machine described above. The stored results
+are the source of every number in this paper; the reporting scripts regenerate them, and no number
+is transcribed by hand.
 
 
 \section*{Declaration of competing interest}

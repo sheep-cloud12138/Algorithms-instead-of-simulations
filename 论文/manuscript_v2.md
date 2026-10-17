@@ -44,7 +44,7 @@ temperature contrast `ε = ΔT/T₀`, and we turn that fact into a design rule f
    ε = 1.9, and even the best single ε-blind field leaves 22-29 % there (§5.3).
    Writing the output as `D = ε·P(X)` and letting the network predict `P` attacks exactly that:
    it beats the ε-aware plain architecture by 1.61× in extrapolation and the ε-blind one by
-   2.44×, and it lets the network find the `ε²` term by itself (learned curvature β = 0.22–0.42
+   2.44×, and it lets the network find the `ε²` term by itself (learned curvature β = 0.23–0.42
    in all four channels, §5.5). With ε moved fully outside the network, so that it never enters
    the input, it is what makes a **single-ε data set reusable**: a surrogate trained on a public
    4000-pair data set that exists only at ε = 1.2 is applied, without retraining, to our own
@@ -119,7 +119,7 @@ result is also an accuracy gain in distribution when data is scarce (§5.6: 1.4�
 exists at a single ε is applied, without retraining, to our ε in [0.2, 1.9] and reaches
 relL2 = 0.093 (`u_x`) where the plain model of the same budget reaches 0.144 (§5.8),
 the extrapolation error falls by 1.61× relative to the plain architecture (§5.5), the network
-discovers the ε² curvature of the expansion on its own (learned β = 0.22–0.42 in all
+discovers the ε² curvature of the expansion on its own (learned β = 0.23–0.42 in all
 four channels), and the same prior transfers unchanged to a Fourier neural operator.
 
 **Contributions.**
@@ -263,7 +263,7 @@ gives c > 0 in all four channels (u_x: `+0.0513 ± 0.0133`, 3.9σ; u_y `+0.0695`
 p `+0.0539`) with `κ = c/a = 0.70 / 0.83 / 0.42 / 0.73`. We therefore state the law as
 **first order in ε**, `R = Aε(1 + O(ε))`, quote p = 1.02 as the number a wide-window fit
 returns, and note that the ε² curvature is independently recovered by the network (§5.5,
-β = 0.20-0.29) and by the mode expansion (§3, ε¹+ε² carry 99.0 % of the correction energy).
+β = 0.23-0.42) and by the mode expansion (§3, ε¹+ε² carry 99.0 % of the correction energy).
 
 Two-parameter refinement (the Ra trend is real; `q` for u_y and θ reproduces in the 2:1 geometry):
 
@@ -356,10 +356,10 @@ Model A's error (0.2289) and the best possible ε-blind model on the paired set 
 ceiling is informational, not architectural. Shallow learners plateau in the same place. A linear ridge
 regression and an RBF kernel ridge on the raw four-field input - the same information the network
 gets - reach `u_x` 0.2282 and 0.2222 in extrapolation, and adding ε as an extra column barely
-moves them (0.2188 and 0.2171): within 2 % of the ε-blind U-Net, because neither can represent a
-product of an ε-scale with a spatial field. A classical POD-ROM (47-52 modes, 99.9 % of the
-snapshot energy) whose coefficients are regressed on (log₁₀Ra, ε) lands at 0.2937 with ε and
-0.3001 without, i.e. at the level of doing nothing, and a purely linear surrogate that also sees
+moves them (0.2188 and 0.2171, against 0.0937 for the structured model), because neither can
+represent a product of an ε-scale with a spatial field. A classical POD-ROM (44-52 modes, 99.9 %
+of the snapshot energy) whose coefficients are regressed on (log₁₀Ra, ε) lands at 0.2937 with ε
+and 0.3001 without, i.e. at the level of doing nothing, and a purely linear surrogate that also sees
 the POD coefficients of X reaches only 0.2318. The plateau is not capacity - it is that the
 quantity to be added is absent from the input (`code/exp_shallow.py`, `code/exp_pod.py`).
 
@@ -372,14 +372,14 @@ still D):
 |---|---|---|---|---|---|---|
 | extrapolation | plain U-Net | 0.1508 | 0.1725 | 0.0255 | 0.1791 | — |
 | | `D = ε·P(X)` | 0.0937 | 0.1060 | 0.0141 | 0.1126 | fixed 0 |
-| | `D = (ε + βε²)·P(X)` | **0.0867** | **0.0951** | **0.0131** | **0.1007** | 0.418 / 0.314 / 0.334 / 0.314 |
+| | `D = (ε + βε²)·P(X)` | **0.0867** | **0.0951** | **0.0131** | **0.1007** | 0.418 / 0.321 / 0.343 / 0.338 |
 | interpolation | plain U-Net | 0.0673 | 0.0714 | 0.0097 | 0.0667 | — |
 | | `D = ε·P(X)` | 0.0545 | 0.0524 | 0.0078 | 0.0454 | fixed 0 |
-| | `D = (ε + βε²)·P(X)` | **0.0507** | **0.0488** | **0.0073** | **0.0410** | 0.295 / 0.224 / 0.255 / 0.219 |
+| | `D = (ε + βε²)·P(X)` | **0.0507** | **0.0488** | **0.0073** | **0.0410** | 0.286 / 0.232 / 0.252 / 0.265 |
 
 Two things happen at once. In extrapolation the factorised output beats the plain one by
-**1.61×** (u_x) and 1.59–1.81× in the other channels; the quadratic form adds a further 8–12 %
-on top. And the network *discovers* a positive curvature on its own, β = 0.22–0.42, the same
+**1.61×** (u_x) and 1.59–1.81× in the other channels; the quadratic form adds a further 7.6–10.6 %
+on top. And the network *discovers* a positive curvature on its own, β = 0.23–0.42, the same
 sign and order as the ε² term of the expansion in §3 — an independent check of the asymptotic
 expansion.
 
@@ -401,16 +401,18 @@ Learning curve on the fixed interpolation test set (200 samples), mean of three 
 | 50 | 0.1831 / 0.1946 / 0.0269 / 0.1838 | **0.1308 / 0.1364 / 0.0195 / 0.1501** |
 | 100 | 0.1280 / 0.1422 / 0.0199 / 0.1348 | **0.0990 / 0.1022 / 0.0136 / 0.1150** |
 | 200 | 0.0974 / 0.1070 / 0.0147 / 0.0998 | **0.0827 / 0.0866 / 0.0114** / 0.1005 |
-| 400 | **0.0674 / 0.0714 / 0.0097 / 0.0672** | 0.0735 / 0.0743 / 0.0093 / 0.0896 |
+| 400 | **0.0674 / 0.0714** / 0.0097 / **0.0672** | 0.0735 / 0.0743 / 0.0093 / 0.0896 |
 
 The naive expectation - that a structured model trades in-distribution accuracy for
 extrapolation - is wrong at small n. At n = 50 the prior is 1.4× better than the ε-input network
-(u_x 0.1308 against 0.1831, a 9σ separation across three seeds), and it stays ahead through
-n = 200; the crossover lies between n = 200 and 400 (log-linear interpolation puts it near
-n ≈ 300 in u_x), and even there it is confined to u_x, u_y and p - θ never crosses. Concretely,
-the prior at n = 200 reaches what the ε-input network needs ≈ 270 samples to reach. So the prior
-is two things at once: the cheaper model when data is scarce, and - the point that matters for
-reuse - a model that needs no ε in its input, which is what makes a single-ε data set reusable.
+(u_x 0.1308 against 0.1831, a 9σ separation across three seeds), and it is still ahead at
+n = 200 in u_x (7.3σ), u_y (7.6σ) and θ (3.6σ), with p already level (0.13σ) there. The
+crossover sits between n = 200 and 400 in u_x and u_y (log-linear interpolation: n ≈ 315 and
+360, i.e. near 300 in u_x), essentially at n = 200 in p, and θ never crosses - at n = 400 it is
+still 2.5σ behind. Concretely, the prior at n = 200 reaches what the ε-input network needs
+≈ 270 samples (u_x) and 290 (u_y) to reach. So the prior is two things at once: the cheaper
+model when data is scarce, and - the point that matters for reuse - a model that needs no ε in
+its input, which is what makes a single-ε data set reusable.
 
 ### 5.7 External validation on an independent, published data set
 

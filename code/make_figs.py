@@ -68,7 +68,7 @@ if d:
         a.xaxis.set_minor_formatter(NullFormatter())
         a.set_xlabel('training samples', fontsize=10); a.grid(alpha=.25, which='both')
         if k == 0: a.set_ylabel(r'rel. $L_2$ error', fontsize=10); a.legend(fontsize=8)
-    fig.suptitle('At n = 50-200 the prior wins in distribution too; the ' + r'$\varepsilon$' + '-input network overtakes only at n = 400 (and not for ' + r'$\theta$' + ')', fontsize=11)
+    fig.suptitle('Up to n = 200 the prior matches or beats the ' + r'$\varepsilon$' + '-input network; that network overtakes only at n = 400 (and not for ' + r'$\theta$' + ')', fontsize=11)
     fig.tight_layout(rect=[0, 0, 1, .93]); f = P + '/fig4_learning.png'; fig.savefig(f); print('saved', f)
 
 # ---------------- 图 5：律在三种流体/几何 + 独立数据集上 ----------------

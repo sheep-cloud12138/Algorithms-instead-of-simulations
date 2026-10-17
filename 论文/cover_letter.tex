@@ -38,14 +38,20 @@ $\varepsilon^2$ curvature that matches the asymptotic expansion. In 104-sample c
 geometry and at $Pr=4.38$ the exponent is statistically unchanged; the amplitude reproduces on an
 independently generated public data set at $\varepsilon=1.2$.
 \item \textbf{A design rule.} Because the correction factorises as $D=\varepsilon P(X)$, a network
-that predicts only $P$ extrapolates $1.61\times$ better than the plain architecture, and
-$1.89\times$ better than an $\varepsilon$-blind network when $\varepsilon$ is withheld, which makes
+that predicts only $P$ extrapolates $1.07$--$1.15\times$ better than the strongest conditional
+baseline, and $1.89\times$ better than an $\varepsilon$-blind network when $\varepsilon$ is
+withheld, which makes
 single-contrast public data reusable at other contrasts within one boundary-condition family, without
 retraining.
 \item \textbf{Wall heat transfer.} At $\varepsilon=1.2$ the integral Nusselt number changes by
 $0.6\%$, while the local wall heat flux is redistributed by $4.25\%$; the integral agreement
 therefore conceals a local error that a surrogate must be trained to resolve.
 \end{itemize}
+
+\noindent
+IJHMT has published numerical methodology for non-Oberbeck--Boussinesq flows (Demou, Frantzis and
+Grigoriadis, \emph{Int.\ J.\ Heat Mass Transfer} 125 (2018) 1156--1168), so the present study fits
+the journal's scope: it quantifies that effect and turns it into a surrogate design rule.
 
 \noindent
 The main sweep is two-dimensional and steady; a twelve-sample three-dimensional check reproduces the

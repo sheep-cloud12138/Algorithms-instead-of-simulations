@@ -178,8 +178,9 @@ application landscape are given by \citet{deryck2024numerical}, \citet{meng2025p
 \paragraph{Physics priors and structure} A physics prior can enter as a residual penalty, as a
 conservation law built into the architecture, or as an algebraic factorisation of the output. The
 first two are well developed; the third is the subject of this paper. Residual-based corrector
-operators add a learned correction on top of a neural-operator prediction and improve accuracy
-without retraining the base operator \citep{jha2023residual,cao2023residual}. Physics-informed
+operators solve a linear variational problem for the residual of a trained operator and add the
+solution to its prediction; the correction is deterministic, costs one linear solve per query, and
+improves accuracy without retraining the base operator \citep{jha2023residual,cao2023residual}. Physics-informed
 extrapolation of deep operators has been demonstrated by adding sparse observations or residual
 terms \citep{zhu2023reliable}, and transfer operator learning addresses distribution shift between
 parameter regimes \citep{goswami2022deep}. Multi-fidelity surrogates combine cheap and expensive
@@ -189,20 +190,46 @@ amount of high-fidelity data, but they still learn the parameter dependence from
 present work differs in that the parameter dependence is derived, and only the spatial shape of the
 correction is learned.
 
+Table~\ref{tab:related} places the resulting prior among the four families.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Where the present prior sits among physics-informed operator methods. ``Derived'' is
+obtained in closed form from the equations; ``learned'' is supplied by the network. Rows:
+post-hoc correctors \citep{jha2023residual,cao2023residual}, physics fine-tuning and multifidelity
+\citep{zhu2023reliable}, transfer operator learning \citep{goswami2022deep}, dimension-informed
+operator \citep{song2024dimino}.}
+\label{tab:related}
+\begin{tabular}{@{}p{3.3cm}p{2.2cm}p{1.8cm}p{1.4cm}p{1.8cm}p{1.4cm}@{}}
+\toprule
+family & derived & learned & target data & per query & law\\
+\midrule
+post-hoc correctors & linear residual & none & no & one linear solve & no\\
+physics fine-tuning & residual / data & correction & yes & no & no\\
+transfer operator & none & operator & yes & no & no\\
+dimension-informed & unit equivariance & operator & no & no & no\\
+this work & $\varepsilon$ expansion & shape $P$ & no & no & $m$, $\kappa$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \paragraph{Boussinesq versus compressible convection} The Oberbeck--Boussinesq approximation and
 its validity limits are classical \citep{spiegel1960boussinesq,gray1976validity}; the review of
 \citet{ahlers2009heat} summarises the heat-transfer and large-scale dynamics of turbulent
 Rayleigh--B\'enard convection. Non-Oberbeck--Boussinesq (NOB) effects have been measured under
 strong temperature contrast \citep{yik2020turbulent}, in cryogenic helium \citep{macek2023assessing}
-and in a water-filled differentially heated cavity \citep{pan2023non}. On the numerical side,
+and in a water-filled differentially heated cavity \citep{pan2023non}. At $Pr=0.71$ and large
+contrast they are not a small correction: they grow cold-corner vortices and can reverse the
+large-scale circulation \citep{xia2016flow}. On the numerical side,
 low-Mach compressible formulations for enclosed thermal convection have been developed and compared
 with the Boussinesq limit \citep{zhang2023investigation,satake2024mathematical}, and the rigorous
 derivation of the Oberbeck--Boussinesq approximation has recently been revisited
 \citep{bella2023rigorous}. What is missing from this literature is a quantitative, closed-form
 account of how the \emph{difference between the two solutions} scales with the temperature contrast,
-and a surrogate design that uses that scaling. The works above either fix $\varepsilon$, treat it as
-one more input channel, or study NOB corrections at the level of gross heat transfer; none turns the
-correction into an output factorisation.
+and a surrogate design that uses that scaling. These studies fix $\varepsilon$ and compare the two solutions; none extracts the $\varepsilon$
+dependence as a reusable prior.
 
 \paragraph{Contributions}
 \begin{enumerate}
@@ -595,15 +622,18 @@ i.e.\ at the level of doing nothing, and a purely linear surrogate that also see
 coefficients of $X$ reaches only 0.2318. The plateau is not capacity---it is that the quantity to be
 added is absent from the input (\path{code/exp_shallow.py}, \path{code/exp_pod.py}).
 \paragraph{A first-order perturbation baseline} If the correction is linear in $\varepsilon$, the
-obvious alternative is to solve the linearised equations once and scale. We evaluated that
-baseline on the 20 configurations of the $\varepsilon$ scan: $P=(Y-X)/\varepsilon$ at $\varepsilon=0.4$, the smallest
-contrast available there, which is a finite-difference evaluation of $-\mathcal{L}^{-1}S_1[X]$ with
-an $O(0.4)$ error in $P$, and predicted $\hat Y=X+\varepsilon P$. The error is
-$5.3/5.5/0.5/5.7\%$ at $\varepsilon=1.2$ and $22/26/2.9/26\%$ at $\varepsilon=1.9$, against a
-do-nothing floor of $42/60/7.3/41\%$; the linear response removes about half the gap at the largest
-contrast and leaves the other half to the $O(\varepsilon^2)$ term. Obtaining $P$ costs one
-compressible solve (median 30\,s on these configurations), against 6.3\,ms for the network, and the
-network learns the curvature that the linear solve cannot produce (Table~\ref{tab:ablation}).
+obvious alternative is to solve $\mathcal{L}u_1=S_1[X]$ once per query and scale. That costs one
+Jacobian assembly and one factorisation, a fraction of the 22.3\,s nonlinear compressible solve; we
+quote the full solve (median 30\,s here) as a conservative bound. We evaluate the accuracy of that
+response on the 20 configurations of the $\varepsilon$ scan, using $P=(Y-X)/\varepsilon$ at
+$\varepsilon=0.4$ as a finite-difference stand-in for the linear solution ($O(0.4)$ error in $P$),
+and predict $\hat Y=X+\varepsilon P$. The error is $5.3/5.5/0.5/5.7\%$ at $\varepsilon=1.2$ and
+$22/26/2.9/26\%$ at $\varepsilon=1.9$, against a do-nothing floor of $42/60/7.3/41\%$. The linear
+response removes at most half the gap and leaves the remainder to the $O(\varepsilon^2)$ term.
+Both approaches replace the same member, so the network's advantage is not speed: both save about
+the same end-to-end time. It is accuracy at $\varepsilon\to1.9$, where the learned curvature
+$\kappa$ keeps the part of the correction that the linear solve cannot produce
+(Table~\ref{tab:ablation}).
 
 \subsection{The physics prior: $D=\varepsilon P(X)$}
 \label{sec:prior}

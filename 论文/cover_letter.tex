@@ -15,9 +15,9 @@ To the Editors,\\
 Dear Editors,
 
 \noindent
-Please consider our manuscript, ``The Boussinesq--compressible gap in two-dimensional steady
-Rayleigh--B\'enard convection is linear to leading order in the relative temperature contrast: a
-factorised physics prior for surrogates'', for publication in the \emph{International Journal of
+Please consider our manuscript, ``The Boussinesq--compressible gap in steady two-dimensional
+buoyancy-driven enclosure convection is linear to leading order in the relative temperature
+contrast: a factorised physics prior for surrogates'', for publication in the \emph{International Journal of
 Heat and Mass Transfer} as a full-length article.
 
 \noindent
@@ -29,17 +29,20 @@ establishes what sets the size of that difference and turns the answer into a de
 \begin{itemize}\setlength{\itemsep}{2pt}
 \item \textbf{One axis.} In the non-dimensionalisation used by the released paired data and by our
 solver, the Froude number is pinned ($Fr^2=\varepsilon$ identically) and the Mach number enters at
-$O(Ma^2)$; a 24-fold change in $Ma$ moves the correction by less than $10^{-5}$. The
+$O(Ma^2)$; a 24-fold change in $Ma$ leaves the measured correction unchanged at the precision of
+the solve. The
 break-symmetry group is therefore one-dimensional, spanned by $\varepsilon=\Delta T/T_0$.
 \item \textbf{A measured law.} Across 627 paired two-dimensional solves in the unit square at
 $Pr=0.71$ spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys
-$R=A\varepsilon^{m}$ with $m=1.02$ in all four fields, a vanishing intercept, and an
-$\varepsilon^2$ curvature that matches the asymptotic expansion. In 104-sample checks in a 2:1
+$R=A\varepsilon^{m}$ with $m=1.02$ in $u_x$, $u_y$ and $p$ (and the same exponent, with larger
+scatter, in $\theta$), a vanishing intercept, and an $\varepsilon^2$ curvature that matches the
+asymptotic expansion. In 104-sample checks in a 2:1
 geometry and at $Pr=4.38$ the exponent is statistically unchanged; the amplitude reproduces on an
 independently generated public data set at $\varepsilon=1.2$.
 \item \textbf{A design rule.} Because the correction factorises as $D=\varepsilon P(X)$, a network
-that predicts only $P$ extrapolates $1.07$--$1.15\times$ better than the strongest conditional
-baseline, and $1.89\times$ better than an $\varepsilon$-blind network when $\varepsilon$ is
+that predicts only $P$ has a $1.09\times$ lower channel-averaged error than the strongest
+conditional baseline in extrapolation ($\theta$ and $p$ individually; the $u_x/u_y$ intervals
+include zero), and $1.89\times$ better than an $\varepsilon$-blind network when $\varepsilon$ is
 withheld, which makes
 single-contrast public data reusable at other contrasts within one boundary-condition family, without
 retraining.
@@ -54,7 +57,7 @@ Grigoriadis, \emph{Int.\ J.\ Heat Mass Transfer} 125 (2018) 1156--1168), so the 
 the journal's scope: it quantifies that effect and turns it into a surrogate design rule.
 
 \noindent
-The main sweep is two-dimensional and steady; a twelve-sample three-dimensional check reproduces the
+The main sweep is two-dimensional and steady; a preliminary twelve-sample three-dimensional check reproduces the
 exponent, and a POD-ROM with at most four modes on the same samples lowers the mean $u_x$ error from 0.118 to
 0.054 over four held-out contrasts. We state the remaining limits (one Rayleigh number, $res=16$,
 $\varepsilon\le1.2$) explicitly. Every number in

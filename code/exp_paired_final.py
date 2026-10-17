@@ -41,7 +41,7 @@ print('\n=== 1. 零成本基线「什么都不做」：|Y-X|/|Y| 中位 ===')
 print('%-6s'%'eps' + ''.join('%12s'%('R('+LB[i]+')') for i in range(4)))
 tab_floor={}
 for e in EPS:
-    v=[rl(C[c][e][k][1], C[c][e][k][0]) for c in cfgs for k in range(4)]
+    v=[rl(C[c][e][k][0], C[c][e][k][1]) for c in cfgs for k in range(4)]
     v=np.array(v).reshape(len(cfgs),4).T
     tab_floor[e]=[float(np.median(x)) for x in v]
     print('%-6.1f'%e + ''.join('%12.4f'%np.median(x) for x in v))
@@ -54,7 +54,7 @@ for e in EPS:
     for c in cfgs:
         y=[C[c][e][k][1] for k in range(4)]; y0=[C[c][1.2][k][1] for k in range(4)]
         ym=[np.mean([C[c][ee][k][1] for ee in EPS],axis=0) for k in range(4)]
-        ta.append([rl(y[k],y0[k]) for k in range(4)]); tb.append([rl(y[k],ym[k]) for k in range(4)])
+        ta.append([rl(y0[k],y[k]) for k in range(4)]); tb.append([rl(ym[k],y[k]) for k in range(4)])
     ta=np.median(np.array(ta),0); tb=np.median(np.array(tb),0)
     tab_b[e]={'A':ta.tolist(),'B':tb.tolist()}
     print('%-6.1f A: %-28s B: %s'%(e,' '.join('%.4f'%x for x in ta),' '.join('%.4f'%x for x in tb)))
@@ -63,7 +63,7 @@ print('\n=== 2b. eps-blind 迁移矩阵：拿 eps=t 的解当 eps 的预测（�
 tab_tr = {}
 for e_te in EPS:
     for e_tr in EPS:
-        v = [rl(C[c][e_te][k][1], C[c][e_tr][k][1]) for c in cfgs for k in range(4)]
+        v = [rl(C[c][e_tr][k][1], C[c][e_te][k][1]) for c in cfgs for k in range(4)]
         v = np.array(v).reshape(len(cfgs), 4)
         tab_tr['%.1f_from_%.1f' % (e_te, e_tr)] = [float(np.median(v[:, k])) for k in range(4)]
     print('  测试 eps=%.1f  ' % e_te + ' | '.join('用 %.1f 的解: %s' % (e_tr,

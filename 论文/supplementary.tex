@@ -1,4 +1,4 @@
-\documentclass[preprint,11pt,a4paper,times]{elsarticle}
+\documentclass[preprint,11pt,a4paper,times,doubleblind]{elsarticle}
 \usepackage{amsmath,amssymb,bm}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -17,7 +17,7 @@
 \begin{document}
 \begin{frontmatter}
 \title{Supplementary material for:\\
-The Boussinesq--compressible gap in two-dimensional steady Rayleigh--B\'enard convection}
+The Boussinesq--compressible gap in steady two-dimensional buoyancy-driven enclosure convection}
 \author[a]{Author(s)}
 \address[a]{Affiliation(s)}
 \begin{abstract}
@@ -39,7 +39,7 @@ $\varepsilon\to0$ (\path{run_eps0.sh}), 104 at $Pr=4.38$ (\path{run_water.sh});
 \small
 \caption{The five testable consequences of the expansion and their measured values.}
 \label{tab:predictions}
-\begin{tabular}{@{}p{3.9cm}p{11.3cm}@{}}
+\begin{tabular}{@{}p{3.2cm}p{9.0cm}@{}}
 \toprule
 prediction & measurement\\
 \midrule
@@ -79,12 +79,12 @@ $p$ & $1.127$ / $-0.029\pm0.005$ / $0.83$ & $1.057$ / $-0.154\pm0.017$ / $0.74$\
 \begin{table}[htbp]
 \centering
 \small
-\caption{Exact transfer error $R(u_x)$ when a field computed at one $\varepsilon$ (columns) is
-applied at another (rows).}
+\caption{Exact transfer error $R(u_x)$ when a field computed at one $\varepsilon$ (rows) is
+applied at another (columns).}
 \label{tab:transfer-matrix}
 \begin{tabular}{@{}lccccc@{}}
 \toprule
-$R(u_x)$ applied at $\downarrow$ / taken from $\to$ & 0.4 & 0.8 & 1.2 & 1.6 & 1.9\\
+$R(u_x)$ taken from $\downarrow$ / applied at $\to$ & 0.4 & 0.8 & 1.2 & 1.6 & 1.9\\
 \midrule
 $\varepsilon=0.4$ & 0 & 0.067 & 0.143 & 0.235 & 0.353\\
 $\varepsilon=0.8$ & 0.068 & 0 & 0.078 & 0.183 & 0.305\\
@@ -102,7 +102,7 @@ $\varepsilon=1.9$ & 0.402 & 0.328 & 0.251 & 0.142 & 0\\
 \caption{Learning curve on the fixed interpolation test set (200 samples), mean of three seeds.
 Entries are $u_x/u_y/\theta/p$. P3 keeps $\varepsilon$ outside the network entirely.}
 \label{tab:learning}
-\begin{tabular}{@{}c p{6.0cm}p{6.0cm}@{}}
+\begin{tabular}{@{}c p{5.0cm}p{5.0cm}@{}}
 \toprule
 $n$ & B: $\varepsilon$ as input & P3: predict $P(X)$, $\varepsilon$ outside\\
 \midrule
@@ -165,6 +165,8 @@ public test\_legacy, classical cavity & 200 & $a=2.368\pm0.011$, $c=2.095$ & \te
 script & what it produces\\
 \midrule
 \path{exp_eps_law.py} & the 627-sample law (Sec.~\ref{sec:law})\\
+\path{exp_grid128.py} & the $64^2$ vs $128^2$ mesh check at $Ra=10^4$ and $Ra=10^6$
+(Sec.~\ref{sec:law})\\
 \path{repack_p_fixed.py} & the corrected pressure channel (Sec.~\ref{sec:pressure})\\
 \path{exp_paired_final.py} & the $\varepsilon$-blind floor and shape invariance
 (Sec.~\ref{sec:floor})\\
@@ -185,6 +187,8 @@ the three scripts above; their JSON outputs were deleted as stale)\\
 and timing (Secs.~\ref{sec:noise}--\ref{sec:cost})\\
 \path{exp_water.py} & the strictly paired $Pr=4.38$ fluid study (Sec.~\ref{sec:water})\\
 \path{exp_perturbation.py} & the first-order perturbation baseline on the $\varepsilon$ scan
+(Sec.~\ref{sec:baselines})\\
+\path{exp_linear_response.py} & the linear-response and secant baselines from the paired scan
 (Sec.~\ref{sec:baselines})\\
 \path{exp_dnu_eps.py} & the integral $Nu$ gap versus $\varepsilon$
 (Sec.~\ref{sec:nu})\\

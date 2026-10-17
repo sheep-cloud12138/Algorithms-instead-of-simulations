@@ -109,7 +109,7 @@ $Re$ & Reynolds number, $(Ra/Pr)^{1/2}$ & & \\
 $T$ & temperature, $T_{0}$ its reference value & & \\
 $\bm u$ & velocity, $(u_x,u_y)$ & & \\
 $\hat u$ & peak Boussinesq speed & & \\
-$X,\,Y$ & Boussinesq and compressible solutions & $\mathcal{L}$ & linearised Boussinesq operator\\
+$X,\,Y$ & Boussinesq and compressible solutions & $\mathcal{L}$ & linearised low-Mach operator at $O(\varepsilon)$\\
 \bottomrule
 \end{tabular}}
 \end{center}
@@ -372,9 +372,11 @@ fixed, $X$ cannot depend on $\varepsilon$. This was verified to solver precision
 stream), the maximum relative deviation of $X$ is $9.77\times10^{-8}$.
 
 \begin{quote}
-\noindent\textbf{Corollary.} The correction $Y-X$ is information that is \emph{absent from the
-surrogate's input}: no amount of capacity or training data can recover it from $X$ alone. The limit
-is informational, not architectural (Sec.~\ref{sec:floor}).
+\noindent\textbf{Corollary.} The amplitude of the correction is set by $\varepsilon$, which is
+\emph{absent from the surrogate's input}. The spatial shape of the correction is a function of $X$
+and is learnable; no function of $X$ alone, however expressive, can supply the factor
+$\varepsilon$ that scales it. The limit is informational, not architectural
+(Sec.~\ref{sec:floor}).
 \end{quote}
 
 \section{Asymptotic theory: why the correction factorises as $\varepsilon P(X)$}
@@ -407,11 +409,16 @@ $O(\varepsilon^2)$ in $T$. The relative correction in the normalised $\theta$ is
 $O(\varepsilon)$, because it is measured against $\theta_0$, whose norm is the largest of the four
 fields; that normalisation, not a higher order in $\theta_1$, is why $\theta$ has the smallest
 relative amplitude. The
-$O(\varepsilon)$ system is solvable: its only singular mode is the constant pressure, and the
-compatibility condition
+$O(\varepsilon)$ system is linear, with coefficients fixed by $X$. Its mass equation is
+inhomogeneous, so the operator is not the Boussinesq operator linearised about $X$---whose
+velocities are divergence-free---but the linearisation of the retained low-Mach system about $X$,
+with the mass constraint carried inside the operator. We denote that operator by $\mathcal{L}$;
+its inverse, up to the constant-pressure gauge, is written $\mathcal{L}^{-1}$. It is solvable: its
+only singular mode is the constant pressure, and the compatibility condition
 $\int\nabla\cdot(\theta_0\bm u_0)\,d\Omega=\oint\theta_0\bm u_0\cdot\bm n\,dS=0$ holds because
 $\bm u_0\cdot\bm n=0$ on the walls, so $\tilde p_1$ is determined up to the gauge.
-Since $\mathcal{L}$, the linearisation of the Boussinesq operator about $X$, does not contain $\varepsilon$,
+Since $\mathcal{L}$ is built from $X$ and the retained equations, and contains no explicit
+$\varepsilon$,
 \begin{equation}
 D=Y-X=-\varepsilon \mathcal{L}^{-1}S_1[X]-\varepsilon^2\mathcal{L}^{-1}S_2[X]+\dots
 =\varepsilon P(X)+\varepsilon^2Q(X)+\dots
@@ -452,7 +459,7 @@ families & calibrate the law, train surrogates\\
 $\varepsilon\to0$ checks & 27 & $\varepsilon=0.02/0.05/0.10$ $\times$ $Ra=10^3/10^4/10^5$, three seeds each &
 test $R(0)=0$\\
 paired & $20\times5$ & only $\varepsilon$; $Ra$ and the $\theta$ boundary stream fixed within a
-configuration & exact $\varepsilon$-blind floor, shape invariance\\
+configuration & $\varepsilon$-blind reference, shape invariance\\
 aspect 2:1 & 104 & same law, geometry $2\times1$ & external validity\\
 tight rerun & 10 & the 10 worst-converged samples, tolerance $10^{-6}\to10^{-8}$ & noise control\\
 public, random walls \citep{menglik2026neural} & $4000+2\times200$ & $\varepsilon\equiv1.2$; the
@@ -622,11 +629,11 @@ post-processing gauge above, not a gauge-invariant law.
 
 Within a configuration $X$ is identical for all $\varepsilon$, so an $\varepsilon$-blind model must
 emit one field $F$ for every $\varepsilon$ it is applied at (Fig.~\ref{fig:floor},
-Table~\ref{tab:floor}). Two reference protocols are exact
-rather than fitted: (A) train at the one $\varepsilon$ a published data set offers (here
+Table~\ref{tab:floor}). Two reference protocols are computed directly from the paired data rather
+than fitted: (A) train at the one $\varepsilon$ a published data set offers (here
 $\varepsilon=1.2$) and apply it everywhere, error $\|Y(\varepsilon)-Y(1.2)\|/\|Y(\varepsilon)\|$;
-(B) the single field that best serves the whole range, the $\varepsilon$-mean of $Y$. (B) is a
-least-squares compromise over the $\varepsilon$-range, not a per-$\varepsilon$ lower
+(B) one field chosen without $\varepsilon$, the unweighted $\varepsilon$-mean of $Y$. (B) is a
+compromise fixed by that choice of average, not a per-$\varepsilon$ lower
 bound---a field tuned to $\varepsilon=0.8$ gives $0.067$ at $\varepsilon=0.4$, better than (B)'s
 $0.180$ there, and below $\varepsilon\approx0.8$ doing nothing beats both. Median over 20
 configurations, channels $u_x/u_y/\theta/p$:
@@ -635,8 +642,10 @@ configurations, channels $u_x/u_y/\theta/p$:
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\caption{The exact $\varepsilon$-blind floor. Protocol (A) is what a single-$\varepsilon$ public
-data set forces; protocol (B) is the best single field over the whole range. Entries are medians over 20 configurations, ordered $u_x/u_y/\theta/p$; every entry is a relative
+\caption{An $\varepsilon$-blind reference. Protocol (A) is what a single-$\varepsilon$ public
+data set forces; protocol (B) is the unweighted $\varepsilon$-mean field, a reference rather than
+an optimum for the relative $L_2$ error. Entries are medians over 20 configurations, ordered
+$u_x/u_y/\theta/p$; every entry is a relative
 $L_2$ error with $\|Y\|$ in the denominator, the same convention as the surrogate errors.}
 \label{tab:floor}
 \setlength{\tabcolsep}{3pt}
@@ -657,7 +666,7 @@ $\varepsilon$-mean field\\
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig2_floor.png}
-\caption{Single-$\varepsilon$ training leaves an unreachable floor. Curves show ``do nothing'',
+\caption{Single-$\varepsilon$ training leaves an $\varepsilon$-blind floor. Curves show ``do nothing'',
 training at $\varepsilon=1.2$ only, and the best $\varepsilon$-blind field, for the 20 paired
 configurations.}
 \label{fig:floor}
@@ -704,7 +713,7 @@ $p$ & 0.964 & 0.991 & 1.000 & 0.990 & 0.952\\
 \end{tabular}
 \end{table}
 
-\subsection{Network baselines: the correction is information, not capacity}
+\subsection{Network baselines: the missing input is a scalar, not capacity}
 \label{sec:baselines}
 
 \begin{table}[htbp]
@@ -763,8 +772,8 @@ the structured model), because neither can represent a product of an $\varepsilo
 spatial field. A classical POD-ROM (44--52 modes, 99.9\% of the snapshot energy) whose coefficients
 are regressed on $(\log_{10}Ra,\varepsilon)$ lands at 0.2937 with $\varepsilon$ and 0.3001 without,
 i.e.\ at the level of doing nothing, and a purely linear surrogate that also sees the POD
-coefficients of $X$ reaches only 0.2318. The plateau is not capacity---it is that the quantity to be
-added is absent from the input.
+coefficients of $X$ reaches only 0.2318. The plateau is not capacity---it is that the factor
+scaling the quantity to be added is absent from the input.
 \paragraph{A first-order perturbation proxy} If the correction is linear in $\varepsilon$, the
 alternative is to solve the linearised compressible problem once per query and scale. That costs
 one Jacobian assembly and one factorisation of the same discretisation. Timed on the Boussinesq
@@ -1077,10 +1086,10 @@ $\varepsilon$ from 0.2 to 1.9, values the training data never contained.
 \setlength{\tabcolsep}{4pt}
 \caption{Transfer from a single-$\varepsilon$ public data set to our own
 $\varepsilon\in[0.2,1.9]$ samples, on the extrapolation and interpolation test splits. Entries are
-$u_x/u_y/\theta/p$. The last row uses 382 training samples for the extrapolation column and 400
-for the interpolation one. Both public sets are at $\varepsilon\equiv1.2$. That row is the $\varepsilon$-blind prior (no $\varepsilon$ input, 150
-epochs, one seed), the same protocol as the public rows above; the P1/P3 columns of
-Table~\ref{tab:ablation} use 200 epochs and three seeds.}
+$u_x/u_y/\theta/p$. Both public sets are at $\varepsilon\equiv1.2$. The ``our own training
+split'' row uses 382 training samples for the extrapolation column and 400 for the interpolation
+one, with a prior that has no $\varepsilon$ input (150 epochs, one seed), the same protocol as the
+public rows above; the P1/P3 columns of Table~\ref{tab:ablation} use 200 epochs and three seeds.}
 \label{tab:transfer}
 \setlength{\tabcolsep}{2.7pt}
 \begin{tabular}{@{}p{3.85cm}p{0.8cm}p{3.655cm}p{3.655cm}@{}}
@@ -1461,8 +1470,8 @@ table of $A$. A preliminary set of twelve paired 3-D solutions at one $Ra$ and o
 reproduces the exponent (flow means $1.03$--$1.10$, per-flow $1.02$--$1.11$; Sec.~\ref{sec:3d}).
 \item A reason. The $\varepsilon$-expansion of the compressible member reproduces the
 Boussinesq system at $O(1)$ and produces the correction through
-$\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated inertia. The linearised
-operator does not contain $\varepsilon$, so the correction factorises,
+$\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated inertia. The linear
+operator of that system does not contain $\varepsilon$, so the correction factorises,
 $D=\varepsilon P(X)+\varepsilon^2Q(X)+\dots$, with a shape that does not rotate. All five
 consequences of the expansion listed in Table~S1 are confirmed numerically.
 \item A design rule. Predicting $P(X)$ and multiplying by $\varepsilon$ outside the

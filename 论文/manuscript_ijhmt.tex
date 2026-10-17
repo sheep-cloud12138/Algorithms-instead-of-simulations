@@ -795,7 +795,7 @@ flatter that baseline. The network reaches
 $9.4$/$10.6$/$1.4$/$11.3\%$ on the extrapolation split (Table~\ref{tab:ablation}), so the residual
 left by the linear response is not a small correction. Both approaches replace the same compressible
 member and therefore save a similar fraction of the 30.3\,s nonlinear solve; the difference is that
-the network retains the $\varepsilon^2$ curvature that the linear solve cannot produce, and
+the network retains the $\varepsilon^2$ curvature that the first-order linear solve cannot produce, and
 inference costs 6.3\,ms against 0.45\,s per linear solve.
 
 \subsection{The physics prior: $D=\varepsilon P(X)$}

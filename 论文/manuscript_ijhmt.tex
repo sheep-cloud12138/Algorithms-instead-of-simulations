@@ -31,8 +31,8 @@ a factorised physics prior for surrogates}
 \address[a]{Affiliation(s)}
 
 \begin{abstract}
-Surrogates of compressible convection are usually trained on Boussinesq solutions, and a model
-fitted at one temperature contrast cannot be used at another. We show, for two-dimensional steady
+Surrogates of compressible convection are trained on Boussinesq solutions, and a model
+fitted at one contrast cannot be used at another. We show, for two-dimensional steady
 Rayleigh--B\'enard convection, that the difference is governed by one parameter, the relative
 temperature contrast $\varepsilon=\Delta T/T_0$. The Froude number is not free
 ($Fr^2=\varepsilon$ identically), and a 24-fold change in $Ma$ alters the $O(Ma^2)$ correction by
@@ -40,15 +40,15 @@ less than $10^{-5}$. Over 627 paired solutions spanning $\varepsilon=0.02$--$1.9
 correction obeys $R=A\varepsilon^m$ with $m=1.023\pm0.018$, $0.995\pm0.019$, $1.024\pm0.077$ and
 $1.009\pm0.015$ for $(u_x,u_y,\theta,p)$, a vanishing intercept, and an $\varepsilon^2$ curvature,
 the next term of the asymptotic expansion. The amplitude reproduces on an independent public data
-set from another group at $\varepsilon\equiv1.2$; the exponent is unchanged in a second geometry
-and, on 104 paired configurations, between $Pr=0.71$ and $4.38$. At that contrast the integral
+set from another group at $\varepsilon\equiv1.2$; the exponent is unchanged in a second geometry,
+at $Pr=4.38$ on 104 paired configurations, and is recovered to within 0.06 in a nine-sample three-dimensional check. At that contrast the integral
 Nusselt number changes by $0.6\%$, while the local wall heat flux is redistributed by $4.25\%$. The
 prefactor is not universal: in the $\theta$ channel it collapses on the peak Boussinesq velocity
 across two independent generators. Because the correction factorises as $D=\varepsilon P(X)$, a
 surrogate predicts $P$ and multiplies afterwards: with $\varepsilon$ as an input extrapolation
-improves by $1.61\times$, and without it the network still beats an $\varepsilon$-blind one by
+improves by $1.61\times$, and without it still beats an $\varepsilon$-blind network by
 $1.89\times$ and reuses single-$\varepsilon$ public data at other contrasts within one boundary-condition
-family. One evaluation takes 6.3\,ms against 33.9\,s for the pair of solves.
+family. One evaluation takes 6.3\,ms against 33.9\,s for the paired solve.
 \end{abstract}
 
 \begin{keyword}
@@ -224,7 +224,8 @@ reusable, with the speed-up measured end to end ($5.4\times10^3$ per sample)
 (Secs.~\ref{sec:baselines}--\ref{sec:transfer}, \ref{sec:cost}).
 \end{enumerate}
 
-All results are two-dimensional. Section~\ref{sec:limits} states the measured cost of the
+All results are two-dimensional except the nine-sample three-dimensional check of
+Sec.~\ref{sec:3d}. Section~\ref{sec:limits} states the measured cost of the
 three-dimensional problem on the same hardware and gives the concrete reasons we do not claim a 3-D
 sweep.
 \section{Problem, discretisation and the break-symmetry parameter}
@@ -281,6 +282,7 @@ one-dimensional break-symmetry axis\\
 \bottomrule
 \end{tabular}
 \end{table}
+
 
 \subsection{The low-fidelity solution is exactly $\varepsilon$-blind}
 \label{sec:blind}
@@ -993,16 +995,70 @@ the strict pairing matters for the last digit---the unpaired fits give $\theta$ 
 (a 15\% move, the same direction as the 5\% paired move) and $u_x/u_y$ $+2$--3\%---which is the same
 statement as Sec.~\ref{sec:aspect} (a geometry moves $A$) and Sec.~\ref{sec:public}
 (boundary-condition families move it by up to $4\times$).
+\subsection{A three-dimensional check}
+\label{sec:3d}
+
+The law is calibrated in two dimensions. To test whether the exponent survives in three, we
+generated nine paired steady solutions with the same generator: three fixed flows---a three-cell
+Voronoi wall pair, a two-cell wall pair and a constant-wall cavity---each solved at
+$\varepsilon=0.2$, $0.4$ and $0.8$, with $Ra=10^4$, $Pr=0.71$ and $res=16$ ($33^3$ velocity nodes,
+$17^3$ temperature and pressure nodes). The pairing is exact: within each flow the wall temperatures
+are the same seed stream scaled affinely about $T_0$, so the low-fidelity member is the same
+solution up to the $\varepsilon$-blind rescaling of Sec.~\ref{sec:blind}.
+
+Table~\ref{tab:3d} and Fig.~\ref{fig:3d} give the result. In every channel and every flow, doubling $\varepsilon$ doubles
+$R$ to within 8.1\% over the four-fold range, and the per-flow exponents are
+$1.042\pm0.019$ ($u_x$), $1.020\pm0.008$ ($u_y$), $1.062\pm0.014$ ($\theta$) and
+$1.068\pm0.012$ ($p$)---within $0.07$ of unity and within $0.06$ of the two-dimensional
+full-window fit of Table~\ref{tab:law}. The comparison is to the full-window fit rather than to a
+2-D fit restricted to the same window: the 2-D samples are drawn at random $\varepsilon$ and their
+prefactor varies by up to $4\times$ between flows (Sec.~\ref{sec:public}), so a narrow-window
+regression there measures that scatter rather than the local slope. The prefactor is not universal here either: across the three flows it varies
+by $3.8\times$ ($u_x$), $2.0\times$ ($u_y$), $10\times$ ($\theta$) and $1.9\times$ ($p$), which is
+the same statement as Sec.~\ref{sec:public}, that $A$ is a functional of the flow. What transfers to
+three dimensions is the exponent, which is what the factorisation predicts.
+
+The check is limited to $Ra=10^4$, $res=16$ and $\varepsilon\le0.8$. The nine pairs cost
+13--24\,min each (median 15\,min) on this machine, and the $\varepsilon=1.2$ case did not complete on the 7.8\,GB machine and is not reported. We therefore report the exponent
+transfer, not a three-dimensional sweep.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Three-dimensional check: nine strictly paired samples, three fixed flows $\times$ three
+$\varepsilon$ at $Ra=10^4$, $Pr=0.71$, $res=16$. Per-flow exponents are power-law fits to the three
+$\varepsilon$ values of that flow. Flows are ordered three-cell Voronoi, two-cell Voronoi, constant
+wall. The prefactor is listed per flow to show that it does not transfer between flows.}
+\label{tab:3d}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+channel & $m$ (mean$\pm$s.d. over flows) & per-flow $m$ & $A$ per flow\\
+\midrule
+$u_x$ & $1.042\pm0.019$ & 1.06/1.04/1.03 & 0.064/0.176/0.244\\
+$u_y$ & $1.020\pm0.008$ & 1.03/1.01/1.02 & 0.120/0.156/0.241\\
+$\theta$ & $1.062\pm0.014$ & 1.07/1.07/1.05 & 0.006/0.022/0.061\\
+$p$ & $1.068\pm0.012$ & 1.07/1.08/1.05 & 0.091/0.171/0.175\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.82\textwidth]{fig9_3d.png}
+\caption{The three-dimensional check in log--log coordinates: nine paired samples, three fixed flows
+and three temperature contrasts. Dashed lines are a slope-one reference anchored at the lowest
+$\varepsilon$ of each flow.}
+\label{fig:3d}
+\end{figure}
+
 \section{Limitations}
 \label{sec:limits}
 
 \begin{enumerate}
-\item \textbf{Two dimensions only.} A three-dimensional pair at $res=16$ costs $\ge23$\,min for the
-Boussinesq member alone (1386\,s for 21 steady steps) and the compressible member was still
-unfinished when a 30-minute wall-clock cap killed it (\path{code/run_3d_probe.sh},
-\texttt{timeout 1800}); the historical $res=24$ probe at $\varepsilon=1.2$ never converged (Newton
-backtracking to $dt=3.7\times10^{-4}$). A 3-D $\varepsilon$-sweep is out of reach on this machine
-and we do not claim one.
+\item \textbf{Two dimensions for the main sweep.} The law is calibrated on 2-D solutions. The
+nine-sample 3-D check of Sec.~\ref{sec:3d} reproduces the exponent, but covers one Rayleigh number,
+$res=16$ and $\varepsilon\le0.8$. Each 3-D pair costs 13--24\,min (median 15) on this machine, and
+the $\varepsilon=1.2$ case did not complete on the 7.8\,GB machine. A 3-D sweep at higher $Ra$ or resolution remains out of reach here.
 \item \textbf{$Ma$ is inert here}, so the break-symmetry group is one-dimensional rather than two.
 At larger $Ma$ this would have to be redone.
 \item $\varepsilon<2$, imposed by the equation of state (the cold wall must stay positive).
@@ -1035,7 +1091,8 @@ $\varepsilon=0.8$ upwards the same points give $1.23$--$1.32$, the $\varepsilon^
 Sec.~\ref{sec:law}), and a 134-family boundary-condition description (133 dummies) that adds only
 2--3 pp of adjusted $R^2$ to the velocity and pressure channels. The exponent is
 geometry-independent and fluid-independent; only the prefactor $A$ must be calibrated, which is why
-the surrogate takes $X$ as input rather than a table of $A$.
+the surrogate takes $X$ as input rather than a table of $A$. Nine paired 3-D solutions reproduce
+the exponent (flow means $1.02$--$1.07$, per-flow $1.01$--$1.08$; Sec.~\ref{sec:3d}).
 \item \textbf{A reason.} The $\varepsilon$-expansion of the compressible member reproduces the
 Boussinesq system at $O(1)$ and produces the correction through
 $\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated inertia. The linearised
@@ -1053,7 +1110,7 @@ Sec.~\ref{sec:public}: it holds within a boundary-condition family and fails acr
 predictably.
 \end{enumerate}
 
-The honest limits are in Sec.~\ref{sec:limits}: two dimensions, $\varepsilon<2$, one-dimensional
+The honest limits are in Sec.~\ref{sec:limits}: two dimensions for the main sweep, $\varepsilon<2$, one-dimensional
 break symmetry, and a prefactor whose two-parameter fits leave 26\% ($u_x$), 23\% ($u_y$) and 28\%
 ($\theta$) of the variance unexplained. None of them touch the claim that matters for practice,
 which is that the $\varepsilon$ dependence is known in closed form and should not be left to the
@@ -1073,7 +1130,7 @@ logs and JSON results are under \path{~/nc_run/}.
 Code and every machine-readable result are mirrored at
 \url{https://github.com/sheep-cloud12138/Algorithms-instead-of-simulations} (working branch
 \texttt{dev}; \texttt{master} carries snapshots that have passed an independent review). The raw
-solver output (600 + 104 + 104 + 27 paired samples, $\sim$6\,GB) stays on the machine described
+solver output (600 + 104 + 104 + 27 two-dimensional pairs and 9 three-dimensional pairs, $\sim$6\,GB) stays on the machine described
 above; every number in this paper is regenerated from the JSON results in
 \path{~/nc_run/p7/} by reporting scripts, not transcribed by hand.
 \end{sloppypar}

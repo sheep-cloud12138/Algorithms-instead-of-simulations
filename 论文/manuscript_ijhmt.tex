@@ -1099,8 +1099,8 @@ contrasts (nine samples) and test on the held-out contrast (three samples),
 repeating for each of the four contrasts. The plain ROM predicts $D$ from
 $[1,\varepsilon,\bm c_X]$, where $\bm c_X$ are at most four POD coefficients of the
 Boussinesq field; the prior ROM predicts $P=D/\varepsilon$ from
-$[1,\bm c_X]$ and multiplies by $\varepsilon$ outside. Four modes are fewer
-than the nine training samples. Averaged over the four held-out contrasts,
+$[1,\bm c_X]$ and multiplies by $\varepsilon$ outside. At most four modes are used,
+fewer than the nine training samples. Averaged over the four held-out contrasts,
 the prior lowers the relative error in every channel (Table~\ref{tab:3drom}):
 $u_x$ from 0.118 to 0.054, $u_y$ from 0.136 to 0.110, $\theta$ from 0.024 to
 0.019 and $p$ from 0.108 to 0.064. The gain is largest at $\varepsilon=0.2$ and
@@ -1148,8 +1148,8 @@ folds (mean $\pm$ s.d.); the ROM uses at most four POD modes and ridge regressio
 \toprule
 channel & do nothing & plain ROM & prior ROM & gain\\
 \midrule
-$u_x$ & 0.1406$\pm$0.088 & 0.1181$\pm$0.044 & 0.0542$\pm$0.036 & 2.18\\
-$u_y$ & 0.1376$\pm$0.086 & 0.1357$\pm$0.025 & 0.1100$\pm$0.068 & 1.23\\
+$u_x$ & 0.1406$\pm$0.088 & 0.1180$\pm$0.044 & 0.0542$\pm$0.036 & 2.18\\
+$u_y$ & 0.1376$\pm$0.086 & 0.1356$\pm$0.025 & 0.1100$\pm$0.068 & 1.23\\
 $\theta$ & 0.0261$\pm$0.017 & 0.0244$\pm$0.005 & 0.0193$\pm$0.012 & 1.26\\
 $p$ & 0.1136$\pm$0.075 & 0.1078$\pm$0.036 & 0.0644$\pm$0.045 & 1.67\\
 \bottomrule

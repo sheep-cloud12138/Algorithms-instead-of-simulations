@@ -28,7 +28,7 @@ def main():
         e_tr, e_te = eps[tr], eps[te]
 
         Xf = Xn.transpose(0, 2, 3, 4, 1).reshape(len(eps), -1)
-        Vx, _, kx = pod_basis(Xf[tr], kmax=KMAX)
+        Vx, _, kx = pod_basis(Xf[tr], kmax=KMAX, energy=1.0)
         Xc = (Xf - Xf[tr].mean(0)) @ Vx
 
         rec = {k: [] for k in ['m1', 'm2', 'm3', 'prior_m1', 'prior_m2', 'prior_m3']}
@@ -39,7 +39,7 @@ def main():
             Yt = Yn[te, c].reshape(te.sum(), -1)
             floor.append(float(np.linalg.norm(Xte - Yt) / np.linalg.norm(Yt)))
 
-            Phi, C, _ = pod_basis(Dtr)
+            Phi, C, _ = pod_basis(Dtr, energy=1.0)
             F = {
                 'm1': np.ones((tr.sum(), 1)),
                 'm2': np.column_stack([np.ones(tr.sum()), e_tr]),
@@ -56,7 +56,7 @@ def main():
                 rec[kind].append(float(np.linalg.norm(Xte + Dp - Yt) / np.linalg.norm(Yt)))
 
             Ptr = Dtr / e_tr[:, None]
-            PhiP, CP, _ = pod_basis(Ptr)
+            PhiP, CP, _ = pod_basis(Ptr, energy=1.0)
             Fp = {
                 'm1': np.ones((tr.sum(), 1)),
                 'm2': np.column_stack([np.ones(tr.sum()), e_tr]),
@@ -89,6 +89,9 @@ def main():
     for kind in agg:
         if kind != 'm1':
             agg[kind]['gain_vs_m1'] = (ref / np.array(agg[kind]['mean'])).tolist()
+    ref3 = np.array(agg['m3']['mean'])
+    for kind in ['prior_m1', 'prior_m2', 'prior_m3', 'floor', 'm1', 'm2']:
+        agg[kind]['gain_vs_m3'] = (ref3 / np.array(agg[kind]['mean'])).tolist()
 
     print('\n=== mean over 4 held-out eps ===')
     print('%-10s %s' % ('variant', ' '.join('%9s' % c for c in CH)))

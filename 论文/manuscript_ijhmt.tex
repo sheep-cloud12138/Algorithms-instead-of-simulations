@@ -40,15 +40,15 @@ differentially heated cavity is the one-mode member of the family. The Froude nu
 ($Fr^2=\varepsilon$), and a 24-fold change in $Ma$ leaves the measured correction unchanged at the
 precision of the solve in the retained low-Mach equations. Over 627 paired solutions
 ($\varepsilon=0.02$--$1.9$), the relative correction obeys $R=A\varepsilon^m$ with
-$m=1.023\pm0.018$, $0.995\pm0.019$ and $1.009\pm0.015$ for
-$(u_x,u_y,p)$ over the full two-decade window, a vanishing intercept and $\varepsilon^2$
-curvature. The pressure exponent is quoted in the fixed post-processing gauge of
-Sec.~\ref{sec:pressure}. $\theta$ has the same leading $\varepsilon$ scaling but a weak signal
-($R^2=0.22$); its fitted slope is $1.024\pm0.077$ over the full window and $1.67$ on the
-104-configuration subset, so it is not part of the common-exponent statement, and its amplitude
-collapses on the base-flow advection strength $\chi$; its wall-normalised amplitude is
-0.010 (0.034 zero-mean). The amplitude at $\varepsilon=1.2$ reproduces on another group's public
-data; for $u_x$, $u_y$ and $p$ the exponent is consistent within its uncertainty in a second geometry (0.7--1.8$\sigma$;
+$m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$ over the full two-decade window, a vanishing
+intercept and $\varepsilon^2$ curvature. The pressure channel gives $1.009\pm0.015$ in the fixed
+post-processing gauge of Sec.~\ref{sec:pressure}; because that gauge is not unique, we report it as
+a numerical channel, not a physical exponent. $\theta$ is a weak, flow-dependent channel: its free
+power-law fit is not identifiable at this sample size ($R^2=0.22$; slope $1.024\pm0.077$ over the
+full window and $1.67$ on the 104-configuration subset), so we make no exponent claim for it. Its
+amplitude collapses on the base-flow advection strength $\chi$; its wall-normalised amplitude is
+0.010 (0.034 zero-mean). The median amplitude at $\varepsilon=1.2$ reproduces on another group's public
+data; for $u_x$ and $u_y$ the exponent is consistent within its uncertainty in a second geometry (0.7--1.8$\sigma$;
 the refitted value moves by 7--17\%), where the prefactor moves by up to 50\%; and on the same
 104 configurations the $Pr=4.38$ exponent and prefactor stay within 7\% of $Pr=0.71$. In a preliminary twelve-sample
 3-D check ($Ra=10^4$, $res=16$, $\varepsilon\le1.2$) the per-flow exponents lie within 0.11 of
@@ -57,7 +57,8 @@ $\varepsilon=1.2$ the integral Nusselt number changes
 by $0.6\%$ and the local wall flux by $4.25\%$; across our Rayleigh-number scan the family-mean integral change reverses sign and reaches
 $+28\%$ at $Ra=10^6$, $\varepsilon=1.9$ (individual families reach $+82\%$). The prefactor is not universal: in $\theta$ it also collapses on the peak
 Boussinesq velocity across generators. Because $D=\varepsilon P(X)$, a surrogate predicts $P$ and multiplies: with $\varepsilon$ as input its channel-averaged error is $1.09\times$ lower than that of a
-FiLM-conditioned network in extrapolation (the $\theta$ and $p$ channels individually; the 95\%
+FiLM-conditioned network in extrapolation (the $\theta$ and $p$ channels individually, $p$ in the
+fixed gauge; the 95\%
 intervals for $u_x$ and $u_y$ include zero), while the two coincide within seed scatter in interpolation; without it, it
 still beats an $\varepsilon$-blind network by
 $1.87\times$ channel-averaged ($1.89\times$ in $u_x$) and reuses single-$\varepsilon$ public
@@ -161,10 +162,11 @@ $\varepsilon$-independent, the correction factorises,
 $Y-X=\varepsilon P(X)+\varepsilon^2Q(X)+\dots$, with a shape $P$ that does not rotate as
 $\varepsilon$ moves (Sec.~\ref{sec:theory}). Measured over two decades of $\varepsilon$ (627
 samples, Sec.~\ref{sec:law}) the relative correction obeys $R=A\varepsilon^m$ with $m=1.02$ in
-$u_x$, $u_y$ and $p$. $\theta$ has the same leading $\varepsilon$ scaling but a much weaker signal
-($R^2=0.22$): its fitted slope is 1.02 over the full window but 1.67 on the 104-configuration
-subset, so we do not include it in the common-exponent statement; its amplitude is set by the
-base-flow advection strength $\chi$ (Sec.~\ref{sec:law}). The exponent is
+$u_x$ and $u_y$. The pressure channel gives $m=1.01$ in the fixed gauge of
+Sec.~\ref{sec:pressure}, a numerical observation rather than a gauge-invariant exponent. $\theta$
+is a weak, flow-dependent channel: its free power-law fit is not identifiable ($R^2=0.22$; slope
+1.02 over the full window, 1.67 on the 104-configuration subset), so we make no exponent claim for
+it; its amplitude is set by the base-flow advection strength $\chi$ (Sec.~\ref{sec:law}). The exponent is
 window-averaged: the same 627 points give $1.23$--$1.32$ when fitted from $\varepsilon=0.8$
 upwards, which is the $\varepsilon^2$ curvature. The intercept vanishes, and the prefactor's weak
 Rayleigh-number trend reproduces in a second geometry and in a third Prandtl number.
@@ -174,7 +176,8 @@ surrogate can predict $P(X)$ and multiply by $\varepsilon$ afterwards. Supplying
 an input as well gives the largest gain relative to the strongest conditional baseline:
 $1.07\times$ in $u_x$ for the linear form and $1.15\times$ for the quadratic form
 (channel-averaged $1.09\times$ and $1.21\times$; the $\theta$ and $p$ channels are individually
-significant, the $u_x$ and $u_y$ intervals include zero; Sec.~\ref{sec:prior})---while removing it from
+significant, $p$ in the fixed gauge, while the $u_x$ and $u_y$ intervals include zero;
+Sec.~\ref{sec:prior})---while removing it from
 the input costs a little accuracy but
 is what lets a network trained on a public data set that exists at a single $\varepsilon$ be
 applied, without retraining, to our $\varepsilon\in[0.2,1.9]$, where it reaches
@@ -490,9 +493,9 @@ amplitude is therefore listed in both, $0.010$ wall-normalised and $0.034$ zero-
 \subsection{The $\varepsilon$-law, calibrated over two decades}
 \label{sec:law}
 
-Fig.~\ref{fig:law} shows the collapse of $u_x$, $u_y$ and $p$. The $\theta$ panel has the same
-leading scaling but scatters about the fitted line ($R^2=0.22$), because its amplitude also depends
-on $\chi$; Table~\ref{tab:law} collects the fitted exponents and amplitudes.
+Fig.~\ref{fig:law} shows the collapse of $u_x$, $u_y$ and $p$. The $\theta$ panel scatters about
+the fitted line ($R^2=0.22$), because its amplitude also depends on $\chi$;
+Table~\ref{tab:law} collects the fitted exponents and amplitudes.
 
 \begin{table}[htbp]
 \centering
@@ -500,8 +503,9 @@ on $\chi$; Table~\ref{tab:law} collects the fitted exponents and amplitudes.
 \caption{Power-law fit $R=A\varepsilon^m$ over the full two-decade window (627 samples). The
 intercept is fitted separately on the small-$\varepsilon$ subset ($\varepsilon\le0.5$). For $\theta$
 the amplitude is given in both conventions, wall-normalised/zero-mean. The $p$ row uses the fixed
-gauge and hydrostatic correction of Sec.~\ref{sec:pressure}; its exponent is not gauge-invariant,
-and the $\theta$ slope is subset-dependent (see text).}
+gauge and hydrostatic correction of Sec.~\ref{sec:pressure}; its exponent is not gauge-invariant.
+The $\theta$ row is reported for completeness; its slope is subset-dependent and no exponent is
+claimed.}
 \label{tab:law}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -519,8 +523,8 @@ $p$ & $m=1.009\pm0.015$ & 0.148 & 0.87 & $+0.0016\pm0.0030$\\
 \centering
 \includegraphics[width=0.95\textwidth]{fig1_law.png}
 \caption{The Boussinesq--compressible discrepancy collapses on
-$\varepsilon=\Delta T/T_0$ over two decades for $u_x$, $u_y$ and $p$; the $\theta$ panel has the
-same leading scaling but scatters ($R^2=0.22$) and collapses on $\chi$ rather than on $\varepsilon$
+$\varepsilon=\Delta T/T_0$ over two decades for $u_x$, $u_y$ and $p$; the $\theta$ panel scatters
+($R^2=0.22$) and collapses on $\chi$ rather than on $\varepsilon$
 alone (Fig.~\ref{fig:theta}). Points: 600 random-boundary-condition samples, coloured by
 $\log_{10}Ra$; stars: the 27 small-$\varepsilon$ checks ($\varepsilon=0.02$--$0.1$, three
 Rayleigh numbers, three seeds each), included in the fit to anchor the $\varepsilon\to0$ end and
@@ -573,7 +577,7 @@ discretisation uncertainty of up to $3.3\%$.
 
 \begin{itemize}
 \item For $u_x$, $u_y$ and $p$ the exponent is consistent across geometry within its uncertainty
-(0.7--1.8$\sigma$); the
+(0.7--1.8$\sigma$; $p$ in the fixed gauge); the
 prefactor $A$ is not ($0.147\to0.175$ for $u_x$, $0.148\to0.222$ for $p$, $0.193\to0.175$ for
 $u_y$, $0.010\to0.008$ for $\theta$).
 \item Boundary-condition families barely matter \emph{inside this family}: 134 wall-mode families,
@@ -582,10 +586,16 @@ $u_y$, $0.010\to0.008$ for $\theta$).
 artefact of which wall modes were drawn.
 \item The $\theta$ channel needs one extra, cheaply available parameter, the advection strength of
 the base flow $\chi=\|\bm u\|\|\nabla\theta\|/\|\theta\|$:
-$R_\theta=\varepsilon(-0.0037+0.226\chi)$, $R^2$ $0.185\to0.778$ (Spearman 0.902), i.e.\
-$R_\theta\approx0.23\varepsilon\chi$. For $u_x/u_y/p$ adding $\chi$ does nothing. A single-input
+$R_\theta=\varepsilon(-0.0037+0.226\chi)$ with the $\varepsilon$ factor imposed, not fitted;
+$R^2$ $0.185\to0.778$ (Spearman 0.902), i.e.\ $R_\theta\approx0.23\varepsilon\chi$. This is a
+parameterisation of the $\theta$ amplitude, not an independent measurement of its exponent. For
+$u_x/u_y/p$ adding $\chi$ does nothing. A single-input
 form of the same statement, $R_\theta/\varepsilon=c\hat u^a$, is calibrated on two independent
 generators in Sec.~\ref{sec:public} and carries the same information with $R^2=0.90$.
+\item The fitted $\theta$ amplitude is not predictive: $A_\theta=0.010$ with $m=1.024$ gives $0.012$
+at $\varepsilon=1.2$, while the median $R_\theta$ on the public data is $0.0228$. The factor
+$1.9$ is the 78\% unexplained variance of the $\theta$ fit, and is a further reason no $\theta$
+exponent is claimed.
 \item The pressure channel required a gauge and hydrostatic correction before the two members
 could be compared (Sec.~\ref{sec:pressure}).
 \end{itemize}
@@ -808,7 +818,7 @@ further 7.1--10.6\% on top. That channel is a weak way to condition a network. A
 U-Net, which modulates every block with $\varepsilon$, reaches $0.1001\slash0.1155\slash0.0164\slash0.1251$ in
 extrapolation and $0.0544\slash0.0496\slash0.0073\slash0.0428$ in interpolation, so against that baseline the channel-averaged error of the
 factorised output is $1.09\times$ lower in extrapolation ($1.16\times$ in $\theta$ and $1.11\times$
-in $p$; the $u_x$ and $u_y$ intervals include zero), while
+in $p$ in the fixed gauge; the $u_x$ and $u_y$ intervals include zero), while
 the two are indistinguishable in interpolation. Removing $\varepsilon$ from the input as well costs accuracy relative to P1 and FiLM---0.1214
 against 0.0937 and 0.1001 in $u_x$---but still beats the $\varepsilon$-blind network
 ($1.87\times$ channel-averaged; $1.89\times$ in $u_x$); what it buys is the property P1 cannot have, a network that can be trained at
@@ -1126,14 +1136,17 @@ represented; the law tells you in advance which reuse will work.
 Same generator, same $Ra$ and $\varepsilon$ ranges, cavity twice as wide (Fig.~\ref{fig:axes}).
 The $\varepsilon$ exponent is consistent within its uncertainty in the $\varepsilon$-only fit
 ($m=1.09/1.16/0.93/1.08$ for $u_x/u_y/\theta/p$, $0.7\sigma$, $1.8\sigma$, $0.3\sigma$ and
-$0.7\sigma$ away from the unit-square values; the refitted values themselves move by 7--17\%; the
-two-parameter values are in Table~S2), while the prefactor moves
+$0.7\sigma$ away from the unit-square values; these are combined standard errors of the two fits,
+with the 104-sample geometry fit contributing 0.100, 0.087, 0.268, 0.099 and the 627-sample baseline
+0.018, 0.019, 0.077, 0.015; the refitted values themselves move by 7--17\%; the two-parameter values
+are in Table~S2), while the prefactor moves
 ($A=0.175/0.175/0.008/0.222$ versus the unit-square values of Table~\ref{tab:law},
 $0.147/0.193/0.010/0.148$). The Rayleigh trend is stronger for
 $u_x$ and $p$ here ($q=-0.14,-0.15$ vs $0.00,-0.03$) and reproduces for $u_y$ and $\theta$.
-For $u_x$, $u_y$ and $p$ the exponent is consistent across geometry within its uncertainty; the
+For $u_x$, $u_y$ and $p$ the exponent is consistent across geometry within its uncertainty ($p$ in
+the fixed gauge); the
 $\theta$ slope is also consistent in this comparison but remains subset-dependent
-(Table~\ref{tab:water}). Calibration of $A$ is not---which is
+(Sec.~\ref{sec:water}). Calibration of $A$ is not---which is
 exactly why the surrogate takes $X$ as input rather than a table of $A$. Changing the fluid instead
 ($Pr$ $0.71\to4.38$) leaves the paired exponent within 1.5\% and the paired median $R$ within
 5\%, and the fitted prefactors move by at most 3.3\% except $p$, which moves by 6.1\%
@@ -1388,9 +1401,10 @@ At larger $Ma$ this would have to be redone.
 \item $\varepsilon<2$, imposed by the equation of state (the cold wall must stay positive).
 \item The power-law fits of Sec.~\ref{sec:law} leave 16/18/78\% of the variance unexplained in
 $u_x/u_y/\theta$ and 13\% in $p$; the $\hat u$ form of Sec.~\ref{sec:public} closes most of the $\theta$ gap ($R^2$ $0.19\to0.78$) and leaves the same residual flow-dependence in the other three channels.
-\item $\theta$ is not part of the common-exponent claim. Its fitted slope is $1.024$ over the full
-window and $1.67$ on the 104-configuration subset; only its leading $\varepsilon$ scaling is
-claimed.
+\item $\theta$ is not part of the common-exponent claim. Its free power-law fit is not identifiable
+at this sample size: $R^2=0.22$, slope $1.024$ over the full window and $1.67$ on the
+104-configuration subset, and the fitted amplitude is not predictive ($0.012$ at
+$\varepsilon=1.2$ against a public median of $0.0228$). We make no exponent claim for $\theta$.
 \item The pressure channel is quoted in the fixed gauge and hydrostatic correction of
 Sec.~\ref{sec:pressure}. Its exponent is not gauge-invariant, and a different post-processing
 gauge would change it.
@@ -1399,7 +1413,7 @@ gauge would change it.
 ($\theta$) / $1.07\times$ ($p$) between boundary-condition families of an independent data set
 (Sec.~\ref{sec:public}), while it is insensitive to the fluid ($Pr$, Sec.~\ref{sec:water}).
 \item The public data set and ours differ by 0.08\% in $Ra_{\mathrm{eff}}=Ra\,Fr^2/\varepsilon$ at $\varepsilon=1.2$
-($1.2/1.095^2=1.000813$); their v2 release corrects this and the two now agree.
+($1.2/1.199=1.0008$, since $1.095^2=1.199$); their v2 release corrects this and the two now agree.
 \end{enumerate}
 
 \section{Conclusion}
@@ -1415,16 +1429,18 @@ so the break-symmetry axis is $\varepsilon=\Delta T/T_0$; Mach-number effects ar
 are below the resolution of the sampled range. This does not make the amplitude universal:
 $P(X)$ carries the flow dependence.
 \item A leading-order law. $R=\|Y-X\|/\|Y\|=A\varepsilon^m$ with
-$m=1.023\pm0.018$, $0.995\pm0.019$ and $1.009\pm0.015$ ($u_x,u_y,p$), an
+$m=1.023\pm0.018$ and $0.995\pm0.019$ ($u_x,u_y$), an
 intercept indistinguishable from zero, the exponent quoted over the full two-decade window (from
 $\varepsilon=0.8$ upwards the same points give $1.23$--$1.32$, the $\varepsilon^2$ curvature of
 Sec.~\ref{sec:law}), and a 134-family boundary-condition description (133 dummies) that adds only
 2--3 pp of adjusted $R^2$ to the velocity and pressure channels. The fit leaves 16/18/78/13\% of
 the variance unexplained in $u_x/u_y/\theta/p$; $\theta$ collapses on $\chi$ rather than on
-$\varepsilon$ alone. $\theta$ is not part of the common-exponent claim: its fitted slope is $1.024$
-over the full window and $1.67$ on the 104-configuration subset. For $u_x$, $u_y$ and $p$ the
-exponent is consistent across geometry (0.7--1.8$\sigma$) and fluid (1.5\%); the pressure exponent
-is quoted in the fixed gauge of Sec.~\ref{sec:pressure}. Only the
+$\varepsilon$ alone. The pressure channel gives $m=1.009\pm0.015$ in the fixed gauge of
+Sec.~\ref{sec:pressure}; this is a numerical observation, not a gauge-invariant exponent.
+$\theta$ is a weak channel with no identifiable exponent: its free fit gives $1.024$ over the full
+window and $1.67$ on the 104-configuration subset, and its fitted amplitude is not predictive
+($0.012$ at $\varepsilon=1.2$ against a public median of $0.0228$). For $u_x$ and $u_y$ the
+exponent is consistent across geometry ($0.7\sigma$ and $1.8\sigma$) and fluid (1.5\%). Only the
 prefactor $A$ must be calibrated, which is why the surrogate takes $X$ as input rather than a
 table of $A$. A preliminary set of twelve paired 3-D solutions at one $Ra$ and one resolution
 reproduces the exponent (flow means $1.03$--$1.10$, per-flow $1.02$--$1.11$; Sec.~\ref{sec:3d}).
@@ -1437,7 +1453,7 @@ consequences of the expansion listed in Table~S1 are confirmed numerically.
 \item A design rule. Predicting $P(X)$ and multiplying by $\varepsilon$ outside the
 network, which changes only the target and one multiplication, converts the law into a prior that
 (i) has $1.09\times$ lower channel-averaged error than a FiLM-conditioned network in extrapolation
-($\theta$ and $p$ individually; the $u_x/u_y$ intervals include zero), (ii) lets the network
+($\theta$ and $p$ individually, $p$ in the fixed gauge; the $u_x/u_y$ intervals include zero), (ii) lets the network
 discover the $\varepsilon^2$ term itself,
 (iii) works the same way for a Fourier neural operator, and (iv) makes a public data set that exists
 at a single temperature contrast reusable at others---0.093 ($u_x$) on $\varepsilon>1.3$ against

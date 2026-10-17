@@ -206,6 +206,34 @@ derived, and only the spatial shape of the correction is learned.
 
 Table~\ref{tab:related} places the resulting prior among the four families.
 
+
+
+\paragraph{Contributions}
+\begin{enumerate}
+\item We identify the exact, one-dimensional break-symmetry parameter of the
+Boussinesq--compressible pair and show the group is one-dimensional rather than two
+(Sec.~\ref{sec:axis}).
+\item We derive the correction's factorisation from an $\varepsilon$-expansion and verify all five
+of its predictions numerically, including the divergence relation (Sec.~\ref{sec:theory}).
+\needspace{6\baselineskip}
+\item We calibrate the resulting law on 627 paired samples spanning two decades of $\varepsilon$, in
+two geometries and two Prandtl numbers, and validate it on an independently generated public data
+set---including the secondary Rayleigh-number trends (Secs.~\ref{sec:law}, \ref{sec:public},
+\ref{sec:aspect}, \ref{sec:water}).
+\item We measure what the gap does to the wall heat transfer: at $\varepsilon=1.2$ the integral
+Nusselt number moves by $0.6\%$, while the local wall flux is redistributed by $4.25\%$
+(Sec.~\ref{sec:nu}).
+\item We turn the law into a surrogate design rule ($D=\varepsilon P(X)$), measure what it is worth
+($1.07$--$1.15\times$ over the strongest conditional baseline), and show it makes an existing single-$\varepsilon$ public data set
+reusable, with the end-to-end saving measured per pair ($2.9\times$) and for a 100-contrast
+sweep ($2.8\times10^2$)
+(Secs.~\ref{sec:baselines}--\ref{sec:transfer}, \ref{sec:cost}).
+\end{enumerate}
+
+All results are two-dimensional except the twelve-sample three-dimensional check of
+Sec.~\ref{sec:3d}. Section~\ref{sec:limits} states the measured cost of the
+three-dimensional problem on the same hardware and gives the concrete reasons we do not claim a 3-D
+sweep.
 \begin{table}[htbp]
 \centering
 \footnotesize
@@ -229,32 +257,6 @@ this work & $\varepsilon$ expansion & shape $P$ & no & no & $m$, $\kappa$\\
 \end{tabular}
 \end{table}
 
-\paragraph{Contributions}
-\begin{enumerate}
-\item We identify the exact, one-dimensional break-symmetry parameter of the
-Boussinesq--compressible pair and show the group is one-dimensional rather than two
-(Sec.~\ref{sec:axis}).
-\item We derive the correction's factorisation from an $\varepsilon$-expansion and verify all five
-of its predictions numerically, including the divergence relation (Sec.~\ref{sec:theory}).
-\needspace{7\baselineskip}
-\item We calibrate the resulting law on 627 paired samples spanning two decades of $\varepsilon$, in
-two geometries and two Prandtl numbers, and validate it on an independently generated public data
-set---including the secondary Rayleigh-number trends (Secs.~\ref{sec:law}, \ref{sec:public},
-\ref{sec:aspect}, \ref{sec:water}).
-\item We measure what the gap does to the wall heat transfer: at $\varepsilon=1.2$ the integral
-Nusselt number moves by $0.6\%$, while the local wall flux is redistributed by $4.25\%$
-(Sec.~\ref{sec:nu}).
-\item We turn the law into a surrogate design rule ($D=\varepsilon P(X)$), measure what it is worth
-($1.07$--$1.15\times$ over the strongest conditional baseline), and show it makes an existing single-$\varepsilon$ public data set
-reusable, with the end-to-end saving measured per pair ($2.9\times$) and for a 100-contrast
-sweep ($2.8\times10^2$)
-(Secs.~\ref{sec:baselines}--\ref{sec:transfer}, \ref{sec:cost}).
-\end{enumerate}
-
-All results are two-dimensional except the twelve-sample three-dimensional check of
-Sec.~\ref{sec:3d}. Section~\ref{sec:limits} states the measured cost of the
-three-dimensional problem on the same hardware and gives the concrete reasons we do not claim a 3-D
-sweep.
 \section{Problem, discretisation and the break-symmetry parameter}
 \label{sec:problem}
 

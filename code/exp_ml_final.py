@@ -1,4 +1,4 @@
-"""统一口径消融（§5.4-5.6 重跑版）：5 个变体 x 2 种划分 x 3 个种子，报 mean±std。
+"""统一口径消融（§5.4-5.6 重跑版）：5 个变体 x 2 种划分 x 3 个种子，报 mean±std。可选命令行参数指定只跑某个划分（如 interp）。
 
   A  eps-blind          4 通道 -> 直接预测 D
   B  eps 作输入          5 通道 -> 直接预测 D
@@ -25,12 +25,15 @@ VARIANTS = [('A_eps_blind',       lambda: Plain(False)),
 X, Y, eps, meta = load600()
 D = Y - X
 E = torch.tensor(eps).view(-1, 1, 1, 1).repeat(1, 1, X.shape[2], X.shape[3])
-res = {'epochs': EPOCHS, 'seeds': SEEDS, 'n': int(len(eps)), 'width': 32,
-       'note': '归一化统计量只用训练子集；目标一律 D；U-Net width 32 200 epoch'}
 JF = os.path.join(OUT, 'exp_ml_final.json')
+SPLITS = sys.argv[1:] or ['extrap', 'interp']       # 可选：只重跑某个划分，已有结果自动合并
+res = json.load(open(JF)) if os.path.exists(JF) else {}
+res.setdefault('runs', {})   # 逐次运行的检查点：GPU 挂了也能从断点续跑
+res.update({'epochs': EPOCHS, 'seeds': SEEDS, 'n': int(len(eps)), 'width': 32,
+            'note': '归一化统计量只用训练子集；目标一律 D；U-Net width 32 200 epoch'})
 save = lambda: json.dump(res, open(JF, 'w'), indent=1)
 
-for split in ['extrap', 'interp']:
+for split in SPLITS:
     tr, te = splits(eps, split)
     IN4, sx = build_input(X, eps, False, tr)
     fl = gerr(X[te], Y[te])
@@ -41,8 +44,14 @@ for split in ['extrap', 'interp']:
         acc, betas, ts = [], [], []
         print('    %s' % tag, flush=True)
         for sd_ in SEEDS:
-            g, b, t = run_one(mk, IN4, E, D, tr, te, X[te], Y[te], sd_, epochs=EPOCHS,
-                              dev=DEV, tag=tag, verbose=True)
+            ck = '%s|%s|%d' % (split, tag, sd_)
+            if ck in res['runs']:
+                c = res['runs'][ck]; g, b, t = c['g'], c['beta'], c['t']
+                print('      .. %-18s seed=%d  cached' % (tag, sd_), flush=True)
+            else:
+                g, b, t = run_one(mk, IN4, E, D, tr, te, X[te], Y[te], sd_, epochs=EPOCHS,
+                                  dev=DEV, tag=tag, verbose=True)
+                res['runs'][ck] = {'g': [float(v) for v in g], 'beta': b, 't': float(t)}; save()
             acc.append(g); betas.append(b); ts.append(t)
             print('      >> %-18s seed=%d  %s  %.0fs' % (tag, sd_,
                   ' '.join('%s=%.4f' % (CH[i], g[i]) for i in range(4)), t), flush=True)

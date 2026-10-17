@@ -12,48 +12,6 @@ def j(name):
 
 g = lambda x: '%.4f' % x if isinstance(x,(int,float)) else str(x)
 
-d = j('p2_fixed.json')
-if d:
-    L('## 主表：U-Net（width 32，200 epoch，残差学习）')
-    hdr('划分','通道','A 无 ε','B 有 ε','提升','什么都不做','B 恢复的修正能量','floor 的绝对量级')
-    for sp, spn in [('extrap','外推（训 ε≤1.3、测 ε>1.3）'), ('interp','内插（按 ε 分层 2:1）')]:
-        if sp not in d: continue
-        for k, c in enumerate(CH):
-            A = d[sp]['A_no_eps']['g'][k]; B = d[sp]['B_eps']['g'][k]; F = d[sp]['floor'][k]
-            row(spn if k==0 else '', c, g(A), g(B), '%.2f×'%(A/B), g(F), '%.1f%%'%(100*(1-(B/F)**2)), g(F))
-
-d = j('prior_ablation.json')
-if d:
-    L('## 先验形式消融（同一个 U-Net，只改输出端的 ε 结构）')
-    hdr('划分','变体','ux','uy','θ','p','网络学到的 β（四通道）')
-    for sp, spn in [('extrap','外推'), ('interp','内插')]:
-        if sp not in d: continue
-        for tag in ['B_plain_no_prior','P1_scaled_eps','P2_scaled_eps_quad']:
-            if tag not in d[sp]: continue
-            r = d[sp][tag]
-            b = r.get('beta')
-            bs = ' '.join('%.3f'%x for x in b) if b and any(abs(x)>1e-9 for x in b) else '—'
-            row(spn, tag, *[g(x) for x in r['g']], bs)
-
-d = j('fno_results.json')
-if d:
-    L('## 强基线：FNO2d（谱算子学习，modes 12，width 32，4 层，参数量 %.0fk）' % (d.get('n_params',0)/1e3))
-    hdr('划分','变体','ux','uy','θ','p')
-    for sp, spn in [('extrap','外推'), ('interp','内插')]:
-        if sp not in d: continue
-        for tag in ['A_no_eps','B_eps','C_prior']:
-            if tag in d[sp]: row(spn, tag, *[g(x) for x in d[sp][tag]['g']])
-
-d = j('learning_curve.json')
-if d:
-    L('## 学习曲线（内插测试集 200 组，3 个种子，均值±std）')
-    hdr('训练样本量','变体','ux','uy','θ','p')
-    print('| 0（什么都不做） | — | ' + ' | '.join('%.4f'%x for x in d['floor']) + ' |')
-    for var, vn in [('B_eps_input','B：输入含 ε'), ('C_prior','C：只学 P，ε 不进网络')]:
-        for n in sorted(d['curves'][var], key=int):
-            m = d['curves'][var][n]['mean']; s = d['curves'][var][n]['std']
-            row(n, vn, *['%.4f±%.4f'%(m[i],s[i]) for i in range(4)])
-
 d = j('public_transfer.json')
 if d:
     L('## 公开数据集（4000 组，ε≡1.2）外部验证与跨数据集迁移')
@@ -181,3 +139,13 @@ if d:
     print('经典方腔/公开随机壁面 +%.0f%%，/本机 +%.0f%%' % (d['uhat_pct_vs_public_train'], d['uhat_pct_vs_ours']))
     print('legacy/train 的 R 中位之比：' + '  '.join('%s %.2f' % (c, d['ratio_legacy_over_train'][c]) for c in CH))
     print('2:1 几何指数与单位方腔之差：' + '  '.join('%s %.1fσ' % (c, d['aspect2_sigma'][c]) for c in CH))
+
+d = j('verify_noise.json')
+if d:
+    L('## §5.10 求解器噪声核验（600 组可压缩成员，rel_change 来自 meta）')
+    c = d['crel']
+    print('rel_change：中位 %.2e，p90 %.2e，最大 %.2e；>1e-4 共 %d 组' % (c['median'], c['p90'], c['max'], c['n_gt_1e-4']))
+    hdr('通道', '全 600 组线性拟合', '剔除劣收敛后（%d 组）' % d['ux']['n_cut'])
+    for ck in CH:
+        r = d[ck]
+        row(ck, '%.4f eps %+.4f' % (r['all'][0], r['all'][1]), '%.4f eps %+.4f' % (r['cut'][0], r['cut'][1]))

@@ -2,6 +2,7 @@
 import numpy as np, json, os, glob
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import NullFormatter
 B = os.path.expanduser('~/nc_run'); P = B + '/p7'
 CH = [r'$u_x$', r'$u_y$', r'$\theta$', r'$p$']
 J = lambda n: json.load(open(os.path.join(P, n))) if os.path.exists(os.path.join(P, n)) else None
@@ -63,10 +64,11 @@ if d:
             s = np.array([d['curves'][var][v]['std'][k] for v in ns])
             a.errorbar(xn, m, yerr=s, fmt=st, color=col, lw=1.6, ms=5, capsize=3, label=lb)
         a.axhline(d['floor'][k], color='0.55', ls=':', lw=1.4)
-        a.set_xscale('log'); a.set_title(CH[k], fontsize=12)
+        a.set_xscale('log'); a.set_xticks(xn); a.set_xticklabels([str(int(v)) for v in xn]); a.set_title(CH[k], fontsize=12)
+        a.xaxis.set_minor_formatter(NullFormatter())
         a.set_xlabel('training samples', fontsize=10); a.grid(alpha=.25, which='both')
         if k == 0: a.set_ylabel(r'rel. $L_2$ error', fontsize=10); a.legend(fontsize=8)
-    fig.suptitle('In distribution the two are equivalent; the prior matters because ' + r'$\varepsilon$' + ' never enters the network', fontsize=11)
+    fig.suptitle('At n = 50-200 the prior wins in distribution too; the ' + r'$\varepsilon$' + '-input network overtakes only at n = 400 (and not for ' + r'$\theta$' + ')', fontsize=11)
     fig.tight_layout(rect=[0, 0, 1, .93]); f = P + '/fig4_learning.png'; fig.savefig(f); print('saved', f)
 
 # ---------------- 图 5：律在三种流体/几何 + 独立数据集上 ----------------

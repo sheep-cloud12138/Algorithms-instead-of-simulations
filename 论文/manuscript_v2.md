@@ -43,8 +43,8 @@ temperature contrast `ε = ΔT/T₀`, and we turn that fact into a design rule f
    data set offers, the exact transfer error is 25 % (`u_x`), 30 % (`u_y`) and 35 % (`p`) at
    ε = 1.9, and even the best single ε-blind field leaves 22-29 % there (§5.3).
    Writing the output as `D = ε·P(X)` and letting the network predict `P` attacks exactly that:
-   it beats the ε-aware plain architecture by 1.62× in extrapolation and the ε-blind one by
-   2.45×, and it lets the network find the `ε²` term by itself (learned curvature β = 0.20–0.29
+   it beats the ε-aware plain architecture by 1.61× in extrapolation and the ε-blind one by
+   2.44×, and it lets the network find the `ε²` term by itself (learned curvature β = 0.22–0.42
    in all four channels, §5.5). With ε moved fully outside the network, so that it never enters
    the input, it is what makes a **single-ε data set reusable**: a surrogate trained on a public
    4000-pair data set that exists only at ε = 1.2 is applied, without retraining, to our own
@@ -114,12 +114,12 @@ prefactor whose weak Rayleigh-number trend reproduces in a second geometry and i
 
 **What it buys.** Because the ε dependence can be written outside the network, a surrogate
 can predict `P(X)` and multiply by ε afterwards, keeping ε out of the input. The
-result is not a small accuracy gain in distribution (§5.6: parity with an ε-augmented
-baseline at n ≤ 200). It is a change of regime: a network trained on a public data set that
+result is also an accuracy gain in distribution when data is scarce (§5.6: 1.4× better than an
+ε-augmented baseline at n = 50, crossover near n ≈ 300). It is a change of regime: a network trained on a public data set that
 exists at a single ε is applied, without retraining, to our ε in [0.2, 1.9] and reaches
 relL2 = 0.093 (`u_x`) where the plain model of the same budget reaches 0.144 (§5.8),
-the extrapolation error falls by 1.62× relative to the plain architecture (§5.5), the network
-discovers the ε² curvature of the expansion on its own (learned β = 0.20–0.29 in all
+the extrapolation error falls by 1.61× relative to the plain architecture (§5.5), the network
+discovers the ε² curvature of the expansion on its own (learned β = 0.22–0.42 in all
 four channels), and the same prior transfers unchanged to a Fourier neural operator.
 
 **Contributions.**
@@ -132,7 +132,7 @@ four channels), and the same prior transfers unchanged to a Fourier neural opera
    geometries and two Prandtl numbers, and validate it on an independently generated public data
    set — including the secondary Rayleigh-number trends (§5.1, §5.7, §5.9, §5.12).
 4. We turn the law into a surrogate design rule (`D = ε P(X)`), measure what it is worth
-   (1.62× in extrapolation), and show it makes an existing single-ε public data set
+   (1.61× in extrapolation), and show it makes an existing single-ε public data set
    reusable, with the speed-up measured end to end (5.4×10³ per sample) (§5.4–5.8, §5.11).
 
 All results are two-dimensional. Section 6 states the measured cost of the three-dimensional
@@ -210,6 +210,7 @@ Five predictions follow, and all five hold:
 
 | prediction | measurement |
 |---|---|
+| `code/dataset/` | the solver data sets themselves: 600 main (`run_batch.sh`), 100 paired (`run_paired.sh`), 27 ε→0 (`run_eps0.sh`), 104 classical-cavity (`run_cavity.sh`), 104 water at Pr = 4.38 (`run_water.sh`); `run_cpu_queue.sh` adds the 2:1 geometry and the tight-tolerance reruns |
 | `R → 0` as ε → 0 | intercept `+0.0003 ± 0.0047` (u_x); 0.06σ from zero |
 | `R ∝ ε` | p = 1.023±0.018 / 0.995±0.019 / 1.009±0.015 (u_x/u_y/p), window-averaged over the two decades; the residual is the `ε²` term (§5.1) |
 | the shape of D does not rotate with ε | `cos(D(ε),D(1.2)) = 0.95–1.00`, four channels × five ε |
@@ -337,21 +338,21 @@ The error is set by the distance in ε and by nothing else — which is precisel
 
 ### 5.4 Network baselines: the correction is information, not capacity
 
-U-Net, width 32, 200 epochs, identical protocol for all columns:
+U-Net, width 32, 200 epochs, mean of three seeds, identical protocol for all columns (largest standard deviation over every cell below: 0.0051):
 
 | split | channel | A (no ε) | B (ε input) | gain | do nothing | energy recovered by B |
 |---|---|---|---|---|---|---|
-| extrapolation (n=218) | u_x | 0.2249 | **0.1540** | 1.46× | 0.3018 | 74 % |
-| | u_y | 0.2645 | **0.1774** | 1.49× | 0.3731 | 77 % |
-| | θ | 0.0398 | **0.0250** | 1.59× | 0.0556 | 80 % |
-| | p | 0.2617 | **0.1743** | 1.50× | 0.3320 | 72 % |
-| interpolation (n=200) | u_x | 0.1496 | **0.0688** | 2.17× | 0.2203 | 90 % |
-| | u_y | 0.1757 | **0.0709** | 2.48× | 0.2683 | 93 % |
-| | θ | 0.0253 | **0.0097** | 2.60× | 0.0381 | 94 % |
-| | p | 0.1735 | **0.0658** | 2.64× | 0.2386 | 92 % |
+| extrapolation (n=218) | u_x | 0.2289 | **0.1508** | 1.52× | 0.3018 | 75 % |
+| | u_y | 0.2733 | **0.1725** | 1.58× | 0.3731 | 79 % |
+| | θ | 0.0406 | **0.0255** | 1.59× | 0.0556 | 79 % |
+| | p | 0.2689 | **0.1791** | 1.50× | 0.3320 | 71 % |
+| interpolation (n=200) | u_x | 0.1530 | **0.0673** | 2.27× | 0.2203 | 91 % |
+| | u_y | 0.1796 | **0.0714** | 2.52× | 0.2683 | 93 % |
+| | θ | 0.0261 | **0.0097** | 2.69× | 0.0381 | 94 % |
+| | p | 0.1792 | **0.0667** | 2.69× | 0.2386 | 92 % |
 
-Model A's error (0.2249) and the best possible ε-blind model on the paired set at ε = 1.9
-(0.2249, §5.3) coincide to three digits while being measured on two different data sets: the
+Model A's error (0.2289) and the best possible ε-blind model on the paired set at ε = 1.9
+(0.2249, §5.3) agree to within 2 % while being measured on two different data sets: the
 ceiling is informational, not architectural. Shallow learners plateau in the same place. A linear ridge
 regression and an RBF kernel ridge on the raw four-field input - the same information the network
 gets - reach `u_x` 0.2282 and 0.2222 in extrapolation, and adding ε as an extra column barely
@@ -369,40 +370,47 @@ still D):
 
 | split | variant | u_x | u_y | θ | p | learned β |
 |---|---|---|---|---|---|---|
-| extrapolation | plain U-Net | 0.1485 | 0.1724 | 0.0237 | 0.1731 | — |
-| | `D = ε·P(X)` | 0.0919 | 0.1063 | 0.0141 | 0.1061 | fixed 0 |
-| | `D = (ε + βε²)·P(X)` | **0.0860** | **0.0946** | **0.0128** | **0.1029** | 0.255 / 0.205 / 0.211 / 0.246 |
-| interpolation | plain U-Net | 0.0700 | 0.0712 | 0.0096 | 0.0669 | — |
-| | `D = ε·P(X)` | 0.0515 | 0.0487 | 0.0078 | 0.0421 | fixed 0 |
-| | `D = (ε + βε²)·P(X)` | **0.0516** | **0.0492** | **0.0070** | **0.0405** | 0.236 / 0.220 / 0.201 / 0.286 |
+| extrapolation | plain U-Net | 0.1508 | 0.1725 | 0.0255 | 0.1791 | — |
+| | `D = ε·P(X)` | 0.0937 | 0.1060 | 0.0141 | 0.1126 | fixed 0 |
+| | `D = (ε + βε²)·P(X)` | **0.0867** | **0.0951** | **0.0131** | **0.1007** | 0.418 / 0.314 / 0.334 / 0.314 |
+| interpolation | plain U-Net | 0.0673 | 0.0714 | 0.0097 | 0.0667 | — |
+| | `D = ε·P(X)` | 0.0545 | 0.0524 | 0.0078 | 0.0454 | fixed 0 |
+| | `D = (ε + βε²)·P(X)` | **0.0507** | **0.0488** | **0.0073** | **0.0410** | 0.295 / 0.224 / 0.255 / 0.219 |
 
 Two things happen at once. In extrapolation the factorised output beats the plain one by
-**1.62×** (u_x), consistently across channels. And the network *discovers* a positive curvature
-on its own, β = 0.20–0.29, the same sign and order as the ε² term of the expansion in §3 — an
-independent check of the asymptotic expansion.
+**1.61×** (u_x) and 1.59–1.81× in the other channels; the quadratic form adds a further 8–12 %
+on top. And the network *discovers* a positive curvature on its own, β = 0.22–0.42, the same
+sign and order as the ε² term of the expansion in §3 — an independent check of the asymptotic
+expansion.
 
 A Fourier neural operator (1.19 M parameters) shows the same pattern against its ε-blind
-version: u_x 0.2286 → **0.1454** with the prior and ε multiplied back outside the network
-(1.57×), although on this backbone an explicit ε input channel does better (0.1348). The prior's
-value is therefore not that it beats an ε-aware model — it is that it needs no ε in the input
-(§5.6, §5.8).
+version: u_x 0.2287 → **0.1334** with the prior and ε multiplied back outside the network
+(1.71×), statistically indistinguishable from an explicit ε input channel (0.1334 ± 0.0004
+against 0.1342 ± 0.0008). On u_y and θ the prior is in fact better (0.1387 against 0.1456;
+0.0177 against 0.0191); only on p does the ε channel win (0.1536 against 0.1734). The prior's
+value is therefore not that it beats an ε-aware model — it is that it matches one while needing
+no ε in the input (§5.6, §5.8).
 
 ### 5.6 Data efficiency, honestly
 
 Learning curve on the fixed interpolation test set (200 samples), mean of three seeds:
 
-| n | B: ε as input | C: P only, ε never enters the network |
+| n | B: ε as input | P3: P only, ε never enters the network |
 |---|---|---|
 | 0 (do nothing) | 0.2203 / 0.2683 / 0.0381 / 0.2386 | same |
-| 50 | 0.1761 / 0.1721 / 0.0614 / 0.1619 | **0.1667 / 0.1623 / 0.0659 / 0.1729** |
-| 100 | 0.1348 / 0.1252 / 0.0511 / 0.1197 | **0.1291 / 0.1201 / 0.0514 / 0.1332** |
-| 200 | 0.0904 / 0.0867 / 0.0359 / 0.0807 | **0.0889 / 0.0901 / 0.0316 / 0.1016** |
-| 400 | **0.0606 / 0.0545 / 0.0166 / 0.0486** | 0.0744 / 0.0731 / 0.0183 / 0.0849 |
+| 50 | 0.1831 / 0.1946 / 0.0269 / 0.1838 | **0.1308 / 0.1364 / 0.0195 / 0.1501** |
+| 100 | 0.1280 / 0.1422 / 0.0199 / 0.1348 | **0.0990 / 0.1022 / 0.0136 / 0.1150** |
+| 200 | 0.0974 / 0.1070 / 0.0147 / 0.0998 | **0.0827 / 0.0866 / 0.0114** / 0.1005 |
+| 400 | **0.0674 / 0.0714 / 0.0097 / 0.0672** | 0.0735 / 0.0743 / 0.0093 / 0.0896 |
 
-In distribution the two are equivalent within seed noise at n ≤ 200, and with the full pool the
-explicit ε channel is ~20 % better. The value of the prior is therefore *not* in-distribution
-accuracy; it is that ε never enters the network, which is precisely what makes a single-ε data
-set reusable.
+The naive expectation - that a structured model trades in-distribution accuracy for
+extrapolation - is wrong at small n. At n = 50 the prior is 1.4× better than the ε-input network
+(u_x 0.1308 against 0.1831, a 9σ separation across three seeds), and it stays ahead through
+n = 200; the crossover lies between n = 200 and 400 (log-linear interpolation puts it near
+n ≈ 300 in u_x), and even there it is confined to u_x, u_y and p - θ never crosses. Concretely,
+the prior at n = 200 reaches what the ε-input network needs ≈ 270 samples to reach. So the prior
+is two things at once: the cheaper model when data is scarce, and - the point that matters for
+reuse - a model that needs no ε in its input, which is what makes a single-ε data set reusable.
 
 ### 5.7 External validation on an independent, published data set
 
@@ -613,7 +621,7 @@ by a single parameter in an exact and predictable way.
    `D = ε P(X) + ε² Q(X) + ...`, with a shape that does not rotate. All five
    consequences of the expansion are confirmed numerically.
 4. **A design rule.** Predicting `P(X)` and multiplying by ε outside the network — four
-   lines of code — converts the law into a prior that (i) beats the plain architecture by 1.62× in
+   lines of code — converts the law into a prior that (i) beats the plain architecture by 1.61× in
    extrapolation, (ii) lets the network discover the ε² term itself, (iii) works the same
    way for a Fourier neural operator, and (iv) makes a public data set that exists at a single
    temperature contrast reusable at others - 0.093 (`u_x`) on ε > 1.3 against 0.144 for the
@@ -644,10 +652,10 @@ JSON results are under `~/nc_run/`:
 | `fno_lib.py`, `exp_fno_final.py` | the FNO baseline under the same protocol (§5.5) |
 | `exp_lc_final.py` | learning curves (§5.6) |
 | `exp_pod.py` | the POD-ROM / linear-surrogate baselines (§5.4) |
-| `exp_p2_fixed.py`, `exp_prior_ablation.py`, `exp_fno.py`, `exp_learning_curve.py` | first-generation runs of the same experiments (superseded by the three scripts above) |
+| `exp_p2_fixed.py`, `exp_prior_ablation.py`, `exp_fno.py`, `exp_learning_curve.py` | first-generation runs of the same experiments (superseded by the three scripts above; their JSON outputs were deleted as stale) |
 | `exp_public_transfer.py` | external validation and transfer (§5.7–5.8) |
 | `exp_aspect2.py` | the 2:1 geometry (§5.9) |
-| `exp_tight.py`, `exp_final_numbers.py` | noise control and timing (§5.10–5.11) |
+| `exp_tight.py`, `verify_noise.py`, `exp_final_numbers.py` | noise control and timing (§5.10–5.11) |
 | `exp_water.py` | the strictly paired Pr = 4.38 fluid study (§5.12) |
 | `verify_conventions.py` | the 9600-value convention audit against the published `relL2` columns (§5.7) |
 | `exp_public_splits.py`, `exp_legacy5000.py`, `exp_uhat_law.py` | the five public splits and the `û` law (§5.7) |
@@ -662,5 +670,6 @@ Code and every machine-readable result are mirrored at
 number in this paper is regenerated from the JSON results in `~/nc_run/p7/` by reporting
 scripts, not transcribed by hand. Figures: `fig1_破缺律_v6.png` (the law), `fig2_floor.png`
 (the ε-blind floor), `fig3_prior.png` (the prior ablation), `fig4_learning.png` (learning
-curves), `fig5_law_axes.png` (one exponent, many prefactors), `fig7_theta_flow.png` (the `û`
+curves), `fig5_law_axes.png` (one exponent, many prefactors), `fig6_transfer.png` (the same-family
+transfer against the cross-family failure, §5.8), `fig7_theta_flow.png` (the `û`
 law), `fig8_water_paired.png` (the paired fluid study).

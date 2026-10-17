@@ -32,22 +32,25 @@ a factorised physics prior for surrogates}
 \address[a]{Affiliation(s)}
 
 \begin{abstract}
-Boussinesq-trained surrogates do not transfer across contrast. For
+Boussinesq-trained surrogates transfer only partially across contrast: they learn a fixed correction field and have no signal with which to rescale it. For
 steady two-dimensional buoyancy-driven convection in enclosures the contrast
-$\varepsilon=\Delta T/T_0$ sets the leading-order amplitude of the difference between the
-Boussinesq and compressible solutions, while the flow sets its spatial shape; the classical
+$\varepsilon=\Delta T/T_0$ sets the leading-order scaling of the difference between the
+Boussinesq and compressible solutions, while the flow sets its amplitude and spatial shape; the classical
 differentially heated cavity is the one-mode member of the family. The Froude number is not free
 ($Fr^2=\varepsilon$), and a 24-fold change in $Ma$ leaves the measured correction unchanged at the
 precision of the solve in the retained low-Mach equations. Over 627 paired solutions
 ($\varepsilon=0.02$--$1.9$), the relative correction obeys $R=A\varepsilon^m$ with
-$m=1.023\pm0.018$, $0.995\pm0.019$, $1.024\pm0.077$ and $1.009\pm0.015$ for
-$(u_x,u_y,\theta,p)$ over the full two-decade window, a vanishing intercept and $\varepsilon^2$
-curvature. The exponent is common to the four channels, but the amplitude is not: $u_x$, $u_y$ and
-$p$ obey the power law with $R^2=0.84/0.82/0.87$, whereas $\theta$ scatters ($R^2=0.22$) and its
-amplitude collapses on the base-flow advection strength $\chi$; its wall-normalised amplitude is
-0.010 (0.034 zero-mean). Its amplitude at $\varepsilon=1.2$ reproduces on another group's public
-data; the exponent survives a second geometry, where only the prefactor is recalibrated; and at
-$Pr=4.38$ both exponent and prefactor stay unchanged within 7\%. In a preliminary twelve-sample
+$m=1.023\pm0.018$, $0.995\pm0.019$ and $1.009\pm0.015$ for
+$(u_x,u_y,p)$ over the full two-decade window, a vanishing intercept and $\varepsilon^2$
+curvature. The pressure exponent is quoted in the fixed post-processing gauge of
+Sec.~\ref{sec:pressure}. $\theta$ has the same leading $\varepsilon$ scaling but a weak signal
+($R^2=0.22$); its fitted slope is $1.024\pm0.077$ over the full window and $1.67$ on the
+104-configuration subset, so it is not part of the common-exponent statement, and its amplitude
+collapses on the base-flow advection strength $\chi$; its wall-normalised amplitude is
+0.010 (0.034 zero-mean). The amplitude at $\varepsilon=1.2$ reproduces on another group's public
+data; for $u_x$, $u_y$ and $p$ the exponent is consistent within its uncertainty in a second geometry (0.7--1.8$\sigma$;
+the refitted value moves by 7--17\%), where the prefactor moves by up to 50\%; and on the same
+104 configurations the $Pr=4.38$ exponent and prefactor stay within 7\% of $Pr=0.71$. In a preliminary twelve-sample
 3-D check ($Ra=10^4$, $res=16$, $\varepsilon\le1.2$) the per-flow exponents lie within 0.11 of
 unity. On the public data at
 $\varepsilon=1.2$ the integral Nusselt number changes
@@ -57,9 +60,11 @@ Boussinesq velocity across generators. Because $D=\varepsilon P(X)$, a surrogate
 FiLM-conditioned network in extrapolation (the $\theta$ and $p$ channels individually; the 95\%
 intervals for $u_x$ and $u_y$ include zero), while the two coincide within seed scatter in interpolation; without it, it
 still beats an $\varepsilon$-blind network by
-$1.89\times$ and reuses single-$\varepsilon$ public data within a boundary family. One inference
+$1.87\times$ channel-averaged ($1.89\times$ in $u_x$) and reuses single-$\varepsilon$ public
+data within a boundary family. One inference
 takes 6.3\,ms; replacing the compressible member cuts a paired solve from 33.9\,s to
-11.7\,s ($2.9\times$) and a 100-contrast sweep by 450.
+11.7\,s ($2.9\times$), the measured 20-flow $\times$ 5-contrast scan by $17\times$, and a
+single flow swept over 100 contrasts by $1.8\times10^2$.
 \end{abstract}
 
 \begin{keyword}
@@ -131,12 +136,13 @@ validation set in Secs.~\ref{sec:public}--\ref{sec:transfer}---contains exactly 
 temperature contrast: $\Delta T=1.2$ at $T_0=1$.
 
 The single-contrast design is the practical crux. A surrogate fitted on such a data set has learned
-the correction at one operating point. At any other temperature contrast the Boussinesq input
-already differs from the input seen in training, so the correction the network memorised is the
-wrong correction---not merely an inaccurate one---and the only remedy on offer is to generate a
-second paired data set, i.e.\ to pay again exactly the cost the surrogate was meant to remove. We
-show in Sec.~\ref{sec:floor} that this is not a modelling failure that more capacity or a better
-architecture can repair: it is an information barrier, and we measure it.
+the correction at one operating point. At any other contrast the Boussinesq input is unchanged---$X$
+is $\varepsilon$-blind---while the correction that must be added scales with $\varepsilon$; the
+network therefore has no signal with which to rescale the correction it memorised, and the only
+remedy on offer is to generate a second paired data set, i.e.\ to pay again exactly the cost the
+surrogate was meant to remove. We show in Sec.~\ref{sec:floor} that this is not a modelling failure
+that more capacity or a better architecture can repair: the missing variable is $\varepsilon$, and
+we measure the resulting ceiling.
 
 This paper makes the barrier explicit and then removes it.
 
@@ -155,8 +161,10 @@ $\varepsilon$-independent, the correction factorises,
 $Y-X=\varepsilon P(X)+\varepsilon^2Q(X)+\dots$, with a shape $P$ that does not rotate as
 $\varepsilon$ moves (Sec.~\ref{sec:theory}). Measured over two decades of $\varepsilon$ (627
 samples, Sec.~\ref{sec:law}) the relative correction obeys $R=A\varepsilon^m$ with $m=1.02$ in
-$u_x$, $u_y$ and $p$; $\theta$ returns the same exponent with much larger scatter ($R^2=0.22$) and
-an amplitude set by the base-flow advection strength $\chi$ (Sec.~\ref{sec:law}). The exponent is
+$u_x$, $u_y$ and $p$. $\theta$ has the same leading $\varepsilon$ scaling but a much weaker signal
+($R^2=0.22$): its fitted slope is 1.02 over the full window but 1.67 on the 104-configuration
+subset, so we do not include it in the common-exponent statement; its amplitude is set by the
+base-flow advection strength $\chi$ (Sec.~\ref{sec:law}). The exponent is
 window-averaged: the same 627 points give $1.23$--$1.32$ when fitted from $\varepsilon=0.8$
 upwards, which is the $\varepsilon^2$ curvature. The intercept vanishes, and the prefactor's weak
 Rayleigh-number trend reproduces in a second geometry and in a third Prandtl number.
@@ -249,8 +257,9 @@ at $Ra=10^4$ to $+28\%$ at $Ra=10^6$ (Sec.~\ref{sec:nu}).
 ($1.09\times$ lower channel-averaged error than the strongest conditional baseline in
 extrapolation, with $\theta$ and $p$ individually significant and the $u_x/u_y$ intervals
 including zero, and indistinguishable within seed scatter in interpolation), and show it makes an existing single-$\varepsilon$ public data set
-reusable, with the end-to-end saving measured per pair ($2.9\times$) and for a 100-contrast
-sweep ($4.5\times10^2$)
+reusable, with the end-to-end saving measured per pair ($2.9\times$), for the 20-flow
+$\times$ 5-contrast scan ($17\times$) and for a single flow swept over 100 contrasts
+($1.8\times10^2$)
 (Secs.~\ref{sec:baselines}--\ref{sec:transfer}, \ref{sec:cost}).
 \end{enumerate}
 
@@ -481,16 +490,18 @@ amplitude is therefore listed in both, $0.010$ wall-normalised and $0.034$ zero-
 \subsection{The $\varepsilon$-law, calibrated over two decades}
 \label{sec:law}
 
-Fig.~\ref{fig:law} shows the collapse of $u_x$, $u_y$ and $p$. The $\theta$ panel follows the same
-exponent but scatters about the fitted line ($R^2=0.22$), because its amplitude also depends on
-$\chi$; Table~\ref{tab:law} collects the fitted exponents and amplitudes.
+Fig.~\ref{fig:law} shows the collapse of $u_x$, $u_y$ and $p$. The $\theta$ panel has the same
+leading scaling but scatters about the fitted line ($R^2=0.22$), because its amplitude also depends
+on $\chi$; Table~\ref{tab:law} collects the fitted exponents and amplitudes.
 
 \begin{table}[htbp]
 \centering
 \small
 \caption{Power-law fit $R=A\varepsilon^m$ over the full two-decade window (627 samples). The
 intercept is fitted separately on the small-$\varepsilon$ subset ($\varepsilon\le0.5$). For $\theta$
-the amplitude is given in both conventions, wall-normalised/zero-mean.}
+the amplitude is given in both conventions, wall-normalised/zero-mean. The $p$ row uses the fixed
+gauge and hydrostatic correction of Sec.~\ref{sec:pressure}; its exponent is not gauge-invariant,
+and the $\theta$ slope is subset-dependent (see text).}
 \label{tab:law}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -511,14 +522,16 @@ $p$ & $m=1.009\pm0.015$ & 0.148 & 0.87 & $+0.0016\pm0.0030$\\
 $\varepsilon=\Delta T/T_0$ over two decades for $u_x$, $u_y$ and $p$; the $\theta$ panel follows
 the same exponent but scatters ($R^2=0.22$) and collapses on $\chi$ rather than on $\varepsilon$
 alone (Fig.~\ref{fig:theta}). Points: 600 random-boundary-condition samples, coloured by
-$\log_{10}Ra$; stars: the 27 independent small-$\varepsilon$ checks. Lines: the power-law fits of
+$\log_{10}Ra$; stars: the 27 small-$\varepsilon$ checks ($\varepsilon=0.02$--$0.1$, three
+Rayleigh numbers, three seeds each), included in the fit to anchor the $\varepsilon\to0$ end and
+not used as a holdout. Lines: the power-law fits of
 Table~\ref{tab:law}.}
 \label{fig:law}
 \end{figure}
 
 \paragraph{The exponent is window-averaged, and the curvature is real} The fit above uses the full
 two decades, including the 27 check points at $\varepsilon\le0.1$ where $R$ is closest to its
-linear limit. Fitting only $\varepsilon\ge0.8$ gives
+linear limit; these points are in the fit, not a holdout. Fitting only $\varepsilon\ge0.8$ gives
 $m=1.23\pm0.08/1.25\pm0.08/1.21\pm0.34/1.32\pm0.06$, and fitting each of the 20 paired
 configurations separately over $\varepsilon\in[0.4,1.9]$ gives a median
 $m=1.31/1.17/1.21/1.45$ (median $R^2=0.98$). The 104 paired configurations used
@@ -542,8 +555,8 @@ rerun at $128^2$ over the same five contrasts. The relative correction $R$ chang
 $0.1\%$ in $u_x$ and $u_y$, $0.7\%$ in $\theta$ and $1.1\%$ in $p$. Fitted over
 $\varepsilon\in[0.4,1.9]$, the exponents are $1.192/1.208/1.247/1.305$ at $64^2$ and
 $1.192/1.208/1.247/1.300$ at $128^2$ ($u_x/u_y/\theta/p$), so the refinement moves the exponent by
-less than $0.005$. For this configuration the law is a property of the equations rather than of the
-$64^2$ discretisation.
+less than $0.005$. For these two configurations the exponent is not set by the $64^2$
+discretisation.
 
 \needspace{9\baselineskip}
 At the top of the Rayleigh range we repeated the check for a constant-wall configuration at
@@ -559,8 +572,10 @@ discretisation uncertainty of up to $3.3\%$.
 
 
 \begin{itemize}
-\item $\varepsilon$-scaling is geometry-independent; the prefactor $A$ is not ($0.147\to0.175$ for
-$u_x$, $0.148\to0.222$ for $p$, $0.193\to0.175$ for $u_y$, $0.010\to0.008$ for $\theta$).
+\item For $u_x$, $u_y$ and $p$ the exponent is consistent across geometry within its uncertainty
+(0.7--1.8$\sigma$); the
+prefactor $A$ is not ($0.147\to0.175$ for $u_x$, $0.148\to0.222$ for $p$, $0.193\to0.175$ for
+$u_y$, $0.010\to0.008$ for $\theta$).
 \item Boundary-condition families barely matter \emph{inside this family}: 134 wall-mode families,
 133 free dummies. Adding them to the $\varepsilon$-only fit raises the adjusted $R^2$ by 2.3 pp
 ($p$), 2.9 pp ($u_y$), 3.3 pp ($u_x$) and 8.5 pp ($\theta$)---the $\varepsilon$-scaling is not an
@@ -750,18 +765,22 @@ $D(\varepsilon)$, so we estimate $P$ by third-order Richardson extrapolation in 
 over the solutions at $\varepsilon=0.4,0.8,1.2$. With $R_e(\varepsilon)=D(\varepsilon)/\varepsilon$,
 $P=3R_e(0.4)-3R_e(0.8)+R_e(1.2)$, which has $O(\varepsilon^3)$ truncation and the same norm as the
 $\varepsilon=0.4$ secant to within 1\% in the median over the 20 configurations, in all four
-channels. The accuracy below is that of this extrapolated field; the cost is that of the linear
-solve it approximates. Predicting $\hat Y=X+\varepsilon P$ gives
+channels. The accuracy below is that of this extrapolated field. Its cost is estimated from the
+measured march time divided by the number of Newton iterations (0.45\,s median, range
+0.32--1.90\,s), not from a separately timed factorisation; it is an estimate of one linear solve,
+not a measurement. Predicting $\hat Y=X+\varepsilon P$ gives
 $14$/$15$/$1.4$/$15\%$ at $\varepsilon=1.6$ and $24$/$27$/$3.0$/$28\%$ at $\varepsilon=1.9$
 ($u_x/u_y/\theta/p$), against a do-nothing floor at $\varepsilon=1.9$ of $39$/$58$/$6.0$/$42\%$: the linear response
-removes 35--53\% of the gap at $\varepsilon=1.9$ and leaves the rest to the $O(\varepsilon^2)$ term.
+removes 34--53\% of the gap at $\varepsilon=1.9$ (computed from the unrounded errors; $p$ gives
+34.9\%) and leaves the rest to the $O(\varepsilon^2)$ term.
 The secant at $\varepsilon=0.4$ predicts $22$/$26$/$2.9$/$26\%$ at $\varepsilon=1.9$, slightly
 better than the linear response itself, because the secant already contains part of the quadratic
-term; it costs one full compressible solve (30\,s) and using it as the linear baseline would
+term; it costs one full compressible solve (30.3\,s median on this 20-configuration scan; 22.3\,s
+is the 600-sample median of Table~\ref{tab:cost}) and using it as the linear baseline would
 flatter that baseline. The network reaches
 $9.4$/$10.6$/$1.4$/$11.3\%$ on the extrapolation split (Table~\ref{tab:ablation}), so the residual
 left by the linear response is not a small correction. Both approaches replace the same compressible
-member and therefore save a similar fraction of the 30\,s nonlinear solve; the difference is that
+member and therefore save a similar fraction of the 30.3\,s nonlinear solve; the difference is that
 the network retains the $\varepsilon^2$ curvature that the linear solve cannot produce, and
 inference costs 6.3\,ms against 0.45\,s per linear solve.
 
@@ -792,7 +811,7 @@ factorised output is $1.09\times$ lower in extrapolation ($1.16\times$ in $\thet
 in $p$; the $u_x$ and $u_y$ intervals include zero), while
 the two are indistinguishable in interpolation. Removing $\varepsilon$ from the input as well costs accuracy relative to P1 and FiLM---0.1214
 against 0.0937 and 0.1001 in $u_x$---but still beats the $\varepsilon$-blind network
-($1.89\times$); what it buys is the property P1 cannot have, a network that can be trained at
+($1.87\times$ channel-averaged; $1.89\times$ in $u_x$); what it buys is the property P1 cannot have, a network that can be trained at
 one $\varepsilon$ and applied at another (Sec.~\ref{sec:transfer}). Finally, the network
 \emph{discovers} a positive curvature on its own, $\kappa=0.22$--$0.42$, the same sign and order as
 the $\varepsilon^2$ term of the expansion in Sec.~\ref{sec:theory}---an independent check of the
@@ -987,10 +1006,12 @@ The gap grows with contrast. On the 20 configurations that carry five contrasts 
 relative gaps is $+0.11\%$ at $\varepsilon=0.4$, $+0.44\%$ at 0.8, $+1.09\%$ at 1.2, $+2.42\%$ at
 1.6 and $+5.06\%$ at 1.9, a log--log slope of 2.4; individual flows scatter around it (at
 $\varepsilon=1.9$ the 10--90\% range is $-6.1$ to $+23\%$), because the sign of the local
-redistribution differs between flows. The heat load is therefore a second-order effect that
-reaches $5\%$ only near $\varepsilon=2$, but it is not zero, and a Boussinesq-trained surrogate
-cannot produce it: the three-orders-of-magnitude saving over the compressible solve is bought by
-keeping the compressible correction, not by replacing it with a cheaper Boussinesq run.
+redistribution differs between flows. The 20-configuration mean is therefore a second-order effect
+that reaches $5.1\%$ at $\varepsilon=1.9$, but it is not zero and it is not uniform: at $Ra=10^6$
+the four-family mean is $+28.5\%$ and individual families reach $+81.8\%$, while at $Ra\le10^3$ it
+stays below $1\%$. A Boussinesq-trained surrogate cannot produce any of it: the saving over the
+compressible solve is bought by keeping the compressible correction, not by replacing it with a
+cheaper Boussinesq run.
 
 \paragraph{The Rayleigh-number dependence of the integral correction} The aggregate $+0.6\%$ is reproduced by the classical-cavity family at
 $\varepsilon=1.2$, whose five Rayleigh numbers give $+0.01\%$ to $+0.87\%$
@@ -1087,28 +1108,30 @@ $\varepsilon$ dependence need not be in the data''.
 unseen $\varepsilon$ is largest where the training $\varepsilon$ is furthest away (its correction
 is a fixed field, Sec.~\ref{sec:floor}), whereas the prior's error stays proportional to how wrong
 $P$ is, uniformly in $\varepsilon$.
-\item Across boundary-condition families the same trick fails, and the prior makes it
-worse. Trained on the classical cavity, the plain model lands at 0.2919 against a floor of
-0.3018---it learned almost nothing transferable---and the prior model is \emph{worse} than the
-plain one (0.3092 at $\varepsilon>1.3$): it confidently multiplies a $P$ learnt on the wrong flow by
-an $\varepsilon$ that grows to 1.9. This is exactly what Sec.~\ref{sec:public} predicts, and it is
-the same number: $A$ is a functional of the flow, the classical cavity's flow has $\hat u$ 41\%
-above the random-wall median, and a surrogate trained on that family predicts the wrong $A$.
-Reusing published data therefore requires the boundary-condition family to be represented; the law
-tells you in advance which reuse will work .
+\item Across boundary-condition families the prior does not rescue transfer. Trained on the
+classical cavity, the plain model lands at 0.2919 against a floor of 0.3018---it learned little that
+transfers---and in extrapolation the prior is worse than the plain model in all four channels
+(0.3092/0.4730/0.0561/0.3280 against 0.2919/0.3711/0.0490/0.3192). In interpolation the prior does
+beat the plain model in all four channels (0.2281/0.3498/0.0422/0.2584 against
+0.2444/0.3612/0.0484/0.3217), but it still does not beat doing nothing. The failure is the one
+Sec.~\ref{sec:public} predicts: $A$ is a functional of the flow, the classical cavity's flow has
+$\hat u$ 41\% above the random-wall median, and a surrogate trained on that family predicts the
+wrong $A$. Reusing published data therefore requires the boundary-condition family to be
+represented; the law tells you in advance which reuse will work.
 \end{itemize}
 
 \subsection{A second geometry (aspect ratio 2:1, 104 samples)}
 \label{sec:aspect}
 
 Same generator, same $Ra$ and $\varepsilon$ ranges, cavity twice as wide (Fig.~\ref{fig:axes}).
-The $\varepsilon$ exponent is unchanged in the $\varepsilon$-only fit ($m=1.09/1.16/0.93/1.08$ for
-$u_x/u_y/\theta/p$, $0.7\sigma$, $1.8\sigma$, $0.3\sigma$ and $0.7\sigma$ away from the unit-square
-values; the two-parameter values are in Table~S2), while the prefactor moves
+The $\varepsilon$ exponent is consistent within its uncertainty in the $\varepsilon$-only fit
+($m=1.09/1.16/0.93/1.08$ for $u_x/u_y/\theta/p$, $0.7\sigma$, $1.8\sigma$, $0.3\sigma$ and
+$0.7\sigma$ away from the unit-square values; the refitted values themselves move by 7--17\%; the
+two-parameter values are in Table~S2), while the prefactor moves
 ($A=0.175/0.175/0.008/0.222$ versus the unit-square values of Table~\ref{tab:law},
 $0.147/0.193/0.010/0.148$). The Rayleigh trend is stronger for
 $u_x$ and $p$ here ($q=-0.14,-0.15$ vs $0.00,-0.03$) and reproduces for $u_y$ and $\theta$.
-The $\varepsilon$-scaling is geometry-independent; calibration of $A$ is not---which is
+The exponent is consistent across geometry within its uncertainty; calibration of $A$ is not---which is
 exactly why the surrogate takes $X$ as input rather than a table of $A$. Changing the fluid instead
 ($Pr$ $0.71\to4.38$) leaves the paired exponent within 1.5\% and the paired median $R$ within
 5\%, and the fitted prefactors move by at most 3.3\% except $p$, which moves by 6.1\%
@@ -1147,7 +1170,9 @@ not unfinished iteration.
 \small
 \caption{Wall-clock cost, $64^2$ mesh. Solver rows use eight CPU threads; the surrogate runs on
 an RTX 4060 Laptop GPU (batch 1) or one CPU thread. The two members are timed separately over the
-600 samples; the rows below them are surrogate timings or totals derived from the measured medians.}
+600 samples; the rows below them are surrogate timings or totals derived from the measured medians.
+The 100-sample scan rows use that scan's own timings: Boussinesq 16.0\,s and compressible 37.5\,s
+per sample, 55.8\,s per pair.}
 \label{tab:cost}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -1161,7 +1186,8 @@ surrogate, GPU, batch 1 & 6.3\,ms & & &\\
 surrogate, GPU, batch 256 & 0.49\,ms/sample & & &\\
 surrogate, CPU, 1 thread & 14.0\,ms & & &\\
 end-to-end pair (Boussinesq + surrogate) & 11.7\,s & & &\\
-100-contrast sweep, total & 12.3\,s & & &\\
+one flow, 100 contrasts (batch-600 median) & 12.3\,s & & &\\
+20-flow $\times$ 5-contrast scan, surrogate total & 321\,s & & &\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1170,12 +1196,14 @@ Table~\ref{tab:cost} gives the wall-clock cost. A paired solve splits into a Bou
 (median 11.7\,s) and a compressible member (22.3\,s); the surrogate replaces only the second. Per
 pair the cost therefore falls from 33.9\,s to 11.7\,s, a factor $2.9$, and the comparison of one
 inference with one compressible solve ($22.3\,\mathrm{s}/6.3\,\mathrm{ms}=3.5\times10^3$) describes only that member.
-The regime that matters for a parameter study is the amortised one: $X$ does not depend on
-$\varepsilon$, so $N$ contrasts cost one Boussinesq solve plus $N$ inferences. For $N=100$ that is
-12.3\,s against $100\times55.8=5.58\times10^3$\,s, a factor $4.5\times10^2$. The $55.8$\,s is the
-measured per-pair cost of the 100-sample scan itself, which is slower than the 600-sample median of
-33.9\,s; using the scan's own timing keeps the comparison like-for-like. The Boussinesq solve is
-then the limit. The solver runs on eight CPU threads and the surrogate on a GPU; the two are not
+The amortised regime depends on how many flows are swept, because $X$ does not depend on
+$\varepsilon$. For a single flow and $N=100$ contrasts, one Boussinesq solve plus 100 inferences
+costs $11.7+0.63=12.3$\,s against $11.7+100\times22.3=2.24\times10^3$\,s, a factor
+$1.8\times10^2$. The scan measured here is 20 flows $\times$ 5 contrasts: its own timings are
+16.0\,s for the Boussinesq member and 37.5\,s for the compressible one (55.8\,s per pair), so the
+surrogate needs $20\times16.0+100\times0.0063=3.21\times10^2$\,s against
+$100\times55.8=5.58\times10^3$\,s, a factor $17$. We quote $17\times$ as the conservative, fully
+measured number. The solver runs on eight CPU threads and the surrogate on a GPU; the two are not
 the same hardware.
 
 \subsection{A third Prandtl number: $Pr=4.38$}
@@ -1225,7 +1253,8 @@ $p$ & 0.1519 & 0.1426 & $1.109$ & $1.124$\\
 \includegraphics[width=0.96\textwidth]{fig8_water.png}
 \caption{Same configuration, same $\varepsilon$, only the Prandtl number changed: $Pr=0.71$ against
 $Pr=4.38$, 104 paired samples. The panel labels follow the original run names; both runs use the
-same equation of state and transport coefficients, and only $Pr$ differs.}
+same equation of state and the same dimensionless transport model; only $Pr$ (and hence the thermal
+diffusivity at fixed $Ra$) differs.}
 \label{fig:water}
 \end{figure}
 
@@ -1257,11 +1286,12 @@ solution up to the $\varepsilon$-blind rescaling of Sec.~\ref{sec:blind}.
 Table~\ref{tab:3d} and Fig.~\ref{fig:3d} give the result. In every channel and every flow a
 power law fits the four $\varepsilon$ values in log--log coordinates with $R^2>0.998$, and the per-flow exponents are
 $1.063\pm0.019$ ($u_x$), $1.033\pm0.012$ ($u_y$), $1.092\pm0.015$ ($\theta$) and
-$1.100\pm0.010$ ($p$)---within $0.11$ of unity and the flow-mean exponents within $0.10$ of the two-dimensional
-full-window fit of Table~\ref{tab:law}. The comparison is to the full-window fit rather than to a
-2-D fit restricted to the same window: the 2-D samples are drawn at random $\varepsilon$ and their
-prefactor varies by up to $4\times$ between flows (Sec.~\ref{sec:public}), so a narrow-window
-regression there measures that scatter rather than the local slope. The prefactor is not universal here either: across the three flows it varies
+$1.100\pm0.010$ ($p$)---within $0.11$ of unity. Against the full-window 2-D fit of
+Table~\ref{tab:law} the flow means differ by at most $0.10$; against a 2-D fit restricted to the
+same window ($1.02/0.89/1.19/1.05$ for $u_x/u_y/\theta/p$, 352 samples) the differences are
+$0.04/0.14/0.10/0.05$. The second comparison is noisier because a narrow-window regression there
+also measures the between-flow prefactor scatter (up to $4\times$, Sec.~\ref{sec:public}). Both are
+consistency checks, not a converged validation. The prefactor is not universal here either: across the three flows it varies
 by $3.8\times$ ($u_x$), $2.0\times$ ($u_y$), $10\times$ ($\theta$) and $2.0\times$ ($p$), which is
 the same statement as Sec.~\ref{sec:public}, that $A$ is a functional of the flow. What transfers to
 three dimensions is the exponent, which is what the factorisation predicts.
@@ -1347,7 +1377,8 @@ $\varepsilon$ of each flow.}
 \item Two dimensions for the main sweep. The law is calibrated on 2-D solutions; a $2\times$ mesh
 refinement moves the exponent by less than $0.005$ at $Ra=10^4$ and by at most $0.015$ at
 $Ra=10^6$, where the largest pointwise change in $R$ is $3.3\%$ (Sec.~\ref{sec:law}). The preliminary
-twelve-sample 3-D check of Sec.~\ref{sec:3d} reproduces the exponent, but covers one Rayleigh number,
+twelve-sample 3-D check of Sec.~\ref{sec:3d} agrees with the 2-D exponent within $0.15$ over the
+same window, but covers one Rayleigh number,
 $res=16$ and $\varepsilon\le1.2$; the POD-ROM baseline is a linear model with at most four modes, not a deep operator. Each 3-D pair costs 13--29\,min of outer wall-clock time (median 16) on this machine. A
 3-D sweep at higher $Ra$ or resolution remains out of reach here.
 \item $Ma$ is inert here, so the break-symmetry group is one-dimensional rather than two.
@@ -1355,6 +1386,12 @@ At larger $Ma$ this would have to be redone.
 \item $\varepsilon<2$, imposed by the equation of state (the cold wall must stay positive).
 \item The power-law fits of Sec.~\ref{sec:law} leave 16/18/78\% of the variance unexplained in
 $u_x/u_y/\theta$ and 13\% in $p$; the $\hat u$ form of Sec.~\ref{sec:public} closes most of the $\theta$ gap ($R^2$ $0.19\to0.78$) and leaves the same residual flow-dependence in the other three channels.
+\item $\theta$ is not part of the common-exponent claim. Its fitted slope is $1.024$ over the full
+window and $1.67$ on the 104-configuration subset; only its leading $\varepsilon$ scaling is
+claimed.
+\item The pressure channel is quoted in the fixed gauge and hydrostatic correction of
+Sec.~\ref{sec:pressure}. Its exponent is not gauge-invariant, and a different post-processing
+gauge would change it.
 \item The prefactor $A$ is configuration-dependent and must be learned: it moves with the geometry
 (Sec.~\ref{sec:aspect}) and by $1.66\times$ ($u_x$) / $1.38\times$ ($u_y$) / $4.05\times$
 ($\theta$) / $1.07\times$ ($p$) between boundary-condition families of an independent data set
@@ -1368,7 +1405,7 @@ $u_x/u_y/\theta$ and 13\% in $p$; the $\hat u$ form of Sec.~\ref{sec:public} clo
 
 We set out to build a surrogate for compressible natural convection and found that the object it has
 to reproduce---the gap between the Boussinesq solution and the compressible one---factorises:
-$\varepsilon$ sets its leading-order amplitude, and the flow sets its spatial shape and prefactor.
+$\varepsilon$ sets its leading-order scaling, and the flow sets its amplitude and spatial shape.
 
 \begin{enumerate}
 \item One break-symmetry parameter. In this non-dimensionalisation $Fr^2=\Delta T/T_0$ identically,
@@ -1376,13 +1413,15 @@ so the break-symmetry axis is $\varepsilon=\Delta T/T_0$; Mach-number effects ar
 are below the resolution of the sampled range. This does not make the amplitude universal:
 $P(X)$ carries the flow dependence.
 \item A leading-order law. $R=\|Y-X\|/\|Y\|=A\varepsilon^m$ with
-$m=1.023\pm0.018$, $0.995\pm0.019$, $1.024\pm0.077$, $1.009\pm0.015$ ($u_x,u_y,\theta,p$), an
+$m=1.023\pm0.018$, $0.995\pm0.019$ and $1.009\pm0.015$ ($u_x,u_y,p$), an
 intercept indistinguishable from zero, the exponent quoted over the full two-decade window (from
 $\varepsilon=0.8$ upwards the same points give $1.23$--$1.32$, the $\varepsilon^2$ curvature of
 Sec.~\ref{sec:law}), and a 134-family boundary-condition description (133 dummies) that adds only
 2--3 pp of adjusted $R^2$ to the velocity and pressure channels. The fit leaves 16/18/78/13\% of
 the variance unexplained in $u_x/u_y/\theta/p$; $\theta$ collapses on $\chi$ rather than on
-$\varepsilon$ alone. The exponent is geometry-independent and fluid-independent; only the
+$\varepsilon$ alone. $\theta$ is not part of the common-exponent claim: its fitted slope is $1.024$
+over the full window and $1.67$ on the 104-configuration subset. For $u_x$, $u_y$ and $p$ the
+exponent is consistent across geometry (0.7--1.8$\sigma$) and fluid (1.5\%); only the
 prefactor $A$ must be calibrated, which is why the surrogate takes $X$ as input rather than a
 table of $A$. A preliminary set of twelve paired 3-D solutions at one $Ra$ and one resolution
 reproduces the exponent (flow means $1.03$--$1.10$, per-flow $1.02$--$1.11$; Sec.~\ref{sec:3d}).
@@ -1410,8 +1449,9 @@ The same factorisation lowers the mean $u_x$ error of a POD-ROM with at most fou
 Section~\ref{sec:limits} lists the limits: two dimensions for the main sweep, $\varepsilon<2$,
 one-dimensional break symmetry, and a prefactor whose power-law fit leaves 16\% ($u_x$), 18\%
 ($u_y$) and 78\% ($\theta$) of the variance unexplained; the $\theta$ gap closes to 22\% once the
-advection strength $\chi$ is supplied. The $\varepsilon$ dependence itself is known in closed form
-and is not left to the network to discover from data.
+advection strength $\chi$ is supplied. The leading $\varepsilon$ factor is derived; the amplitude,
+the window-averaged exponent and the $\varepsilon^2$ curvature are measured, and the curvature is
+also learned by the network.
 
 \section{Reproducibility}
 \label{sec:repro}

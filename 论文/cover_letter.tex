@@ -3,7 +3,7 @@
 \usepackage{newtxtext,newtxmath}
 \usepackage{hyperref}
 \pagestyle{empty}
-\setlength{\parskip}{6pt}
+\setlength{\parskip}{4pt}
 \begin{document}
 
 \noindent
@@ -34,15 +34,18 @@ the solve. The
 break-symmetry group is therefore one-dimensional, spanned by $\varepsilon=\Delta T/T_0$.
 \item \textbf{A measured law.} Across 627 paired two-dimensional solves in the unit square at
 $Pr=0.71$ spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys
-$R=A\varepsilon^{m}$ with $m=1.02$ in $u_x$, $u_y$ and $p$ (and the same exponent, with larger
-scatter, in $\theta$), a vanishing intercept, and an $\varepsilon^2$ curvature that matches the
-asymptotic expansion. In 104-sample checks in a 2:1
-geometry and at $Pr=4.38$ the exponent is statistically unchanged; the amplitude reproduces on an
+$R=A\varepsilon^{m}$ with $m=1.02$ in $u_x$, $u_y$ and $p$. $\theta$ shares the leading scaling,
+but its fitted slope is subset-dependent (1.02 over the full window, 1.67 on the 104-configuration
+subset), so we do not include it in the common-exponent claim. The intercept vanishes and the
+$\varepsilon^2$ curvature matches the asymptotic expansion. In 104-sample checks in a 2:1
+geometry and at $Pr=4.38$ the exponent is consistent within its uncertainty for $u_x$, $u_y$ and
+$p$ (0.7--1.8$\sigma$; the refitted values move by 7--17\%); the amplitude reproduces on an
 independently generated public data set at $\varepsilon=1.2$.
 \item \textbf{A design rule.} Because the correction factorises as $D=\varepsilon P(X)$, a network
 that predicts only $P$ has a $1.09\times$ lower channel-averaged error than the strongest
 conditional baseline in extrapolation ($\theta$ and $p$ individually; the $u_x/u_y$ intervals
-include zero), and $1.89\times$ better than an $\varepsilon$-blind network when $\varepsilon$ is
+include zero), and $1.87\times$ better (channel-averaged; $1.89\times$ in $u_x$) than an
+$\varepsilon$-blind network when $\varepsilon$ is
 withheld, which makes
 single-contrast public data reusable at other contrasts within one boundary-condition family, without
 retraining.
@@ -68,7 +71,7 @@ released with the manuscript; the raw solver output is available from the author
 \noindent
 The work is not under consideration elsewhere, and the authors declare no competing interests.
 
-\vspace{12pt}
+\vspace{4pt}
 \noindent
 Yours sincerely,\\
 {[Corresponding author name]}\\

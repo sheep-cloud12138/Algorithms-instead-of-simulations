@@ -6,6 +6,7 @@
 \usepackage{tabularx}
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{microtype}
+\usepackage{needspace}
 \usepackage[hidelinks]{hyperref}
 \graphicspath{{figs/}}
 \setlength{\parskip}{2pt}
@@ -158,37 +159,50 @@ unchanged to a Fourier neural operator.
 \subsection{Related work}
 \label{sec:related}
 
-\paragraph{Surrogates for convection} Reduced-order models replace the discretised equations by a
-small number of modes; parametric dynamic mode decomposition is a representative recent example
-\citep{huhn2022parametric}. Graph convolutional networks exploit the mesh and have been applied to
-natural convection in annuli \citep{feng2024graph} and to geometry-adaptive steady convection with
-physics-informed losses \citep{peng2023physics}. Operator learning removes the mesh-resolution
-constraint: DeepONet approximates the solution operator from branch and trunk networks
-\citep{lu2021learning}, physics-informed DeepONets add the residual to the loss
-\citep{wang2021learning}, and Fourier neural operators (FNOs) learn a global convolution in Fourier
-space \citep{li2021fourier}. FNOs have since been used for sparse-field reconstruction
-\citep{zhao2023recfno}, real-time heat-pipe startup prediction \citep{yu2026fourier}, and
-operator-level uncertainty quantification in cooling-channel optimisation \citep{sahin2023deep}.
-Physics-informed neural networks \citep{raissi2019physics} and their heat-transfer variants
-\citep{cai2021physics,jalili2023physics} take the opposite route: they solve one instance by minimising a PDE
-residual, rather than learning a family of instances. Reviews of the numerical analysis and of the
-application landscape are given by \citet{deryck2024numerical}, \citet{meng2025physics} and
-\citet{luo2025physics}.
+Reduced-order models replace the discretised equations by a small number of modes; parametric
+dynamic mode decomposition is a representative recent example \citep{huhn2022parametric}. Graph
+convolutional networks exploit the mesh and have been applied to natural convection in annuli
+\citep{feng2024graph} and to geometry-adaptive steady convection with physics-informed losses
+\citep{peng2023physics}. Operator learning removes the mesh-resolution constraint: DeepONet
+approximates the solution operator from branch and trunk networks \citep{lu2021learning},
+physics-informed DeepONets add the residual to the loss \citep{wang2021learning}, and Fourier
+neural operators (FNOs) learn a global convolution in Fourier space \citep{li2021fourier}. FNOs
+have since been used for sparse-field reconstruction \citep{zhao2023recfno}, real-time heat-pipe
+startup prediction \citep{yu2026fourier}, and operator-level uncertainty quantification in
+cooling-channel optimisation \citep{sahin2023deep}. Physics-informed neural networks
+\citep{raissi2019physics} and their heat-transfer variants \citep{cai2021physics,jalili2023physics}
+take the opposite route: they solve one instance by minimising a PDE residual rather than learning
+a family of instances. Reviews of the numerical analysis and of the application landscape are
+given by \citet{deryck2024numerical}, \citet{meng2025physics} and \citet{luo2025physics}.
 
-\paragraph{Physics priors and structure} A physics prior can enter as a residual penalty, as a
-conservation law built into the architecture, or as an algebraic factorisation of the output. The
-first two are well developed; the third is the subject of this paper. Residual-based corrector
-operators solve a linear variational problem for the residual of a trained operator and add the
-solution to its prediction; the correction is deterministic, costs one linear solve per query, and
-improves accuracy without retraining the base operator \citep{jha2023residual,cao2023residual}. Physics-informed
-extrapolation of deep operators has been demonstrated by adding sparse observations or residual
-terms \citep{zhu2023reliable}, and transfer operator learning addresses distribution shift between
-parameter regimes \citep{goswami2022deep}. Multi-fidelity surrogates combine cheap and expensive
-data through LSTM corrections \citep{conti2022multi}, feature-adjacent physics-informed learning
+A physics prior can enter as a residual penalty, as a conservation law built into the architecture,
+or as an algebraic factorisation of the output. The first two are well developed; the third is the
+subject of this paper. Residual-based corrector operators solve a linear variational problem for
+the residual of a trained operator and add the solution to its prediction; the correction is
+deterministic, costs one linear solve per query, and improves accuracy without retraining the base
+operator \citep{jha2023residual,cao2023residual}. Physics-informed extrapolation of deep operators
+has been demonstrated by adding sparse observations or residual terms \citep{zhu2023reliable}, and
+transfer operator learning addresses distribution shift between parameter regimes
+\citep{goswami2022deep}. Multi-fidelity surrogates combine cheap and expensive data through LSTM
+corrections \citep{conti2022multi}, feature-adjacent physics-informed learning
 \citep{chen2023feature} or transfer-learned FNOs \citep{lyu2023multi}. These methods reduce the
-amount of high-fidelity data, but they still learn the parameter dependence from samples. The
-present work differs in that the parameter dependence is derived, and only the spatial shape of the
-correction is learned.
+amount of high-fidelity data, but they still learn the parameter dependence from samples. For
+buoyant convection, the Oberbeck--Boussinesq approximation and its validity limits are classical
+\citep{spiegel1960boussinesq,gray1976validity}, and the review of \citet{ahlers2009heat}
+summarises the heat-transfer and large-scale dynamics of turbulent Rayleigh--B\'enard convection.
+Non-Oberbeck--Boussinesq (NOB) effects have been measured under strong temperature contrast
+\citep{yik2020turbulent}, in cryogenic helium \citep{macek2023assessing} and in a water-filled
+differentially heated cavity \citep{pan2023non}. At $Pr=0.71$ and large contrast they are not a
+small correction: they grow cold-corner vortices and can reverse the large-scale circulation
+\citep{xia2016flow}. On the numerical side, low-Mach compressible formulations for enclosed thermal
+convection have been developed and compared with the Boussinesq limit
+\citep{zhang2023investigation,satake2024mathematical}, and the rigorous derivation of the
+Oberbeck--Boussinesq approximation has recently been revisited \citep{bella2023rigorous}. What is
+missing is a quantitative, closed-form account of how the \emph{difference between the two
+solutions} scales with the temperature contrast, and a surrogate design that uses that scaling.
+These studies fix $\varepsilon$ and compare the two solutions; none extracts the $\varepsilon$
+dependence as a reusable prior. The present work differs in that the parameter dependence is
+derived, and only the spatial shape of the correction is learned.
 
 Table~\ref{tab:related} places the resulting prior among the four families.
 
@@ -202,7 +216,7 @@ post-hoc correctors \citep{jha2023residual,cao2023residual}, physics fine-tuning
 \citep{zhu2023reliable}, transfer operator learning \citep{goswami2022deep}, dimension-informed
 operator \citep{song2024dimino}.}
 \label{tab:related}
-\begin{tabular}{@{}p{3.2cm}p{2.2cm}p{1.7cm}p{1.3cm}p{1.8cm}p{1.4cm}@{}}
+\begin{tabular}{@{}p{2.9cm}p{2.2cm}p{1.7cm}p{1.3cm}p{2.1cm}p{1.4cm}@{}}
 \toprule
 family & derived & learned & target data & per query & law\\
 \midrule
@@ -215,22 +229,6 @@ this work & $\varepsilon$ expansion & shape $P$ & no & no & $m$, $\kappa$\\
 \end{tabular}
 \end{table}
 
-\paragraph{Boussinesq versus compressible convection} The Oberbeck--Boussinesq approximation and
-its validity limits are classical \citep{spiegel1960boussinesq,gray1976validity}; the review of
-\citet{ahlers2009heat} summarises the heat-transfer and large-scale dynamics of turbulent
-Rayleigh--B\'enard convection. Non-Oberbeck--Boussinesq (NOB) effects have been measured under
-strong temperature contrast \citep{yik2020turbulent}, in cryogenic helium \citep{macek2023assessing}
-and in a water-filled differentially heated cavity \citep{pan2023non}. At $Pr=0.71$ and large
-contrast they are not a small correction: they grow cold-corner vortices and can reverse the
-large-scale circulation \citep{xia2016flow}. On the numerical side,
-low-Mach compressible formulations for enclosed thermal convection have been developed and compared
-with the Boussinesq limit \citep{zhang2023investigation,satake2024mathematical}, and the rigorous
-derivation of the Oberbeck--Boussinesq approximation has recently been revisited
-\citep{bella2023rigorous}. What is missing from this literature is a quantitative, closed-form
-account of how the \emph{difference between the two solutions} scales with the temperature contrast,
-and a surrogate design that uses that scaling. These studies fix $\varepsilon$ and compare the two solutions; none extracts the $\varepsilon$
-dependence as a reusable prior.
-
 \paragraph{Contributions}
 \begin{enumerate}
 \item We identify the exact, one-dimensional break-symmetry parameter of the
@@ -238,6 +236,7 @@ Boussinesq--compressible pair and show the group is one-dimensional rather than 
 (Sec.~\ref{sec:axis}).
 \item We derive the correction's factorisation from an $\varepsilon$-expansion and verify all five
 of its predictions numerically, including the divergence relation (Sec.~\ref{sec:theory}).
+\needspace{7\baselineskip}
 \item We calibrate the resulting law on 627 paired samples spanning two decades of $\varepsilon$, in
 two geometries and two Prandtl numbers, and validate it on an independently generated public data
 set---including the secondary Rayleigh-number trends (Secs.~\ref{sec:law}, \ref{sec:public},
@@ -296,7 +295,7 @@ in the present non-dimensionalisation. The $Ma$ row is a consistency check on th
 equations, which drop the $O(Ma^2)$ term.}
 \label{tab:axis}
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{2.0cm}p{7.3cm}p{3.0cm}@{}}
+\begin{tabular}{@{}p{1.95cm}p{7.25cm}p{2.95cm}@{}}
 \toprule
 candidate & evidence & conclusion\\
 \midrule
@@ -712,8 +711,8 @@ $\varepsilon$ in its input, which is what makes a single-$\varepsilon$ data set 
 \subsection{External validation on an independent, published data set}
 \label{sec:public}
 
-\path{NurshatMenglik/NeuralConvection_2D_TrainTest} (v2; 4000 training pairs plus 200
-in-distribution test pairs, CC BY 4.0), generated by another group with their own pipeline, at a
+The public release \texttt{NeuralConvection\_2D\_TrainTest} (v2; 4000 training pairs plus 200 test
+pairs, CC BY 4.0) was generated by another group, at a
 single $\varepsilon=1.2$, $Ra\in[10^2,3\cdot10^6]$ \citep{menglik2026neural}.
 
 \paragraph{Conventions match} Recomputing their published \path{relL2_*} columns as
@@ -742,8 +741,8 @@ $p$ & 0.1858 (0.117--0.246) & 0.1889 (0.128--0.262)\\
 \end{table}
 
 \paragraph{Even the secondary trends reproduce} The correlation of $R$ with $\log_{10}Ra$ is
-$+0.133/-0.419/+0.647/-0.198$ on their $\varepsilon\equiv1.2$ data and
-$+0.032/-0.511/+0.662/-0.263$ on our $\varepsilon\in[1.1,1.3]$ slice (64 samples,
+$+0.133$, $-0.419$, $+0.647$ and $-0.198$ on their $\varepsilon\equiv1.2$ data and
+$+0.032$, $-0.511$, $+0.662$ and $-0.263$ on our $\varepsilon\in[1.1,1.3]$ slice (64 samples,
 $u_x/u_y/\theta/p$). The $\theta$ channel---the one whose scatter we explain next---has $r=+0.66$ on
 ours and $+0.65$ on theirs, from independently generated data.
 
@@ -881,10 +880,10 @@ for the interpolation one. Both public sets are at $\varepsilon\equiv1.2$. That 
 epochs, one seed), the same protocol as the public rows above; the P1/P3 columns of
 Table~\ref{tab:ablation} use 200 epochs and three seeds.}
 \label{tab:transfer}
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{3.9cm}p{0.8cm}p{3.75cm}p{3.75cm}@{}}
+\setlength{\tabcolsep}{2.7pt}
+\begin{tabular}{@{}p{3.85cm}p{0.8cm}p{3.655cm}p{3.655cm}@{}}
 \toprule
-trained on & model & extrapolation ($n=218$) & interpolation ($n=200$)\\
+trained on & model & extrapolation ($n\!=\!218$) & interpolation ($n\!=\!200$)\\
 \midrule
 do nothing & $\hat Y=X$ & 0.3018/0.3731/0.0556/0.3320 & 0.2203/0.2683/0.0381/0.2386\\
 public 4000, random walls & plain &
@@ -1174,8 +1173,7 @@ operator does not contain $\varepsilon$, so the correction factorises,
 $D=\varepsilon P(X)+\varepsilon^2Q(X)+\dots$, with a shape that does not rotate. All five
 consequences of the expansion are confirmed numerically.
 \item A design rule. Predicting $P(X)$ and multiplying by $\varepsilon$ outside the
-network---two lines of code---converts the law into a prior that (i) beats the plain architecture
-by $1.07$--$1.15\times$ over a FiLM-conditioned network, (ii) lets the network discover the $\varepsilon^2$ term itself,
+network---two lines of code---converts the law into a prior that (i) beats a FiLM-conditioned network by $1.07$--$1.15\times$, (ii) lets the network discover the $\varepsilon^2$ term itself,
 (iii) works the same way for a Fourier neural operator, and (iv) makes a public data set that exists
 at a single temperature contrast reusable at others---0.093 ($u_x$) on $\varepsilon>1.3$ against
 0.144 for the plain model and 0.302 for doing nothing---which is the difference between a surrogate

@@ -32,46 +32,27 @@ a factorised physics prior for surrogates}
 \address[a]{Affiliation(s)}
 
 \begin{abstract}
-Boussinesq-trained surrogates transfer only partially across contrast: they learn a fixed correction field and have no signal with which to rescale it. For
-steady two-dimensional buoyancy-driven convection in enclosures the contrast
-$\varepsilon=\Delta T/T_0$ sets the leading-order scaling of the difference between the
-Boussinesq and compressible solutions, while the flow sets its amplitude and spatial shape; the classical
-differentially heated cavity is the one-mode member of the family. The Froude number is not free
-($Fr^2=\varepsilon$), and a 24-fold change in $Ma$ leaves the measured correction unchanged at the
-precision of the solve in the retained low-Mach equations. Over 627 paired solutions
-($\varepsilon=0.02$--$1.9$), the relative correction obeys $R=A\varepsilon^m$ with
-$m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$ over the full two-decade window, a vanishing
-intercept and $\varepsilon^2$ curvature. The pressure channel gives $1.009\pm0.015$ in the fixed
-post-processing gauge of Sec.~\ref{sec:pressure}; because that gauge is not unique, we report it as
-a numerical channel, not a physical exponent. $\theta$ is a weak, flow-dependent channel: its free
-power-law fit is not identifiable at this sample size ($R^2=0.22$; slope $1.024\pm0.077$ over the
-full window and $1.67$ on the 104-configuration subset), so we make no exponent claim for it. Its
-amplitude collapses on the flow ($\chi$ parameterisation $R^2=0.78$; $\hat u$ form $R^2=0.90$); the
-fitted prefactor is 0.010 wall-normalised (0.034 zero-mean); it gives 0.012 at $\varepsilon=1.2$,
-a factor 1.9 below the empirical median of 0.0232 (0.0228 on the public data), so we do not use it
-as a predictive amplitude; for $u_x$ and $u_y$ the exponent is consistent within its uncertainty in a second geometry (0.7--1.8 standard errors;
-the refitted value moves by 7--17\%), where the prefactor moves by up to 50\%; and on the same
-104 configurations the $Pr=4.38$ exponent and prefactor stay within 7\% of $Pr=0.71$. In a preliminary twelve-sample
-3-D check ($Ra=10^4$, $res=16$, $\varepsilon\le1.2$) the per-flow exponents lie within 0.11 of
-unity. On the public data at
-$\varepsilon=1.2$ the sample-mean integral Nusselt change is $+0.54\%$ (median $+0.58\%$) and the
-local wall flux changes by $4.25\%$; across our Rayleigh-number scan the family-mean integral change reverses sign and reaches
-$+28\%$ at $Ra=10^6$, $\varepsilon=1.9$ (individual families reach $+82\%$). The prefactor is not universal: in $\theta$ it also collapses on the peak
-Boussinesq velocity across generators. Because $D=\varepsilon P(X)$, a surrogate predicts $P$ and multiplies: with $\varepsilon$ as input its channel-averaged error is $1.09\times$ lower than that of a
-FiLM-conditioned network in extrapolation (the $\theta$ and $p$ channels individually, $p$ in the
-fixed gauge; the 95\%
-intervals for $u_x$ and $u_y$ include zero), while the two coincide within seed scatter in interpolation; without it, it
-still beats an $\varepsilon$-blind network by
-$1.87\times$ channel-averaged ($1.89\times$ in $u_x$) and reuses single-$\varepsilon$ public
-data within a boundary family. One inference
-takes 6.3\,ms; replacing the compressible member cuts a paired solve from 33.9\,s to
-11.7\,s ($2.9\times$), the measured 20-flow $\times$ 5-contrast scan by $13\times$, and a
-single flow swept over 100 contrasts by $2.3\times10^2$.
+Boussinesq-trained surrogates for thermal convection transfer poorly across temperature contrast:
+they learn one correction field and have no signal with which to rescale it. For steady
+two-dimensional buoyancy-driven convection in enclosures we show that the contrast
+$\varepsilon=\Delta T/T_0$ sets the leading-order scaling of the difference between the Boussinesq
+and compressible solutions, while the flow sets its amplitude and spatial shape. The Froude number
+is tied to the contrast ($Fr^2=\varepsilon$), and $Ma$ enters only at $O(Ma^2)$. Over 627 paired
+solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys $R=A\varepsilon^m$ with
+$m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and $\varepsilon^2$
+curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no
+identifiable exponent. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
+only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. This prior is
+$1.87\times$ better than an $\varepsilon$-blind network, channel-averaged, and makes a public
+single-$\varepsilon$ data set reusable within a boundary family. At $\varepsilon=1.2$ the integral
+Nusselt number changes by $0.54\%$ while the local wall flux changes by $4.25\%$. One inference
+takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
+20-flow $\times$ 5-contrast scan. A twelve-sample 3-D check reproduces the exponent to within 0.11.
 \end{abstract}
 
 \begin{keyword}
 natural convection \sep Boussinesq approximation \sep low-Mach compressible flow \sep
-physics-informed surrogate \sep neural operator \sep break symmetry
+physics-informed surrogate \sep neural operator \sep parametric dependence
 \end{keyword}
 
 \end{frontmatter}
@@ -231,7 +212,13 @@ small correction: they grow cold-corner vortices and can reverse the large-scale
 \citep{xia2016flow}. On the numerical side, low-Mach compressible formulations for enclosed thermal
 convection have been developed and compared with the Boussinesq limit
 \citep{zhang2023investigation,satake2024mathematical}, and the rigorous derivation of the
-Oberbeck--Boussinesq approximation has recently been revisited \citep{bella2023rigorous}. What is
+Oberbeck--Boussinesq approximation has recently been revisited \citep{bella2023rigorous}. Bella
+et al.\ obtain the Oberbeck--Boussinesq system with a non-local boundary condition for the
+temperature deviation in the low-Mach limit of the compressible Navier--Stokes--Fourier system with
+Dirichlet temperature conditions; that boundary condition belongs to the full
+compressible-to-Oberbeck--Boussinesq limit, whereas
+the expansion here is taken in the retained low-Mach system with fixed wall temperature, where the
+temperature deviation vanishes at every order on the walls. What is
 missing is a quantitative, closed-form account of how the \emph{difference between the two
 solutions} scales with the temperature contrast, and a surrogate design that uses that scaling.
 These studies fix $\varepsilon$ and compare the two solutions; none extracts the $\varepsilon$
@@ -425,7 +412,11 @@ D=Y-X=-\varepsilon \mathcal{L}^{-1}S_1[X]-\varepsilon^2\mathcal{L}^{-1}S_2[X]+\d
 \label{eq:factor}
 \end{equation}
 Five predictions follow, and all five hold; Table~S1 of the supplementary material lists them and
-their measured values.
+their measured values. Table~S1 also measures the remainder: the $\varepsilon^1$ term carries 86\%
+of the correction energy, $\varepsilon^1+\varepsilon^2$ carries 99.0\%, and
+$\varepsilon^1+\varepsilon^2+\varepsilon^3$ carries 99.9\%, so the two-term truncation leaves 1.0\%
+over the sampled range. This is a measured statement about the retained low-Mach system, not a
+proof of convergence.
 
 
 

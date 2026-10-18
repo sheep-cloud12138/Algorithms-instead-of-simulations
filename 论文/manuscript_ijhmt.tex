@@ -34,26 +34,25 @@ a factorised physics prior for surrogates}
 \begin{abstract}
 Boussinesq-trained surrogates for thermal convection transfer poorly across temperature contrast:
 they learn one correction field and have no signal with which to rescale it. For steady
-two-dimensional buoyancy-driven convection in enclosures we show that the contrast
+two-dimensional buoyancy-driven enclosure convection we show that the relative contrast
 $\varepsilon=\Delta T/T_0$ sets the leading-order scaling of the difference between the Boussinesq
-and compressible solutions, while the flow sets its amplitude and spatial shape. The Froude number
-is tied to the contrast ($Fr^2=\varepsilon$), and $Ma$ enters only at $O(Ma^2)$ in the retained
-low-Mach equations. Over 627 paired
+and compressible solutions, while the flow sets its amplitude and spatial shape. $Fr^2=\varepsilon$
+identically, and $Ma$ enters only at $O(Ma^2)$ in the retained low-Mach equations. Over 627 paired
 solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys $R=A\varepsilon^m$ with
 $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and $\varepsilon^2$
-curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no
-identifiable exponent. One Newton step of the low-Mach residual at the Boussinesq state reproduces the measured correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$; the upper decile of
-$p$ reaches $39\%$) at $\varepsilon=0.02$--$0.10$ with no extrapolation in $\varepsilon$, and the
-extrapolated shape predicts measurements held out in $\varepsilon$ at $0.1$ and $0.2$ to
-$2.4/1.8/3.8\%$. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
-only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. When only a
-single-$\varepsilon$ data set exists, it lowers the channel-averaged transfer error from 0.131 to
-0.086 ($1.5\times$) and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ on the
-public classical-cavity data, the integral Nusselt number changes by $0.54\%$ while the wall-flux $L_1$ change is $4.25\%$
-(pointwise median $0.65\%$). One inference
+curvature; pressure gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no identifiable
+exponent. One Newton step of the low-Mach residual at the Boussinesq state reproduces the
+correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$) at $\varepsilon=0.02$--$0.10$, and the
+extrapolated shape predicts held-out measurements at 0.1 and 0.2 to $2.4/1.8/3.8\%$. The correction
+factorises as $D=\varepsilon P(X)$, so a surrogate learns only the spatial shape $P$ and multiplies
+by $\varepsilon$ outside the network. On a single-$\varepsilon$ public data set this lowers the
+channel-averaged transfer error from 0.131 to 0.086 ($1.5\times$). At $\varepsilon=1.2$ the integral
+Nusselt number changes by $0.54\%$ while the wall-flux $L_1$ change is $4.25\%$; a prior trained on
+the same data lowers the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux
+error from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall-$Nu$ error there is $2.6\%$
+against $0.7\%$ for doing nothing, while the interior enthalpy-flux integral is reproduced to $0.07\%$. One inference
 takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
-20-flow $\times$ 5-contrast scan. A 15-sample, five-contrast 3-D check gives per-flow exponents
-within 0.16 of unity.
+20-flow $\times$ 5-contrast scan. A 15-sample 3-D check gives exponents within 0.16 of unity.
 \end{abstract}
 
 \begin{keyword}
@@ -251,8 +250,10 @@ samples), and validate the prefactor on an independently generated public data s
 Rayleigh-number trends (Secs.~\ref{sec:law}, \ref{sec:public}, \ref{sec:aspect}, \ref{sec:water}).
 \item We measure what the gap does to the wall heat transfer: at $\varepsilon=1.2$ the integral
 Nusselt number moves by $0.54\%$ (median $0.58\%$) on the public data, while the local wall flux
-is redistributed by $4.25\%$; on our Rayleigh-number scan the family-mean integral change at $\varepsilon=1.9$ ranges from $-7\%$
-at $Ra=10^4$ to $+28\%$ at $Ra=10^6$ (Sec.~\ref{sec:nu}).
+is redistributed by $4.25\%$; on the five isothermal-sidewall configurations the integral change
+at $\varepsilon=1.9$ is $-5.1\%$ at $Ra=10^4$ and $-1.0\%$ at $Ra=10^3$. The 15 random-wall
+configurations are not used for a relative $Nu$ statistic: eight of them have $|Nu_X|\le1$, where
+the ratio is dominated by its denominator (Sec.~\ref{sec:nu}).
 \item We turn the law into a surrogate design rule ($D=\varepsilon P(X)$), measure what it is worth
 ($1.09\times$ lower channel-averaged error than the strongest conditional baseline in
 extrapolation, with $\theta$ and $p$ individually significant ($p$ in the fixed gauge) and the $u_x/u_y$ intervals
@@ -584,7 +585,7 @@ rerun at $128^2$ over the same five contrasts. The relative correction $R$ chang
 $0.1\%$ in $u_x$ and $u_y$, $0.7\%$ in $\theta$ and $1.1\%$ in $p$. Fitted over
 $\varepsilon\in[0.4,1.9]$, the exponents are $1.192/1.208/1.247/1.305$ at $64^2$ and
 $1.192/1.208/1.247/1.300$ at $128^2$ ($u_x/u_y/\theta/p$), so the refinement moves the exponent by
-at most $0.005$. For these two configurations the exponent is not set by the $64^2$
+at most $0.005$. For this configuration the exponent is not set by the $64^2$
 discretisation.
 
 \needspace{9\baselineskip}
@@ -597,6 +598,12 @@ at $Ra=10^6$ is $\approx0.032L$ thick; the $64^2$ mesh places three temperature 
 nodes across it, the $128^2$ mesh five and nine. The $128^2$ values are the finer reference: the
 $64^2$ exponent is accurate to $0.015$, and an individual $\varepsilon=1.9$ correction carries a
 discretisation uncertainty of up to $3.3\%$.
+
+At $Ra=10^5$ the same isothermal-wall check at $\varepsilon=1.2$ and $1.9$ gives a wall-$Nu$
+change of $-0.15$ and $-0.36$ percentage points between $64^2$ and $128^2$ ($Nu_X$ itself moves by
+$0.86\%$); the integral correction moves from $+0.87\%$ to $+0.73\%$ at $\varepsilon=1.2$ and from
+$-1.81\%$ to $-2.16\%$ at $\varepsilon=1.9$. Across $Ra=10^4$, $10^5$ and $10^6$ the change between $64^2$ and $128^2$ is therefore at most
+$0.38$ percentage points, and the sign and order of the integral correction are unchanged.
 
 
 
@@ -1068,6 +1075,33 @@ local change, pointwise & $-0.65\%$ (median) & p10--p90 $-9.1$ to $+9.8\%$\\
 \end{tabular}
 \end{table}
 
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Wall heat transfer of the public-data surrogate at $\varepsilon=1.2$ (200 classical-cavity
+samples). The surrogate is trained on the 4000 public training pairs and evaluated without
+retraining. $T$ error is relative $L_2$; $Nu$ error is the mean absolute error of the integrated
+wall Nusselt number divided by the mean true $Nu$; local flux is the mean absolute error of the
+wall-normal flux profile divided by its mean absolute value; interior flux is the mean absolute
+error of the vertically integrated enthalpy flux at $x=0.25,0.5,0.75$, divided by its compressible
+mean.}
+\label{tab:surrogate_nu}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+model & $T$ error & $Nu$ error (hot) & $Nu$ error (cold) & local flux (hot/cold) & interior flux\\
+\midrule
+do nothing ($\hat Y=X$) & $7.2\%$ & $0.67\%$ & $0.64\%$ & $6.0/5.2\%$ & $36.7\%$\\
+plain $D$ & $0.10\%$ & $3.61\%$ & $2.42\%$ & $4.4/3.7\%$ & $0.08\%$\\
+prior $D=\varepsilon P(X)$ & $0.10\%$ & $2.56\%$ & $1.72\%$ & $4.3/3.6\%$ & $0.07\%$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+FiLM is not a separate row here: the public data have a single $\varepsilon$, so its conditioning
+input is constant and adds no information beyond the plain model. The FiLM comparison across
+$\varepsilon$ is the field-error comparison of Table~\ref{tab:ablation}.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=1.0\textwidth]{fig_wallflux.png}
@@ -1087,54 +1121,55 @@ $+0.90\%$. The local wall flux is not: the correction redistributes
 it by $4.25\%$ in $L_1$ (p90 $7.33\%$), with pointwise excursions of $\pm10\%$, and that number is
 the same for every stencil order. On average the correction adds heat over the lower half of the
 cavity and removes it over the upper half (Fig.~\ref{fig:wallflux}b); the integral is the
-$Nu$-weighted mean of this redistribution, which is why it cancels. A surrogate trained on
-Boussinesq data therefore predicts the total heat load to better than $1\%$ at this contrast and
-the local flux to only about $4\%$; which of the two matters is set by the application, not by the
-physics. The field statistic behind the cancellation is large: on the same 200 samples the
-temperature field itself differs by $8.4\%$ in relative $L_2$, so an $8.4\%$ change in the field
-produces a $0.6\%$ change in its wall-normal derivative.
+$Nu$-weighted mean of this redistribution, which is why it cancels. Doing nothing predicts the
+integral heat load to $0.7\%$ only because it predicts no change at all; it is not a heat-transfer
+surrogate. Table~\ref{tab:surrogate_nu}
+evaluates the public-data prior directly. The prior reduces the temperature-field error from
+$7.2\%$ to $0.10\%$ in relative $L_2$, and the local wall-flux $L_1$ error from $6.0\%$ to $4.3\%$
+(hot wall) and from $5.2\%$ to $3.6\%$ (cold wall), but its integrated wall $Nu$ error is $2.6\%$,
+larger than the $0.7\%$ of doing nothing. The wall gradient amplifies high-frequency error that is
+invisible in the field norm. The same predicted fields reproduce the interior-plane enthalpy-flux
+integral to $0.07\%$, so the surrogate conserves the global heat transport while missing the
+wall-normal derivative. The field statistic behind the cancellation is large: on the same 200
+samples the temperature field differs by $7.2\%$ in global relative $L_2$ ($8.4\%$ median per
+sample), so a $7$--$8\%$ change in the field produces a $0.6\%$ change in its wall-normal
+derivative.
 
-The gap grows with contrast. On the 20 configurations that carry five contrasts the mean of the per-sample
-relative gaps is $+0.11\%$ at $\varepsilon=0.4$, $+0.44\%$ at 0.8, $+1.09\%$ at 1.2, $+2.42\%$ at
-1.6 and $+5.06\%$ at 1.9, a log--log slope of 2.4; individual flows scatter around it (at
-$\varepsilon=1.9$ the 10--90\% range is $-6.1$ to $+23\%$), because the sign of the local
-redistribution differs between flows. The 20-configuration mean is therefore a second-order effect
-that reaches $5.1\%$ at $\varepsilon=1.9$, but it is not zero and it is not uniform: at $Ra=10^6$
-the four-family mean is $+28.5\%$ and individual families reach $+81.8\%$, while at $Ra\le10^3$ it
-stays below $1\%$. A Boussinesq-trained surrogate cannot produce any of it: the saving over the
-compressible solve is bought by keeping the compressible correction, not by replacing it with a
-cheaper Boussinesq run.
+The relative gap is not a meaningful statistic for every configuration. Of the 20 paired
+configurations, eight have $|Nu_X|\le1$ at $\varepsilon=1.9$ and nine have negative $Nu_X$; there
+the sign or the small magnitude of the denominator, not the correction, sets $\Delta Nu/Nu$, and the all-configuration mean
+$+5.06\%$ is not a physical heat-transfer result. The five isothermal-sidewall configurations have
+$Nu_X=O(1)$ at every contrast. On those, the mean integral change is $+0.51\%$ (sd $0.37\%$) at
+$\varepsilon=1.2$ and $-1.89\%$ (sd $1.94\%$) at $\varepsilon=1.9$: the correction adds heat at
+moderate contrast and removes it at high contrast. The sign change is the heat-transfer signature
+of the $\varepsilon^2$ term, and a Boussinesq-trained surrogate cannot produce it because it has no
+access to the compressible correction.
 
-\paragraph{The Rayleigh-number dependence of the integral correction} The aggregate $+0.54\%$
-(median $+0.58\%$) is reproduced by the classical-cavity family at
-$\varepsilon=1.2$, whose five Rayleigh numbers give $+0.01\%$ to $+0.87\%$
-(mean $+0.51\%$; these classical-only values are not the four-family means of
-Table~\ref{tab:nu_ra}). The dependence on $Ra$ and on the flow appears at larger
-contrast. At $Ra\le10^3$ every family stays within $1\%$. At $\varepsilon=1.9$ the classical cavity
-spans $-5.1\%$ to $-1.5\%$ over its five Rayleigh numbers ($-1.5\%$ at $Ra=10^6$), while the four
-families at $Ra=10^6$ span $-1.5\%$ to
-$+81.8\%$ around a mean of $+28.5\%$: the integral correction is set by the flow, not by
-$\varepsilon$ alone, and an aggregate over families can hide an $80\%$ effect. A model calibrated on
-$Nu$ alone would therefore not transfer across $Ra$ at fixed $\varepsilon$; the local field is the
-quantity that carries the correction.
+\paragraph{The Rayleigh-number dependence of the integral correction} The five Rayleigh numbers
+span $+0.01$ to $+0.87\%$ at $\varepsilon=1.2$ and $-5.1$ to $-1.0\%$ at $\varepsilon=1.9$
+(Table~\ref{tab:nu_ra}). At $Ra\le10^3$ the change stays
+within $0.1\%$; at $Ra\ge10^4$ it reaches $-5\%$. The 15 random-wall configurations are excluded:
+eight have $|Nu_X|\le1$ at $\varepsilon=1.9$, where the sign or the small magnitude of the denominator, not the correction, sets the
+ratio. A model calibrated on $Nu$ alone therefore does not transfer across $Ra$ at fixed
+$\varepsilon$; the local field is the quantity that carries the correction.
 \begin{table}[htbp]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{5pt}
-\caption{Integral Nusselt change $\Delta Nu/Nu$ on the 20 paired configurations, grouped by
-Rayleigh number. Each entry is the mean over the four boundary families at that $Ra$ (the classical
-cavity and three Fourier families); the spread across families is given in the text. The public
-classical-cavity samples of Table~\ref{tab:nu} span $Ra\in[10^2,3\cdot10^6]$.}
+\caption{Integral Nusselt change $\Delta Nu/Nu$ (percent) for the five isothermal-sidewall
+configurations, one at each $Ra$. These are the only configurations with a positive $O(1)$
+denominator at every contrast. Random-wall families are excluded because 8 of 15 have
+$|Nu_X|\le1$ at $\varepsilon=1.9$.}
 \label{tab:nu_ra}
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 $Ra$ & $\varepsilon=0.4$ & 0.8 & 1.2 & 1.6 & 1.9\\
 \midrule
-$10^2$ & $-0.01$ & $-0.02$ & $-0.03$ & $-0.04$ & $-0.06$\\
-$10^3$ & $-0.09$ & $-0.13$ & $-0.12$ & $-0.11$ & $-0.50$\\
-$10^4$ & $-1.03$ & $-2.17$ & $-3.46$ & $-5.04$ & $-7.44$\\
-$10^5$ & $-0.50$ & $-0.50$ & $+0.15$ & $+1.82$ & $+4.83$\\
-$10^6$ & $+2.18$ & $+5.00$ & $+8.89$ & $+15.5$ & $+28.5$\\
+$10^2$ & $-0.00$ & $+0.00$ & $+0.01$ & $+0.01$ & $-0.01$\\
+$10^3$ & $+0.07$ & $+0.28$ & $+0.59$ & $+0.76$ & $-0.98$\\
+$10^4$ & $+0.07$ & $+0.20$ & $+0.27$ & $-0.38$ & $-5.14$\\
+$10^5$ & $+0.16$ & $+0.48$ & $+0.87$ & $+0.91$ & $-1.81$\\
+$10^6$ & $+0.24$ & $+0.51$ & $+0.82$ & $+0.83$ & $-1.50$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1509,6 +1544,11 @@ gauge would change it.
 (Sec.~\ref{sec:aspect}) and by $1.66\times$ ($u_x$) / $1.38\times$ ($u_y$) / $4.05\times$
 ($\theta$) / $1.07\times$ ($p$) between boundary-condition families of an independent data set
 (Sec.~\ref{sec:public}), while it is insensitive to the fluid ($Pr$, Sec.~\ref{sec:water}).
+\item The public prior is accurate in the field norm but not in the wall-normal derivative. At
+$\varepsilon=1.2$ its integrated wall $Nu$ error at the hot wall is $2.6\%$, against $0.7\%$ for doing nothing,
+although its local wall-flux error is lower ($4.3\%$ against $6.0\%$). The interior enthalpy-flux
+integral is reproduced to $0.07\%$. A derivative-aware loss or a smooth reconstruction is needed
+before the surrogate can be used as a wall heat-flux predictor.
 \item The earlier public release used a pinned $Fr=1.095$, which puts its
 $Ra_{\mathrm{eff}}=Ra\,Fr^2/\varepsilon$ 0.08\% below ours at $\varepsilon=1.2$
 ($1.2/1.199=1.0008$); the v2 release corrects this and the two now agree.
@@ -1564,6 +1604,15 @@ predictably.
 
 The same factorisation lowers the mean $u_x$ error of a POD-ROM with at most four modes on the 3-D samples from 0.168 to 0.081 over five held-out contrasts.
 
+The heat-transfer audit adds a constraint that the field norm hides. At $\varepsilon=1.2$ the public
+prior reduces the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux error
+from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall $Nu$ error there is $2.6\%$ against
+$0.7\%$ for doing nothing. The predicted fields reproduce the interior enthalpy-flux integral to $0.07\%$, so the
+surrogate conserves the global heat transport; the wall-normal derivative is the quantity that
+requires a derivative-aware training target or a smoother reconstruction. For the isothermal
+sidewall family the integral correction itself is small and changes sign between $\varepsilon=1.2$
+($+0.51\%$) and $1.9$ ($-1.89\%$).
+
 Section~\ref{sec:limits} lists the limits: two dimensions for the main sweep, $\varepsilon<2$,
 one-dimensional break symmetry, and a prefactor whose power-law fit leaves 16\% ($u_x$), 18\%
 ($u_y$) and 78\% ($\theta$) of the variance unexplained; the $\theta$ gap closes to 22\% once the
@@ -1580,7 +1629,8 @@ together with the machine-readable results used in the tables and figures, are m
 repository listed under Data availability. The raw solver output (600 random-boundary-condition,
 104 aspect-2:1, 104 $Pr=4.38$, 27 $\varepsilon\to0$,
 100 paired and 10 tight-rerun two-dimensional samples---the tight rerun repeats ten of the 600---plus
-eight $128^2$ mesh-check pairs ($Ra=10^4$ over five contrasts, $Ra=10^6$ over three) and
+ten $128^2$ mesh-check pairs ($Ra=10^4$ over five contrasts, $Ra=10^5$ over two,
+$Ra=10^6$ over three) and
 15 paired three-dimensional samples (three flows $\times$ five contrasts), $\sim$6\,GB) stays on the machine described above. The stored results
 are the source of every number in this paper; the reporting scripts regenerate them, and no number
 is transcribed by hand.
@@ -1606,7 +1656,4 @@ the raw solver output is available from the authors on request.
 \bibliographystyle{elsarticle-num-names}
 \bibliography{refs}
 
-\end{document}
-
-
-
+\end{document}\n

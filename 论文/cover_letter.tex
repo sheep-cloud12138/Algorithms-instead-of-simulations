@@ -57,7 +57,10 @@ with no extrapolation in $\varepsilon$; and the extrapolated shape predicts held
 at $\varepsilon=0.1$ and $0.2$ to $2.4/1.8/3.8\%$.
 \item \textbf{Wall heat transfer.} At $\varepsilon=1.2$ the integral Nusselt number changes by
 $0.54\%$ (median $0.58\%$), while the local wall heat flux is redistributed by $4.25\%$; the integral agreement
-therefore conceals a local error that a surrogate must be trained to resolve.
+therefore conceals a local error that a surrogate must be trained to resolve. A prior trained on
+the public data cuts the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux
+error to $4.3\%$, but its integrated wall-$Nu$ error is $2.6\%$, against $0.7\%$ for doing
+nothing; the predicted fields reproduce the interior enthalpy-flux integral to $0.07\%$.
 \end{itemize}
 
 \noindent

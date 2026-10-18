@@ -55,8 +55,9 @@ Nusselt number changes by $0.67\%$ between the two members; the mean per-sample 
 and the wall-flux $L_1$ change is $4.25\%$; a prior trained on
 the same data lowers the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux
 error from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall-$Nu$ error there is $2.6\%$
-against $0.7\%$ for doing nothing. The wall-normal derivative, not the field norm, is the limiting
-quantity. One inference takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
+against $0.7\%$ for doing nothing: the wall-normal derivative, not the field norm, is the limiting
+quantity. A wall-flux penalty in the same loss removes it, bringing the integrated error to
+$0.11\%$ and the local error to $1.0\%$ at $\varepsilon=1.2$. One inference takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
 20-flow $\times$ 5-contrast scan. A 15-sample 3-D consistency check ($res=16$, $Ra=10^4$) gives exponents within 0.16 of
 unity.
 \end{abstract}
@@ -925,7 +926,9 @@ asymptotic expansion.
 
 \paragraph{Practical form} The prior changes only the training target: train any regressor $\mathcal{N}$ on the
 ratio $D/\varepsilon$ instead of on $D$, and at run time return $\hat Y=X+\varepsilon\,\mathcal{N}(X)$
-after evaluating the Boussinesq member (or a surrogate for it) to obtain $X$. Supplying
+after evaluating the Boussinesq member (or a surrogate for it) to obtain $X$. For wall heat
+transfer, add $\lambda\sum|\hat q-q|/\sum|q|$ to the loss, where $q$ is the wall-normal gradient
+of $\theta$; $\lambda=1$ with the six-point stencil is enough (Sec.~\ref{sec:nu}). Supplying
 $\varepsilon$ to $\mathcal{N}$ as well is the most accurate form (P1, $1.09\times$ lower channel-averaged error than a FiLM-conditioned network in
 extrapolation, with $\theta$ and $p$ individually significant and the $u_x/u_y$ intervals
 including zero). P2 learns a scalar curvature $\kappa_{\mathrm{net}}$ and replaces $\varepsilon$ by
@@ -1107,7 +1110,8 @@ samples). The surrogate is trained on the 4000 public training pairs and evaluat
 retraining. $T$ error is relative $L_2$; $Nu$ error is the mean absolute error of the integrated
 wall Nusselt number divided by the mean true $Nu$; local flux is the mean absolute error of the
 wall-normal flux profile divided by its mean absolute value. For doing nothing the absolute error
-equals the mean signed change, because all 200 per-sample changes are positive.}
+equals the mean signed change, because all 200 per-sample changes are positive. The last row adds
+a relative $L_1$ penalty on the wall-normal gradient to the training loss (weight $1$, two seeds).}
 \label{tab:surrogate_nu}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -1116,6 +1120,7 @@ model & $T$ error & $Nu$ error (hot) & $Nu$ error (cold) & local flux (hot/cold)
 do nothing ($\hat Y=X$) & $7.2\%$ & $0.67\%$ & $0.64\%$ & $6.0/5.2\%$\\
 plain $D$ & $0.10\%$ & $3.61\%$ & $2.42\%$ & $4.4/3.7\%$\\
 prior $D=\varepsilon P(X)$ & $0.10\%$ & $2.56\%$ & $1.72\%$ & $4.3/3.6\%$\\
+prior $+$ wall-flux loss & $0.13\%$ & $0.11\%$ & $0.10\%$ & $1.0/0.9\%$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1149,8 +1154,13 @@ surrogate. Table~\ref{tab:surrogate_nu}
 evaluates the public-data prior directly. The prior reduces the temperature-field error from
 $7.2\%$ to $0.10\%$ in relative $L_2$, and the local wall-flux $L_1$ error from $6.0\%$ to $4.3\%$
 (hot wall) and from $5.2\%$ to $3.6\%$ (cold wall), but its integrated wall $Nu$ error is $2.6\%$,
-larger than the $0.7\%$ of doing nothing. The wall-normal derivative carries a systematic bias
-that is invisible in the field norm; the local profile improves while the integral does not.
+larger than the $0.7\%$ of doing nothing: the wall-normal derivative carries a bias that the field
+norm does not see. Adding a relative $L_1$ penalty on the wall-normal gradient of the predicted
+$\theta$ to the training loss removes it. With unit weight and the same six-point stencil, the
+integrated wall-$Nu$ error falls to $0.11\%$ and the local wall-flux error to $1.0\%$, at a cost of
+$0.10\%\to0.13\%$ in the field norm; two seeds give $0.10$--$0.11\%$. The residual is below the
+$0.35\%$ spread between stencil orders, so the integral heat transfer is reproduced to the
+resolution of the estimator.
 The field statistic behind the cancellation is large: on the same 200
 samples the temperature field differs by $7.2\%$ in global relative $L_2$ ($8.4\%$ median per
 sample), so a $7$--$8\%$ change in the field produces a $0.6\%$ change in its wall-normal
@@ -1571,11 +1581,11 @@ gauge would change it.
 (Sec.~\ref{sec:aspect}) and by $1.66\times$ ($u_x$) / $1.38\times$ ($u_y$) / $4.05\times$
 ($\theta$) / $1.07\times$ ($p$) between boundary-condition families of an independent data set
 (Sec.~\ref{sec:public}), while it is insensitive to the fluid ($Pr$, Sec.~\ref{sec:water}).
-\item The public prior is accurate in the field norm but not in the wall-normal derivative. At
-$\varepsilon=1.2$ its integrated wall $Nu$ error at the hot wall is $2.6\%$, against $0.7\%$ for doing nothing,
-although its local wall-flux error is lower ($4.3\%$ against $6.0\%$). The field norm does not
-resolve this bias. A derivative-aware or conservative loss is needed before the surrogate can be
-used as a wall heat-flux predictor.
+\item The field norm does not certify the wall-normal derivative. A prior trained on the field
+alone reaches $0.10\%$ in relative $L_2$ but leaves a $2.6\%$ integrated wall-$Nu$ error at
+$\varepsilon=1.2$, worse than the $0.7\%$ of doing nothing. The wall-flux penalty in
+Sec.~\ref{sec:nu} removes it ($0.11\%$), but the loss has to be stated; a field-norm metric alone
+does not detect the failure.
 \item The earlier public release used a pinned $Fr=1.095$, which puts its
 $Ra_{\mathrm{eff}}=Ra\,Fr^2/\varepsilon$ 0.08\% below ours at $\varepsilon=1.2$
 ($1.2/1.199=1.0008$); the v2 release corrects this and the two now agree.
@@ -1633,10 +1643,11 @@ The same factorisation lowers the mean $u_x$ error of a POD-ROM with at most fou
 
 The heat-transfer audit adds a constraint that the field norm hides. At $\varepsilon=1.2$ the public
 prior reduces the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux error
-from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall $Nu$ error there is $2.6\%$ against
-$0.7\%$ for doing nothing. The wall-normal derivative carries a systematic bias that the field norm does not
-resolve; it requires a derivative-aware or conservative training target, not a smoother
-reconstruction. For the isothermal
+from $6.0\%$ to $4.3\%$ at the hot wall, yet its integrated wall $Nu$ error is $2.6\%$ against
+$0.7\%$ for doing nothing. The field norm does not see this bias. A relative $L_1$ penalty on the
+wall-normal gradient, added to the same training loss, brings the integrated error to $0.11\%$ and
+the local error to $1.0\%$, so the failure is a property of the training target rather than of the
+factorisation. For the isothermal
 sidewall family the integral correction itself is small and changes sign between $\varepsilon=1.2$
 ($+0.51\%$) and $1.9$ ($-1.89\%$).
 

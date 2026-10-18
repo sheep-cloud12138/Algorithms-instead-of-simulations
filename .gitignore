@@ -24,3 +24,7 @@ data_public/
 
 # ---- 论文排版检查用的临时渲染图 ----
 论文/_*.png
+
+# ---- 评审用的临时抽取与页面渲染 ----
+/manuscript_text.txt
+/review_pages/

@@ -1,6 +1,7 @@
-"""3-D surrogate baseline on the twelve paired 3-D samples.
+"""3-D surrogate baseline on the strictly paired 3-D samples.
 
-Leave-one-flow-out cross-validation (3 flows x 4 eps).  Variants:
+Leave-one-flow-out cross-validation over every flow observed at three or more
+contrasts.  Variants:
   plain   : UNet3 predicts D = Y - X directly
   eps     : same, with eps as a constant input channel
   prior   : D = eps * P(X), eps outside the network
@@ -19,7 +20,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 CH = ['ux', 'uy', 'theta', 'p']
-TAGS = ['e02', 'e04', 'e08', 'e12']
+TAGS = ['e02', 'e04', 'e08', 'e12', 'e16']
 
 
 def to_grid(coords, vals, n):
@@ -95,6 +96,12 @@ def load_all(root):
     eps = np.array(eps, np.float32)[order]
     flow = np.array(flow, np.int64)[order]
     dirs = [dirs[i] for i in order]
+    contrasts = {}
+    for f, e in zip(flow, eps):
+        contrasts.setdefault(int(f), set()).add(float(e))
+    keep = np.array([len(contrasts[int(f)]) >= 3 for f in flow])
+    X, Y, eps, flow = X[keep], Y[keep], eps[keep], flow[keep]
+    dirs = [d for d, k in zip(dirs, keep) if k]
     return X, Y, eps, flow, dirs
 
 

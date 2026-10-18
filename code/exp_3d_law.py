@@ -43,7 +43,7 @@ def main(root):
             for ch, (X, Y) in f.items():
                 D = Y - X
                 R[ch] = float(np.linalg.norm(D) / np.linalg.norm(Y))
-            rows.append(dict(dir=d, eps=eps, Ra=float(m['Ra']), **R))
+            rows.append(dict(dir=d, eps=eps, Ra=float(m['Ra']), flow=int(m['seed']), **R))
     if not rows:
         print('no complete samples')
         return
@@ -56,6 +56,18 @@ def main(root):
         for e in sorted(set(eps)):
             s = r[eps == e]
             print('        eps=%.2f n=%d median=%.4g' % (e, len(s), np.median(s)))
+    flows = sorted(set(r['flow'] for r in rows))
+    print('per-flow fits (flows with >=3 contrasts):')
+    for flow in flows:
+        sub = [r for r in rows if r['flow'] == flow]
+        if len(set(r['eps'] for r in sub)) < 3:
+            continue
+        print('  flow=%d n=%d' % (flow, len(sub)))
+        for ch in ['ux', 'uy', 'theta', 'p']:
+            r = np.array([x[ch] for x in sub])
+            e = np.array([x['eps'] for x in sub])
+            sl, ic, rv, pv, se = stats.linregress(np.log(e), np.log(r))
+            print('    %-6s m=%.3f+-%.3f A=%.4f R2=%.3f' % (ch, sl, se, np.exp(ic), rv ** 2))
     out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(root, 'law3d.json')
     json.dump(rows, open(out, 'w'), indent=1)
     print('saved', out)

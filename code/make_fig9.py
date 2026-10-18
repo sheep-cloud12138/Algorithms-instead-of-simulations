@@ -16,21 +16,24 @@ COL = ['#2c6fbb', '#e07b39', '#2e8b57']
 
 flows = {}
 for r in data:
-    flows.setdefault(r['dir'].split('sample_')[1], []).append(r)
+    flows.setdefault(int(r['flow']), []).append(r)
+flows = {f: rows for f, rows in flows.items() if len(rows) >= 3}
+eps_ticks = sorted({r['eps'] for rows in flows.values() for r in rows})
+n_paired = sum(len(rows) for rows in flows.values())
 
 fig, ax = plt.subplots(2, 2, figsize=(7.2, 5.9), dpi=240)
 for k in range(4):
     a = ax[k // 2][k % 2]
-    for j, key in enumerate(sorted(flows)):
-        rows = sorted(flows[key], key=lambda r: r['eps'])
+    for j, flow in enumerate(sorted(flows)):
+        rows = sorted(flows[flow], key=lambda r: r['eps'])
         e = np.array([r['eps'] for r in rows])
         y = np.array([r[KEY[k]] for r in rows])
         a.plot(e, y, 'o-', color=COL[j], ms=6, lw=1.5,
-               label=FLOW[int(key) % 3])
+               label=FLOW[j])
         a.plot(e, y[0] * (e / e[0]), 'k--', lw=1, alpha=.75)
     a.set_xscale('log'); a.set_yscale('log')
-    a.set_xticks([0.2, 0.4, 0.8, 1.2])
-    a.set_xticklabels(['0.2', '0.4', '0.8', '1.2'])
+    a.set_xticks(eps_ticks)
+    a.set_xticklabels(['%.1f' % e for e in eps_ticks])
     a.xaxis.set_minor_formatter(mt.NullFormatter())
     a.set_xlabel(r'$\varepsilon=\Delta T/T_0$', fontsize=12)
     a.set_ylabel(r'$\|Y-X\|/\|Y\|$   ' + CH[k], fontsize=12)
@@ -38,7 +41,7 @@ for k in range(4):
     a.tick_params(labelsize=8.5)
     if k == 0:
         a.legend(fontsize=9.5, loc='upper left', framealpha=.9)
-fig.suptitle(r'3-D check: $R$ grows linearly with $\varepsilon$ in every flow (12 paired samples, $Ra=10^4$)',
+fig.suptitle(r'3-D check: $R$ grows linearly with $\varepsilon$ in every flow (%d paired samples, $Ra=10^4$)' % n_paired,
              fontsize=11.5)
 fig.tight_layout(rect=[0, 0, 1, .96], w_pad=1.8)
 out = os.path.join(ROOT, '论文', 'figs', 'fig9_3d.png')

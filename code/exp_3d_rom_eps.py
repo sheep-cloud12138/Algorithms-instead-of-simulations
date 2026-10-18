@@ -93,7 +93,7 @@ def main():
     for kind in ['prior_m1', 'prior_m2', 'prior_m3', 'floor', 'm1', 'm2']:
         agg[kind]['gain_vs_m3'] = (ref3 / np.array(agg[kind]['mean'])).tolist()
 
-    print('\n=== mean over 4 held-out eps ===')
+    print('\n=== mean over %d held-out eps ===' % len(rows))
     print('%-10s %s' % ('variant', ' '.join('%9s' % c for c in CH)))
     for kind in ['floor', 'm1', 'm2', 'm3', 'prior_m1', 'prior_m2', 'prior_m3']:
         m, s = agg[kind]['mean'], agg[kind]['std']

@@ -47,7 +47,8 @@ single-$\varepsilon$ data set exists, this prior is $1.87\times$ better than an 
 network, channel-averaged, and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ the integral
 Nusselt number changes by $0.54\%$ while the local wall flux changes by $4.25\%$. One inference
 takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
-20-flow $\times$ 5-contrast scan. A twelve-sample 3-D check reproduces the exponent to within 0.11.
+20-flow $\times$ 5-contrast scan. A 15-sample, five-contrast 3-D check gives per-flow exponents
+within 0.16 of unity.
 \end{abstract}
 
 \begin{keyword}
@@ -255,7 +256,7 @@ $\times$ 5-contrast scan ($13\times$) and for a single flow swept over 100 contr
 (Secs.~\ref{sec:baselines}--\ref{sec:transfer}, \ref{sec:cost}).
 \end{enumerate}
 
-All results are two-dimensional except the twelve-sample three-dimensional check of
+All results are two-dimensional except the fifteen-sample, five-contrast three-dimensional check of
 Sec.~\ref{sec:3d}. Section~\ref{sec:limits} states the measured cost of the
 three-dimensional problem on the same hardware and gives the concrete reasons we do not claim a 3-D
 sweep.
@@ -803,8 +804,8 @@ data-driven baseline: fit $R(\varepsilon)=P+\varepsilon Q$ on $\varepsilon=0.4,0
 configuration and predict $X+\varepsilon P+\varepsilon^2Q$. At $\varepsilon=1.6$ this gives
 $3.3$/$3.9$/$0.4$/$3.8\%$ and at $\varepsilon=1.9$ $11.4$/$13.9$/$1.7$/$13.8\%$
 ($u_x/u_y/\theta/p$), against $14$/$15$/$1.4$/$15\%$ and $24$/$27$/$3.0$/$28\%$ for the
-first-order response. That is the same order as the network's $9.4$/$10.6$/$1.4$/$11.3\%$ on the
-extrapolation split, on a different sample. The two-term fit is available only when paired
+first-order response. That is the same order as the network's $9.4$/$10.6$/$1.4$/$11.3\%$,
+averaged over the extrapolation split; the two are not evaluated on the same samples. The two-term fit is available only when paired
 low-$\varepsilon$ data exist for the target flow. The public-data problem of Sec.~\ref{sec:public}
 has no such pairs at the target contrast; there a single-$\varepsilon$ data set is all that exists,
 and the prior---not a quadratic fit---is what makes it reusable.
@@ -1314,9 +1315,9 @@ than the geometry (Sec.~\ref{sec:aspect}) or the boundary-condition family
 \label{sec:3d}
 
 The law is calibrated in two dimensions. As a preliminary check of whether the exponent survives in
-three, we generated twelve paired steady solutions with the same generator: three fixed flows---a three-cell
+three, we generated fifteen paired steady solutions with the same generator: three fixed flows---a three-cell
 Voronoi wall pair, a two-cell wall pair and a constant-wall cavity---each solved at
-$\varepsilon=0.2$, $0.4$, $0.8$ and $1.2$, with $Ra=10^4$, $Pr=0.71$ and $res=16$ ($33^3$ velocity nodes,
+$\varepsilon=0.2$, $0.4$, $0.8$, $1.2$ and $1.6$, with $Ra=10^4$, $Pr=0.71$ and $res=16$ ($33^3$ velocity nodes,
 $17^3$ temperature and pressure nodes). The pairing is exact: within each flow the wall temperatures
 are the same seed stream scaled affinely about $T_0$, so the low-fidelity member is the same
 solution up to the $\varepsilon$-blind rescaling of Sec.~\ref{sec:blind}.
@@ -1326,46 +1327,46 @@ is not deramped. The $p$ exponents below are therefore fixed-gauge numbers, as i
 Table~\ref{tab:law}.
 
 Table~\ref{tab:3d} and Fig.~\ref{fig:3d} give the result. In every channel and every flow a
-power law fits the four $\varepsilon$ values in log--log coordinates with $R^2>0.998$, and the per-flow exponents are
-$1.063\pm0.019$ ($u_x$), $1.033\pm0.012$ ($u_y$), $1.092\pm0.015$ ($\theta$) and
-$1.100\pm0.010$ ($p$)---within $0.11$ of unity. Against the full-window 2-D fit of
-Table~\ref{tab:law} the flow means differ by at most $0.10$; against a 2-D fit restricted to the
-same window ($1.02/0.89/1.19/1.05$ for $u_x/u_y/\theta/p$, 352 samples) the differences are
-$0.04/0.14/0.10/0.05$. The second comparison is noisier because a narrow-window regression there
+power law fits the five $\varepsilon$ values in log--log coordinates with $R^2>0.995$, and the per-flow exponents are
+$1.091\pm0.014$ ($u_x$), $1.052\pm0.021$ ($u_y$), $1.130\pm0.015$ ($\theta$) and
+$1.141\pm0.017$ ($p$)---within $0.16$ of unity. Against the full-window 2-D fit of
+Table~\ref{tab:law} the flow means differ by $0.07$ ($u_x$), $0.06$ ($u_y$) and $0.13$ ($p$);
+against a 2-D fit restricted to the same window ($1.04/0.95/1.20/1.08$ for $u_x/u_y/\theta/p$,
+485 samples) the differences are $0.05/0.11/0.07/0.06$. The second comparison is noisier because a narrow-window regression there
 also measures the between-flow prefactor scatter (up to $4\times$, Sec.~\ref{sec:public}). Both are
 consistency checks, not a converged validation. The prefactor is not universal here either: across the three flows it varies
-by $3.8\times$ ($u_x$), $2.0\times$ ($u_y$), $10\times$ ($\theta$) and $2.0\times$ ($p$), which is
+by $3.8\times$ ($u_x$), $2.1\times$ ($u_y$), $11\times$ ($\theta$) and $2.0\times$ ($p$), which is
 the same statement as Sec.~\ref{sec:public}, that $A$ is a functional of the flow. What transfers to
 three dimensions is the exponent, which is what the factorisation predicts.
-With twelve samples at a single $Ra$ and a single resolution, this is a consistency check, not a
+With fifteen samples at a single $Ra$ and a single resolution, this is a consistency check, not a
 converged three-dimensional validation.
 
-\paragraph{A POD-ROM check of the prior} The same twelve samples also support a
-linear surrogate check. We train a POD-ROM with at most four modes on three flows and three
-contrasts (nine samples) and test on the held-out contrast (three samples),
-repeating for each of the four contrasts. The plain ROM predicts $D$ from
+\paragraph{A POD-ROM check of the prior} The same fifteen samples also support a
+linear surrogate check. We train a POD-ROM with at most four modes on three flows and four
+contrasts (twelve samples) and test on the held-out contrast (three samples),
+repeating for each of the five contrasts. The plain ROM predicts $D$ from
 $[1,\varepsilon,\bm c_X]$, where $\bm c_X$ are at most four POD coefficients of the
 Boussinesq field; the prior ROM predicts $P=D/\varepsilon$ from
 $[1,\bm c_X]$ and multiplies by $\varepsilon$ outside. At most four modes are used,
-fewer than the nine training samples. Averaged over the four held-out contrasts,
+fewer than the twelve training samples. Averaged over the five held-out contrasts,
 the prior lowers the relative error in every channel (Table~\ref{tab:3drom}):
-$u_x$ from 0.118 to 0.054, $u_y$ from 0.136 to 0.110, $\theta$ from 0.024 to
-0.019 and $p$ from 0.108 to 0.064. The gain is largest at $\varepsilon=0.2$ and
-0.4 ($3$--$10\times$ in $u_x$) and is not uniform: at $\varepsilon=0.8$ the
+$u_x$ from 0.168 to 0.081, $u_y$ from 0.190 to 0.150, $\theta$ from 0.034 to
+0.027 and $p$ from 0.163 to 0.098. The gain is largest at $\varepsilon=0.2$ and
+0.4 ($14\times$ and $5\times$ in $u_x$) and is not uniform: at $\varepsilon=1.2$ the
 $\varepsilon$-aware plain ROM is better in all four channels. We read this as a
 check that the factorisation remains useful in three dimensions at small
 contrast, not as a claim of uniform superiority.
 
 
-The check is limited to $Ra=10^4$, $res=16$ and $\varepsilon\le1.2$. The twelve pairs cost
-13--29\,min each (median 16\,min) of outer wall-clock time on this machine. We therefore report the exponent transfer, not
+The check is limited to $Ra=10^4$, $res=16$ and $\varepsilon\le1.6$. The fifteen pairs cost
+12--32\,min each (median 16\,min) of outer wall-clock time on this machine. We therefore report the exponent transfer, not
 a three-dimensional sweep.
 
 \begin{table}[htbp]
 \centering
 \small
-\caption{Three-dimensional check: twelve strictly paired samples, three fixed flows $\times$ four
-$\varepsilon$ at $Ra=10^4$, $Pr=0.71$, $res=16$. Per-flow exponents are power-law fits to the four
+\caption{Three-dimensional check: fifteen strictly paired samples, three fixed flows $\times$ five
+$\varepsilon$ at $Ra=10^4$, $Pr=0.71$, $res=16$. Per-flow exponents are power-law fits to the five
 $\varepsilon$ values of that flow. Flows are ordered three-cell Voronoi, two-cell Voronoi, constant
 wall. The prefactor is listed per flow to show that it does not transfer between flows.}
 \label{tab:3d}
@@ -1373,10 +1374,10 @@ wall. The prefactor is listed per flow to show that it does not transfer between
 \toprule
 channel & $m$ (mean$\pm$s.d. over flows) & per-flow $m$ & $A$ per flow\\
 \midrule
-$u_x$ & $1.063\pm0.019$ & 1.09/1.06/1.05 & 0.066/0.180/0.251\\
-$u_y$ & $1.033\pm0.012$ & 1.04/1.02/1.04 & 0.121/0.158/0.247\\
-$\theta$ & $1.092\pm0.015$ & 1.10/1.10/1.08 & 0.006/0.023/0.063\\
-$p$ & $1.100\pm0.010$ & 1.10/1.11/1.09 & 0.094/0.177/0.183\\
+$u_x$ & $1.091\pm0.014$ & 1.108/1.083/1.083 & 0.068/0.186/0.260\\
+$u_y$ & $1.052\pm0.021$ & 1.047/1.034/1.075 & 0.123/0.160/0.255\\
+$\theta$ & $1.130\pm0.015$ & 1.126/1.147/1.118 & 0.006/0.025/0.066\\
+$p$ & $1.141\pm0.017$ & 1.121/1.152/1.150 & 0.096/0.185/0.195\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1384,10 +1385,10 @@ $p$ & $1.100\pm0.010$ & 1.10/1.11/1.09 & 0.094/0.177/0.183\\
 \begin{table}[htbp]
 \centering
 \small
-\caption{Three-dimensional POD-ROM check on the twelve paired samples.
+\caption{Three-dimensional POD-ROM check on the fifteen paired samples.
 Leave-one-contrast-out: train on three flows $\times$ three $\varepsilon$
-(nine samples), test on the held-out $\varepsilon$ (three samples), repeated
-for the four contrasts. Entries are mean relative $L_2$ errors over the four
+(twelve samples), test on the held-out $\varepsilon$ (three samples), repeated
+for the five contrasts. Entries are mean relative $L_2$ errors over the five
 folds (mean $\pm$ s.d.); the ROM uses at most four POD modes and ridge regression
 ($\lambda=10^{-4}$). The gain is the plain-ROM error divided by the prior-ROM error.}
 \label{tab:3drom}
@@ -1395,10 +1396,10 @@ folds (mean $\pm$ s.d.); the ROM uses at most four POD modes and ridge regressio
 \toprule
 channel & do nothing & plain ROM & prior ROM & gain\\
 \midrule
-$u_x$ & 0.1406$\pm$0.088 & 0.1180$\pm$0.044 & 0.0542$\pm$0.036 & 2.18\\
-$u_y$ & 0.1376$\pm$0.086 & 0.1356$\pm$0.025 & 0.1100$\pm$0.068 & 1.23\\
-$\theta$ & 0.0261$\pm$0.017 & 0.0244$\pm$0.005 & 0.0193$\pm$0.012 & 1.26\\
-$p$ & 0.1136$\pm$0.075 & 0.1078$\pm$0.036 & 0.0644$\pm$0.045 & 1.67\\
+$u_x$ & 0.1934$\pm$0.132 & 0.1676$\pm$0.071 & 0.0807$\pm$0.061 & 2.08\\
+$u_y$ & 0.1880$\pm$0.127 & 0.1901$\pm$0.046 & 0.1497$\pm$0.100 & 1.27\\
+$\theta$ & 0.0362$\pm$0.025 & 0.0338$\pm$0.008 & 0.0270$\pm$0.019 & 1.25\\
+$p$ & 0.1617$\pm$0.117 & 0.1634$\pm$0.065 & 0.0980$\pm$0.077 & 1.67\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1406,8 +1407,8 @@ $p$ & 0.1136$\pm$0.075 & 0.1078$\pm$0.036 & 0.0644$\pm$0.045 & 1.67\\
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig9_3d.png}
-\caption{The three-dimensional check in log--log coordinates: twelve paired samples, three fixed flows
-and four temperature contrasts. Dashed lines are a slope-one reference anchored at the lowest
+\caption{The three-dimensional check in log--log coordinates: fifteen paired samples, three fixed flows
+and five temperature contrasts. Dashed lines are a slope-one reference anchored at the lowest
 $\varepsilon$ of each flow.}
 \label{fig:3d}
 \end{figure}
@@ -1419,9 +1420,9 @@ $\varepsilon$ of each flow.}
 \item Two dimensions for the main sweep. The law is calibrated on 2-D solutions; a $2\times$ mesh
 refinement moves the exponent by less than $0.005$ at $Ra=10^4$ and by at most $0.015$ at
 $Ra=10^6$, where the largest pointwise change in $R$ is $3.3\%$ (Sec.~\ref{sec:law}). The preliminary
-twelve-sample 3-D check of Sec.~\ref{sec:3d} agrees with the 2-D exponent within $0.15$ over the
+15-sample 3-D check of Sec.~\ref{sec:3d} agrees with the 2-D exponent within $0.16$ over the
 same window, but covers one Rayleigh number,
-$res=16$ and $\varepsilon\le1.2$; the POD-ROM baseline is a linear model with at most four modes, not a deep operator. Each 3-D pair costs 13--29\,min of outer wall-clock time (median 16) on this machine. A
+$res=16$ and $\varepsilon\le1.6$; the POD-ROM baseline is a linear model with at most four modes, not a deep operator. Each 3-D pair costs 12--32\,min of outer wall-clock time (median 16) on this machine. A
 3-D sweep at higher $Ra$ or resolution remains out of reach here.
 \item $Ma$ is inert here, so the break-symmetry group is one-dimensional rather than two.
 At larger $Ma$ this would have to be redone.
@@ -1471,8 +1472,8 @@ window and $1.67$ on the 104-configuration subset, and its fitted amplitude is n
 ($0.012$ at $\varepsilon=1.2$ against a public median of $0.0228$). For $u_x$ and $u_y$ the
 exponent is consistent across geometry ($0.7$ and $1.8$ standard errors) and fluid (1.5\%). Only the
 prefactor $A$ must be calibrated, which is why the surrogate takes $X$ as input rather than a
-table of $A$. A preliminary set of twelve paired 3-D solutions at one $Ra$ and one resolution
-reproduces the exponent (flow means $1.03$--$1.10$, per-flow $1.02$--$1.11$; Sec.~\ref{sec:3d}).
+table of $A$. A preliminary set of fifteen paired 3-D solutions at one $Ra$ and one resolution
+reproduces the exponent (flow means $1.05$--$1.14$, per-flow $1.03$--$1.15$; Sec.~\ref{sec:3d}).
 \item A reason. The $\varepsilon$-expansion of the compressible member reproduces the
 Boussinesq system at $O(1)$ and produces the correction through
 $\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated inertia. The linear
@@ -1492,7 +1493,7 @@ Sec.~\ref{sec:public}: it holds within a boundary-condition family and fails acr
 predictably.
 \end{enumerate}
 
-The same factorisation lowers the mean $u_x$ error of a POD-ROM with at most four modes on the 3-D samples from 0.118 to 0.054 over four held-out contrasts.
+The same factorisation lowers the mean $u_x$ error of a POD-ROM with at most four modes on the 3-D samples from 0.168 to 0.081 over five held-out contrasts.
 
 Section~\ref{sec:limits} lists the limits: two dimensions for the main sweep, $\varepsilon<2$,
 one-dimensional break symmetry, and a prefactor whose power-law fit leaves 16\% ($u_x$), 18\%
@@ -1511,7 +1512,7 @@ repository listed under Data availability. The raw solver output (600 random-bou
 104 aspect-2:1, 104 $Pr=4.38$, 27 $\varepsilon\to0$,
 100 paired and 10 tight-rerun two-dimensional samples---the tight rerun repeats ten of the 600---plus
 eight $128^2$ mesh-check pairs ($Ra=10^4$ over five contrasts, $Ra=10^6$ over three) and
-12 three-dimensional pairs, $\sim$6\,GB) stays on the machine described above. The stored results
+15 paired three-dimensional samples (three flows $\times$ five contrasts), $\sim$6\,GB) stays on the machine described above. The stored results
 are the source of every number in this paper; the reporting scripts regenerate them, and no number
 is transcribed by hand.
 

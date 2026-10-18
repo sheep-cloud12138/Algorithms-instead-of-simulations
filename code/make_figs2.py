@@ -78,6 +78,6 @@ if dw and dw.get('n_paired', 0) > 0:
         a.set_xlabel(r'air  Pr$=0.71$', fontsize=10); a.grid(alpha=.25)
         if k == 0: a.set_ylabel(r'water  Pr$=4.38$', fontsize=10)
         a.set_xlim(0, m); a.set_ylim(0, m)
-    fig.suptitle('Same configuration, same $\\varepsilon$, only the fluid changed (104 paired samples): nothing moves', fontsize=11.5)
+    fig.suptitle('Same configuration, same $\\varepsilon$, only the fluid changed (104 paired samples): exponent and shape fixed, prefactor shifts', fontsize=11.5)
     fig.tight_layout(rect=[0, 0, 1, .92]); f = P + '/fig8_water_paired.png'; fig.savefig(f); print('saved', f)
 print('extra figs done')

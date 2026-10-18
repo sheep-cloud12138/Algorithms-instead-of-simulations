@@ -60,8 +60,9 @@ def main():
                 preds.append(net(IN[k:k + 64].to(DEV)).cpu() * sD)
         P = torch.cat(preds)
         Yh = X + EPS * P
-        err = torch.sqrt(((Yh - Y) ** 2).mean((1, 2, 3)) /
-                         ((Y ** 2).mean((1, 2, 3)) + 1e-12)).numpy()
+        num = ((Yh - Y) ** 2).sum((2, 3))
+        den = (Y ** 2).sum((2, 3)) + 1e-12
+        err = torch.sqrt(num / den).mean(1).numpy()
         uhat = np.sqrt(X[:, 0].numpy() ** 2 + X[:, 1].numpy() ** 2).max((1, 2))
         summary[name] = dict(n=int(len(X)), err_mean=float(err.mean()),
                              uhat_median=float(np.median(uhat)),

@@ -44,8 +44,8 @@ curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\
 identifiable exponent. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
 only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. When only a
 single-$\varepsilon$ data set exists, it lowers the channel-averaged transfer error from 0.131 to
-0.086 ($1.5\times$) and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ the integral
-Nusselt number changes by $0.54\%$ while the local wall flux changes by $4.25\%$. One inference
+0.086 ($1.5\times$) and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ on the
+public classical-cavity data, the integral Nusselt number changes by $0.54\%$ while the local wall flux changes by $4.25\%$. One inference
 takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
 20-flow $\times$ 5-contrast scan. A 15-sample, five-contrast 3-D check gives per-flow exponents
 within 0.16 of unity.
@@ -338,7 +338,7 @@ in the present non-dimensionalisation. The $Ma$ row is a consistency check on th
 equations, which drop the $O(Ma^2)$ term.}
 \label{tab:axis}
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{1.7cm}p{6.9cm}p{3.4cm}@{}}
+\begin{tabular}{@{}p{2.0cm}p{6.4cm}p{3.6cm}@{}}
 \toprule
 candidate & evidence & conclusion\\
 \midrule
@@ -531,8 +531,7 @@ $p$ & $m=1.009\pm0.015$ & 0.148 & 0.87 & $+0.0016\pm0.0030$\\
 \caption{The Boussinesq--compressible discrepancy collapses on
 $\varepsilon=\Delta T/T_0$ over two decades for $u_x$, $u_y$ and $p$; the $\theta$ panel scatters
 ($R^2=0.22$) and collapses on the peak Boussinesq speed $\hat u$ (Fig.~\ref{fig:theta})$,$ while a
-separate $\chi$ parameterisation gives $R^2=0.78$
-alone (Fig.~\ref{fig:theta}). Points: 600 random-boundary-condition samples, coloured by
+separate $\chi$ parameterisation gives $R^2=0.78$ alone (Sec.~\ref{sec:law}). Points: 600 random-boundary-condition samples, coloured by
 $\log_{10}Ra$; stars: the 27 small-$\varepsilon$ checks ($\varepsilon=0.02$--$0.1$, three
 Rayleigh numbers, three seeds each), included in the fit to anchor the $\varepsilon\to0$ end and
 not used as a holdout. Lines: the power-law fits of
@@ -819,7 +818,9 @@ and the prior---not a quadratic fit---is what makes it reusable.
 \label{sec:prior}
 
 Same backbone, only the output structure changes (Table~\ref{tab:ablation} of
-Sec.~\ref{sec:baselines}; $\varepsilon$ still read from a constant channel, target still $D$).
+Sec.~\ref{sec:baselines}). B keeps the target $D$ and reads $\varepsilon$ from a constant input
+channel; P1 reads $\varepsilon$ as well but trains on $D/\varepsilon$ and multiplies $\varepsilon$
+back outside; P3 removes the $\varepsilon$ input entirely.
 
 
 
@@ -853,7 +854,9 @@ ratio $D/\varepsilon$ instead of on $D$, and at run time return $\hat Y=X+\varep
 after evaluating the Boussinesq member (or a surrogate for it) to obtain $X$. Supplying
 $\varepsilon$ to $\mathcal{N}$ as well is the most accurate form (P1, $1.09\times$ lower channel-averaged error than a FiLM-conditioned network in
 extrapolation, with $\theta$ and $p$ individually significant and the $u_x/u_y$ intervals
-including zero); leaving it out (P3) costs accuracy at fixed data but is what lets one network serve
+including zero). P2 learns a scalar curvature $\kappa$ and replaces $\varepsilon$ by
+$\varepsilon(1+\kappa\varepsilon)$ before the multiplication. Leaving the input out (P3) costs
+accuracy at fixed data but is what lets one network serve
 every contrast for which the prefactor is unchanged, because $\mathcal{N}$ then sees only $X$ and
 re-learns the prefactor from the flow rather than from a tabulated value.
 
@@ -905,7 +908,8 @@ sample 0); their pressure amplitude ratio is 0.929 against 0.960 for our fixed p
 same median convention. The comparison below uses $\|Y-X\|/\|Y\|$, the convention of the rest of
 this paper; the published columns use $\|X\|$ and are reproduced to round-off before conversion.
 
-\paragraph{The law reproduces} On the $\varepsilon=1.2$ slice:
+\paragraph{The law reproduces} Table~\ref{tab:public} compares the $\varepsilon=1.2$ slice of the
+public release with our own data at the same contrast.
 
 \begin{table}[htbp]
 \centering
@@ -1146,13 +1150,12 @@ transfers---and in extrapolation the prior is worse than the plain model in all 
 (0.3092/0.4730/0.0561/0.3280 against 0.2919/0.3711/0.0490/0.3192). In interpolation the prior does
 beat the plain model in all four channels (0.2281/0.3498/0.0422/0.2584 against
 0.2444/0.3612/0.0484/0.3217), but it still does not beat doing nothing. The failure is the one
-Sec.~\ref{sec:public} predicts: $A$ is a functional of the flow, the classical cavity's flow has
-$\hat u$ 41\% above the random-wall median, and a surrogate trained on that family predicts the
-wrong $A$. Across the public held-out samples the channel-averaged per-sample error rises
-monotonically with $\hat u$, from $0.56\%$ in the lowest quintile to $3.72\%$ in the highest
-(Spearman $0.85$; partial correlation $0.80$ at fixed $Ra$). The classical cavity's $\hat u$ lies
-in the top quintile, which is the quantitative form of the failure: $\hat u$ measured on the
-Boussinesq input tells you in advance whether a single-$\varepsilon$ data set will transfer.
+Sec.~\ref{sec:public} predicts: $A$ is a functional of the flow, and a surrogate trained on one
+family does not know another family's $A$. The classical cavity's peak Boussinesq speed is 41\%
+above the random-wall median, so $\hat u$ separates the two families; it does not, however, order
+the per-sample error within the public random-wall splits under the per-channel relative $L_2$
+metric used here (Spearman $-0.20$; partial correlation $0.09$ at fixed $Ra$). We therefore use
+$\hat u$ as a family-level diagnostic, not as a within-family transfer law.
 \end{itemize}
 
 \subsection{A second geometry (aspect ratio 2:1, 104 samples)}

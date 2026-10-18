@@ -43,8 +43,8 @@ $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and
 curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no
 identifiable exponent. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
 only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. When only a
-single-$\varepsilon$ data set exists, this prior is $1.87\times$ better than an $\varepsilon$-blind
-network, channel-averaged, and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ the integral
+single-$\varepsilon$ data set exists, it lowers the channel-averaged transfer error from 0.131 to
+0.086 ($1.5\times$) and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ the integral
 Nusselt number changes by $0.54\%$ while the local wall flux changes by $4.25\%$. One inference
 takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
 20-flow $\times$ 5-contrast scan. A 15-sample, five-contrast 3-D check gives per-flow exponents
@@ -317,7 +317,12 @@ the results below are not restricted to the Rayleigh--B\'enard layer.
 The generator draws $Ra$ and $\varepsilon$ independently. At fixed $Ra$, changing $\varepsilon$
 changes $Fr=\sqrt{\varepsilon}$, i.e.\ the buoyancy scale, while $Re=(Ra/Pr)^{1/2}$, $Pr$ and
 $\gamma$ stay fixed. The Boussinesq member therefore sees only $Ra$ and the thermal boundary data;
-the compressible member sees the same flow at a different $Fr$.
+the compressible member sees the same flow at a different $Fr$. This is a statement about the
+dimensionless parameterisation, not a claim that one fixed apparatus realises every pair: at fixed
+$Ra$, changing $\varepsilon$ requires the dimensional grouping $g\beta L^3/(\nu\alpha)$ to change in
+inverse proportion to $\Delta T$. A fixed apparatus follows the one-dimensional slice
+$Ra\propto\varepsilon$; the $(Ra,\varepsilon)$ rectangle contains that slice but is not restricted
+to it.
 
 \subsection{$Fr$ is not a parameter, $Ma$ is negligible, $\varepsilon$ is the axis}
 \label{sec:axis}
@@ -776,8 +781,8 @@ offline; the comparison here is per query. The field that solve produces is
 $P=\lim_{\varepsilon\to0}D(\varepsilon)/\varepsilon$, the solution of $\mathcal{L}\delta=S_1[X]$.
 We do not need a new solve to evaluate its accuracy: the paired scan already contains
 $D(\varepsilon)$, so we estimate $P$ by third-order Richardson extrapolation in $\varepsilon$
-over the solutions at $\varepsilon=0.4,0.8,1.2$. With $R_e(\varepsilon)=D(\varepsilon)/\varepsilon$,
-$P=3R_e(0.4)-3R_e(0.8)+R_e(1.2)$, which has $O(\varepsilon^3)$ truncation and the same norm as the
+over the solutions at $\varepsilon=0.4,0.8,1.2$. With $\mathcal{P}(\varepsilon)=D(\varepsilon)/\varepsilon$,
+$P=3\mathcal{P}(0.4)-3\mathcal{P}(0.8)+\mathcal{P}(1.2)$, which has $O(\varepsilon^3)$ truncation and the same norm as the
 $\varepsilon=0.4$ secant to within 1\% in the median over the 20 configurations, in all four
 channels. The accuracy below is that of this extrapolated field. Its cost is estimated from the
 measured march time divided by the number of Newton iterations (0.45\,s median, range
@@ -800,7 +805,7 @@ cannot produce the $\varepsilon^2$ term, while inference costs 6.3\,ms against 0
 solve.
 
 \paragraph{A two-term fit, where it is available} The same low-$\varepsilon$ pairs allow a stronger
-data-driven baseline: fit $R(\varepsilon)=P+\varepsilon Q$ on $\varepsilon=0.4,0.8,1.2$ for each
+data-driven baseline: fit $\mathcal{P}(\varepsilon)=P+\varepsilon Q$ on $\varepsilon=0.4,0.8,1.2$ for each
 configuration and predict $X+\varepsilon P+\varepsilon^2Q$. At $\varepsilon=1.6$ this gives
 $3.3$/$3.9$/$0.4$/$3.8\%$ and at $\varepsilon=1.9$ $11.4$/$13.9$/$1.7$/$13.8\%$
 ($u_x/u_y/\theta/p$), against $14$/$15$/$1.4$/$15\%$ and $24$/$27$/$3.0$/$28\%$ for the
@@ -837,7 +842,7 @@ factorised output is $1.09\times$ lower in extrapolation ($1.16\times$ in $\thet
 in $p$ in the fixed gauge; the $u_x$ and $u_y$ intervals include zero), while
 the two are indistinguishable in interpolation. Removing $\varepsilon$ from the input as well costs accuracy relative to P1 and FiLM---0.1214
 against 0.0937 and 0.1001 in $u_x$---but still beats the $\varepsilon$-blind network
-($1.87\times$ channel-averaged; $1.89\times$ in $u_x$); what it buys is the property P1 cannot have, a network that can be trained at
+($1.87\times$ channel-averaged on the same 600-sample scan; $1.89\times$ in $u_x$); what it buys is the property P1 cannot have, a network that can be trained at
 one $\varepsilon$ and applied at another (Sec.~\ref{sec:transfer}). Finally, the network
 \emph{discovers} a positive curvature on its own, $\kappa=0.22$--$0.42$, the same sign and order as
 the $\varepsilon^2$ term of the expansion in Sec.~\ref{sec:theory}---an independent check of the
@@ -1331,7 +1336,7 @@ power law fits the five $\varepsilon$ values in log--log coordinates with $R^2>0
 $1.091\pm0.014$ ($u_x$), $1.052\pm0.021$ ($u_y$), $1.130\pm0.015$ ($\theta$) and
 $1.141\pm0.017$ ($p$)---within $0.16$ of unity. Against the full-window 2-D fit of
 Table~\ref{tab:law} the flow means differ by $0.07$ ($u_x$), $0.06$ ($u_y$) and $0.13$ ($p$);
-against a 2-D fit restricted to the same window ($1.04/0.95/1.20/1.08$ for $u_x/u_y/\theta/p$,
+against a 2-D fit restricted to the same $\varepsilon=0.2$--$1.6$ window ($1.04/0.95/1.20/1.08$ for $u_x/u_y/\theta/p$,
 485 samples) the differences are $0.05/0.11/0.07/0.06$. The second comparison is noisier because a narrow-window regression there
 also measures the between-flow prefactor scatter (up to $4\times$, Sec.~\ref{sec:public}). Both are
 consistency checks, not a converged validation. The prefactor is not universal here either: across the three flows it varies
@@ -1421,7 +1426,7 @@ $\varepsilon$ of each flow.}
 refinement moves the exponent by less than $0.005$ at $Ra=10^4$ and by at most $0.015$ at
 $Ra=10^6$, where the largest pointwise change in $R$ is $3.3\%$ (Sec.~\ref{sec:law}). The preliminary
 15-sample 3-D check of Sec.~\ref{sec:3d} agrees with the 2-D exponent within $0.16$ over the
-same window, but covers one Rayleigh number,
+same $\varepsilon=0.2$--$1.6$ window, but covers one Rayleigh number,
 $res=16$ and $\varepsilon\le1.6$; the POD-ROM baseline is a linear model with at most four modes, not a deep operator. Each 3-D pair costs 12--32\,min of outer wall-clock time (median 16) on this machine. A
 3-D sweep at higher $Ra$ or resolution remains out of reach here.
 \item $Ma$ is inert here, so the break-symmetry group is one-dimensional rather than two.

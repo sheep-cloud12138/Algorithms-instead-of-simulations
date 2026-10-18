@@ -607,15 +607,23 @@ $1.067$, $1.129$, $1.301$ and $1.335$ at $64^2$, against $1.063$, $1.124$, $1.28
 at $128^2$ (for $u_x$, $u_y$, $\theta$ and $p$), a shift of at most $0.015$. The largest pointwise change in $R$ is $3.3\%$
 ($p$ at $\varepsilon=1.9$); the other channels change by $1.0$--$1.9\%$. The thermal boundary layer
 at $Ra=10^6$ is $\approx0.032L$ thick; the $64^2$ mesh places three temperature and five velocity
-nodes across it, the $128^2$ mesh five and nine. The $128^2$ values are the finer reference: the
-$64^2$ exponent is accurate to $0.015$, and an individual $\varepsilon=1.9$ correction carries a
-discretisation uncertainty of up to $3.3\%$.
+nodes across it, the $128^2$ mesh five and nine. The $128^2$ values are the reference for the exponent and
+pointwise checks: the $64^2$ exponent is accurate to $0.015$, and an individual $\varepsilon=1.9$
+correction carries a discretisation uncertainty of up to $3.3\%$. A $256^2$ pair at $Ra=10^6$,
+$\varepsilon=1.2$ sets the level of the integral correction.
 
 At $Ra=10^5$ the same isothermal-wall check at $\varepsilon=1.2$ and $1.9$ gives a wall-$Nu$
 change of $-0.15$ and $-0.36$ percentage points between $64^2$ and $128^2$ ($Nu_X$ itself moves by
 $0.86\%$); the integral correction moves from $+0.87\%$ to $+0.73\%$ at $\varepsilon=1.2$ and from
 $-1.81\%$ to $-2.16\%$ at $\varepsilon=1.9$. Across $Ra=10^4$, $10^5$ and $10^6$ the change between $64^2$ and $128^2$ is therefore at most
 $0.38$ percentage points, and the sign and order of the integral correction are unchanged.
+
+At $Ra=10^6$ the isothermal-wall pair was refined once more, to $256^2$, where eight temperature
+nodes span the thermal boundary layer. At $\varepsilon=1.2$ the wall-$Nu$ correction falls from
+$+0.82\%$ at $64^2$ to $+0.56\%$ at $128^2$ and $+0.44\%$ at $256^2$. The successive changes,
+$-0.27$ and $-0.12$ percentage points, halve with each refinement, so the sequence is converging
+and the Richardson limit is $\approx0.40\%$: the $128^2$ value overstates the converged correction
+by $0.12$ percentage points, without changing its sign or order.
 
 
 

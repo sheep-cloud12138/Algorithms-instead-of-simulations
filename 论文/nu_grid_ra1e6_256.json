@@ -1,0 +1,21 @@
+{
+ "cfg": "c16_Ra1e6_1100",
+ "eps": 1.2,
+ "NuX": {
+  "64": 8.5629,
+  "128": 8.7591,
+  "256": 8.7927
+ },
+ "NuY": {
+  "64": 8.6334,
+  "128": 8.808,
+  "256": 8.8311
+ },
+ "rel": {
+  "64": 0.008228,
+  "128": 0.005581,
+  "256": 0.004365
+ },
+ "richardson_limit": 0.00396,
+ "note": "Ra=1e6, isothermal sidewall; the 256^2 compressible solve converged to rel=1.7e-7 in 731 s. The eps=1.9 pair at 256^2 did not converge (Newton, 1575 s) and is not reported."
+}

@@ -1158,9 +1158,10 @@ larger than the $0.7\%$ of doing nothing: the wall-normal derivative carries a b
 norm does not see. Adding a relative $L_1$ penalty on the wall-normal gradient of the predicted
 $\theta$ to the training loss removes it. With unit weight and the same six-point stencil, the
 integrated wall-$Nu$ error falls to $0.11\%$ and the local wall-flux error to $1.0\%$, at a cost of
-$0.10\%\to0.13\%$ in the field norm; two seeds give $0.10$--$0.11\%$. The residual is below the
-$0.35\%$ spread between stencil orders, so the integral heat transfer is reproduced to the
-resolution of the estimator.
+$0.10\%\to0.13\%$ in the field norm; two seeds give $0.10$--$0.11\%$. The gain is not tied to the
+training stencil: evaluated with four- and eight-point stencils, the same models give
+$0.3$--$0.9\%$, against $1.8$--$3.6\%$ for the field-only prior and $0.4$--$0.9\%$ for doing
+nothing. The size of the gain depends on the stencil, its sign does not.
 The field statistic behind the cancellation is large: on the same 200
 samples the temperature field differs by $7.2\%$ in global relative $L_2$ ($8.4\%$ median per
 sample), so a $7$--$8\%$ change in the field produces a $0.6\%$ change in its wall-normal

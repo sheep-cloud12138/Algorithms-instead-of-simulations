@@ -41,7 +41,10 @@ is tied to the contrast ($Fr^2=\varepsilon$), and $Ma$ enters only at $O(Ma^2)$.
 solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys $R=A\varepsilon^m$ with
 $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and $\varepsilon^2$
 curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no
-identifiable exponent. One Newton step of the low-Mach residual at the Boussinesq state reproduces the measured correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$) at $\varepsilon=0.02$--$0.10$ with no extrapolation in $\varepsilon$, and the extrapolated shape predicts held-out measurements at $\varepsilon=0.1$ and $0.2$ to $2.4/1.8/3.8\%$. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
+identifiable exponent. One Newton step of the low-Mach residual at the Boussinesq state reproduces the measured correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$; the upper decile of
+$p$ reaches $39\%$) at $\varepsilon=0.02$--$0.10$ with no extrapolation in $\varepsilon$, and the
+extrapolated shape predicts measurements held out in $\varepsilon$ at $0.1$ and $0.2$ to
+$2.4/1.8/3.8\%$. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
 only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. When only a
 single-$\varepsilon$ data set exists, it lowers the channel-averaged transfer error from 0.131 to
 0.086 ($1.5\times$) and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ on the
@@ -133,9 +136,9 @@ This paper makes the barrier explicit and then removes it.
 \paragraph{What governs the gap} For the non-dimensionalisation used here the Froude number is not
 free: $Fr^2=\beta\Delta T=\Delta T/T_0$ identically, and the Mach number enters the equations only
 at $O(Ma^2)$ within the retained low-Mach equations (Sec.~\ref{sec:axis}; a factor-24 change in
-$Ma$ leaves the measured correction unchanged at the precision of the solve). The
-break-symmetry group is therefore one-dimensional, and it has a
-name: $\varepsilon=\Delta T/T_0$.
+$Ma$ leaves the measured correction unchanged at the precision of the solve). Within the
+retained equations and this scaling there is therefore one free parameter rather than two, and it
+has a name: $\varepsilon=\Delta T/T_0$.
 
 \paragraph{What the gap looks like} Expanding the compressible member in $\varepsilon$ gives an
 $O(1)$ system that is term-by-term the Boussinesq system, plus an $O(\varepsilon)$ source produced
@@ -233,8 +236,9 @@ Table~\ref{tab:related} places the resulting prior among the four families.
 
 \paragraph{Contributions}
 \begin{enumerate}
-\item We identify the exact, one-dimensional break-symmetry parameter of the
-Boussinesq--compressible pair and show the group is one-dimensional rather than two
+\item We show that, in the non-dimensionalisation used here and within the retained low-Mach
+equations, the Boussinesq--compressible gap is controlled by one parameter,
+$\varepsilon=\Delta T/T_0$, rather than by $\varepsilon$ and $Ma$ independently
 (Sec.~\ref{sec:axis}).
 \item We derive the correction's factorisation from an $\varepsilon$-expansion and verify all five
 of its predictions numerically, including the divergence relation (Sec.~\ref{sec:theory}).
@@ -421,8 +425,11 @@ D=Y-X=-\varepsilon \mathcal{L}^{-1}S_1[X]-\varepsilon^2\mathcal{L}^{-1}S_2[X]+\d
 =\varepsilon P(X)+\varepsilon^2Q(X)+\dots
 \label{eq:factor}
 \end{equation}
-Five predictions follow, and all five hold; Table~S1 of the supplementary material lists them and
-their measured values. Table~S1 also measures the remainder: the $\varepsilon^1$ term carries 86\%
+Five predictions follow: $R\to0$ as $\varepsilon\to0$; $R\propto\varepsilon$ with a vanishing
+intercept; the shape of $D$ does not rotate with $\varepsilon$;
+$\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$; and the $\varepsilon^1$ term carries most of the
+correction energy. All five hold; Table~S1 of the supplementary material lists them and their
+measured values. Table~S1 also measures the remainder: the $\varepsilon^1$ term carries 86\%
 of the correction energy, $\varepsilon^1+\varepsilon^2$ carries 99.0\%, and
 $\varepsilon^1+\varepsilon^2+\varepsilon^3$ carries 99.9\%, so the two-term truncation leaves 1.0\%
 over the sampled range. This is a measured statement about the retained low-Mach system, not a
@@ -812,17 +819,21 @@ $\delta=-J^{-1}F(X)$ with $J=\partial F/\partial U$ evaluated at $X$, solves the
 that defines $P$: because $F(X)=O(\varepsilon)$, $\delta=D+O(\varepsilon^2)$ and therefore
 $\delta/\varepsilon=P+O(\varepsilon)$. Measured on the 27 samples of the low-contrast sweep
 ($\varepsilon=0.02,0.05,0.10$; $Ra=10^3$--$10^5$; three wall families), where the correction is
-only 2--10\% of $X$, $\delta/\varepsilon$ reproduces the measured $D/\varepsilon$ with median
+0.4--5.8\% of $X$, $\delta/\varepsilon$ reproduces the measured $D/\varepsilon$ with median
 relative errors of $4.7\%$, $3.8\%$, $7.2\%$ and $12.2\%$ in $u_x$, $u_y$, $p$ and $\theta$
 (10--90\% ranges $0.8$--$19.6\%$, $0.5$--$20.8\%$, $0.8$--$39.2\%$, $1.4$--$24.6\%$) and median
 correlations $0.999$, $0.999$, $0.998$ and $0.994$. No extrapolation in $\varepsilon$ and no
 fitted $P$ enter this comparison. The same comparison on the paired scan gives $15\%$ in $u_x$ at
 $\varepsilon=0.4$ and $73\%$ at $\varepsilon=1.9$, rising linearly in $\varepsilon$: a single
 Newton step is an $O(\varepsilon)$ instrument, and what it leaves behind at high contrast is the
-$O(\varepsilon^2)$ term.
+$O(\varepsilon^2)$ term. At fixed flow, $\delta/\varepsilon$ itself moves by $12.5\%$ in $u_x$
+between $\varepsilon=0.1$ and $0.4$ and by $153\%$ between $0.4$ and $1.9$ (median over 17
+configurations), while the measured $D/\varepsilon$ moves by $9.0\%$ and $102\%$: the residual
+and its Jacobian carry $\varepsilon$ explicitly through $1/Fr^2=1/\varepsilon$, so a solve at
+finite contrast is not yet the limit and the extrapolation is doing real work.
 The extrapolated $P$ is then tested against data it never saw. Nineteen of the paired
 configurations were re-solved at $\varepsilon=0.1$ and $0.2$ from the same random stream, giving
-38 solutions that enter no fit. There $P$ predicts the measured $D/\varepsilon$ with median
+38 solutions that enter no fit; the test holds out the contrast, not the flow. There $P$ predicts the measured $D/\varepsilon$ with median
 relative errors of $2.4\%$, $1.8\%$ and $3.8\%$
 ($u_x/u_y/p$); the $\theta$ channel is not predicted ($74\%$), consistent with its unidentifiable
 exponent. Because $D(0.1)/0.1$ and $D(0.2)/0.2$ differ by only $3.1\%$ in $u_x$, the three-point
@@ -1460,8 +1471,8 @@ $Ra=10^6$, where the largest pointwise change in $R$ is $3.3\%$ (Sec.~\ref{sec:l
 same $\varepsilon=0.2$--$1.6$ window, but covers one Rayleigh number,
 $res=16$ and $\varepsilon\le1.6$; the POD-ROM baseline is a linear model with at most four modes, not a deep operator. Each 3-D pair costs 12--32\,min of outer wall-clock time (median 16) on this machine. A
 3-D sweep at higher $Ra$ or resolution remains out of reach here.
-\item $Ma$ is inert here, so the break-symmetry group is one-dimensional rather than two.
-At larger $Ma$ this would have to be redone.
+\item $Ma$ is inert here, so one parameter is free rather than two. At larger $Ma$ this would
+have to be redone.
 \item $\varepsilon<2$, imposed by the equation of state (the cold wall must stay positive).
 \item The power-law fits of Sec.~\ref{sec:law} leave 16/18/78\% of the variance unexplained in
 $u_x/u_y/\theta$ and 13\% in $p$; the $\chi$ form of Sec.~\ref{sec:law} raises $R^2$ from $0.19$ to
@@ -1517,7 +1528,7 @@ $\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated iner
 operator of that system does not contain $\varepsilon$, so the correction factorises,
 $D=\varepsilon P(X)+\varepsilon^2Q(X)+\dots$, with a shape that does not rotate. All five
 consequences of the expansion listed in Table~S1 are confirmed numerically.
-\item An independent check. One Newton step of the retained low-Mach residual at $X$ reproduces the measured correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$) on the 27 samples of the $\varepsilon=0.02$--$0.10$ sweep, where no extrapolation in $\varepsilon$ is involved; $\theta$ is reproduced there to $12.2\%$, so its collapse at high contrast is an amplitude effect rather than a failure of the linearised operator. The extrapolated $P$ also predicts held-out measurements at $\varepsilon=0.1$ and $0.2$ to $2.4/1.8/3.8\%$.
+\item A consistency check on the linearised operator. One Newton step of the retained low-Mach residual at $X$ reproduces the measured correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$) on the 27 samples of the $\varepsilon=0.02$--$0.10$ sweep, where no extrapolation in $\varepsilon$ is involved; $\theta$ is reproduced there to $12.2\%$, so its collapse at high contrast is an amplitude effect rather than a failure of the linearised operator. The extrapolated $P$ also predicts held-out measurements at $\varepsilon=0.1$ and $0.2$ to $2.4/1.8/3.8\%$.
 \item A design rule. Predicting $P(X)$ and multiplying by $\varepsilon$ outside the
 network, which changes only the target and one multiplication, converts the law into a prior that
 (i) has $1.09\times$ lower channel-averaged error than a FiLM-conditioned network in extrapolation

@@ -358,7 +358,7 @@ one-dimensional break-symmetry axis\\
 \subsection{The low-fidelity solution is exactly $\varepsilon$-blind}
 \label{sec:blind}
 
-$\theta$ and $Pr\,Ra$ are the only combinations that appear in the Boussinesq weak form; neither
+$\theta$, $Pr$ and $Ra$ are the only quantities that appear in the Boussinesq weak form; neither
 $T_0$ nor $\Delta T$ appears alone. Hence, with the thermal data prescribed in $\theta$ and $Ra$
 fixed, $X$ cannot depend on $\varepsilon$. This was verified to solver precision: across
 20 configurations $\times$ 5 values of $\varepsilon$ (same $Ra$, bit-identical $\theta$ boundary
@@ -487,7 +487,7 @@ collected in the supplementary material; they are cited where they are used.
 \paragraph{Temperature normalisation} Eq.~\eqref{eq:benergy} defines the zero-mean variable
 $\theta=(T-T_0)/\Delta T$. The public release and our own pipeline store $T/T_0$ and evaluate every
 temperature error on the wall-normalised $\theta_w=(T-T_c)/\Delta T\in[0,1]$, which differs from
-$\theta$ by the constant $1/2$. All $R_\theta$, $A_\theta$ and $p_\theta$ quoted below are in the
+$\theta$ by the constant $1/2$. All $R_\theta$ and $A_\theta$ quoted below are in the
 wall-normalised convention. The same field difference reads $0.0220$ wall-normalised against
 $0.0869$ zero-mean on the public random-wall test split, and $0.0836$ against $0.1628$ on the
 classical cavity; the two conventions must not be mixed. In Table~\ref{tab:law} the $\theta$
@@ -675,7 +675,7 @@ $\varepsilon=0.8$, and---in practice---at $\varepsilon=0.4$ ``do nothing'' is \e
 it, and the two cross between $\varepsilon=0.4$ and $0.8$. Protocol (B), the unweighted mean over
 the range, still leaves $20.9/26.8/2.8/23.5\%$ ($u_x/u_y/\theta/p$) at $\varepsilon=1.9$. The whole effect is one line of arithmetic, and the paired
 set measures it exactly (the diagonal is identically zero
-because the same $\varepsilon$ is the same solution): the full $5\times5$ matrix is Table~S3 of
+because the same $\varepsilon$ is the same solution): the full $5\times5$ matrix for $u_x$ is Table~S3 of
 the supplementary material.
 
 
@@ -1394,7 +1394,7 @@ $p$ & $1.141\pm0.017$ & 1.121/1.152/1.150 & 0.096/0.185/0.195\\
 \centering
 \small
 \caption{Three-dimensional POD-ROM check on the fifteen paired samples.
-Leave-one-contrast-out: train on three flows $\times$ three $\varepsilon$
+Leave-one-contrast-out: train on three flows $\times$ four $\varepsilon$
 (twelve samples), test on the held-out $\varepsilon$ (three samples), repeated
 for the five contrasts. Entries are mean relative $L_2$ errors over the five
 folds (mean $\pm$ s.d.); the ROM uses at most four POD modes and ridge regression
@@ -1450,8 +1450,9 @@ gauge would change it.
 (Sec.~\ref{sec:aspect}) and by $1.66\times$ ($u_x$) / $1.38\times$ ($u_y$) / $4.05\times$
 ($\theta$) / $1.07\times$ ($p$) between boundary-condition families of an independent data set
 (Sec.~\ref{sec:public}), while it is insensitive to the fluid ($Pr$, Sec.~\ref{sec:water}).
-\item The public data set and ours differ by 0.08\% in $Ra_{\mathrm{eff}}=Ra\,Fr^2/\varepsilon$ at $\varepsilon=1.2$
-($1.2/1.199=1.0008$, since $1.095^2=1.199$); their v2 release corrects this and the two now agree.
+\item The earlier public release used a pinned $Fr=1.095$, which puts its
+$Ra_{\mathrm{eff}}=Ra\,Fr^2/\varepsilon$ 0.08\% below ours at $\varepsilon=1.2$
+($1.2/1.199=1.0008$); the v2 release corrects this and the two now agree.
 \end{enumerate}
 
 \section{Conclusion}

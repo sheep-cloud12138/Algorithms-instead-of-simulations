@@ -10,10 +10,10 @@
 {\itshape enclosure convection is linear to leading order in the relative temperature contrast}\\[10pt]
 \end{center}
 \begin{itemize}\setlength{\itemsep}{6pt}
-\item Boussinesq--compressible gap follows $R=A\varepsilon^{m}$ with $m=1.02$ in velocity; $\theta$ is weak and flow-dependent, and the pressure exponent is fixed-gauge
-\item Relative temperature contrast is the only break-symmetry axis; a 24$\times$ $Ma$ change is below solver resolution
-\item 627 paired solves calibrate the law; public data reproduce the median correction at one contrast
-\item At $\varepsilon=1.2$ integral $Nu$ shifts 0.54\% (median 0.58\%) but local wall flux redistributes 4.25\%
-\item Factored prior $D=\varepsilon P(X)$: 1.6$\times$ over plain and 1.87$\times$ channel-averaged over $\varepsilon$-blind networks
+\item Boussinesq--compressible gap scales as $\varepsilon^{1.02}$ in velocity over 627 paired solves
+\item Temperature contrast alone breaks the symmetry; a 24$\times$ $Ma$ change is below resolution
+\item Correction factorises as $D=\varepsilon P(X)$: networks learn only the spatial shape
+\item One inference takes 6.3\,ms; per-pair cost falls 2.9$\times$ and 13$\times$ for a 20$\times$5 scan
+\item At $\varepsilon=1.2$ integral $Nu$ shifts 0.54\% but local wall flux redistributes 4.25\%
 \end{itemize}
 \end{document}

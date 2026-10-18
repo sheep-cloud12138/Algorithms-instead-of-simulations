@@ -162,14 +162,15 @@ $1.07\times$ in $u_x$ for the linear form and $1.15\times$ for the quadratic for
 (channel-averaged $1.09\times$ and $1.21\times$; the $\theta$ and $p$ channels are individually
 significant, $p$ in the fixed gauge, while the $u_x$ and $u_y$ intervals include zero;
 Sec.~\ref{sec:prior})---while removing it from
-the input costs a little accuracy but
+the input raises the extrapolation error from 0.0937 to 0.1214 in $u_x$ and from 0.1126 to 0.1682 in
+$p$ (Table~\ref{tab:ablation}), but that removal
 is what lets a network trained on a public data set that exists at a single $\varepsilon$ be
 applied, without retraining, to our $\varepsilon\in[0.2,1.9]$, where it reaches
 $\mathrm{relL2}=0.093$ ($u_x$) against $0.144$ for the plain model at the same budget
 (Sec.~\ref{sec:transfer}). The prior is also the cheaper model when data is scarce
 (Sec.~\ref{sec:learning}: $1.4\times$ better than an $\varepsilon$-augmented baseline at $n=50$,
-crossover near $n\approx300$), the network discovers the $\varepsilon^2$ curvature of the expansion
-on its own (learned $\kappa=0.22$--$0.42$ in all four channels), and the same prior transfers
+crossover near $n\approx300$), the fitted curvature of its quadratic form is positive and of the magnitude the expansion
+predicts ($\kappa=0.22$--$0.42$ in all four channels), and the same prior transfers
 unchanged to a Fourier neural operator.
 
 \subsection{Related work}
@@ -381,7 +382,8 @@ initial condition used here) and $Fr^2=\varepsilon$, the buoyancy source is
 \frac{\rho\bm g}{\varepsilon}=\frac{\bm g}{\varepsilon}-\theta\bm g+\varepsilon\theta^2\bm g+\dots,
 \label{eq:buoyancy}
 \end{equation}
-so the $O(1)$ balances are
+the constant $\bm g/\varepsilon$ is balanced by a hydrostatic pressure $p_{-1}/\varepsilon$ with
+$\nabla p_{-1}=-\bm g$, which drops out at the next order, so the $O(1)$ balances are
 \begin{align}
 \nabla\cdot\bm u_0&=0,\label{eq:o1mass}\\
 \bm u_0\cdot\nabla\bm u_0&=-\nabla\tilde p_0+Re^{-1}\nabla^2\bm u_0+\theta_0\hat{\bm g},\label{eq:o1mom}\\
@@ -459,8 +461,8 @@ paired & $20\times5$ & only $\varepsilon$; $Ra$ and the $\theta$ boundary stream
 configuration & $\varepsilon$-blind reference, shape invariance\\
 aspect 2:1 & 104 & same law, geometry $2\times1$ & external validity\\
 tight rerun & 10 & the 10 worst-converged samples, tolerance $10^{-6}\to10^{-8}$ & noise control\\
-public, random walls \citep{menglik2026neural} & $4000+2\times200$ & $\varepsilon\equiv1.2$; the
-two held-out splits differ in the range of the wall dials & external
+public, random walls \citep{menglik2026neural} & $4000+3\times200$ & $\varepsilon\equiv1.2$; two
+held-out splits differ in the range of the wall dials, the third is a classical cavity & external
 validation, cross-data-set transfer\\
 public, classical cavity \citep{menglik2026neural} & $5000+200$ & constant hot/cold side walls,
 adiabatic top and bottom, $\varepsilon\equiv1.2$ & external validation of the prefactor\\
@@ -844,8 +846,8 @@ in $p$ in the fixed gauge; the $u_x$ and $u_y$ intervals include zero), while
 the two are indistinguishable in interpolation. Removing $\varepsilon$ from the input as well costs accuracy relative to P1 and FiLM---0.1214
 against 0.0937 and 0.1001 in $u_x$---but still beats the $\varepsilon$-blind network
 ($1.87\times$ channel-averaged on the same 600-sample scan; $1.89\times$ in $u_x$); what it buys is the property P1 cannot have, a network that can be trained at
-one $\varepsilon$ and applied at another (Sec.~\ref{sec:transfer}). Finally, the network
-\emph{discovers} a positive curvature on its own, $\kappa=0.22$--$0.42$, the same sign and order as
+one $\varepsilon$ and applied at another (Sec.~\ref{sec:transfer}). Finally, the fitted curvature of the quadratic form is
+positive, $\kappa=0.22$--$0.42$, the same sign and order as
 the $\varepsilon^2$ term of the expansion in Sec.~\ref{sec:theory}---an independent check of the
 asymptotic expansion.
 
@@ -986,7 +988,8 @@ $Nu=-\langle\partial\theta/\partial n\rangle$ at the hot wall with a six-point o
 On the Boussinesq member the same flux can be obtained without any wall stencil, from the
 horizontally integrated flux $\int[u_x\theta-(Ra\,Pr)^{-1/2}\partial_x\theta]\,dy$, which is
 independent of $x$ to $0.1\%$ at the three interior planes $x=0.25,0.5,0.75$; the wall estimate
-agrees with it to $0.35\%$, which indicates the discretisation error of the estimator.
+agrees with it to $0.35\%$, which indicates the discretisation error of the estimator; the integral
+change reported below is $1.5$ times that error.
 
 \begin{table}[htbp]
 \centering
@@ -1054,7 +1057,8 @@ $\varepsilon=1.2$, whose five Rayleigh numbers give $+0.01\%$ to $+0.87\%$
 (mean $+0.51\%$; these classical-only values are not the four-family means of
 Table~\ref{tab:nu_ra}). The dependence on $Ra$ and on the flow appears at larger
 contrast. At $Ra\le10^3$ every family stays within $1\%$. At $\varepsilon=1.9$ the classical cavity
-gives $-5.1\%$ to $-1.5\%$ for $Ra\ge10^4$, while the four families at $Ra=10^6$ span $-1.5\%$ to
+spans $-5.1\%$ to $-1.5\%$ over its five Rayleigh numbers ($-1.5\%$ at $Ra=10^6$), while the four
+families at $Ra=10^6$ span $-1.5\%$ to
 $+81.8\%$ around a mean of $+28.5\%$: the integral correction is set by the flow, not by
 $\varepsilon$ alone, and an aggregate over families can hide an $80\%$ effect. A model calibrated on
 $Nu$ alone would therefore not transfer across $Ra$ at fixed $\varepsilon$; the local field is the
@@ -1243,7 +1247,8 @@ inference with one compressible solve ($22.3\,\mathrm{s}/6.3\,\mathrm{ms}=3.5\ti
 The amortised regime depends on how many flows are swept, because $X$ does not depend on
 $\varepsilon$. For a single flow and $N=100$ contrasts, one Boussinesq solve plus 100 inferences
 costs $16.0+0.63=16.6$\,s against $16.0+100\times37.5=3.77\times10^3$\,s, a factor
-$2.3\times10^2$. The scan measured here is 20 flows $\times$ 5 contrasts: its own timings are
+$2.3\times10^2$. The scan measured here is 20 flows $\times$ 5 contrasts and was run in a separate session, 1.7 times
+slower per sample; its own timings are
 16.0\,s for the Boussinesq member and 37.5\,s for the compressible one; the median of their
 per-pair sum is 55.8\,s. On the same-reuse basis used above, the baseline is
 $20\times16.0+100\times37.5=4.07\times10^3$\,s and the surrogate needs

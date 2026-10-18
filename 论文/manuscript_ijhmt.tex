@@ -41,7 +41,7 @@ is tied to the contrast ($Fr^2=\varepsilon$), and $Ma$ enters only at $O(Ma^2)$.
 solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys $R=A\varepsilon^m$ with
 $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and $\varepsilon^2$
 curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no
-identifiable exponent. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
+identifiable exponent. A direct solve of the linearised $O(\varepsilon)$ system, independent of the fitted exponent, reproduces the data-extrapolated shape to a median relative error of $5.4/3.2/7.0\%$ in $u_x/u_y/p$. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
 only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. When only a
 single-$\varepsilon$ data set exists, it lowers the channel-averaged transfer error from 0.131 to
 0.086 ($1.5\times$) and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ on the
@@ -774,22 +774,19 @@ coefficients of $X$ reaches only 0.2318. The plateau is not capacity---it is tha
 scaling the quantity to be added is absent from the input.
 \paragraph{A first-order perturbation proxy} If the correction is linear in $\varepsilon$, the
 alternative is to solve the linearised compressible problem once per query and scale. That costs
-one Jacobian assembly and one factorisation of the same discretisation. Timed on the Boussinesq
-member (9.7\,s for a full march of 19 Newton iterations), one linear solve is estimated at
-0.45\,s (wall time divided by Newton iterations; median over the 20 configurations, range
-0.32--1.90\,s). Both $P$ and the network are identified
+one Jacobian assembly and one factorisation of the same discretisation. Measured on the linearised
+compressible system at $Ra=10^6$ (45\,957 degrees of freedom), one solve takes 1.9\,s: 0.12\,s
+assembly, 1.59\,s LU factorisation and 0.02\,s back-substitution. Both $P$ and the network are identified
 offline; the comparison here is per query. The field that solve produces is
 $P=\lim_{\varepsilon\to0}D(\varepsilon)/\varepsilon$, the solution of $\mathcal{L}\delta=S_1[X]$.
-We do not need a new solve to evaluate its accuracy: the paired scan already contains
+We first estimate $P$ without a new solve: the paired scan already contains
 $D(\varepsilon)$, so we estimate $P$ by third-order Richardson extrapolation in $\varepsilon$
 over the solutions at $\varepsilon=0.4,0.8,1.2$. With $\mathcal{P}(\varepsilon)=D(\varepsilon)/\varepsilon$,
 $P=3\mathcal{P}(0.4)-3\mathcal{P}(0.8)+\mathcal{P}(1.2)$, which has $O(\varepsilon^3)$ truncation and the same norm as the
 $\varepsilon=0.4$ secant to within 1\% in the median over the 20 configurations, in all four
-channels. The accuracy below is that of this extrapolated field. Its cost is estimated from the
-measured march time divided by the number of Newton iterations (0.45\,s median, range
-0.32--1.90\,s), not from a separately timed factorisation; it is an estimate of one linear solve,
-not a measurement. We use it only as an order-of-magnitude comparison, not as a measured linear
-solve. Predicting $\hat Y=X+\varepsilon P$ gives
+channels. The accuracy below is that of this extrapolated field. At 6.3\,ms the network is about
+300 times cheaper per query than this linear solve, before any allowance for the different hardware.
+Predicting $\hat Y=X+\varepsilon P$ gives
 $14$/$15$/$1.4$/$15\%$ at $\varepsilon=1.6$ and $24$/$27$/$3.0$/$28\%$ at $\varepsilon=1.9$
 ($u_x/u_y/\theta/p$), against a do-nothing floor at $\varepsilon=1.9$ of $39$/$58$/$6.0$/$42\%$: the linear response
 removes 34--53\% of the gap at $\varepsilon=1.9$ (computed from the unrounded errors; $p$ gives
@@ -802,9 +799,23 @@ flatter that baseline. The network reaches
 $9.4$/$10.6$/$1.4$/$11.3\%$ on the extrapolation split (Table~\ref{tab:ablation}), so the residual
 left by the linear response is not a small correction. Both approaches replace the same compressible
 member and therefore save a similar fraction of the 30.3\,s nonlinear solve; the first-order solve
-cannot produce the $\varepsilon^2$ term, while inference costs 6.3\,ms against 0.45\,s per linear
+cannot produce the $\varepsilon^2$ term, while inference costs 6.3\,ms against 1.9\,s per linear
 solve.
 
+\paragraph{Direct solution of the $O(\varepsilon)$ system} The extrapolated $P$ above is fitted to
+the paired data. We check it independently by solving the linearised problem on the same
+discretisation. Let $F(U;\varepsilon)$ be the steady residual of
+\eqref{eq:cmass}--\eqref{eq:ceos}; one Newton step from the Boussinesq state gives
+$\delta=-J^{-1}F(X)$ with $J=\partial F/\partial U$ evaluated at $X$, and because $F(X)=O(\varepsilon)$
+the field $\delta/\varepsilon$ is the solution of $\mathcal{L}P=-S_1[X]$ up to $O(\varepsilon^2)$.
+On the 20 configurations, the same third-order Richardson combination applied to
+$\delta/\varepsilon$ at $\varepsilon=0.4,0.8,1.2$ reproduces the data-extrapolated $P$ with a median
+relative error of $5.4\%$ in $u_x$, $3.2\%$ in $u_y$ and $7.0\%$ in $p$ (10--90\% ranges
+$2.2$--$19.7\%$, $1.2$--$10.3\%$ and $2.7$--$22.6\%$) and median correlations $0.998$, $0.9996$ and
+$0.998$; the least favourable configuration gives $0.960$. The $\theta$ channel is not reproduced
+(median relative error $172\%$, correlation $0.24$), which is the same statement as its
+unidentifiable exponent. The solve uses the same mixed space and one LU factorisation per
+configuration, and it does not reuse the fitted $P$.
 \paragraph{A two-term fit, where it is available} The same low-$\varepsilon$ pairs allow a stronger
 data-driven baseline: fit $\mathcal{P}(\varepsilon)=P+\varepsilon Q$ on $\varepsilon=0.4,0.8,1.2$ for each
 configuration and predict $X+\varepsilon P+\varepsilon^2Q$. At $\varepsilon=1.6$ this gives
@@ -1494,6 +1505,7 @@ $\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated iner
 operator of that system does not contain $\varepsilon$, so the correction factorises,
 $D=\varepsilon P(X)+\varepsilon^2Q(X)+\dots$, with a shape that does not rotate. All five
 consequences of the expansion listed in Table~S1 are confirmed numerically.
+\item An independent check. Solving the linearised $O(\varepsilon)$ system directly---one Newton step of the retained low-Mach residual at $X$ on the same mesh---reproduces the data-extrapolated $P$ with median relative errors of $5.4\%$ ($u_x$), $3.2\%$ ($u_y$) and $7.0\%$ ($p$) over the 20 configurations, and does not reproduce $\theta$ (median error $172\%$), consistent with its unidentifiable exponent.
 \item A design rule. Predicting $P(X)$ and multiplying by $\varepsilon$ outside the
 network, which changes only the target and one multiplication, converts the law into a prior that
 (i) has $1.09\times$ lower channel-averaged error than a FiLM-conditioned network in extrapolation
@@ -1552,3 +1564,6 @@ the raw solver output is available from the authors on request.
 \bibliography{refs}
 
 \end{document}
+
+
+

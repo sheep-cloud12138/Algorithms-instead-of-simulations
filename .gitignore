@@ -28,3 +28,6 @@ data_public/
 # ---- 评审用的临时抽取与页面渲染 ----
 /manuscript_text.txt
 /review_pages/
+
+# ---- 直接线性解的全场输出（可重跑，体积大） ----
+论文/direct/

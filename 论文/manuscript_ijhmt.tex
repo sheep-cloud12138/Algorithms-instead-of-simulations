@@ -39,7 +39,7 @@ $\varepsilon=\Delta T/T_0$ sets the leading-order scaling of the difference betw
 and compressible solutions, while the flow sets its amplitude and spatial shape. $Fr^2=\varepsilon$
 identically, and $Ma$ enters only at $O(Ma^2)$ in the retained low-Mach equations. Over 627 paired
 solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction is
-$R=A\varepsilon(1+\kappa\varepsilon)$ with $\kappa=0.42$--$0.83$ from a direct quadratic fit and an
+$R=A\varepsilon(1+\kappa\varepsilon)$ with $\kappa_{\mathrm{fit}}=0.42$--$0.83$ from a direct quadratic fit and an
 intercept consistent with zero. A free power law over the same window returns the window average,
 $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$; fitting each configuration separately over
 $\varepsilon\in[0.4,1.9]$ gives a local slope of $1.17$--$1.45$. Pressure gives
@@ -51,8 +51,8 @@ factorises as $D=\varepsilon P(X)$, so a surrogate learns only the spatial shape
 by $\varepsilon$ outside the network. On a single-$\varepsilon$ public data set this lowers the
 channel-averaged transfer error from 0.131 to 0.086 ($1.5\times$) within the same
 boundary-condition family; across families it does not beat doing nothing. At $\varepsilon=1.2$ the integral
-Nusselt number changes by $0.67\%$ between the two members (mean per-sample ratio $0.54\%$)
-while the wall-flux $L_1$ change is $4.25\%$; a prior trained on
+Nusselt number changes by $0.67\%$ between the two members; the mean per-sample ratio is $0.54\%$
+and the wall-flux $L_1$ change is $4.25\%$; a prior trained on
 the same data lowers the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux
 error from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall-$Nu$ error there is $2.6\%$
 against $0.7\%$ for doing nothing. The wall-normal derivative, not the field norm, is the limiting
@@ -256,8 +256,8 @@ in the unit square at $Pr=0.71$, test it in a second geometry (104 samples) and 
 samples), and validate the prefactor on an independently generated public data set---including the secondary
 Rayleigh-number trends (Secs.~\ref{sec:law}, \ref{sec:public}, \ref{sec:aspect}, \ref{sec:water}).
 \item We measure what the gap does to the wall heat transfer: at $\varepsilon=1.2$ the integral
-Nusselt number moves by $0.67\%$ (mean per-sample ratio $0.54\%$, median $0.58\%$) on the
-public data, while the local wall flux
+Nusselt number moves by $0.67\%$ (ratio of ensemble means; per-sample mean $0.54\%$,
+median $0.58\%$) on the public data, while the local wall flux
 is redistributed by $4.25\%$; on the five isothermal-sidewall configurations the integral change
 at $\varepsilon=1.9$ is $-5.1\%$ at $Ra=10^4$ and $-1.0\%$ at $Ra=10^3$. The 15 random-wall
 configurations are not used for a relative $Nu$ statistic: eight of them have $|Nu_X|\le1$, where
@@ -361,9 +361,10 @@ candidate & evidence & conclusion\\
 $Fr$ & the generators state $Fr^2=\beta\Delta T=\Delta T/T_0$ identically; the released 2-D code
 pinned $Fr=1.095$, correct only at $\Delta T=1.2$ & not free; pinned-$Fr$ sweeps of $T_0/\Delta T$
 are an artefact\\
-$Ma$ & fixing $Ra$, $T_0$, $\Delta T$ and changing $Ma$ by $24\times$ leaves the measured
-correction unchanged at the precision of the solve (five significant figures) & $O(Ma^2)$ is
-dropped by the retained equations; the sampled range does not resolve it\\
+$Ma$ & the generator sets $Ma=1.78\times10^{-3}(Ra/10^6)^{1/6}$, i.e.\
+$3.8\times10^{-4}$ at $Ra=10^2$ and $1.8\times10^{-3}$ at $Ra=10^6$; fixing $Ra$, $T_0$,
+$\Delta T$ and changing $Ma$ by $24\times$ leaves the measured correction unchanged to a relative
+$10^{-5}$ & $O(Ma^2)$ is dropped by the retained equations; the sampled range does not resolve it\\
 $\varepsilon=\Delta T/T_0$ & same boundary-condition seed stream, $\Delta T$ swept & the clean,
 one-dimensional break-symmetry axis\\
 \bottomrule
@@ -476,7 +477,7 @@ set & $n$ & what varies & purpose\\
 random-BC & 600 & $Ra\sim\log U[10^2,10^6]$, $\varepsilon\sim U[0.2,1.9]$, 134 wall-mode
 families & calibrate the law, train surrogates\\
 $\varepsilon\to0$ checks & 27 & $\varepsilon=0.02/0.05/0.10$ $\times$ $Ra=10^3/10^4/10^5$, three draws each &
-test $R(0)=0$\\
+anchor $R(0)=0$ (included in the fit)\\
 paired & $20\times5$ & only $\varepsilon$; $Ra$ and the $\theta$ boundary stream fixed within a
 configuration & $\varepsilon$-blind reference, shape invariance\\
 aspect 2:1 & 104 & same law, geometry $2\times1$ & external validity\\
@@ -586,7 +587,7 @@ $+0.0539$) with $\kappa_{\mathrm{fit}}=c/a=0.70/0.83/0.42/0.73$ (here $a$ and $c
 in $\varepsilon$, $R=A\varepsilon(1+O(\varepsilon))$, quote $m=1.02$ as the number a wide-window
 fit returns, and note that the network recovers the $\varepsilon^2$ curvature with the same sign and order of magnitude
 (Sec.~\ref{sec:prior}, $\kappa_{\mathrm{net}}=0.22$--$0.42$; P2 fits amplitude and curvature
-jointly, so $\kappa_{\mathrm{net}}$ is 2--4 times smaller than $\kappa_{\mathrm{fit}}$ but has the
+jointly, so $\kappa_{\mathrm{net}}$ is 1.3--2.6 times smaller than $\kappa_{\mathrm{fit}}$ but has the
 same sign in every channel) and by the mode expansion (Sec.~\ref{sec:theory},
 Table~S1 of the supplementary material: $\varepsilon^1+\varepsilon^2$ carry 99.0\% of the
 correction energy).
@@ -653,7 +654,7 @@ $p$-channel ``law'' collapses to a constant ($R_p\approx1.0$). We align the memb
 protocol used by the public data set---subtract the mean, remove a least-squares linear-in-$y$ fit,
 and flip the sign of the Boussinesq member. Under the same median convention the aligned pair gives
 $0.960$ and $\cos=+0.991$, against $0.929$ and $+0.986$ for the public training set, so the two
-pairings agree to within 3\%. The channel then follows the same law as the velocities
+pairings agree to within $3.5\%$. The channel then follows the same law as the velocities
 ($A=0.148$, $m=1.009$). All $p$-channel numbers in this paper use this gauge. Pressure is
 gauge-dependent: the exponent is a statement about this fixed post-processing gauge, not a
 gauge-invariant law.
@@ -758,7 +759,7 @@ seeds; largest standard deviation over all cells 0.0051). A sees only the four B
 B also receives $\varepsilon$ as a constant input channel; P1 multiplies $\varepsilon$ outside the
 network but still reads it as an input; P2 adds a learned quadratic factor; P3 removes
 $\varepsilon$ from the input entirely. Errors are per-channel relative $L_2$ errors against $Y$.
-The curvature learned by P2 (seed 0) is $\kappa=0.418/0.314/0.334/0.314$ (extrapolation) and
+The curvature learned by P2 (seed 0) is $\kappa_{\mathrm{net}}=0.418/0.314/0.334/0.314$ (extrapolation) and
 $0.295/0.224/0.255/0.219$ (interpolation), for $u_x/u_y/\theta/p$; the three-seed means are
 $0.418/0.321/0.343/0.338$ and $0.286/0.232/0.252/0.265$. The own-data row of
 Table~\ref{tab:transfer} is the P3 architecture trained with 150 epochs and one seed, the protocol
@@ -916,7 +917,7 @@ ratio $D/\varepsilon$ instead of on $D$, and at run time return $\hat Y=X+\varep
 after evaluating the Boussinesq member (or a surrogate for it) to obtain $X$. Supplying
 $\varepsilon$ to $\mathcal{N}$ as well is the most accurate form (P1, $1.09\times$ lower channel-averaged error than a FiLM-conditioned network in
 extrapolation, with $\theta$ and $p$ individually significant and the $u_x/u_y$ intervals
-including zero). P2 learns a scalar curvature $\kappa$ and replaces $\varepsilon$ by
+including zero). P2 learns a scalar curvature $\kappa_{\mathrm{net}}$ and replaces $\varepsilon$ by
 $\varepsilon(1+\kappa\varepsilon)$ before the multiplication. Leaving the input out (P3) costs
 accuracy at fixed data but is what lets one network serve
 every contrast for which the prefactor is unchanged, because $\mathcal{N}$ then sees only $X$ and
@@ -1094,7 +1095,8 @@ local change, pointwise & $-0.65\%$ (median) & p10--p90 $-9.1$ to $+9.8\%$\\
 samples). The surrogate is trained on the 4000 public training pairs and evaluated without
 retraining. $T$ error is relative $L_2$; $Nu$ error is the mean absolute error of the integrated
 wall Nusselt number divided by the mean true $Nu$; local flux is the mean absolute error of the
-wall-normal flux profile divided by its mean absolute value.}
+wall-normal flux profile divided by its mean absolute value. For doing nothing the absolute error
+equals the mean signed change, because all 200 per-sample changes are positive.}
 \label{tab:surrogate_nu}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -1156,8 +1158,8 @@ with the $\varepsilon^2$ term, not as a significant effect. A Boussinesq-trained
 produce it because it has no access to the compressible correction.
 
 \paragraph{The Rayleigh-number dependence of the integral correction} The five Rayleigh numbers
-span $+0.01$ to $+0.87\%$ at $\varepsilon=1.2$ and $-5.1$ to $-1.0\%$ at $\varepsilon=1.9$
-(Table~\ref{tab:nu_ra}). At $Ra=10^2$ the change is below $0.01\%$; at $Ra=10^3$ it stays within $1\%$; at
+span $+0.01$ to $+0.87\%$ at $\varepsilon=1.2$ and $-5.1$ to $-0.01\%$ at $\varepsilon=1.9$
+(Table~\ref{tab:nu_ra}). At $Ra=10^2$ the change is at or below $0.01\%$; at $Ra=10^3$ it stays within $1\%$; at
 $Ra\ge10^4$ it reaches $-5\%$. The 15 random-wall configurations are excluded:
 eight have $|Nu_X|\le1$ at $\varepsilon=1.9$, where the sign or the small magnitude of the denominator, not the correction, sets the
 ratio. A model calibrated on $Nu$ alone therefore does not transfer across $Ra$ at fixed

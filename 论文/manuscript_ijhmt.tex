@@ -42,9 +42,9 @@ solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys $R=A
 $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and $\varepsilon^2$
 curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no
 identifiable exponent. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
-only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. This prior is
-$1.87\times$ better than an $\varepsilon$-blind network, channel-averaged, and makes a public
-single-$\varepsilon$ data set reusable within a boundary family. At $\varepsilon=1.2$ the integral
+only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. When only a
+single-$\varepsilon$ data set exists, this prior is $1.87\times$ better than an $\varepsilon$-blind
+network, channel-averaged, and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ the integral
 Nusselt number changes by $0.54\%$ while the local wall flux changes by $4.25\%$. One inference
 takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
 20-flow $\times$ 5-contrast scan. A twelve-sample 3-D check reproduces the exponent to within 0.11.
@@ -794,9 +794,20 @@ is the 600-sample median of Table~\ref{tab:cost}) and using it as the linear bas
 flatter that baseline. The network reaches
 $9.4$/$10.6$/$1.4$/$11.3\%$ on the extrapolation split (Table~\ref{tab:ablation}), so the residual
 left by the linear response is not a small correction. Both approaches replace the same compressible
-member and therefore save a similar fraction of the 30.3\,s nonlinear solve; the difference is that
-the network retains the $\varepsilon^2$ curvature that the first-order linear solve cannot produce, and
-inference costs 6.3\,ms against 0.45\,s per linear solve.
+member and therefore save a similar fraction of the 30.3\,s nonlinear solve; the first-order solve
+cannot produce the $\varepsilon^2$ term, while inference costs 6.3\,ms against 0.45\,s per linear
+solve.
+
+\paragraph{A two-term fit, where it is available} The same low-$\varepsilon$ pairs allow a stronger
+data-driven baseline: fit $R(\varepsilon)=P+\varepsilon Q$ on $\varepsilon=0.4,0.8,1.2$ for each
+configuration and predict $X+\varepsilon P+\varepsilon^2Q$. At $\varepsilon=1.6$ this gives
+$3.3$/$3.9$/$0.4$/$3.8\%$ and at $\varepsilon=1.9$ $11.4$/$13.9$/$1.7$/$13.8\%$
+($u_x/u_y/\theta/p$), against $14$/$15$/$1.4$/$15\%$ and $24$/$27$/$3.0$/$28\%$ for the
+first-order response. That is the same order as the network's $9.4$/$10.6$/$1.4$/$11.3\%$ on the
+extrapolation split, on a different sample. The two-term fit is available only when paired
+low-$\varepsilon$ data exist for the target flow. The public-data problem of Sec.~\ref{sec:public}
+has no such pairs at the target contrast; there a single-$\varepsilon$ data set is all that exists,
+and the prior---not a quadratic fit---is what makes it reusable.
 
 \subsection{The physics prior: $D=\varepsilon P(X)$}
 \label{sec:prior}
@@ -1131,8 +1142,11 @@ beat the plain model in all four channels (0.2281/0.3498/0.0422/0.2584 against
 0.2444/0.3612/0.0484/0.3217), but it still does not beat doing nothing. The failure is the one
 Sec.~\ref{sec:public} predicts: $A$ is a functional of the flow, the classical cavity's flow has
 $\hat u$ 41\% above the random-wall median, and a surrogate trained on that family predicts the
-wrong $A$. Reusing published data therefore requires the boundary-condition family to be
-represented; the law tells you in advance which reuse will work.
+wrong $A$. Across the public held-out samples the channel-averaged per-sample error rises
+monotonically with $\hat u$, from $0.56\%$ in the lowest quintile to $3.72\%$ in the highest
+(Spearman $0.85$; partial correlation $0.80$ at fixed $Ra$). The classical cavity's $\hat u$ lies
+in the top quintile, which is the quantitative form of the failure: $\hat u$ measured on the
+Boussinesq input tells you in advance whether a single-$\varepsilon$ data set will transfer.
 \end{itemize}
 
 \subsection{A second geometry (aspect ratio 2:1, 104 samples)}

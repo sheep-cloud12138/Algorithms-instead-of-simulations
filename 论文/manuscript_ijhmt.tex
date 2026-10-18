@@ -37,7 +37,8 @@ they learn one correction field and have no signal with which to rescale it. For
 two-dimensional buoyancy-driven convection in enclosures we show that the contrast
 $\varepsilon=\Delta T/T_0$ sets the leading-order scaling of the difference between the Boussinesq
 and compressible solutions, while the flow sets its amplitude and spatial shape. The Froude number
-is tied to the contrast ($Fr^2=\varepsilon$), and $Ma$ enters only at $O(Ma^2)$. Over 627 paired
+is tied to the contrast ($Fr^2=\varepsilon$), and $Ma$ enters only at $O(Ma^2)$ in the retained
+low-Mach equations. Over 627 paired
 solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys $R=A\varepsilon^m$ with
 $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and $\varepsilon^2$
 curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no
@@ -48,7 +49,8 @@ $2.4/1.8/3.8\%$. The correction factorises as $D=\varepsilon P(X)$, so a surroga
 only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. When only a
 single-$\varepsilon$ data set exists, it lowers the channel-averaged transfer error from 0.131 to
 0.086 ($1.5\times$) and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ on the
-public classical-cavity data, the integral Nusselt number changes by $0.54\%$ while the local wall flux changes by $4.25\%$. One inference
+public classical-cavity data, the integral Nusselt number changes by $0.54\%$ while the wall-flux $L_1$ change is $4.25\%$
+(pointwise median $0.65\%$). One inference
 takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
 20-flow $\times$ 5-contrast scan. A 15-sample, five-contrast 3-D check gives per-flow exponents
 within 0.16 of unity.
@@ -245,7 +247,7 @@ of its predictions numerically, including the divergence relation (Sec.~\ref{sec
 \needspace{6\baselineskip}
 \item We calibrate the resulting law on 627 paired samples spanning two decades of $\varepsilon$
 in the unit square at $Pr=0.71$, test it in a second geometry (104 samples) and at $Pr=4.38$ (104
-samples), and validate it on an independently generated public data set---including the secondary
+samples), and validate the prefactor on an independently generated public data set---including the secondary
 Rayleigh-number trends (Secs.~\ref{sec:law}, \ref{sec:public}, \ref{sec:aspect}, \ref{sec:water}).
 \item We measure what the gap does to the wall heat transfer: at $\varepsilon=1.2$ the integral
 Nusselt number moves by $0.54\%$ (median $0.58\%$) on the public data, while the local wall flux
@@ -464,7 +466,7 @@ set & $n$ & what varies & purpose\\
 \midrule
 random-BC & 600 & $Ra\sim\log U[10^2,10^6]$, $\varepsilon\sim U[0.2,1.9]$, 134 wall-mode
 families & calibrate the law, train surrogates\\
-$\varepsilon\to0$ checks & 27 & $\varepsilon=0.02/0.05/0.10$ $\times$ $Ra=10^3/10^4/10^5$, three seeds each &
+$\varepsilon\to0$ checks & 27 & $\varepsilon=0.02/0.05/0.10$ $\times$ $Ra=10^3/10^4/10^5$, three draws each &
 test $R(0)=0$\\
 paired & $20\times5$ & only $\varepsilon$; $Ra$ and the $\theta$ boundary stream fixed within a
 configuration & $\varepsilon$-blind reference, shape invariance\\
@@ -513,10 +515,12 @@ amplitude is therefore listed in both, $0.010$ wall-normalised and $0.034$ zero-
 Fig.~\ref{fig:law} shows the collapse of $u_x$, $u_y$ and $p$. The $\theta$ panel scatters about
 the fitted line ($R^2=0.22$), because its amplitude also depends on the flow ($\chi$ or $\hat u$);
 Table~\ref{tab:law} collects the fitted exponents and amplitudes. The quoted $\pm$ is the standard
-error of the log--log fit. On the 600-sample scan, resampling the 134 wall-mode families (2000
-cluster bootstraps) gives 95\% intervals $[1.03,1.14]$ for $u_x$ and $[0.94,1.06]$ for $u_y$,
-against $[1.03,1.14]$ and $[0.95,1.05]$ under an i.i.d.\ bootstrap: clustering by boundary family
-adds no detectable uncertainty to the exponent.
+error of the log--log fit. On the 600-sample scan alone the fit gives $m=1.08$ ($u_x$) and $1.00$
+($u_y$); resampling its 134 wall-mode families (2000 cluster bootstraps) gives 95\% intervals
+$[1.03,1.14]$ and $[0.94,1.06]$, against $[1.03,1.14]$ and $[0.95,1.05]$ under an i.i.d.\ bootstrap.
+Clustering by boundary family adds no detectable uncertainty to the exponent, and the shift from
+$1.08$ to $1.02$ between the two fits is the effect of the 27 low-contrast points, not of the
+uncertainty.
 
 \begin{table}[htbp]
 \centering
@@ -548,7 +552,7 @@ $\varepsilon=\Delta T/T_0$ over two decades for $u_x$, $u_y$ and $p$; the $\thet
 ($R^2=0.22$) and collapses on the peak Boussinesq speed $\hat u$ (Fig.~\ref{fig:theta})$,$ while a
 separate $\chi$ parameterisation gives $R^2=0.78$ alone (Sec.~\ref{sec:law}). Points: 600 random-boundary-condition samples, coloured by
 $\log_{10}Ra$; stars: the 27 small-$\varepsilon$ checks ($\varepsilon=0.02$--$0.1$, three
-Rayleigh numbers, three seeds each), included in the fit to anchor the $\varepsilon\to0$ end and
+Rayleigh numbers, three independent wall draws each), included in the fit to anchor the $\varepsilon\to0$ end and
 not used as a holdout. Lines: the power-law fits of
 Table~\ref{tab:law}.}
 \label{fig:law}
@@ -822,7 +826,7 @@ residual of \eqref{eq:cmass}--\eqref{eq:ceos}. One Newton step from the Boussine
 $\delta=-J^{-1}F(X)$ with $J=\partial F/\partial U$ evaluated at $X$, solves the linearised system
 that defines $P$: because $F(X)=O(\varepsilon)$, $\delta=D+O(\varepsilon^2)$ and therefore
 $\delta/\varepsilon=P+O(\varepsilon)$. Measured on the 27 samples of the low-contrast sweep
-($\varepsilon=0.02,0.05,0.10$; $Ra=10^3$--$10^5$; three wall families), where the correction is
+($\varepsilon=0.02,0.05,0.10$; $Ra=10^3$--$10^5$; three independent wall draws each), where the correction is
 0.4--5.8\% of $X$, $\delta/\varepsilon$ reproduces the measured $D/\varepsilon$ with median
 relative errors of $4.7\%$, $3.8\%$, $7.2\%$ and $12.2\%$ in $u_x$, $u_y$, $p$ and $\theta$
 (10--90\% ranges $0.8$--$19.6\%$, $0.5$--$20.8\%$, $0.8$--$39.2\%$, $1.4$--$24.6\%$) and median
@@ -899,6 +903,18 @@ $\varepsilon(1+\kappa\varepsilon)$ before the multiplication. Leaving the input 
 accuracy at fixed data but is what lets one network serve
 every contrast for which the prefactor is unchanged, because $\mathcal{N}$ then sees only $X$ and
 re-learns the prefactor from the flow rather than from a tabulated value.
+
+\paragraph{What a single-contrast data set can and cannot identify} Training on $D/\varepsilon_0$
+at one contrast does not return $P$: the target is $P+\varepsilon_0Q+O(\varepsilon_0^2)$. Applied
+at a different contrast $\varepsilon$, the leading term carries the error
+$\varepsilon(\varepsilon_0-\varepsilon)Q$. Over the paired scan the measured ratio is
+$|Q|/|P|=0.56$ in $u_x$, $0.31$ in $u_y$ and $0.79$ in $p$; for $\varepsilon_0=1.2$ applied at
+$\varepsilon=0.4$ the error in $u_x$ is $0.18|P|$ against a correction of $0.4|P|$ at that
+contrast. This is the same order as the transfer errors of Sec.~\ref{sec:public}, and it is why the
+two amendments that help both act on the amplitude: the curvature term $\varepsilon(1+\kappa\varepsilon)$
+of P2, and $\varepsilon$ as an input (P1), which lets the network absorb the residual
+$\varepsilon$-dependence. A single-contrast data set cannot separate $P$ from $Q$ by itself; it can
+only supply $P+\varepsilon_0Q$.
 
 A Fourier neural operator (1.19\,M parameters) shows the same pattern against its
 $\varepsilon$-blind version: $u_x$ $0.2287\to0.1334$ with the prior and $\varepsilon$

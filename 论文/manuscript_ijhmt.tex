@@ -50,8 +50,8 @@ channel-averaged transfer error from 0.131 to 0.086 ($1.5\times$). At $\varepsil
 Nusselt number changes by $0.54\%$ while the wall-flux $L_1$ change is $4.25\%$; a prior trained on
 the same data lowers the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux
 error from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall-$Nu$ error there is $2.6\%$
-against $0.7\%$ for doing nothing, while the interior enthalpy-flux integral is reproduced to $0.07\%$. One inference
-takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
+against $0.7\%$ for doing nothing. The wall-normal derivative, not the field norm, is the limiting
+quantity. One inference takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
 20-flow $\times$ 5-contrast scan. A 15-sample 3-D check gives exponents within 0.16 of unity.
 \end{abstract}
 
@@ -1083,17 +1083,15 @@ local change, pointwise & $-0.65\%$ (median) & p10--p90 $-9.1$ to $+9.8\%$\\
 samples). The surrogate is trained on the 4000 public training pairs and evaluated without
 retraining. $T$ error is relative $L_2$; $Nu$ error is the mean absolute error of the integrated
 wall Nusselt number divided by the mean true $Nu$; local flux is the mean absolute error of the
-wall-normal flux profile divided by its mean absolute value; interior flux is the mean absolute
-error of the vertically integrated enthalpy flux at $x=0.25,0.5,0.75$, divided by its compressible
-mean.}
+wall-normal flux profile divided by its mean absolute value.}
 \label{tab:surrogate_nu}
-\begin{tabular}{@{}lccccc@{}}
+\begin{tabular}{@{}lcccc@{}}
 \toprule
-model & $T$ error & $Nu$ error (hot) & $Nu$ error (cold) & local flux (hot/cold) & interior flux\\
+model & $T$ error & $Nu$ error (hot) & $Nu$ error (cold) & local flux (hot/cold)\\
 \midrule
-do nothing ($\hat Y=X$) & $7.2\%$ & $0.67\%$ & $0.64\%$ & $6.0/5.2\%$ & $36.7\%$\\
-plain $D$ & $0.10\%$ & $3.61\%$ & $2.42\%$ & $4.4/3.7\%$ & $0.08\%$\\
-prior $D=\varepsilon P(X)$ & $0.10\%$ & $2.56\%$ & $1.72\%$ & $4.3/3.6\%$ & $0.07\%$\\
+do nothing ($\hat Y=X$) & $7.2\%$ & $0.67\%$ & $0.64\%$ & $6.0/5.2\%$\\
+plain $D$ & $0.10\%$ & $3.61\%$ & $2.42\%$ & $4.4/3.7\%$\\
+prior $D=\varepsilon P(X)$ & $0.10\%$ & $2.56\%$ & $1.72\%$ & $4.3/3.6\%$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1127,10 +1125,9 @@ surrogate. Table~\ref{tab:surrogate_nu}
 evaluates the public-data prior directly. The prior reduces the temperature-field error from
 $7.2\%$ to $0.10\%$ in relative $L_2$, and the local wall-flux $L_1$ error from $6.0\%$ to $4.3\%$
 (hot wall) and from $5.2\%$ to $3.6\%$ (cold wall), but its integrated wall $Nu$ error is $2.6\%$,
-larger than the $0.7\%$ of doing nothing. The wall gradient amplifies high-frequency error that is
-invisible in the field norm. The same predicted fields reproduce the interior-plane enthalpy-flux
-integral to $0.07\%$, so the surrogate conserves the global heat transport while missing the
-wall-normal derivative. The field statistic behind the cancellation is large: on the same 200
+larger than the $0.7\%$ of doing nothing. The wall-normal derivative carries a systematic bias
+that is invisible in the field norm; the local profile improves while the integral does not.
+The field statistic behind the cancellation is large: on the same 200
 samples the temperature field differs by $7.2\%$ in global relative $L_2$ ($8.4\%$ median per
 sample), so a $7$--$8\%$ change in the field produces a $0.6\%$ change in its wall-normal
 derivative.
@@ -1139,11 +1136,13 @@ The relative gap is not a meaningful statistic for every configuration. Of the 2
 configurations, eight have $|Nu_X|\le1$ at $\varepsilon=1.9$ and nine have negative $Nu_X$; there
 the sign or the small magnitude of the denominator, not the correction, sets $\Delta Nu/Nu$, and the all-configuration mean
 $+5.06\%$ is not a physical heat-transfer result. The five isothermal-sidewall configurations have
-$Nu_X=O(1)$ at every contrast. On those, the mean integral change is $+0.51\%$ (sd $0.37\%$) at
-$\varepsilon=1.2$ and $-1.89\%$ (sd $1.94\%$) at $\varepsilon=1.9$: the correction adds heat at
-moderate contrast and removes it at high contrast. The sign change is the heat-transfer signature
-of the $\varepsilon^2$ term, and a Boussinesq-trained surrogate cannot produce it because it has no
-access to the compressible correction.
+$Nu_X=O(1)$ at every contrast. This family is the classical cavity, fixed before the analysis;
+it is not selected by the outcome. On those, the mean integral change is $+0.51\%$ (sd $0.37\%$)
+at $\varepsilon=1.2$ and $-1.89\%$ (sd $1.94\%$) at $\varepsilon=1.9$. The point estimate changes
+sign, but with five configurations the 95\% interval of the $\varepsilon=1.9$ mean is
+$[-4.3,+0.5]\%$ and includes zero; we report the sign change as a descriptive trend consistent
+with the $\varepsilon^2$ term, not as a significant effect. A Boussinesq-trained surrogate cannot
+produce it because it has no access to the compressible correction.
 
 \paragraph{The Rayleigh-number dependence of the integral correction} The five Rayleigh numbers
 span $+0.01$ to $+0.87\%$ at $\varepsilon=1.2$ and $-5.1$ to $-1.0\%$ at $\varepsilon=1.9$
@@ -1158,8 +1157,10 @@ $\varepsilon$; the local field is the quantity that carries the correction.
 \setlength{\tabcolsep}{5pt}
 \caption{Integral Nusselt change $\Delta Nu/Nu$ (percent) for the five isothermal-sidewall
 configurations, one at each $Ra$. These are the only configurations with a positive $O(1)$
-denominator at every contrast. Random-wall families are excluded because 8 of 15 have
-$|Nu_X|\le1$ at $\varepsilon=1.9$.}
+denominator at every contrast; this is the classical-cavity family, fixed before the analysis.
+Random-wall families are excluded because 8 of 15 have $|Nu_X|\le1$ at $\varepsilon=1.9$. At
+$Ra\le10^3$ the entries are below the $0.35\%$ estimator error and are listed only for
+completeness.}
 \label{tab:nu_ra}
 \begin{tabular}{@{}lccccc@{}}
 \toprule
@@ -1546,9 +1547,9 @@ gauge would change it.
 (Sec.~\ref{sec:public}), while it is insensitive to the fluid ($Pr$, Sec.~\ref{sec:water}).
 \item The public prior is accurate in the field norm but not in the wall-normal derivative. At
 $\varepsilon=1.2$ its integrated wall $Nu$ error at the hot wall is $2.6\%$, against $0.7\%$ for doing nothing,
-although its local wall-flux error is lower ($4.3\%$ against $6.0\%$). The interior enthalpy-flux
-integral is reproduced to $0.07\%$. A derivative-aware loss or a smooth reconstruction is needed
-before the surrogate can be used as a wall heat-flux predictor.
+although its local wall-flux error is lower ($4.3\%$ against $6.0\%$). The field norm does not
+resolve this bias. A derivative-aware or conservative loss is needed before the surrogate can be
+used as a wall heat-flux predictor.
 \item The earlier public release used a pinned $Fr=1.095$, which puts its
 $Ra_{\mathrm{eff}}=Ra\,Fr^2/\varepsilon$ 0.08\% below ours at $\varepsilon=1.2$
 ($1.2/1.199=1.0008$); the v2 release corrects this and the two now agree.
@@ -1607,9 +1608,9 @@ The same factorisation lowers the mean $u_x$ error of a POD-ROM with at most fou
 The heat-transfer audit adds a constraint that the field norm hides. At $\varepsilon=1.2$ the public
 prior reduces the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux error
 from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall $Nu$ error there is $2.6\%$ against
-$0.7\%$ for doing nothing. The predicted fields reproduce the interior enthalpy-flux integral to $0.07\%$, so the
-surrogate conserves the global heat transport; the wall-normal derivative is the quantity that
-requires a derivative-aware training target or a smoother reconstruction. For the isothermal
+$0.7\%$ for doing nothing. The wall-normal derivative carries a systematic bias that the field norm does not
+resolve; it requires a derivative-aware or conservative training target, not a smoother
+reconstruction. For the isothermal
 sidewall family the integral correction itself is small and changes sign between $\varepsilon=1.2$
 ($+0.51\%$) and $1.9$ ($-1.89\%$).
 

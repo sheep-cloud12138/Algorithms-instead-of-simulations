@@ -623,7 +623,10 @@ nodes span the thermal boundary layer. At $\varepsilon=1.2$ the wall-$Nu$ correc
 $+0.82\%$ at $64^2$ to $+0.56\%$ at $128^2$ and $+0.44\%$ at $256^2$. The successive changes,
 $-0.27$ and $-0.12$ percentage points, halve with each refinement, so the sequence is converging
 and the Richardson limit is $\approx0.40\%$: the $128^2$ value overstates the converged correction
-by $0.12$ percentage points, without changing its sign or order.
+by $0.12$ percentage points, without changing its sign or order. The $\varepsilon=1.9$ pair at
+$256^2$ did not reach the steady tolerance within the solver's iteration budget, at pseudo-time
+steps $0.05$ and $0.025$; its integral value therefore keeps the $128^2$ uncertainty of $0.36$
+percentage points.
 
 
 
@@ -1181,7 +1184,7 @@ configurations, one at each $Ra$. These are the only configurations with a posit
 denominator at every contrast; this is the classical-cavity family, fixed before the analysis.
 Random-wall families are excluded because 8 of 15 have $|Nu_X|\le1$ at $\varepsilon=1.9$. At
 $Ra=10^2$ the entries are below the $0.35\%$ estimator error and are listed only for
-completeness.}
+completeness. At $Ra=10^6$ the $\varepsilon=1.2$ entry falls to $+0.44\%$ on a $256^2$ mesh.}
 \label{tab:nu_ra}
 \begin{tabular}{@{}lccccc@{}}
 \toprule

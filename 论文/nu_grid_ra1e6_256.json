@@ -17,5 +17,5 @@
   "256": 0.004365
  },
  "richardson_limit": 0.00396,
- "note": "Ra=1e6, isothermal sidewall; the 256^2 compressible solve converged to rel=1.7e-7 in 731 s. The eps=1.9 pair at 256^2 did not converge (Newton, 1575 s) and is not reported."
+ "note": "Ra=1e6, isothermal sidewall. The 256^2 compressible solve at eps=1.2 converged to rel=1.7e-7 in 731 s. The eps=1.9 pair at 256^2 did not converge at dt=0.05 (1575 s) or dt=0.025 (1652 s); it is not reported."
 }

@@ -8,7 +8,7 @@ from dolfinx import fem
 
 BASE = os.path.expanduser("~/nc_run/paired/dataset")
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "论文", "direct")
-EPS3 = [0.4, 0.8, 1.2]
+EPS3 = [0.4, 0.8, 1.2, 1.6, 1.9]
 EPS5 = [0.4, 0.8, 1.2, 1.6, 1.9]
 
 
@@ -56,3 +56,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

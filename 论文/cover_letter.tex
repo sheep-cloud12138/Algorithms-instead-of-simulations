@@ -50,11 +50,11 @@ $\varepsilon$-blind network when $\varepsilon$ is
 withheld, which makes
 single-contrast public data reusable at other contrasts within one boundary-condition family, without
 retraining.
-\item \textbf{An independent check.} The factorisation is not only a fit: solving the linearised
-$O(\varepsilon)$ system directly on the same discretisation, one Newton step of the low-Mach
-residual at the Boussinesq state, reproduces the data-extrapolated shape with median relative
-errors of $5.4\%$ ($u_x$), $3.2\%$ ($u_y$) and $7.0\%$ ($p$) over 20 configurations, a check that
-does not use the fitted exponent.
+\item \textbf{An independent check.} The factorisation is not only a fit. One Newton step of the
+low-Mach residual at the Boussinesq state, on the same discretisation, reproduces the measured
+correction to median $4.7/3.8/7.2\%$ ($u_x/u_y/p$) on 27 samples at $\varepsilon=0.02$--$0.10$,
+with no extrapolation in $\varepsilon$; and the extrapolated shape predicts held-out measurements
+at $\varepsilon=0.1$ and $0.2$ to $2.4/1.8/3.8\%$.
 \item \textbf{Wall heat transfer.} At $\varepsilon=1.2$ the integral Nusselt number changes by
 $0.54\%$ (median $0.58\%$), while the local wall heat flux is redistributed by $4.25\%$; the integral agreement
 therefore conceals a local error that a surrogate must be trained to resolve.

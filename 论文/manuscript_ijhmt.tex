@@ -41,7 +41,7 @@ is tied to the contrast ($Fr^2=\varepsilon$), and $Ma$ enters only at $O(Ma^2)$.
 solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys $R=A\varepsilon^m$ with
 $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and $\varepsilon^2$
 curvature; the pressure channel gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no
-identifiable exponent. A direct solve of the linearised $O(\varepsilon)$ system, independent of the fitted exponent, reproduces the data-extrapolated shape to a median relative error of $5.4/3.2/7.0\%$ in $u_x/u_y/p$. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
+identifiable exponent. One Newton step of the low-Mach residual at the Boussinesq state reproduces the measured correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$) at $\varepsilon=0.02$--$0.10$ with no extrapolation in $\varepsilon$, and the extrapolated shape predicts held-out measurements at $\varepsilon=0.1$ and $0.2$ to $2.4/1.8/3.8\%$. The correction factorises as $D=\varepsilon P(X)$, so a surrogate can learn
 only the spatial shape $P$ and multiply by $\varepsilon$ outside the network. When only a
 single-$\varepsilon$ data set exists, it lowers the channel-averaged transfer error from 0.131 to
 0.086 ($1.5\times$) and makes that data set reusable within a boundary family. At $\varepsilon=1.2$ on the
@@ -400,7 +400,9 @@ correction at $O(\varepsilon)$ is driven by the density modulation:
 The energy equation contributes at the next order. Writing
 $T=T_0(1+\varepsilon\theta_0+\varepsilon^2\theta_1+\dots)$, the $O(\varepsilon)$ balance is the base
 energy equation for $\theta_0$ already contained in $\mathcal{L}$, and $\theta_1$ enters at
-$O(\varepsilon^2)$ in $T$. The relative correction in the normalised $\theta$ is still
+$O(\varepsilon^2)$ in $T$; the weight $1/Fr^2=1/\varepsilon$ in \eqref{eq:buoyancy} promotes that
+same term to $O(\varepsilon)$ in the momentum balance, which is why $\theta_1$ appears in
+\eqref{eq:mom1}. The relative correction in the normalised $\theta$ is still
 $O(\varepsilon)$, because it is measured against $\theta_0$, whose norm is the largest of the four
 fields; that normalisation, not a higher order in $\theta_1$, is why $\theta$ has the smallest
 relative amplitude. The
@@ -776,7 +778,8 @@ scaling the quantity to be added is absent from the input.
 alternative is to solve the linearised compressible problem once per query and scale. That costs
 one Jacobian assembly and one factorisation of the same discretisation. Measured on the linearised
 compressible system at $Ra=10^6$ (45\,957 degrees of freedom), one solve takes 1.9\,s: 0.12\,s
-assembly, 1.59\,s LU factorisation and 0.02\,s back-substitution. Both $P$ and the network are identified
+assembly, 1.59\,s LU factorisation and 0.02\,s back-substitution, the remaining 0.17\,s being mesh
+construction and state input/output. Both $P$ and the network are identified
 offline; the comparison here is per query. The field that solve produces is
 $P=\lim_{\varepsilon\to0}D(\varepsilon)/\varepsilon$, the solution of $\mathcal{L}\delta=S_1[X]$.
 We first estimate $P$ without a new solve: the paired scan already contains
@@ -803,19 +806,28 @@ cannot produce the $\varepsilon^2$ term, while inference costs 6.3\,ms against 1
 solve.
 
 \paragraph{Direct solution of the $O(\varepsilon)$ system} The extrapolated $P$ above is fitted to
-the paired data. We check it independently by solving the linearised problem on the same
-discretisation. Let $F(U;\varepsilon)$ be the steady residual of
-\eqref{eq:cmass}--\eqref{eq:ceos}; one Newton step from the Boussinesq state gives
-$\delta=-J^{-1}F(X)$ with $J=\partial F/\partial U$ evaluated at $X$, and because $F(X)=O(\varepsilon)$
-the field $\delta/\varepsilon$ is the solution of $\mathcal{L}P=-S_1[X]$ up to $O(\varepsilon^2)$.
-On the 20 configurations, the same third-order Richardson combination applied to
-$\delta/\varepsilon$ at $\varepsilon=0.4,0.8,1.2$ reproduces the data-extrapolated $P$ with a median
-relative error of $5.4\%$ in $u_x$, $3.2\%$ in $u_y$ and $7.0\%$ in $p$ (10--90\% ranges
-$2.2$--$19.7\%$, $1.2$--$10.3\%$ and $2.7$--$22.6\%$) and median correlations $0.998$, $0.9996$ and
-$0.998$; the least favourable configuration gives $0.960$. The $\theta$ channel is not reproduced
-(median relative error $172\%$, correlation $0.24$), which is the same statement as its
-unidentifiable exponent. The solve uses the same mixed space and one LU factorisation per
-configuration, and it does not reuse the fitted $P$.
+the paired data, so it needs a check that is not another fit. Let $F(U;\varepsilon)$ be the steady
+residual of \eqref{eq:cmass}--\eqref{eq:ceos}. One Newton step from the Boussinesq state,
+$\delta=-J^{-1}F(X)$ with $J=\partial F/\partial U$ evaluated at $X$, solves the linearised system
+that defines $P$: because $F(X)=O(\varepsilon)$, $\delta=D+O(\varepsilon^2)$ and therefore
+$\delta/\varepsilon=P+O(\varepsilon)$. Measured on the 27 samples of the low-contrast sweep
+($\varepsilon=0.02,0.05,0.10$; $Ra=10^3$--$10^5$; three wall families), where the correction is
+only 2--10\% of $X$, $\delta/\varepsilon$ reproduces the measured $D/\varepsilon$ with median
+relative errors of $4.7\%$, $3.8\%$, $7.2\%$ and $12.2\%$ in $u_x$, $u_y$, $p$ and $\theta$
+(10--90\% ranges $0.8$--$19.6\%$, $0.5$--$20.8\%$, $0.8$--$39.2\%$, $1.4$--$24.6\%$) and median
+correlations $0.999$, $0.999$, $0.998$ and $0.994$. No extrapolation in $\varepsilon$ and no
+fitted $P$ enter this comparison. The same comparison on the paired scan gives $15\%$ in $u_x$ at
+$\varepsilon=0.4$ and $73\%$ at $\varepsilon=1.9$, rising linearly in $\varepsilon$: a single
+Newton step is an $O(\varepsilon)$ instrument, and what it leaves behind at high contrast is the
+$O(\varepsilon^2)$ term.
+The extrapolated $P$ is then tested against data it never saw. Nineteen of the paired
+configurations were re-solved at $\varepsilon=0.1$ and $0.2$ from the same random stream, giving
+38 solutions that enter no fit. There $P$ predicts the measured $D/\varepsilon$ with median
+relative errors of $2.4\%$, $1.8\%$ and $3.8\%$
+($u_x/u_y/p$); the $\theta$ channel is not predicted ($74\%$), consistent with its unidentifiable
+exponent. Because $D(0.1)/0.1$ and $D(0.2)/0.2$ differ by only $3.1\%$ in $u_x$, the three-point
+combination is estimating a limit that the data approach, not a local secant. Both checks use the
+same mixed space as the reference solver and one LU factorisation per configuration.
 \paragraph{A two-term fit, where it is available} The same low-$\varepsilon$ pairs allow a stronger
 data-driven baseline: fit $\mathcal{P}(\varepsilon)=P+\varepsilon Q$ on $\varepsilon=0.4,0.8,1.2$ for each
 configuration and predict $X+\varepsilon P+\varepsilon^2Q$. At $\varepsilon=1.6$ this gives
@@ -915,7 +927,7 @@ The public release \texttt{NeuralConvection\_2D\_TrainTest} (v2; 4000 training p
 200-pair held-out splits, CC BY 4.0) was generated by another group, at a
 single $\varepsilon=1.2$, $Ra\in[10^2,3\cdot10^6]$ \citep{menglik2026neural}.
 
-\paragraph{Conventions match} Recomputing their published \path{relL2_*} columns as
+\paragraph{Convention conversion} Recomputing their published \path{relL2_*} columns as
 $\|Y-X\|/\|X\|$ from the tensors reproduces them exactly (0.14233/0.13749/0.01356/0.19070 for
 sample 0); their pressure amplitude ratio is 0.929 against 0.960 for our fixed pairing, under the
 same median convention. The comparison below uses $\|Y-X\|/\|Y\|$, the convention of the rest of
@@ -1505,7 +1517,7 @@ $\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated iner
 operator of that system does not contain $\varepsilon$, so the correction factorises,
 $D=\varepsilon P(X)+\varepsilon^2Q(X)+\dots$, with a shape that does not rotate. All five
 consequences of the expansion listed in Table~S1 are confirmed numerically.
-\item An independent check. Solving the linearised $O(\varepsilon)$ system directly---one Newton step of the retained low-Mach residual at $X$ on the same mesh---reproduces the data-extrapolated $P$ with median relative errors of $5.4\%$ ($u_x$), $3.2\%$ ($u_y$) and $7.0\%$ ($p$) over the 20 configurations, and does not reproduce $\theta$ (median error $172\%$), consistent with its unidentifiable exponent.
+\item An independent check. One Newton step of the retained low-Mach residual at $X$ reproduces the measured correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$) on the 27 samples of the $\varepsilon=0.02$--$0.10$ sweep, where no extrapolation in $\varepsilon$ is involved; $\theta$ is reproduced there to $12.2\%$, so its collapse at high contrast is an amplitude effect rather than a failure of the linearised operator. The extrapolated $P$ also predicts held-out measurements at $\varepsilon=0.1$ and $0.2$ to $2.4/1.8/3.8\%$.
 \item A design rule. Predicting $P(X)$ and multiplying by $\varepsilon$ outside the
 network, which changes only the target and one multiplication, converts the law into a prior that
 (i) has $1.09\times$ lower channel-averaged error than a FiLM-conditioned network in extrapolation

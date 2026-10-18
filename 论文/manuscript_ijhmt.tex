@@ -40,19 +40,22 @@ and compressible solutions, while the flow sets its amplitude and spatial shape.
 identically, and $Ma$ enters only at $O(Ma^2)$ in the retained low-Mach equations. Over 627 paired
 solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction obeys $R=A\varepsilon^m$ with
 $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, a vanishing intercept and $\varepsilon^2$
-curvature; pressure gives $m=1.009\pm0.015$ in a fixed gauge, and $\theta$ has no identifiable
+curvature; pressure gives $m=1.009\pm0.015$ in the fixed post-processing gauge used here, and $\theta$ has no identifiable
 exponent. One Newton step of the low-Mach residual at the Boussinesq state reproduces the
 correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$) at $\varepsilon=0.02$--$0.10$, and the
 extrapolated shape predicts held-out measurements at 0.1 and 0.2 to $2.4/1.8/3.8\%$. The correction
 factorises as $D=\varepsilon P(X)$, so a surrogate learns only the spatial shape $P$ and multiplies
 by $\varepsilon$ outside the network. On a single-$\varepsilon$ public data set this lowers the
-channel-averaged transfer error from 0.131 to 0.086 ($1.5\times$). At $\varepsilon=1.2$ the integral
-Nusselt number changes by $0.54\%$ while the wall-flux $L_1$ change is $4.25\%$; a prior trained on
+channel-averaged transfer error from 0.131 to 0.086 ($1.5\times$) within the same
+boundary-condition family; across families it does not beat doing nothing. At $\varepsilon=1.2$ the integral
+Nusselt number changes by $0.67\%$ between the two members (mean per-sample ratio $0.54\%$)
+while the wall-flux $L_1$ change is $4.25\%$; a prior trained on
 the same data lowers the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux
 error from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall-$Nu$ error there is $2.6\%$
 against $0.7\%$ for doing nothing. The wall-normal derivative, not the field norm, is the limiting
 quantity. One inference takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
-20-flow $\times$ 5-contrast scan. A 15-sample 3-D check gives exponents within 0.16 of unity.
+20-flow $\times$ 5-contrast scan. A 15-sample 3-D consistency check ($res=16$, $Ra=10^4$) gives exponents within 0.16 of
+unity.
 \end{abstract}
 
 \begin{keyword}
@@ -173,9 +176,10 @@ applied, without retraining, to our $\varepsilon\in[0.2,1.9]$, where it reaches
 $\mathrm{relL2}=0.093$ ($u_x$) against $0.144$ for the plain model at the same budget
 (Sec.~\ref{sec:transfer}). The prior is also the cheaper model when data is scarce
 (Sec.~\ref{sec:learning}: $1.4\times$ better than an $\varepsilon$-augmented baseline at $n=50$,
-crossover near $n\approx300$), the fitted curvature of its quadratic form is positive and of the magnitude the expansion
-predicts ($\kappa=0.22$--$0.42$ in all four channels), and the same prior transfers
-unchanged to a Fourier neural operator.
+crossover near $n\approx300$), the curvature it learns is positive in all four channels ($\kappa_{\mathrm{net}}=0.22$--$0.42$,
+smaller than the $0.42$--$0.83$ of the direct quadratic fit but of the same order), and the same
+prior transfers to a Fourier neural operator with the same qualitative pattern ($u_x$ unchanged,
+$p$ 13\% worse than with an explicit $\varepsilon$ input).
 
 \subsection{Related work}
 \label{sec:related}
@@ -249,7 +253,8 @@ in the unit square at $Pr=0.71$, test it in a second geometry (104 samples) and 
 samples), and validate the prefactor on an independently generated public data set---including the secondary
 Rayleigh-number trends (Secs.~\ref{sec:law}, \ref{sec:public}, \ref{sec:aspect}, \ref{sec:water}).
 \item We measure what the gap does to the wall heat transfer: at $\varepsilon=1.2$ the integral
-Nusselt number moves by $0.54\%$ (median $0.58\%$) on the public data, while the local wall flux
+Nusselt number moves by $0.67\%$ (mean per-sample ratio $0.54\%$, median $0.58\%$) on the
+public data, while the local wall flux
 is redistributed by $4.25\%$; on the five isothermal-sidewall configurations the integral change
 at $\varepsilon=1.9$ is $-5.1\%$ at $Ra=10^4$ and $-1.0\%$ at $Ra=10^3$. The 15 random-wall
 configurations are not used for a relative $Nu$ statistic: eight of them have $|Nu_X|\le1$, where
@@ -473,11 +478,12 @@ paired & $20\times5$ & only $\varepsilon$; $Ra$ and the $\theta$ boundary stream
 configuration & $\varepsilon$-blind reference, shape invariance\\
 aspect 2:1 & 104 & same law, geometry $2\times1$ & external validity\\
 tight rerun & 10 & the 10 worst-converged samples, tolerance $10^{-6}\to10^{-8}$ & noise control\\
-public, random walls \citep{menglik2026neural} & $4000+3\times200$ & $\varepsilon\equiv1.2$; two
-held-out splits differ in the range of the wall dials, the third is a classical cavity & external
+public, random walls \citep{menglik2026neural} & $4000+2\times200$ & $\varepsilon\equiv1.2$; two
+held-out splits differ in the range of the wall dials & external
 validation, cross-data-set transfer\\
 public, classical cavity \citep{menglik2026neural} & $5000+200$ & constant hot/cold side walls,
-adiabatic top and bottom, $\varepsilon\equiv1.2$ & external validation of the prefactor\\
+adiabatic top and bottom, $\varepsilon\equiv1.2$; its 200 held-out pairs are the third split above
+& external validation of the prefactor\\
 $Pr=4.38$ (this work) & 104 & $Pr=4.38$; BC/$Ra$/$\varepsilon$ draws bit-identical to 104 of the
 random-BC samples & test of the fluid axis\\
 \bottomrule
@@ -573,10 +579,12 @@ $R=A\varepsilon(1+\kappa\varepsilon)$ rather than of an exact power: a power law
 function over a window that excludes small $\varepsilon$ returns $m\approx1+\kappa\langle
 \varepsilon\rangle$. The quadratic fit $R=a\varepsilon+c\varepsilon^2+b$ gives $c>0$ in all four
 channels ($u_x$: $+0.0513\pm0.0133$, $3.9\sigma$; $u_y$: $+0.0695$; $\theta$: $+0.0060$; $p$:
-$+0.0539$) with $\kappa=c/a=0.70/0.83/0.42/0.73$ (here $a$ and $c$ are coefficients of this quadratic fit, not the power-law $A$ of Table~\ref{tab:law}). We therefore state the law as first order
+$+0.0539$) with $\kappa_{\mathrm{fit}}=c/a=0.70/0.83/0.42/0.73$ (here $a$ and $c$ are coefficients of this quadratic fit, not the power-law $A$ of Table~\ref{tab:law}). We therefore state the law as first order
 in $\varepsilon$, $R=A\varepsilon(1+O(\varepsilon))$, quote $m=1.02$ as the number a wide-window
 fit returns, and note that the network recovers the $\varepsilon^2$ curvature with the same sign and order of magnitude
-(Sec.~\ref{sec:prior}, $\kappa=0.22$--$0.42$) and by the mode expansion (Sec.~\ref{sec:theory},
+(Sec.~\ref{sec:prior}, $\kappa_{\mathrm{net}}=0.22$--$0.42$; P2 fits amplitude and curvature
+jointly, so $\kappa_{\mathrm{net}}$ is 2--4 times smaller than $\kappa_{\mathrm{fit}}$ but has the
+same sign in every channel) and by the mode expansion (Sec.~\ref{sec:theory},
 Table~S1 of the supplementary material: $\varepsilon^1+\varepsilon^2$ carry 99.0\% of the
 correction energy).
 
@@ -653,7 +661,7 @@ gauge-invariant law.
 Within a configuration $X$ is identical for all $\varepsilon$, so an $\varepsilon$-blind model must
 emit one field $F$ for every $\varepsilon$ it is applied at (Fig.~\ref{fig:floor},
 Table~\ref{tab:floor}). Two reference protocols are computed directly from the paired data rather
-than fitted: (A) train at the one $\varepsilon$ a published data set offers (here
+than fitted: (A) train at the one $\varepsilon$ a publicly released data set offers (here
 $\varepsilon=1.2$) and apply it everywhere, error $\|Y(\varepsilon)-Y(1.2)\|/\|Y(\varepsilon)\|$;
 (B) one field chosen without $\varepsilon$, the unweighted $\varepsilon$-mean of $Y$. (B) is a
 compromise fixed by that choice of average, not a per-$\varepsilon$ lower
@@ -895,8 +903,8 @@ in $p$ in the fixed gauge; the $u_x$ and $u_y$ intervals include zero), while
 the two are indistinguishable in interpolation. Removing $\varepsilon$ from the input as well costs accuracy relative to P1 and FiLM---0.1214
 against 0.0937 and 0.1001 in $u_x$---but still beats the $\varepsilon$-blind network
 ($1.87\times$ channel-averaged on the same 600-sample scan; $1.89\times$ in $u_x$); what it buys is the property P1 cannot have, a network that can be trained at
-one $\varepsilon$ and applied at another (Sec.~\ref{sec:transfer}). Finally, the fitted curvature of the quadratic form is
-positive, $\kappa=0.22$--$0.42$, the same sign and order as
+one $\varepsilon$ and applied at another (Sec.~\ref{sec:transfer}). Finally, the curvature learned by P2 is
+positive, $\kappa_{\mathrm{net}}=0.22$--$0.42$, the same sign and order as
 the $\varepsilon^2$ term of the expansion in Sec.~\ref{sec:theory}---an independent check of the
 asymptotic expansion.
 
@@ -958,7 +966,7 @@ $\approx270$ samples ($u_x$) and 290 ($u_y$) to reach. So the prior is two thing
 cheaper model when data is scarce, and---a model that needs no
 $\varepsilon$ in its input, which is what makes a single-$\varepsilon$ data set reusable.
 
-\subsection{External validation on an independent, published data set}
+\subsection{External validation on an independent, publicly released data set}
 \label{sec:public}
 
 The public release \texttt{NeuralConvection\_2D\_TrainTest} (v2; 4000 training pairs plus three
@@ -1146,8 +1154,8 @@ produce it because it has no access to the compressible correction.
 
 \paragraph{The Rayleigh-number dependence of the integral correction} The five Rayleigh numbers
 span $+0.01$ to $+0.87\%$ at $\varepsilon=1.2$ and $-5.1$ to $-1.0\%$ at $\varepsilon=1.9$
-(Table~\ref{tab:nu_ra}). At $Ra\le10^3$ the change stays
-within $0.1\%$; at $Ra\ge10^4$ it reaches $-5\%$. The 15 random-wall configurations are excluded:
+(Table~\ref{tab:nu_ra}). At $Ra=10^2$ the change is below $0.01\%$; at $Ra=10^3$ it stays within $1\%$; at
+$Ra\ge10^4$ it reaches $-5\%$. The 15 random-wall configurations are excluded:
 eight have $|Nu_X|\le1$ at $\varepsilon=1.9$, where the sign or the small magnitude of the denominator, not the correction, sets the
 ratio. A model calibrated on $Nu$ alone therefore does not transfer across $Ra$ at fixed
 $\varepsilon$; the local field is the quantity that carries the correction.
@@ -1159,7 +1167,7 @@ $\varepsilon$; the local field is the quantity that carries the correction.
 configurations, one at each $Ra$. These are the only configurations with a positive $O(1)$
 denominator at every contrast; this is the classical-cavity family, fixed before the analysis.
 Random-wall families are excluded because 8 of 15 have $|Nu_X|\le1$ at $\varepsilon=1.9$. At
-$Ra\le10^3$ the entries are below the $0.35\%$ estimator error and are listed only for
+$Ra=10^2$ the entries are below the $0.35\%$ estimator error and are listed only for
 completeness.}
 \label{tab:nu_ra}
 \begin{tabular}{@{}lccccc@{}}
@@ -1314,7 +1322,7 @@ medians are not additive.}
 \label{tab:cost}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
- & median & mean & p90 & max\\
+quantity & median & mean & p90 & max\\
 \midrule
 paired solve, 600 samples & 33.9\,s & 38.0\,s & 59.9\,s & 510\,s\\
 Boussinesq member alone & 11.7\,s & 13.1\,s & 21.7\,s & ---\\
@@ -1345,7 +1353,9 @@ $20\times16.0+100\times37.5=4.07\times10^3$\,s and the surrogate needs
 $20\times16.0+100\times0.0063=3.21\times10^2$\,s, a factor $13$. If the baseline is instead the
 scan as actually run, which repeats the Boussinesq solve at every contrast,
 $100\times55.8=5.58\times10^3$\,s, the ratio is $17$; we quote the conservative same-reuse
-$13\times$ in the abstract. The solver runs on eight CPU threads and the surrogate on a GPU; the
+$13\times$ in the abstract. Generating the training split (about 400 paired solves, 3.8\,h at the measured median) is
+repaid after roughly four 20-flow $\times$ 5-contrast scans, each of which saves
+$3.75\times10^3$\,s. The solver runs on eight CPU threads and the surrogate on a GPU; the
 two are not the same hardware.
 
 \subsection{A third Prandtl number: $Pr=4.38$}

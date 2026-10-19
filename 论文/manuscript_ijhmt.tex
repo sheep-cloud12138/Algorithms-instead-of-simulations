@@ -58,8 +58,8 @@ error from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall-$Nu$ erro
 against $0.7\%$ for doing nothing: the wall-normal derivative, not the field norm, is the limiting
 quantity. A wall-flux penalty in the same loss removes it, bringing the integrated error to
 $0.11\%$ and the local error to $1.0\%$ at $\varepsilon=1.2$. One inference takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
-20-flow $\times$ 5-contrast scan. A 15-sample 3-D consistency check ($res=16$, $Ra=10^4$) gives exponents within 0.16 of
-unity.
+20-flow $\times$ 5-contrast scan. A 24-sample 3-D check at $Ra=10^4$ and $3\times10^4$ ($res=16$)
+returns one exponent per Rayleigh number, all within 0.15 of unity.
 \end{abstract}
 
 \begin{keyword}
@@ -273,8 +273,8 @@ $\times$ 5-contrast scan ($13\times$) and for a single flow swept over 100 contr
 (Secs.~\ref{sec:baselines}--\ref{sec:transfer}, \ref{sec:cost}).
 \end{enumerate}
 
-All results are two-dimensional except the fifteen-sample, five-contrast three-dimensional check of
-Sec.~\ref{sec:3d}. Section~\ref{sec:limits} states the measured cost of the
+All results are two-dimensional except the twenty-four-sample three-dimensional check of
+Sec.~\ref{sec:3d} (three wall types at two Rayleigh numbers). Section~\ref{sec:limits} states the measured cost of the
 three-dimensional problem on the same hardware and gives the concrete reasons we do not claim a 3-D
 sweep.
 \begin{table}[htbp]
@@ -627,7 +627,9 @@ At $\varepsilon=1.9$ it moves from $-1.50\%$ at $64^2$ to $-1.88\%$ at $128^2$ a
 $192^2$. Both sequences are still moving at the finest mesh, by $0.12$ and $0.22$ percentage
 points per step, so the integral values carry a resolution uncertainty of that order; the sign and
 the order of magnitude do not change. The $\varepsilon=1.9$ pair at $256^2$ did not reach the
-steady tolerance within the solver's iteration budget, at pseudo-time steps $0.05$ and $0.025$.
+steady tolerance: at pseudo-time step $0.05$ it ran for $4.5$\,h and stopped at a relative change of
+$4\times10^{-6}$ per step against the $10^{-6}$ target, and the step $0.025$ retry did not
+converge either.
 
 
 
@@ -1455,34 +1457,42 @@ than the geometry (Sec.~\ref{sec:aspect}) or the boundary-condition family
 \subsection{A three-dimensional check}
 \label{sec:3d}
 
-The law is calibrated in two dimensions. As a preliminary check of whether the exponent survives in
-three, we generated fifteen paired steady solutions with the same generator: three fixed flows---a three-cell
-Voronoi wall pair, a two-cell wall pair and a constant-wall cavity---each solved at
-$\varepsilon=0.2$, $0.4$, $0.8$, $1.2$ and $1.6$, with $Ra=10^4$, $Pr=0.71$ and $res=16$ ($33^3$ velocity nodes,
-$17^3$ temperature and pressure nodes). The pairing is exact: within each flow the wall temperatures
-are the same seed stream scaled affinely about $T_0$, so the low-fidelity member is the same
-solution up to the $\varepsilon$-blind rescaling of Sec.~\ref{sec:blind}.
+The law is calibrated in two dimensions. To check whether the exponent survives in three, we
+generated twenty-four paired steady solutions with the same generator: three wall types---a
+three-cell Voronoi pair, a two-cell Voronoi pair and a constant-wall cavity---at $Ra=10^4$ over
+$\varepsilon=0.2$, $0.4$, $0.8$, $1.2$ and $1.6$ (fifteen samples), and the same three wall types
+at $Ra=3\times10^4$ over $\varepsilon=0.4$, $1.2$ and $1.9$ (nine samples), with $Pr=0.71$ and
+$res=16$ ($33^3$ velocity nodes, $17^3$ temperature and pressure nodes). Within each set the
+pairing is exact: the wall temperatures are the same seed stream scaled affinely about $T_0$, so the
+low-fidelity member is the same solution up to the $\varepsilon$-blind rescaling of
+Sec.~\ref{sec:blind}.
 For the pressure channel we use the same fixed gauge as in two dimensions: subtract the mean,
 remove a linear fit in $y$ (the gravity direction), and flip the sign; the horizontal $z$ direction
 is not deramped. The $p$ exponents below are therefore fixed-gauge numbers, as in
 Table~\ref{tab:law}.
 
-Table~\ref{tab:3d} and Fig.~\ref{fig:3d} give the result. In every channel and every flow a
-power law fits the five $\varepsilon$ values in log--log coordinates with $R^2>0.995$, and the per-flow exponents are
-$1.091\pm0.014$ ($u_x$), $1.052\pm0.021$ ($u_y$), $1.130\pm0.015$ ($\theta$) and
-$1.141\pm0.017$ ($p$)---within $0.16$ of unity. Against the full-window 2-D fit of
-Table~\ref{tab:law} the flow means differ by $0.07$ ($u_x$), $0.06$ ($u_y$) and $0.13$ ($p$);
-against a 2-D fit restricted to the same $\varepsilon=0.2$--$1.6$ window ($1.04/0.95/1.20/1.08$ for $u_x/u_y/\theta/p$,
-485 samples) the differences are $0.05/0.11/0.07/0.06$. The second comparison is noisier because a narrow-window regression there
-also measures the between-flow prefactor scatter (up to $4\times$, Sec.~\ref{sec:public}). Both are
-consistency checks, not a converged validation. The prefactor is not universal here either: across the three flows it varies
-by $3.8\times$ ($u_x$), $2.1\times$ ($u_y$), $11\times$ ($\theta$) and $2.0\times$ ($p$), which is
-the same statement as Sec.~\ref{sec:public}, that $A$ is a functional of the flow. What transfers to
-three dimensions is the exponent, which is what the factorisation predicts.
-With fifteen samples at a single $Ra$ and a single resolution, this is a consistency check, not a
-converged three-dimensional validation.
+Table~\ref{tab:3d} and Fig.~\ref{fig:3d} give the result. The fit is the one the two-dimensional
+law takes, $R_f=A_f\varepsilon^m$: a separate prefactor for each flow and one exponent per Rayleigh
+number. At $Ra=10^4$ the exponent is $1.091\pm0.013$ ($u_x$), $1.052\pm0.011$ ($u_y$),
+$1.130\pm0.019$ ($\theta$) and $1.141\pm0.020$ ($p$), with $R^2\ge0.997$. At $Ra=3\times10^4$
+the same fit returns $1.026\pm0.066$, $1.041\pm0.063$, $1.041\pm0.081$ and $1.086\pm0.110$, with
+$R^2\ge0.96$. All eight values lie within $0.15$ of unity. The largest difference between the two Rayleigh
+numbers is $0.09$, about one standard error of the three-contrast fit ($0.06$--$0.11$), so that fit
+bounds any Rayleigh dependence of the exponent to about $0.1$ over a factor of three in $Ra$
+without resolving it.
 
-\paragraph{A POD-ROM check of the prior} The same fifteen samples also support a
+The two sets also cover different windows, $0.2$--$1.6$ and $0.4$--$1.9$. Restricting the
+$Ra=10^4$ data to its three upper contrasts, $\varepsilon=0.4$--$1.6$, gives $1.126$, $1.074$,
+$1.179$ and $1.194$ for $u_x$, $u_y$, $\theta$ and $p$, so $0.03$--$0.14$ separates the two
+Rayleigh numbers on the same lower window, against standard errors of $0.02$--$0.11$. The prefactor is not
+universal: across the three flows it varies by $3.9\times$ ($u_x$), $2.1\times$ ($u_y$),
+$10\times$ ($\theta$) and $2.0\times$ ($p$) at $Ra=10^4$, and by $3.7\times$, $2.7\times$,
+$13\times$ and $2.4\times$ at $Ra=3\times10^4$. What transfers to three dimensions is the
+exponent, which is what the factorisation predicts; the amplitude remains a functional of the flow.
+With one resolution and two Rayleigh numbers, this is a consistency check, not a converged
+three-dimensional validation.
+
+\paragraph{A POD-ROM check of the prior} The fifteen samples at $Ra=10^4$ also support a
 linear surrogate check. We train a POD-ROM with at most four modes on three flows and four
 contrasts (twelve samples) and test on the held-out contrast (three samples),
 repeating for each of the five contrasts. The plain ROM predicts $D$ from
@@ -1499,26 +1509,32 @@ check that the factorisation remains useful in three dimensions at small
 contrast, not as a claim of uniform superiority.
 
 
-The check is limited to $Ra=10^4$, $res=16$ and $\varepsilon\le1.6$. The fifteen pairs cost
-12--32\,min each (median 16\,min) of outer wall-clock time on this machine. We therefore report the exponent transfer, not
-a three-dimensional sweep.
+The check is limited to two Rayleigh numbers, $res=16$ and $\varepsilon\le1.9$. The twenty-four
+pairs cost 12--32\,min each of outer wall-clock time on this machine. We therefore report the
+exponent transfer, not a three-dimensional sweep.
 
 \begin{table}[htbp]
 \centering
 \small
-\caption{Three-dimensional check: fifteen strictly paired samples, three fixed flows $\times$ five
-$\varepsilon$ at $Ra=10^4$, $Pr=0.71$, $res=16$. Per-flow exponents are power-law fits to the five
-$\varepsilon$ values of that flow. Flows are ordered three-cell Voronoi, two-cell Voronoi, constant
-wall. The prefactor is listed per flow to show that it does not transfer between flows.}
+\caption{Three-dimensional check: twenty-four strictly paired samples at two Rayleigh numbers
+($Pr=0.71$, $res=16$). The fit is $R_f=A_f\varepsilon^m$, with one prefactor per flow and one
+exponent per Rayleigh number; $\pm$ is the standard error of $m$. Flows are ordered three-cell
+Voronoi, two-cell Voronoi, constant wall. The prefactor is listed per flow to show that it does not
+transfer between flows.}
 \label{tab:3d}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}llccc@{}}
 \toprule
-channel & $m$ (mean$\pm$s.d. over flows) & per-flow $m$ & $A$ per flow\\
+channel & $Ra$ & $m$ & $A$ per flow & $R^2$\\
 \midrule
-$u_x$ & $1.091\pm0.014$ & 1.108/1.083/1.083 & 0.068/0.186/0.260\\
-$u_y$ & $1.052\pm0.021$ & 1.047/1.034/1.075 & 0.123/0.160/0.255\\
-$\theta$ & $1.130\pm0.015$ & 1.126/1.147/1.118 & 0.006/0.025/0.066\\
-$p$ & $1.141\pm0.017$ & 1.121/1.152/1.150 & 0.096/0.185/0.195\\
+$u_x$ & $10^4$ & $1.091\pm0.013$ & 0.067/0.186/0.261 & 0.999\\
+$u_y$ & $10^4$ & $1.052\pm0.011$ & 0.123/0.161/0.253 & 0.999\\
+$\theta$ & $10^4$ & $1.130\pm0.019$ & 0.006/0.024/0.067 & 0.999\\
+$p$ & $10^4$ & $1.141\pm0.020$ & 0.097/0.184/0.194 & 0.997\\
+\midrule
+$u_x$ & $3\times10^4$ & $1.026\pm0.066$ & 0.077/0.098/0.281 & 0.988\\
+$u_y$ & $3\times10^4$ & $1.041\pm0.063$ & 0.092/0.092/0.253 & 0.988\\
+$\theta$ & $3\times10^4$ & $1.041\pm0.081$ & 0.009/0.006/0.084 & 0.992\\
+$p$ & $3\times10^4$ & $1.086\pm0.110$ & 0.080/0.145/0.194 & 0.962\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1526,7 +1542,7 @@ $p$ & $1.141\pm0.017$ & 1.121/1.152/1.150 & 0.096/0.185/0.195\\
 \begin{table}[htbp]
 \centering
 \small
-\caption{Three-dimensional POD-ROM check on the fifteen paired samples.
+\caption{Three-dimensional POD-ROM check on the fifteen paired samples at $Ra=10^4$.
 Leave-one-contrast-out: train on three flows $\times$ four $\varepsilon$
 (twelve samples), test on the held-out $\varepsilon$ (three samples), repeated
 for the five contrasts. Entries are mean relative $L_2$ errors over the five
@@ -1548,9 +1564,11 @@ $p$ & 0.1617$\pm$0.117 & 0.1634$\pm$0.065 & 0.0980$\pm$0.077 & 1.67\\
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{fig9_3d.png}
-\caption{The three-dimensional check in log--log coordinates: fifteen paired samples, three fixed flows
-and five temperature contrasts. Dashed lines are a slope-one reference anchored at the lowest
-$\varepsilon$ of each flow.}
+\caption{The three-dimensional check in log--log coordinates: twenty-four paired samples, three wall
+types at two Rayleigh numbers. The vertical axis is $R=\|Y-X\|/\|Y\|$ in the channel labelled in
+each panel. Filled symbols and solid lines: $Ra=10^4$ over five contrasts; open symbols and dashed
+lines: $Ra=3\times10^4$ over three contrasts. The dotted line is a slope-one reference anchored at
+the lowest $\varepsilon$ of the three-cell $Ra=10^4$ curve.}
 \label{fig:3d}
 \end{figure}
 
@@ -1560,11 +1578,12 @@ $\varepsilon$ of each flow.}
 \begin{enumerate}
 \item Two dimensions for the main sweep. The law is calibrated on 2-D solutions; a $2\times$ mesh
 refinement moves the exponent by less than $0.005$ at $Ra=10^4$ and by at most $0.015$ at
-$Ra=10^6$, where the largest pointwise change in $R$ is $3.3\%$ (Sec.~\ref{sec:law}). The preliminary
-15-sample 3-D check of Sec.~\ref{sec:3d} agrees with the 2-D exponent within $0.16$ over the
-same $\varepsilon=0.2$--$1.6$ window, but covers one Rayleigh number,
-$res=16$ and $\varepsilon\le1.6$; the POD-ROM baseline is a linear model with at most four modes, not a deep operator. Each 3-D pair costs 12--32\,min of outer wall-clock time (median 16) on this machine. A
-3-D sweep at higher $Ra$ or resolution remains out of reach here.
+$Ra=10^6$, where the largest pointwise change in $R$ is $3.3\%$ (Sec.~\ref{sec:law}). The 24-sample
+3-D check of Sec.~\ref{sec:3d} returns one exponent per Rayleigh number, all within $0.15$ of
+unity, at $Ra=10^4$ and $3\times10^4$, but it uses a single resolution ($res=16$); the
+POD-ROM baseline is a linear model with at most four modes, not a deep operator. Each 3-D pair costs
+12--32\,min of outer wall-clock time on this machine. A 3-D sweep at higher $Ra$ or finer resolution
+remains out of reach here.
 \item $Ma$ is inert here, so one parameter is free rather than two. At larger $Ma$ this would
 have to be redone.
 \item $\varepsilon<2$, imposed by the equation of state (the cold wall must stay positive).
@@ -1619,8 +1638,8 @@ window and $1.67$ on the 104-configuration subset, and its fitted amplitude is n
 ($0.012$ at $\varepsilon=1.2$ against a public median of $0.0228$). For $u_x$ and $u_y$ the
 exponent is consistent across geometry ($0.7$ and $1.8$ standard errors) and fluid (1.5\%). Only the
 prefactor $A$ must be calibrated, which is why the surrogate takes $X$ as input rather than a
-table of $A$. A preliminary set of fifteen paired 3-D solutions at one $Ra$ and one resolution
-reproduces the exponent (flow means $1.05$--$1.14$, per-flow $1.03$--$1.15$; Sec.~\ref{sec:3d}).
+table of $A$. A set of twenty-four paired 3-D solutions at two Rayleigh numbers
+reproduces the exponent (one value per $Ra$, all within $0.15$ of unity; Sec.~\ref{sec:3d}).
 \item A reason. The $\varepsilon$-expansion of the compressible member reproduces the
 Boussinesq system at $O(1)$ and produces the correction through
 $\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated inertia. The linear
@@ -1671,7 +1690,7 @@ repository listed under Data availability. The raw solver output (600 random-bou
 100 paired and 10 tight-rerun two-dimensional samples---the tight rerun repeats ten of the 600---plus
 ten $128^2$ mesh-check pairs ($Ra=10^4$ over five contrasts, $Ra=10^5$ over two,
 $Ra=10^6$ over three) and
-15 paired three-dimensional samples (three flows $\times$ five contrasts), $\sim$6\,GB) stays on the machine described above. The stored results
+24 paired three-dimensional samples (three flows, two Rayleigh numbers), $\sim$6\,GB) stays on the machine described above. The stored results
 are the source of every number in this paper; the reporting scripts regenerate them, and no number
 is transcribed by hand.
 

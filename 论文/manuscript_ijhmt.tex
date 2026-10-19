@@ -610,8 +610,9 @@ at $128^2$ (for $u_x$, $u_y$, $\theta$ and $p$), a shift of at most $0.015$. The
 at $Ra=10^6$ is $\approx0.032L$ thick; the $64^2$ mesh places three temperature and five velocity
 nodes across it, the $128^2$ mesh five and nine. The $128^2$ values are the reference for the exponent and
 pointwise checks: the $64^2$ exponent is accurate to $0.015$, and an individual $\varepsilon=1.9$
-correction carries a discretisation uncertainty of up to $3.3\%$. A $256^2$ pair at $Ra=10^6$,
-$\varepsilon=1.2$ sets the level of the integral correction.
+correction carries a discretisation uncertainty of up to $3.3\%$. A $192^2$ pair at
+$\varepsilon=1.9$ and a $256^2$ pair at $\varepsilon=1.2$ set the level of the integral
+correction.
 
 At $Ra=10^5$ the same isothermal-wall check at $\varepsilon=1.2$ and $1.9$ gives a wall-$Nu$
 change of $-0.15$ and $-0.36$ percentage points between $64^2$ and $128^2$ ($Nu_X$ itself moves by
@@ -619,15 +620,14 @@ $0.86\%$); the integral correction moves from $+0.87\%$ to $+0.73\%$ at $\vareps
 $-1.81\%$ to $-2.16\%$ at $\varepsilon=1.9$. Across $Ra=10^4$, $10^5$ and $10^6$ the change between $64^2$ and $128^2$ is therefore at most
 $0.38$ percentage points, and the sign and order of the integral correction are unchanged.
 
-At $Ra=10^6$ the isothermal-wall pair was refined once more, to $256^2$, where eight temperature
-nodes span the thermal boundary layer. At $\varepsilon=1.2$ the wall-$Nu$ correction falls from
-$+0.82\%$ at $64^2$ to $+0.56\%$ at $128^2$ and $+0.44\%$ at $256^2$. The successive changes,
-$-0.27$ and $-0.12$ percentage points, halve with each refinement, so the sequence is converging
-and the Richardson limit is $\approx0.40\%$: the $128^2$ value overstates the converged correction
-by $0.12$ percentage points, without changing its sign or order. The $\varepsilon=1.9$ pair at
-$256^2$ did not reach the steady tolerance within the solver's iteration budget, at pseudo-time
-steps $0.05$ and $0.025$; its integral value therefore keeps the $128^2$ uncertainty of $0.36$
-percentage points.
+At $Ra=10^6$ the isothermal-wall pair was refined to $192^2$ and, at $\varepsilon=1.2$, to
+$256^2$. At $\varepsilon=1.2$ the wall-$Nu$ correction falls from $+0.82\%$ at $64^2$ to $+0.56\%$
+at $128^2$ and $+0.44\%$ at $256^2$, where eight temperature nodes span the thermal boundary layer.
+At $\varepsilon=1.9$ it moves from $-1.50\%$ at $64^2$ to $-1.88\%$ at $128^2$ and $-2.10\%$ at
+$192^2$. Both sequences are still moving at the finest mesh, by $0.12$ and $0.22$ percentage
+points per step, so the integral values carry a resolution uncertainty of that order; the sign and
+the order of magnitude do not change. The $\varepsilon=1.9$ pair at $256^2$ did not reach the
+steady tolerance within the solver's iteration budget, at pseudo-time steps $0.05$ and $0.025$.
 
 
 
@@ -1195,7 +1195,8 @@ configurations, one at each $Ra$. These are the only configurations with a posit
 denominator at every contrast; this is the classical-cavity family, fixed before the analysis.
 Random-wall families are excluded because 8 of 15 have $|Nu_X|\le1$ at $\varepsilon=1.9$. At
 $Ra=10^2$ the entries are below the $0.35\%$ estimator error and are listed only for
-completeness. At $Ra=10^6$ the $\varepsilon=1.2$ entry falls to $+0.44\%$ on a $256^2$ mesh.}
+completeness. At $Ra=10^6$ the $\varepsilon=1.2$ entry falls to $+0.44\%$ on a $256^2$ mesh and the
+$\varepsilon=1.9$ entry to $-2.10\%$ on a $192^2$ mesh.}
 \label{tab:nu_ra}
 \begin{tabular}{@{}lccccc@{}}
 \toprule

@@ -32,34 +32,26 @@ a factorised physics prior for surrogates}
 \address[a]{Affiliation(s)}
 
 \begin{abstract}
-Boussinesq-trained surrogates for thermal convection transfer poorly across temperature contrast:
-they learn one correction field and have no signal with which to rescale it. For steady
-two-dimensional buoyancy-driven enclosure convection we show that the relative contrast
-$\varepsilon=\Delta T/T_0$ sets the leading-order scaling of the difference between the Boussinesq
-and compressible solutions, while the flow sets its amplitude and spatial shape. $Fr^2=\varepsilon$
-identically, and $Ma$ enters only at $O(Ma^2)$ in the retained low-Mach equations. Over 627 paired
-solutions spanning $\varepsilon=0.02$--$1.9$, the relative correction is
-$R=A\varepsilon(1+\kappa\varepsilon)$ with $\kappa_{\mathrm{fit}}=0.42$--$0.83$ from a direct quadratic fit and an
-intercept consistent with zero. A free power law over the same window returns the window average,
-$m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$; fitting each configuration separately over
-$\varepsilon\in[0.4,1.9]$ gives a local slope of $1.17$--$1.45$. Pressure gives
-$m=1.009\pm0.015$ in the fixed post-processing gauge used here, and $\theta$ has no identifiable
-exponent. One Newton step of the low-Mach residual at the Boussinesq state reproduces the
-correction to $4.7/3.8/7.2\%$ (median, $u_x/u_y/p$) at $\varepsilon=0.02$--$0.10$, and the
-extrapolated shape predicts held-out measurements at 0.1 and 0.2 to $2.4/1.8/3.8\%$. The correction
-factorises as $D=\varepsilon P(X)$, so a surrogate learns only the spatial shape $P$ and multiplies
-by $\varepsilon$ outside the network. On a single-$\varepsilon$ public data set this lowers the
-channel-averaged transfer error from 0.131 to 0.086 ($1.5\times$) within the same
-boundary-condition family; across families it does not beat doing nothing. At $\varepsilon=1.2$ the integral
-Nusselt number changes by $0.67\%$ between the two members; the mean per-sample ratio is $0.54\%$
-and the wall-flux $L_1$ change is $4.25\%$; a prior trained on
-the same data lowers the temperature-field error from $7.2\%$ to $0.10\%$ and the local wall-flux
-error from $6.0\%$ to $4.3\%$ at the hot wall, but its integrated wall-$Nu$ error there is $2.6\%$
-against $0.7\%$ for doing nothing: the wall-normal derivative, not the field norm, is the limiting
-quantity. A wall-flux penalty in the same loss removes it, bringing the integrated error to
-$0.11\%$ and the local error to $1.0\%$ at $\varepsilon=1.2$. One inference takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
-20-flow $\times$ 5-contrast scan. A 24-sample 3-D check at $Ra=10^4$ and $3\times10^4$ ($res=16$)
-returns exponents for $u_x$, $u_y$ and $p$ within 0.15 of unity at both Rayleigh numbers.
+Boussinesq-trained surrogates transfer poorly across temperature contrast: they learn one
+correction field and cannot rescale it. For steady two-dimensional buoyancy-driven enclosure
+convection, the relative contrast $\varepsilon=\Delta T/T_0$ sets the leading-order scaling of the
+difference between the Boussinesq and compressible solutions, while the flow sets its amplitude and
+spatial shape. $Fr^2=\varepsilon$ identically, and $Ma$ enters only at $O(Ma^2)$ in the retained low-Mach equations.
+Over 627 paired solutions, $\varepsilon=0.02$--$1.9$, the relative correction is $R=A\varepsilon(1+\kappa\varepsilon)$ with $\kappa_{\mathrm{fit}}=0.42$--$0.83$
+from a quadratic fit with zero intercept. A free power law returns the window average,
+$m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$; pressure gives $1.009\pm0.015$ in the fixed gauge, and $\theta$ has
+no identifiable exponent. The correction factorises to leading order as $D=\varepsilon P(X)+O(\varepsilon^2)$, so a
+surrogate learns only the spatial shape $P$ and multiplies by $\varepsilon$ outside the network. On a
+single-$\varepsilon$ public data set it lowers the channel-averaged extrapolation error from 0.131 to 0.086
+($1.5\times$) within the same boundary-condition family; channel-averaged across families it does not
+beat doing nothing. At $\varepsilon=1.2$ the integral Nusselt number changes by $0.67\%$ and the mean per-sample
+ratio is $0.54\%$; the wall-flux $L_1$ change is $4.25\%$. Training on the same data lowers the
+temperature-field error from $7.2\%$ to $0.10\%$,
+but the integrated wall-$Nu$ error is $2.6\%$ against $0.7\%$ for doing nothing: the wall-normal
+derivative, not the field norm, is the limiting quantity. A wall-flux penalty gives $0.11\%$
+integrated and $1.0\%$ local error. On a GPU one inference takes 6.3\,ms; replacing the compressible
+member saves $2.9\times$ per pair and $13\times$ for a 20-flow $\times$ 5-contrast scan. A 24-sample 3-D check at $Ra=10^4$
+and $3\times10^4$ ($res=16$) returns exponents for $u_x$, $u_y$ and $p$ within 0.15 of unity.
 \end{abstract}
 
 \begin{keyword}
@@ -805,8 +797,8 @@ $0.013$/$0.019$/$0.002$/$0.021$ ($u_x/u_y/\theta/p$), and every 95\% interval ex
 (half-widths $0.001$--$0.020$). The FiLM comparison is weaker: in extrapolation the mean
 differences are $0.006$/$0.010$/$0.002$/$0.012$, but the intervals for $u_x$ ($-0.001$ to $0.013$)
 and $u_y$ ($-0.009$ to $0.028$) include zero; in interpolation the differences are
-$-0.000$/$-0.003$/$-0.001$/$-0.003$ and all intervals include zero. We therefore claim a FiLM
-advantage for the extrapolation mean, not for individual velocity channels and not in
+$-0.000$/$-0.003$/$-0.001$/$-0.003$ and all intervals include zero. We therefore claim an
+advantage over FiLM for the extrapolation mean, not for individual velocity channels and not in
 interpolation.
 
 Model A's error on the extrapolation split (0.2289) is 9\% above the $\varepsilon$-mean reference
@@ -1111,8 +1103,7 @@ local change, pointwise & $-0.65\%$ (median) & p10--p90 $-9.1$ to $+9.8\%$\\
 samples). The surrogate is trained on the 4000 public training pairs and evaluated without
 retraining. $T$ error is relative $L_2$; $Nu$ error is the mean absolute error of the integrated
 wall Nusselt number divided by the mean true $Nu$; local flux is the mean absolute error of the
-wall-normal flux profile divided by its mean absolute value. For doing nothing the absolute error
-equals the mean signed change, because all 200 per-sample changes are positive. The last row adds
+wall-normal flux profile divided by its mean absolute value. For doing nothing the $Nu$ error is $0.67\%$ of the ensemble-mean $Nu$; the mean of the per-sample ratios is $+0.54\%$ (Table~\ref{tab:nu}), and all 200 per-sample changes are positive. The last row adds
 a relative $L_1$ penalty on the wall-normal gradient to the training loss (weight $1$, two seeds).}
 \label{tab:surrogate_nu}
 \begin{tabular}{@{}lcccc@{}}
@@ -1222,7 +1213,7 @@ boundary-condition family) and 5000 classical-cavity pairs (a different one). Bo
 $\varepsilon\equiv1.2$. We train the same U-Net on each---once with the plain output (target $D$),
 once with the prior (target $D/\varepsilon$, and $\varepsilon$ multiplied back outside the
 network)---and apply the result to our own 600 samples with no retraining, at
-$\varepsilon$ from 0.2 to 1.9, values the training data never contained.
+$\varepsilon$ from 0.2 to 1.9, on both sides of the single training contrast.
 
 \begin{table}[htbp]
 \centering
@@ -1268,8 +1259,7 @@ Three readings, in order of how much they matter for practice.
 \begin{itemize}
 \item Within the family, the prior is what makes a single-$\varepsilon$ data set reusable.
 The identical architecture, budget and data give 0.1443 ($u_x$) with the plain output and 0.0932
-with the prior---a factor 1.55---and $3.2\times$ better than doing nothing, on $\varepsilon$ the
-data never contained. It is even better than the same prior trained on our own 382 samples
+with the prior---a factor 1.55---and $3.2\times$ better than doing nothing, on $\varepsilon$ values away from the training contrast. It is even better than the same prior trained on our own 382 samples
 (0.1250), because it sees ten times more configurations. This is the concrete content of ``the
 $\varepsilon$ dependence need not be in the data''.
 \item The prior also fixes the failure mode of the plain model. The plain model's error at
@@ -1642,7 +1632,7 @@ $m=1.023\pm0.018$ and $0.995\pm0.019$ ($u_x,u_y$), an
 intercept indistinguishable from zero, the exponent quoted over the full two-decade window (from
 $\varepsilon=0.8$ upwards the same points give $1.23$--$1.32$, the $\varepsilon^2$ curvature of
 Sec.~\ref{sec:law}), and a 134-family boundary-condition description (133 dummies) that adds only
-2--3 pp of adjusted $R^2$ to the velocity and pressure channels. The fit leaves 16/18/78/13\% of
+2.3--3.3 pp of adjusted $R^2$ to the velocity and pressure channels. The fit leaves 16/18/78/13\% of
 the variance unexplained in $u_x/u_y/\theta/p$; $\theta$ collapses on $\chi$ rather than on
 $\varepsilon$ alone. The pressure channel gives $m=1.009\pm0.015$ in the fixed gauge of
 Sec.~\ref{sec:pressure}; this is a numerical observation, not a gauge-invariant exponent.

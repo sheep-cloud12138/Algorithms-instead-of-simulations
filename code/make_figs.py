@@ -19,7 +19,7 @@ if d:
         Bl = [d['eps_blind']['%.1f' % e]['B'][k] for e in EPS_LAB]
         a.plot(EPS_LAB, dn, 'o-', color='0.55', lw=1.8, ms=6, label=r'do nothing ($\hat Y=X$)')
         a.plot(EPS_LAB, A, 's-', color='#c0392b', lw=1.8, ms=6, label=r'train at $\varepsilon=1.2$ only')
-        a.plot(EPS_LAB, Bl, '^-', color='#2c6fbb', lw=1.8, ms=6, label='best $\\varepsilon$-blind')
+        a.plot(EPS_LAB, Bl, '^-', color='#2c6fbb', lw=1.8, ms=6, label='unweighted $\\varepsilon$-mean')
         a.set_xlabel(r'$\varepsilon=\Delta T/T_0$', fontsize=11)
         a.set_ylabel(r'rel. $L_2$ error   ' + CH[k], fontsize=11)
         a.grid(alpha=.25); a.set_ylim(0, None)

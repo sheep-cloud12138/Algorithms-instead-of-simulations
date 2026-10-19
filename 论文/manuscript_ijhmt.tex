@@ -34,7 +34,7 @@ temperature contrast}
 \begin{abstract}
 Boussinesq-trained surrogates for thermal convection fail across temperature contrast because
 they learn one correction field and have no signal with which to rescale it. For steady
-two-dimensional buoyancy-driven enclosure convection we show that the compressible correction
+two-dimensional buoyancy-driven enclosure convection the compressible correction
 factorises to leading order as $D=\varepsilon P(X)+O(\varepsilon^2)$, where $\varepsilon=\Delta T/T_0$ and the network learns
 only the spatial shape $P$. Over 627 paired solutions spanning $\varepsilon=0.02$--$1.9$, the relative
 correction is $R=A\varepsilon(1+\kappa\varepsilon)$ with $\kappa=0.42$--$0.83$; a free power law returns
@@ -42,17 +42,17 @@ $m=1.023\pm0.018$ and $0.995\pm0.019$ for $(u_x,u_y)$, pressure gives $1.009\pm0
 fixed gauge, and $\theta$ has no identifiable exponent. $Fr^2=\varepsilon$ identically, and $Ma$ enters
 only at $O(Ma^2)$ in the retained low-Mach equations. The design rule makes a
 single-$\varepsilon$ public data set reusable: the channel-averaged extrapolation error falls from 0.131
-to 0.086 ($1.5\times$) within the boundary-condition family, though channel-averaged across families
-it does not beat doing nothing. For heat transfer the field norm is misleading: at
+to 0.086 ($1.5\times$) within the boundary-condition family, though not across families. For heat transfer the field norm misleads: at
 $\varepsilon=1.2$ the integral Nusselt number changes by $0.67\%$ while the local wall flux changes by
-$4.25\%$, and a prior trained on the public single-$\varepsilon$ data set leaves a $2.56\%$ integrated wall-$Nu$ error on the held-out classical cavity,
-worse than the $0.67\%$ of doing nothing. A wall-flux penalty removes this ($0.11\%$ at
-$\varepsilon=1.2$) and transfers to unseen contrasts, giving $0.17/0.20/1.21\%$ at
-$\varepsilon=0.4/0.8/1.6$ against $0.45/1.08/4.08\%$ for doing nothing; at $\varepsilon=1.9$ the gain is not
-resolved. On a GPU one inference takes 6.3\,ms; replacing the compressible member saves
-$2.9\times$ per pair and $13\times$ for a 20-flow $\times$ 5-contrast scan. A 24-sample 3-D check at
-$Ra=10^4$ and $3\times10^4$ ($res=16$) returns exponents for $u_x$, $u_y$ and $p$ within
-0.15 of unity.
+$4.25\%$, and a public-data prior leaves a $2.56\%$ integrated wall-$Nu$ error, worse than the
+$0.67\%$ of doing nothing. A wall-flux penalty removes this bias ($0.11\%$ at $\varepsilon=1.2$;
+$0.3$--$0.9\%$ across stencil orders), but the estimator carries $0.35\%$ uncertainty, so
+the audit resolves the ordering, not the absolute value. The penalty transfers to
+$\varepsilon=0.4/0.8/1.6$, giving $0.17/0.20/1.21\%$ against $0.45/1.08/4.08\%$ for doing nothing;
+at $\varepsilon=1.9$ the gain is not resolved. Inference takes 6.3\,ms; replacing the
+compressible member saves $2.9\times$ per pair and $13\times$ for a 20-flow $\times$ 5-contrast scan.
+A 24-sample 3-D check at $Ra=10^4$ and $3\times10^4$ ($res=16$) returns exponents for $u_x$, $u_y$
+and $p$ within 0.15 of unity.
 \end{abstract}
 
 \begin{keyword}
@@ -1292,7 +1292,9 @@ The heat-transfer audit adds a constraint that the field norm hides. At $\vareps
 public prior lowers the temperature error from $7.2\%$ to $0.10\%$ and the local wall-flux error
 from $6.0\%$ to $4.3\%$, yet its integrated wall-$Nu$ error is $2.6\%$ against $0.7\%$ for doing
 nothing. A relative $L_1$ penalty on the wall-normal gradient brings the integrated error to
-$0.11\%$ (same six-point estimator; $0.3$--$0.9\%$ across stencil orders) and the local error to $1.0\%$, so the failure belongs to the training target rather than
+$0.11\%$ (same six-point estimator; $0.3$--$0.9\%$ across stencil orders) and the local error to $1.0\%$. The estimator itself carries $0.35\%$ discretisation uncertainty,
+so the audit establishes the ordering---a field-only target leaves a $2.6\%$ bias that the penalty
+removes---not the absolute value; the failure belongs to the training target rather than
 to the factorisation. For the isothermal-sidewall family the integral correction is
 configuration-dependent and changes sign between $\varepsilon=1.2$ ($+0.51\%$) and $1.9$ ($-1.89\%$).
 

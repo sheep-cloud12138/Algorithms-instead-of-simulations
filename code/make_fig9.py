@@ -47,7 +47,7 @@ handles = [Line2D([], [], color=COL[c], marker='o', lw=1.4, label='%s, $Ra=10^4$
 handles += [Line2D([], [], color='0.35', marker='o', mfc='white', ls='--', lw=1.4, label='open symbols: $Ra=3\\times10^4$'),
             Line2D([], [], color='0.45', ls=':', lw=1.1, label='slope 1')]
 fig.legend(handles=handles, loc='lower center', ncol=3, fontsize=10, framealpha=.95,
-           bbox_to_anchor=(0.5, 1.005))
+           bbox_to_anchor=(0.5, 1.005), handlelength=2.6)
 fig.tight_layout(pad=0.6)
 
 

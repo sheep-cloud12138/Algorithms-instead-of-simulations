@@ -59,7 +59,7 @@ against $0.7\%$ for doing nothing: the wall-normal derivative, not the field nor
 quantity. A wall-flux penalty in the same loss removes it, bringing the integrated error to
 $0.11\%$ and the local error to $1.0\%$ at $\varepsilon=1.2$. One inference takes 6.3\,ms; replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a
 20-flow $\times$ 5-contrast scan. A 24-sample 3-D check at $Ra=10^4$ and $3\times10^4$ ($res=16$)
-returns one exponent per Rayleigh number, all within 0.15 of unity.
+returns exponents for $u_x$, $u_y$ and $p$ within 0.15 of unity at both Rayleigh numbers.
 \end{abstract}
 
 \begin{keyword}
@@ -1472,23 +1472,32 @@ is not deramped. The $p$ exponents below are therefore fixed-gauge numbers, as i
 Table~\ref{tab:law}.
 
 Table~\ref{tab:3d} and Fig.~\ref{fig:3d} give the result. The fit is the one the two-dimensional
-law takes, $R_f=A_f\varepsilon^m$: a separate prefactor for each flow and one exponent per Rayleigh
-number. At $Ra=10^4$ the exponent is $1.091\pm0.013$ ($u_x$), $1.052\pm0.011$ ($u_y$),
-$1.130\pm0.019$ ($\theta$) and $1.141\pm0.020$ ($p$), with $R^2\ge0.997$. At $Ra=3\times10^4$
-the same fit returns $1.026\pm0.066$, $1.041\pm0.063$, $1.041\pm0.081$ and $1.086\pm0.110$, with
-$R^2\ge0.96$. All eight values lie within $0.15$ of unity. The largest difference between the two Rayleigh
-numbers is $0.09$, about one standard error of the three-contrast fit ($0.06$--$0.11$), so that fit
-bounds any Rayleigh dependence of the exponent to about $0.1$ over a factor of three in $Ra$
-without resolving it.
+law takes, $R_{f,c}=A_{f,c}\varepsilon^{m_c}$: a separate prefactor for each flow and channel, and
+one exponent per channel and Rayleigh number. At $Ra=10^4$ the exponents for $u_x$, $u_y$ and $p$
+are $1.091\pm0.013$, $1.052\pm0.011$ and $1.141\pm0.020$ ($R^2\ge0.997$); at $Ra=3\times10^4$ they
+are $1.026\pm0.066$, $1.041\pm0.063$ and $1.086\pm0.110$ ($R^2\ge0.96$). All six lie within $0.15$
+of unity. The largest difference between the two Rayleigh numbers is $0.065$ ($u_x$), against a
+combined standard error of $0.067$; the comparison is inconclusive and does not exclude a Rayleigh
+dependence of about $0.2$ over a factor of three. The $\theta$ rows, $1.130\pm0.019$ and
+$1.041\pm0.081$ (difference $0.089\pm0.083$), are reported separately; $\theta$ does not enter the
+common-exponent claim here any more than in Sec.~\ref{sec:law}.
 
-The two sets also cover different windows, $0.2$--$1.6$ and $0.4$--$1.9$. Restricting the
-$Ra=10^4$ data to its three upper contrasts, $\varepsilon=0.4$--$1.6$, gives $1.126$, $1.074$,
-$1.179$ and $1.194$ for $u_x$, $u_y$, $\theta$ and $p$, so $0.03$--$0.14$ separates the two
-Rayleigh numbers on the same lower window, against standard errors of $0.02$--$0.11$. The prefactor is not
-universal: across the three flows it varies by $3.9\times$ ($u_x$), $2.1\times$ ($u_y$),
-$10\times$ ($\theta$) and $2.0\times$ ($p$) at $Ra=10^4$, and by $3.7\times$, $2.7\times$,
-$13\times$ and $2.4\times$ at $Ra=3\times10^4$. What transfers to three dimensions is the
-exponent, which is what the factorisation predicts; the amplitude remains a functional of the flow.
+The two sets also cover different windows, $0.2$--$1.6$ and $0.4$--$1.9$. Refitting the
+$Ra=10^4$ data on the three contrasts $\varepsilon=0.4$, $1.2$ and $1.6$ (nine samples) gives
+$1.126$, $1.074$ and $1.194$ for $u_x$, $u_y$ and $p$ ($\theta$: $1.179$), with standard errors of
+$0.02$--$0.03$; the three velocity and pressure values are then $0.03$--$0.11$ above the
+$Ra=3\times10^4$ values on the same lower window (the windows differ only at the top end, $1.6$
+against $1.9$). These are window-local exponents over $\varepsilon\le1.6$, so the two-dimensional
+comparison must use the same window and a comparable Rayleigh number. Fitting the 2-D samples in the $Ra$ bins
+$5\times10^3$--$2\times10^4$ and $2\times10^4$--$6\times10^4$ over $\varepsilon=0.4$--$1.9$ gives $1.113\pm0.091$,
+$1.135\pm0.076$, $1.164\pm0.209$ and $1.200\pm0.068$ at $Ra\approx10^4$ (77 samples) and
+$1.185\pm0.096$, $1.178\pm0.086$, $1.222\pm0.208$ and $1.087\pm0.075$ at $Ra\approx3\times10^4$
+(79 samples) for $u_x/u_y/\theta/p$. The 3-D values agree with these within $1.4$ combined standard errors. The two-decade fits of
+Table~\ref{tab:law} average over the curvature and are not the right comparison. The prefactor is
+not universal either: across the three flows it varies by $3.9\times$ ($u_x$), $2.1\times$ ($u_y$),
+$10.4\times$ ($\theta$) and $2.0\times$ ($p$) at $Ra=10^4$, and by $3.7\times$, $2.7\times$,
+$13.1\times$ and $2.4\times$ at $Ra=3\times10^4$. The 3-D runs are therefore consistent with the same near-unity, window-local exponent for $u_x$,
+$u_y$ and $p$; $\theta$ is reported separately. The amplitude remains a functional of the flow.
 With one resolution and two Rayleigh numbers, this is a consistency check, not a converged
 three-dimensional validation.
 
@@ -1517,24 +1526,27 @@ exponent transfer, not a three-dimensional sweep.
 \centering
 \small
 \caption{Three-dimensional check: twenty-four strictly paired samples at two Rayleigh numbers
-($Pr=0.71$, $res=16$). The fit is $R_f=A_f\varepsilon^m$, with one prefactor per flow and one
-exponent per Rayleigh number; $\pm$ is the standard error of $m$. Flows are ordered three-cell
-Voronoi, two-cell Voronoi, constant wall. The prefactor is listed per flow to show that it does not
-transfer between flows.}
+($Pr=0.71$, $res=16$). The fit is $R_{f,c}=A_{f,c}\varepsilon^{m_c}$, with one prefactor per flow and channel and one
+exponent per channel and Rayleigh number; each row is a separate fit. Flows are ordered three-cell
+Voronoi, two-cell Voronoi, constant wall, and the prefactor is listed per flow to show that it does not transfer between them.
+The fit is unweighted least squares in log space with three flow intercepts; $n=15$ at $Ra=10^4$
+and $n=9$ at $Ra=3\times10^4$ ($11$ and $5$ residual degrees of freedom); $\pm$ is the standard
+error of $m$ and $R^2$ is computed in log space. $\theta$ is wall-normalised,
+$(T-T_c)/\Delta T$, and is not part of the common-exponent claim.}
 \label{tab:3d}
 \begin{tabular}{@{}llccc@{}}
 \toprule
 channel & $Ra$ & $m$ & $A$ per flow & $R^2$\\
 \midrule
-$u_x$ & $10^4$ & $1.091\pm0.013$ & 0.067/0.186/0.261 & 0.999\\
-$u_y$ & $10^4$ & $1.052\pm0.011$ & 0.123/0.161/0.253 & 0.999\\
-$\theta$ & $10^4$ & $1.130\pm0.019$ & 0.006/0.024/0.067 & 0.999\\
-$p$ & $10^4$ & $1.141\pm0.020$ & 0.097/0.184/0.194 & 0.997\\
+$u_x$ & $10^4$ & $1.091\pm0.013$ & 0.0670/0.1862/0.2609 & 0.999\\
+$u_y$ & $10^4$ & $1.052\pm0.011$ & 0.1230/0.1614/0.2528 & 0.999\\
+$\theta$ & $10^4$ & $1.130\pm0.019$ & 0.0064/0.0243/0.0666 & 0.999\\
+$p$ & $10^4$ & $1.141\pm0.020$ & 0.0972/0.1844/0.1939 & 0.997\\
 \midrule
-$u_x$ & $3\times10^4$ & $1.026\pm0.066$ & 0.077/0.098/0.281 & 0.988\\
-$u_y$ & $3\times10^4$ & $1.041\pm0.063$ & 0.092/0.092/0.253 & 0.988\\
-$\theta$ & $3\times10^4$ & $1.041\pm0.081$ & 0.009/0.006/0.084 & 0.992\\
-$p$ & $3\times10^4$ & $1.086\pm0.110$ & 0.080/0.145/0.194 & 0.962\\
+$u_x$ & $3\times10^4$ & $1.026\pm0.066$ & 0.0767/0.0975/0.2809 & 0.988\\
+$u_y$ & $3\times10^4$ & $1.041\pm0.063$ & 0.0922/0.0921/0.2529 & 0.988\\
+$\theta$ & $3\times10^4$ & $1.041\pm0.081$ & 0.0088/0.0064/0.0839 & 0.992\\
+$p$ & $3\times10^4$ & $1.086\pm0.110$ & 0.0795/0.1451/0.1942 & 0.962\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1567,8 +1579,9 @@ $p$ & 0.1617$\pm$0.117 & 0.1634$\pm$0.065 & 0.0980$\pm$0.077 & 1.67\\
 \caption{The three-dimensional check in log--log coordinates: twenty-four paired samples, three wall
 types at two Rayleigh numbers. The vertical axis is $R=\|Y-X\|/\|Y\|$ in the channel labelled in
 each panel. Filled symbols and solid lines: $Ra=10^4$ over five contrasts; open symbols and dashed
-lines: $Ra=3\times10^4$ over three contrasts. The dotted line is a slope-one reference anchored at
-the lowest $\varepsilon$ of the three-cell $Ra=10^4$ curve.}
+lines: $Ra=3\times10^4$ over three contrasts. Lines connect the samples, not the fitted laws, and
+open symbols carry the colour of their wall type. The dotted line is a slope-one reference anchored
+at the lowest $\varepsilon$ of the three-cell $Ra=10^4$ curve.}
 \label{fig:3d}
 \end{figure}
 
@@ -1579,8 +1592,8 @@ the lowest $\varepsilon$ of the three-cell $Ra=10^4$ curve.}
 \item Two dimensions for the main sweep. The law is calibrated on 2-D solutions; a $2\times$ mesh
 refinement moves the exponent by less than $0.005$ at $Ra=10^4$ and by at most $0.015$ at
 $Ra=10^6$, where the largest pointwise change in $R$ is $3.3\%$ (Sec.~\ref{sec:law}). The 24-sample
-3-D check of Sec.~\ref{sec:3d} returns one exponent per Rayleigh number, all within $0.15$ of
-unity, at $Ra=10^4$ and $3\times10^4$, but it uses a single resolution ($res=16$); the
+3-D check of Sec.~\ref{sec:3d} returns exponents for $u_x$, $u_y$ and $p$ within $0.15$ of unity
+at $Ra=10^4$ and $3\times10^4$, but it uses a single resolution ($res=16$); the
 POD-ROM baseline is a linear model with at most four modes, not a deep operator. Each 3-D pair costs
 12--32\,min of outer wall-clock time on this machine. A 3-D sweep at higher $Ra$ or finer resolution
 remains out of reach here.
@@ -1639,7 +1652,8 @@ window and $1.67$ on the 104-configuration subset, and its fitted amplitude is n
 exponent is consistent across geometry ($0.7$ and $1.8$ standard errors) and fluid (1.5\%). Only the
 prefactor $A$ must be calibrated, which is why the surrogate takes $X$ as input rather than a
 table of $A$. A set of twenty-four paired 3-D solutions at two Rayleigh numbers
-reproduces the exponent (one value per $Ra$, all within $0.15$ of unity; Sec.~\ref{sec:3d}).
+is consistent with the same near-unity exponent for $u_x$, $u_y$ and $p$ (all within $0.15$ of
+unity; Sec.~\ref{sec:3d}).
 \item A reason. The $\varepsilon$-expansion of the compressible member reproduces the
 Boussinesq system at $O(1)$ and produces the correction through
 $\nabla\cdot\bm u_1=\nabla\cdot(\theta_0\bm u_0)$ and the density-modulated inertia. The linear

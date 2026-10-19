@@ -45,7 +45,7 @@ single-$\varepsilon$ public data set reusable: the channel-averaged extrapolatio
 to 0.086 ($1.5\times$) within the boundary-condition family, though channel-averaged across families
 it does not beat doing nothing. For heat transfer the field norm is misleading: at
 $\varepsilon=1.2$ the integral Nusselt number changes by $0.67\%$ while the local wall flux changes by
-$4.25\%$, and a prior trained on the same data leaves a $2.56\%$ integrated wall-$Nu$ error,
+$4.25\%$, and a prior trained on the public single-$\varepsilon$ data set leaves a $2.56\%$ integrated wall-$Nu$ error on the held-out classical cavity,
 worse than the $0.67\%$ of doing nothing. A wall-flux penalty removes this ($0.11\%$ at
 $\varepsilon=1.2$) and transfers to unseen contrasts, giving $0.17/0.20/1.21\%$ at
 $\varepsilon=0.4/0.8/1.6$ against $0.45/1.08/4.08\%$ for doing nothing; at $\varepsilon=1.9$ the gain is not
@@ -1147,8 +1147,9 @@ $\hat u$ as a family-level diagnostic, not as a within-family transfer law.
 \label{sec:aspect}
 
 Same generator, same ranges, cavity twice as wide (Fig.~\ref{fig:axes}). The exponent is
-consistent with the unit-square fit in all four channels ($m=1.09/1.16/0.93/1.08$, within
-$0.3$--$1.8$ combined standard errors); the two-parameter fit that adds a Rayleigh term is in Table~S2, while the prefactor moves
+consistent with the unit-square fit in all four channels ($m=1.091\pm0.100$, $1.157\pm0.087$,
+$0.928\pm0.268$ and $1.078\pm0.099$ for $u_x/u_y/\theta/p$, i.e.\ $0.3$--$1.8$ combined standard
+errors from the unit-square values); the two-parameter fit that adds a Rayleigh term is in Table~S2, while the prefactor moves
 ($A=0.175/0.175/0.008/0.222$ against $0.147/0.193/0.010/0.148$) and the Rayleigh trend strengthens
 for $u_x$ and $p$. The prefactor therefore has to be learned, which is why the surrogate takes $X$
 as input rather than a table of $A$. Changing the fluid instead ($Pr$ $0.71\to4.38$) leaves the
@@ -1291,7 +1292,7 @@ The heat-transfer audit adds a constraint that the field norm hides. At $\vareps
 public prior lowers the temperature error from $7.2\%$ to $0.10\%$ and the local wall-flux error
 from $6.0\%$ to $4.3\%$, yet its integrated wall-$Nu$ error is $2.6\%$ against $0.7\%$ for doing
 nothing. A relative $L_1$ penalty on the wall-normal gradient brings the integrated error to
-$0.11\%$ and the local error to $1.0\%$, so the failure belongs to the training target rather than
+$0.11\%$ (same six-point estimator; $0.3$--$0.9\%$ across stencil orders) and the local error to $1.0\%$, so the failure belongs to the training target rather than
 to the factorisation. For the isothermal-sidewall family the integral correction is
 configuration-dependent and changes sign between $\varepsilon=1.2$ ($+0.51\%$) and $1.9$ ($-1.89\%$).
 

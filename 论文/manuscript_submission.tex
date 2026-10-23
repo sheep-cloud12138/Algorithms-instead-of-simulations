@@ -52,8 +52,8 @@ with $\varepsilon=0.02$--$1.9$; the velocity channels follow $R=A\varepsilon^m$ 
 window with $m=1.023\pm0.018$ and $0.995\pm0.019$. A quadratic refinement gives $\kappa=0.70$
 and $0.83$ (point estimates); $A$ is a functional of the flow. A public single-contrast data
 set then works at $\varepsilon=0.2$--$1.9$ within its boundary family: a plain model trained at
-$\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ is within $0.2\%$ of the
-factorized target, so applying $\varepsilon$ outside the learned correction, not the residual
+$\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ agrees with the factorized
+target to $0.2\%$ relative, so applying $\varepsilon$ outside the learned correction, not the residual
 parameterisation, carries the transfer. At $\varepsilon=1.9$ the integral $Nu$ change is
 $-5.1\%$ at $Ra=10^4$ and $-1.5$ to $-1.8\%$ at $Ra=10^5$--$10^6$. Inference takes 6.3\,ms;
 replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a 20-flow
@@ -170,8 +170,9 @@ redistribution of wall flux: at $\varepsilon=1.2$ the integral Nusselt number of
 cavity changes by $0.67\%$ on the hot wall while the local wall flux changes by $4.25\%$ in $L_1$. A surrogate
 can therefore reproduce the temperature field to $0.47\%$ in relative $L_2$ and still miss the
 integral $Nu$ by $4\%$. On the 22 held-out random-wall samples at $\varepsilon=1.1$--$1.3$,
-$66\%$ of the field-only predictions have a field error below $1\%$ and a $Nu$ error above
-$2\%$; on the 200 cavity samples, $42\%$ do. Relative $L_2$ is
+$66\%$ of the field-only predictions on average across five seeds have a field error below $1\%$
+and a $Nu$ error above $2\%$; on the 200 cavity samples, $42\%$ on average across three seeds
+do. Relative $L_2$ is
 not a sufficient selection metric for a heat-transfer surrogate. A wall-flux penalty in the
 training loss reduces the heat-transfer bias at a small cost in field error.
 
@@ -185,8 +186,8 @@ $0.58\%$ on the random-wall replication ($0.01\%$ on the classical cavity), and 
 wall-flux error to $1.2\%$ or below;
 \item a quantitative law for the Boussinesq--compressible gap, $R=A\varepsilon^m$ with
 $m$ indistinguishable from one over the full window and a positive quadratic curvature,
-calibrated over two decades of $\varepsilon$ and tested across geometry, fluid and
-dimensionality, together with a within-family data-reuse rule. The factorized target is one
+calibrated over two decades of $\varepsilon$ and tested across geometry and fluid, with a
+33-pair three-dimensional consistency check, together with a within-family data-reuse rule. The factorized target is one
 implementation; applying the known $\varepsilon$ scaling is what makes the data reusable, so
 the factorisation, not the network, is the reusable object.
 \end{enumerate}
@@ -300,9 +301,9 @@ fitting choice.
 \subsection{The measured law}
 \label{sec:law}
 
-The calibration set contains 600 random-boundary samples with
-$Ra\sim\log U[10^2,10^6]$, $\varepsilon\sim U[0.2,1.9]$ and 134 wall-mode families, plus 27
-low-contrast checks at $\varepsilon=0.02,0.05,0.10$ and $Ra=10^3,10^4,10^5$. The 627 points
+The calibration set contains 600 random-boundary samples spanning 134 wall-mode families, with
+$Ra\sim\log U[10^2,10^6]$ and $\varepsilon\sim U[0.2,1.9]$, plus 27 low-contrast checks at
+$\varepsilon=0.02,0.05,0.10$ and $Ra=10^3,10^4,10^5$. The $600+27=627$ points
 enter the fit; the low-contrast points anchor the $\varepsilon\to0$ end. The relative
 correction is $R=\|Y-X\|/\|Y\|$.
 
@@ -517,8 +518,9 @@ prior + wall-flux & 0.10\% & \textbf{0.01\%} & \textbf{0.01\%} & \textbf{0.01\%}
 \caption{Per-sample temperature-field error against integral-$Nu$ error for the 200 held-out
 classical-cavity samples at $\varepsilon=1.2$. The shaded region is where a model looks accurate
 in the field but is wrong in heat transfer. The field-only prior sits there; the wall-flux
-penalty moves it out. Points are averages over three seeds; the prior's median $Nu$ error is
-$1.4$--$2.9\%$ across seeds, and $42\%$ of the averaged samples lie in the shaded region.}
+penalty moves it out. Points are averages over three seeds. The prior's median $Nu$ error is
+$1.4$--$2.9\%$ across seeds; the $42\%$ entry is the mean of the per-seed fraction, which spans
+$23$--$82\%$.}
 \label{fig:fieldnu}
 \end{figure}
 
@@ -556,7 +558,9 @@ $u_x/u_y/\theta/p$. Both public sets are at $\varepsilon\equiv1.2$. The ``own da
 epochs, one seed). The ``plain, rescaled'' row applies
 $\hat Y=X+(\varepsilon/\varepsilon_0)N_{\rm plain}(X)$ to the plain model's output; it is the
 fair baseline for the prior. The public 4000 rows use three seeds; the 5000 rows use one, so
-differences below 0.003 there are not resolved.}
+differences below 0.003 there are not resolved. The $0.2\%$ quoted in the text is the
+difference between the ``plain, rescaled'' and ``prior'' rows (0.0912 vs 0.0914), not their
+absolute error.}
 \label{tab:transfer}
 \small
 \setlength{\tabcolsep}{4pt}
@@ -587,7 +591,8 @@ public 5000, classical cavity & prior & extrap. & 0.4078 & 0.4898 & 0.0715 & 0.3
 \includegraphics[width=0.95\textwidth]{fig6_transfer.png}
 \caption{Reusing a single-$\varepsilon$ data set. Within the boundary-condition family the
 prior transfers and beats the unscaled plain model; a plain model with the same scaling
-applied outside performs within 0.2\% (Table~\ref{tab:transfer}). Across families the prior
+applied outside agrees with the factorized target to $0.2\%$ relative (0.0912 vs 0.0914;
+Table~\ref{tab:transfer}). Across families the prior
 fails and can be worse than returning $X$. The failure is the flow dependence of $A$, not the
 $\varepsilon$ scaling. Public-data models are applied with the source per-channel
 normalisation.}
@@ -690,8 +695,9 @@ Table~\ref{tab:cost} gives the wall-clock cost. A paired solve splits into a Bou
 Per pair the cost falls from 33.9\,s to 11.7\,s, a factor 2.9. For a single flow swept over
 100 contrasts, one Boussinesq solve plus 100 inferences costs 16.6\,s against $3.77\times10^3$
 for 100 compressible solves, a factor $2.3\times10^2$. For the 20-flow $\times$ 5-contrast
-scan, the same-reuse comparison gives $4.07\times10^3$\,s against 321\,s, a factor 13. Inference takes 6.3\,ms on a GPU and
-14.0\,ms on one CPU thread.
+scan, the same-reuse comparison gives $4.07\times10^3$\,s against 321\,s, a factor 13. That
+scan's Boussinesq median is 16.0\,s, so $20\times16.0$\,s $+100\times14$\,ms reproduces the
+$321$\,s total. Inference takes 6.3\,ms on a GPU and 14.0\,ms on one CPU thread.
 
 \begin{table}[htbp]
 \centering
@@ -755,8 +761,9 @@ The result is a model-selection rule plus a scaling law, not a universal surroga
 selection rule is the one that matters for heat transfer: relative $L_2$ field error can rank
 a model above doing nothing on integral $Nu$. The scaling law explains why the two can
 disagree: the correction is largely a wall-flux redistribution that almost cancels in the
-integral. The law itself is stable across geometry, fluid and dimensionality; the prefactor is
-a functional of the flow. Across the three 3-D wall types it varies by factors of 2--13, and
+integral. The law itself is stable across geometry and fluid, and a 33-pair three-dimensional
+check is consistent with it; the prefactor is a functional of the flow. Across the three 3-D
+wall types it varies by factors of 2--13, and
 changing the fluid from $Pr=0.71$ to $4.38$ moves it by 3.3\% for the velocity and temperature
 channels and 6.1\% for pressure. A surrogate that takes $X$ as input can learn the prefactor; a
 lookup table of $A$ cannot.
@@ -805,8 +812,8 @@ range fixed.
 The cost of the single paired data set is paid once. The model then replaces the compressible
 member at every other contrast. If the target family is outside the training family, the
 prefactor must be recalibrated; the $\varepsilon$ scaling itself does not need to be relearned.
-The two implementations above agree within 0.2\% on the extrapolation split
-(Table~\ref{tab:transfer}). The reusable element is the external $\varepsilon$ factorisation,
+The two implementations above agree to $0.2\%$ relative on the extrapolation split, 0.0912
+against 0.0914 (Table~\ref{tab:transfer}). The reusable element is the external $\varepsilon$ factorisation,
 not the residual parameterisation or a network-free scaling law.
 
 \subsection{Scope}
@@ -844,8 +851,8 @@ and boundary conditions, and weakly with the fluid ($3.3\%$ for velocity and tem
 $6.1\%$ for pressure). A 33-sample three-dimensional check is consistent with the same exponent.
 
 The reusable element is the external $\varepsilon$ factorisation. A plain model trained at
-$\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ performs within $0.2\%$ of the
-factorized target on the extrapolation split; the residual parameterisation is a convenient
+$\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ agrees with the factorized
+target to $0.2\%$ relative on the extrapolation split (0.0912 vs 0.0914); the residual parameterisation is a convenient
 implementation, not the source of the transfer. The law makes a public single-contrast
 data set usable within its boundary-condition family: the channel-averaged extrapolation error
 falls from 0.131 to 0.085, $3.1\times$ lower than returning the Boussinesq solution. The gain

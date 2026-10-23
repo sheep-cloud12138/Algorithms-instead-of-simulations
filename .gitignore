@@ -36,3 +36,7 @@ data_public/
 论文/*.npz
 论文/direct_low/
 review_tmp/
+
+# ---- 文献副本与临时导出（不进仓库） ----
+后续方案/*.pdf
+后续方案/*.txt

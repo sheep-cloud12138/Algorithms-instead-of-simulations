@@ -682,12 +682,39 @@ not resolved.
 The Rayleigh dependence is equally important. On the five isothermal-sidewall
 configurations, the integral change at $\varepsilon=1.2$ spans $+0.01$ to $+0.87\%$. At
 $\varepsilon=1.9$ the same five configurations give $-0.01$, $-0.98$, $-5.14$, $-1.81$ and
-$-1.50\%$ for $Ra=10^2$, $10^3$, $10^4$, $10^5$ and $10^6$: the change peaks at $Ra=10^4$ and
-is $-1.5$ to $-1.8\%$ at higher $Ra$. A model calibrated on $Nu$ alone does not transfer across
-$Ra$; the local field carries the correction. At $Ra=10^6$ the $256^2$ Boussinesq solution
-gives $Nu=8.793$ on the hot wall, $0.37\%$ below the benchmark $8.825$ of Le Qu\'er\'e
-\citep{lequere1991}; the $64^2$ and $128^2$ values are $8.563$ and $8.759$, so the grid
-sequence approaches the benchmark.
+$-1.50\%$ for $Ra=10^2$, $10^3$, $10^4$, $10^5$ and $10^6$ (64² values): the change peaks at
+$Ra=10^4$ and is $-1.5$ to $-1.8\%$ at higher $Ra$. A model calibrated on $Nu$ alone does not
+transfer across $Ra$; the local field carries the correction. At $Ra=10^6$ the $256^2$
+Boussinesq solution gives $Nu=8.793$ on the hot wall, $0.36\%$ below the benchmark $8.825$ of
+Le Qu\'er\'e \citep{lequere1991}; the $64^2$ and $128^2$ values are $8.563$ and $8.759$.
+
+Grid refinement changes the size of the compressible correction (Table~\ref{tab:grid}). For the
+$c16$ configuration at $Ra=10^6$, the hot-wall $\Delta Nu$ at $\varepsilon=1.2$ is $+0.82\%$ at
+$64^2$, $+0.56\%$ at $128^2$ and $+0.44\%$ at $256^2$, with a Richardson limit of $+0.40\%$. At
+$\varepsilon=1.9$ it is $-1.50\%$, $-1.88\%$ and $-2.10\%$ at $192^2$. The $64^2$ target
+therefore overstates the $\varepsilon=1.2$ change by about 0.4 percentage points and understates
+the $\varepsilon=1.9$ change by about 0.6 points. The scaling exponent is unaffected: the
+$64^2$/$128^2$ ratio of $R$ stays within 1\% up to $\varepsilon=1.2$ and within 3.4\% at
+$\varepsilon=1.9$ across $Ra=10^4$--$10^6$.
+
+\begin{table}[htbp]
+\centering
+\caption{Grid convergence of the hot-wall
+$\Delta Nu=(Nu_{\rm comp}-Nu_{\rm B})/Nu_{\rm B}$ for the $c16$ isothermal-sidewall
+configuration at $Ra=10^6$. The $\varepsilon=1.9$ sequence stops at $192^2$: the $256^2$ pair
+did not converge. The $64^2$ column is the target against which all surrogate errors in this
+paper are measured.}
+\label{tab:grid}
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+$\varepsilon$ & $64^2$ & $128^2$ & $192^2$ / $256^2$\\
+\midrule
+1.2 & $+0.82\%$ & $+0.56\%$ & $+0.44\%$ ($256^2$)\\
+1.9 & $-1.50\%$ & $-1.88\%$ & $-2.10\%$ ($192^2$)\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Cost}
 \label{sec:cost}
@@ -831,13 +858,13 @@ $Ma\lesssim2\times10^{-3}$. The three-dimensional check uses 33 pairs at one res
 ($res=16$) and three Rayleigh numbers; it supports the exponent, not a three-dimensional design
 study. The pressure channel is quoted in a fixed gauge. The temperature channel has a
 flow-dependent amplitude and is not part of the common-exponent claim. All surrogate field and
-$Nu$ errors are relative to the $64^2$ compressible target $Y$. Grid refinement moves the
-Boussinesq hot-wall $Nu$ from $8.563$ ($64^2$) to $8.759$ ($128^2$) and $8.793$ ($256^2$), a
-$2.6\%$ change from $64^2$ to $256^2$; the $256^2$ value is 0.36 percentage points below the
-benchmark $8.825$. No comparable compressible grid study exists, so the $0.01\%$ value is an
-error against the $64^2$ target, not an absolute physical accuracy. It also uses the six-point
-stencil of the training loss; the four- and eight-point evaluations are reported above. These
-limits define the next experiments.
+$Nu$ errors are relative to the $64^2$ compressible target $Y$. That target is not
+grid-converged: at $Ra=10^6$ the hot-wall $\Delta Nu$ changes from $0.82\%$ ($64^2$) to $0.44\%$
+($256^2$) at $\varepsilon=1.2$, and from $-1.50\%$ to $-2.10\%$ at $\varepsilon=1.9$
+($192^2$; Table~\ref{tab:grid}). The $0.01\%$ value is therefore an error against the $64^2$
+target, not an absolute physical accuracy. It also uses the six-point stencil of the training
+loss; the four- and eight-point evaluations are reported above. These limits define the next
+experiments.
 
 \section{Conclusion}
 

@@ -26,7 +26,7 @@
 \begin{frontmatter}
 
 \title{Field accuracy is not heat accuracy: wall-flux-constrained surrogates
-for non-Boussinesq convection}
+for steady two-dimensional non-Boussinesq convection}
 
 \author[a]{}
 \address[a]{}
@@ -46,7 +46,8 @@ wall-flux penalty reduces these $Nu$ errors to $0.01\%$ and $0.58\%$, relative t
 compressible target; four/eight-point stencils give $0.3$--$0.9\%$, overlapping returning $X$
 ($0.4$--$0.9\%$). Six-point local errors are $0.08\%$ and $1.14\%$, and median field error
 moves to $0.10\%$ and $0.49\%$. At $\varepsilon=1.2$ the hot-wall integral $Nu$ changes by
-$0.67\%$ while the $L_1$ local-profile change is $4.25\%$ ($5.6\%$ with Table~2's denominator).
+$0.67\%$ while the $L_1$ local-profile change is $4.25\%$ (Table~2's $5.6\%$ uses a
+different, mean-absolute denominator).
 The correction factorises as $D=\varepsilon P(X)+O(\varepsilon^2)$ across 627 paired solutions
 with $\varepsilon=0.02$--$1.9$; the velocity channels follow $R=A\varepsilon^m$ over the full
 window with $m=1.023\pm0.018$ and $0.995\pm0.019$. A quadratic refinement gives $\kappa=0.70$
@@ -343,7 +344,8 @@ $p$ & 0.148 & $1.009\pm0.015$ & 0.87 & $+0.0016\pm0.0030$\\
 $\varepsilon=\Delta T/T_0$ for $u_x$, $u_y$ and $p$ over two decades. The $\theta$ panel
 scatters because its amplitude depends on the flow; it collapses on the peak Boussinesq speed
 (Supplementary Material). Points: 600 random-boundary samples. Stars: 27 low-contrast checks.
-Lines: power-law fits of Table~\ref{tab:law}.}
+Lines: power-law fits of Table~\ref{tab:law} for $u_x$, $u_y$ and $p$; the $\theta$ line is a
+free fit ($R^2=0.22$) and is not part of the common-exponent claim.}
 \label{fig:law}
 \end{figure}
 
@@ -474,7 +476,7 @@ Its median integral-$Nu$ error is $1.4$--$2.9\%$ across the three seeds,
 against $0.48\%$ for returning $X$, and the fraction of samples with a field
 error below $1\%$ and a $Nu$ error above $2\%$ is $42\%$ on average ($23$--$82\%$ across
 seeds). Within a seed the two errors are anti-correlated
-(Spearman $-0.73$ for the seed shown in Fig.~\ref{fig:fieldnu}): the samples whose field looks
+(Spearman $-0.73$ for one seed; the plotted points are three-seed averages): the samples whose field looks
 best are not the samples whose heat transfer is best. The wall-flux penalty moves the same
 model back into the low-error region under the six-point stencil: median $Nu$ error $0.01\%$,
 local wall-flux error below $0.1\%$, and field error $0.10\%$.
@@ -703,7 +705,11 @@ $321$\,s total. Inference takes 6.3\,ms on a GPU and 14.0\,ms on one CPU thread.
 \centering
 \caption{Wall-clock cost on the $64^2$ mesh. Solver rows use eight CPU threads; the surrogate
 runs on an RTX 4060 Laptop GPU (batch 1) or one CPU thread. The 100-sample scan rows use that
-scan's own timings; medians are not additive. The 20-flow row with reuse includes 20 Boussinesq solves and 100 inferences; its baseline repeats both members at all 100 points.}
+scan's own timings; medians are not additive. In the 20-flow scan the paired median is 40.7\,s
+per point, so the 100-point baseline is $4.07\times10^3$\,s; its Boussinesq median is 16.0\,s,
+consistent with $20\times16.0$\,s $+100\times14$\,ms $=321$\,s. The 20-flow row with reuse
+includes 20 Boussinesq solves and 100 inferences; its baseline repeats both members at all 100
+points.}
 \label{tab:cost}
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lcccc@{}}
@@ -713,6 +719,8 @@ quantity & median & mean & p90 & max\\
 paired solve, 600 samples & 33.9\,s & 38.0\,s & 59.9\,s & 510\,s\\
 Boussinesq member alone & 11.7\,s & 13.1\,s & 21.7\,s & ---\\
 compressible member alone & 22.3\,s & 25.0\,s & 37.3\,s & ---\\
+Boussinesq member, 100-sample scan & 16.0\,s & --- & --- & ---\\
+compressible member, 100-sample scan & 37.5\,s & --- & --- & ---\\
 paired solve, 100-sample $\varepsilon$ scan & 55.8\,s & 67.7\,s & 136\,s & 202\,s\\
 surrogate, GPU, batch 1 & 6.3\,ms & --- & --- & ---\\
 surrogate, GPU, batch 256 & 0.49\,ms/sample & --- & --- & ---\\
@@ -823,11 +831,13 @@ $Ma\lesssim2\times10^{-3}$. The three-dimensional check uses 33 pairs at one res
 ($res=16$) and three Rayleigh numbers; it supports the exponent, not a three-dimensional design
 study. The pressure channel is quoted in a fixed gauge. The temperature channel has a
 flow-dependent amplitude and is not part of the common-exponent claim. All surrogate field and
-$Nu$ errors are relative to the $64^2$ compressible target $Y$; the $128^2$/$256^2$ check bounds
-the target's own wall-$Nu$ discretisation uncertainty at 0.38 percentage points, so the
-$0.01\%$ value is not an absolute physical accuracy. It also uses the six-point stencil of the
-training loss; the four- and eight-point evaluations are reported above. These limits define the
-next experiments.
+$Nu$ errors are relative to the $64^2$ compressible target $Y$. Grid refinement moves the
+Boussinesq hot-wall $Nu$ from $8.563$ ($64^2$) to $8.759$ ($128^2$) and $8.793$ ($256^2$), a
+$2.6\%$ change from $64^2$ to $256^2$; the $256^2$ value is 0.36 percentage points below the
+benchmark $8.825$. No comparable compressible grid study exists, so the $0.01\%$ value is an
+error against the $64^2$ target, not an absolute physical accuracy. It also uses the six-point
+stencil of the training loss; the four- and eight-point evaluations are reported above. These
+limits define the next experiments.
 
 \section{Conclusion}
 

@@ -618,24 +618,24 @@ single field. The missing input is the scalar $\varepsilon$, not network capacit
 Across boundary-condition families the picture is different. Trained on the 5000 classical
 cavity pairs, the plain model lands at 0.3250 in $u_x$, worse than the floor of 0.3018, so it
 learns little that transfers. The prior is worse in extrapolation
-(0.4078/0.4898/0.0715/0.3222) and does not beat returning $X$ in interpolation for
-$u_x$, $u_y$ or $\theta$ (0.3071/0.3643/0.0532/0.2487). This is the predicted boundary: the prior carries the
+(0.4078/0.4898/0.0715/0.3222) and does not beat returning $X$ in interpolation on any channel
+($u_x$, $u_y$, $\theta$ or $p$; 0.3071/0.3643/0.0532/0.2487). This is the predicted boundary: the prior carries the
 $\varepsilon$ dependence, not another family's prefactor. The classical cavity's peak
 Boussinesq speed is 41\% above the random-wall median, so $\hat u$ separates the families; it
 does not order the per-sample error within a family (Spearman $-0.20$). It is a family-level
 diagnostic, not a within-family transfer law.
 
 The reverse direction is favorable for the field. The 4000 random-wall set contains the
-one-mode classical cavity as a special case, and both plain and prior models trained on the
-broad family reach 0.09--0.10\% relative $L_2$ on the 200 classical-cavity samples at
-$\varepsilon=1.2$ (Table~\ref{tab:headline}), although their integral $Nu$ errors remain
-1.4--2.9\% across seeds (2.0\% seed mean). The asymmetry is coverage, not a violation of the law: a model trained on a narrow
+one-mode classical cavity as a special case. The broad-family prior reaches $0.09\%$ relative
+$L_2$ on the 200 classical-cavity samples at $\varepsilon=1.2$, and its wall-flux variant
+$0.10\%$ (Table~\ref{tab:headline}); the field-only prior's both-wall $Nu$ error still spans
+$1.4$--$2.9\%$ across seeds (2.0\% seed mean). The asymmetry is coverage, not a violation of the law: a model trained on a narrow
 family cannot cover a broader one, while a model trained on a broad family can cover a
 subfamily. This is the practical rule for choosing the training set.
 
 The accuracy trade-off is visible when $\varepsilon$ is available at training time. On our own
 \label{sec:blind}
-data, P1 reaches $0.0937$ in $u_x$ in extrapolation, while P3 reaches $0.1214$; removing
+data, the $\varepsilon$-input network is more accurate in extrapolation than the prior; removing
 $\varepsilon$ from the input costs accuracy but buys the ability to apply the model at another
 contrast. The gap is the price of reuse. At small sample sizes the structured model is also
 \label{sec:learning}

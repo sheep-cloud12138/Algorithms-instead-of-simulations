@@ -38,7 +38,7 @@ relative contrast $\varepsilon=\Delta T/T_0$, while surrogates are ranked by $L_
 For steady two-dimensional buoyancy-driven enclosure convection, this metric can rank a model
 above doing nothing on wall heat transfer. On 200 held-out classical-cavity samples, a prior
 with $0.09\%$ median field error misses the both-wall integral Nusselt number by $2.0\%$ on
-average ($1.4$--$2.9\%$ across seeds); in $42\%$ of samples on average ($23$--$82\%$ across
+average ($1.4$--$2.9\%$ across seeds); in $43\%$ of samples on average ($23$--$82\%$ across
 seeds) field error is below $1\%$ but $Nu$ error above $2\%$. A 22-sample random-wall
 replication at $\varepsilon\approx1.2$ gives $0.47\%$ median field error and $4.04\%$ median $Nu$
 error, with $66\%$ on average ($50$--$77\%$ across seeds) there. Under the training stencil, a
@@ -172,7 +172,7 @@ cavity changes by $0.67\%$ on the hot wall while the local wall flux changes by 
 can therefore reproduce the temperature field to $0.47\%$ in relative $L_2$ and still miss the
 integral $Nu$ by $4\%$. On the 22 held-out random-wall samples at $\varepsilon=1.1$--$1.3$,
 $66\%$ of the field-only predictions on average across five seeds have a field error below $1\%$
-and a $Nu$ error above $2\%$; on the 200 cavity samples, $42\%$ on average across three seeds
+and a $Nu$ error above $2\%$; on the 200 cavity samples, $43\%$ on average across three seeds
 do. Relative $L_2$ is
 not a sufficient selection metric for a heat-transfer surrogate. A wall-flux penalty in the
 training loss reduces the heat-transfer bias at a small cost in field error.
@@ -304,7 +304,8 @@ fitting choice.
 
 The calibration set contains 600 random-boundary samples spanning 134 wall-mode families, with
 $Ra\sim\log U[10^2,10^6]$ and $\varepsilon\sim U[0.2,1.9]$, plus 27 low-contrast checks at
-$\varepsilon=0.02,0.05,0.10$ and $Ra=10^3,10^4,10^5$. The $600+27=627$ points
+$\varepsilon=0.02,0.05,0.10$ and $Ra=10^3,10^4,10^5$, with three independent seeds per
+condition. The $600+27=627$ points
 enter the fit; the low-contrast points anchor the $\varepsilon\to0$ end. The relative
 correction is $R=\|Y-X\|/\|Y\|$.
 
@@ -474,7 +475,7 @@ $\varepsilon=1.2$ and applied without retraining to the classical-cavity split.
 The field-only prior reduces the median field error from $8.4\%$ (returning $X$) to $0.09\%$.
 Its median integral-$Nu$ error is $1.4$--$2.9\%$ across the three seeds,
 against $0.48\%$ for returning $X$, and the fraction of samples with a field
-error below $1\%$ and a $Nu$ error above $2\%$ is $42\%$ on average ($23$--$82\%$ across
+error below $1\%$ and a $Nu$ error above $2\%$ is $43\%$ on average ($23$--$82\%$ across
 seeds). Within a seed the two errors are anti-correlated
 (Spearman $-0.73$ for one seed; the plotted points are three-seed averages): the samples whose field looks
 best are not the samples whose heat transfer is best. The wall-flux penalty moves the same
@@ -508,7 +509,7 @@ The wall-flux row uses the penalty of Eq.~\eqref{eq:fluxloss}.}
 model & $T$ median & $Nu$ hot & $Nu$ cold & $Nu$ both & local flux & fraction\\
 \midrule
 return $X$ & 8.4\% & 0.67\% & 0.64\% & 0.48\% & 5.6\% & 0\%\\
-field-only prior & 0.09\% & 2.0\% & 2.1\% & 2.0\% & 4.5\% & 42\%\\
+field-only prior & 0.09\% & 2.0\% & 2.1\% & 2.0\% & 4.5\% & 43\%\\
 prior + wall-flux & 0.10\% & \textbf{0.01\%} & \textbf{0.01\%} & \textbf{0.01\%} & \textbf{0.08\%} & 0\%\\
 \bottomrule
 \end{tabular}}
@@ -521,7 +522,7 @@ prior + wall-flux & 0.10\% & \textbf{0.01\%} & \textbf{0.01\%} & \textbf{0.01\%}
 classical-cavity samples at $\varepsilon=1.2$. The shaded region is where a model looks accurate
 in the field but is wrong in heat transfer. The field-only prior sits there; the wall-flux
 penalty moves it out. Points are averages over three seeds. The prior's median $Nu$ error is
-$1.4$--$2.9\%$ across seeds; the $42\%$ entry is the mean of the per-seed fraction, which spans
+$1.4$--$2.9\%$ across seeds; the $43\%$ entry is the mean of the per-seed fraction, which spans
 $23$--$82\%$.}
 \label{fig:fieldnu}
 \end{figure}
@@ -546,7 +547,7 @@ cent. The 1.55-fold gain over the unscaled plain model therefore comes from appl
 not from the network parameterization. The prior's value is that it makes the scaling explicit
 and can be trained without $\varepsilon$ as an input.
 
-Channel-averaged, the error falls from 0.131 to 0.085, a factor 1.5. Relative to returning
+Channel-averaged, the error falls from 0.129 to 0.085, a factor 1.5. Relative to returning
 $X$, the channel average is $3.1\times$ lower ($3.3\times$ in $u_x$). The public prior is
 better than the same prior trained on our own 382 samples (0.1250), because it sees ten times
 more configurations.
@@ -669,8 +670,8 @@ intermediate contrast; at $\varepsilon=1.9$ the improvement is not resolved.}
 \end{figure}
 
 The public prior reduces the median global temperature-field error from 8.4\% to 0.09\%, but
-its hot-wall $Nu$ error is 2.0\% (1.4--2.9\% across seeds), larger than the 0.67\% of returning
-$X$. The wall-normal derivative carries a bias that the field norm does not see. Adding the
+its both-wall integral $Nu$ error is 2.0\% (1.4--2.9\% across seeds), larger than the 0.48\% of
+returning $X$. The wall-normal derivative carries a bias that the field norm does not see. Adding the
 wall-flux penalty brings the six-point integral error to 0.01\% and the local flux error to
 0.08\%, at a cost of 0.01 percentage point in the median field error (0.09\% to 0.10\%).
 With four- and eight-point stencils the same models give 0.3--0.9\%, against 1.8--3.6\% for the
@@ -872,7 +873,7 @@ experiments.
 Relative $L_2$ field error is not a sufficient selection metric for a heat-transfer surrogate.
 On 200 held-out classical-cavity samples, a model with a $0.09\%$ median temperature-field error
 missed the both-wall integral Nusselt number by $2.0\%$ ($1.4$--$2.9\%$ across seeds); in
-$42\%$ of the samples on average ($23$--$82\%$ across seeds) the field error was below $1\%$ and
+$43\%$ of the samples on average ($23$--$82\%$ across seeds) the field error was below $1\%$ and
 the $Nu$ error above $2\%$. On the 22 random-wall samples at $\varepsilon=1.1$--$1.3$, the
 corresponding values are $0.47\%$ and $4.04\%$, with $66\%$ on average across five seeds
 ($50$--$77\%$) in that region. Under the six-point training stencil, a wall-flux penalty reduced
@@ -893,7 +894,7 @@ $\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ agrees with the 
 target to $0.2\%$ relative on the extrapolation split (0.0912 vs 0.0914); the residual parameterisation is a convenient
 implementation, not the source of the transfer. The law makes a public single-contrast
 data set usable within its boundary-condition family: the channel-averaged extrapolation error
-falls from 0.131 to 0.085, $3.1\times$ lower than returning the Boussinesq solution. The gain
+falls from 0.129 to 0.085, $3.1\times$ lower than returning the Boussinesq solution. The gain
 is not a universal accuracy win over an $\varepsilon$-aware model; it is the ability to apply a
 model trained at one contrast at another without new compressible solves.
 

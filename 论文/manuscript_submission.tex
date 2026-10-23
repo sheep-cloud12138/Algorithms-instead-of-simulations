@@ -40,8 +40,8 @@ above doing nothing on wall heat transfer. On 200 held-out classical-cavity samp
 with $0.09\%$ median field error misses the both-wall integral Nusselt number by $2.0\%$ on
 average ($1.4$--$2.9\%$ across seeds); in $42\%$ of samples on average ($23$--$82\%$ across
 seeds) field error is below $1\%$ but $Nu$ error above $2\%$. A 22-sample random-wall
-replication at $\varepsilon\approx1.2$ gives $0.47\%$ field error and $4.04\%$ $Nu$ error, with
-$66\%$ on average ($50$--$77\%$ across seeds) in that region. Under the training stencil, a
+replication at $\varepsilon\approx1.2$ gives $0.47\%$ median field error and $4.04\%$ median $Nu$
+error, with $66\%$ on average ($50$--$77\%$ across seeds) there. Under the training stencil, a
 wall-flux penalty reduces these $Nu$ errors to $0.01\%$ and $0.58\%$, relative to the $64^2$
 compressible target; four/eight-point stencils give $0.3$--$0.9\%$, overlapping returning $X$
 ($0.4$--$0.9\%$). Six-point local errors are $0.08\%$ and $1.14\%$, and median field error
@@ -484,9 +484,9 @@ local wall-flux error below $0.1\%$, and field error $0.10\%$.
 The pattern is not an artefact of crossing boundary-condition families. The full held-out
 random-wall split has 200 samples, of which 22 lie at $\varepsilon=1.1$--$1.3$. On those 22, a
 prior trained on the other 400 random-wall samples has a $0.47\%$ median temperature-field error
-and a $4.04\%$ integral-$Nu$ error. The wall-flux penalty reduces the $Nu$ error to $0.58\%$ and
-the local flux error from $4.94\%$ to $1.14\%$, while the field error moves from $0.47\%$ to
-$0.49\%$. On average across five seeds, $66\%$ of these samples ($50$--$77\%$ across seeds)
+and a $4.04\%$ median integral-$Nu$ error. The wall-flux penalty reduces the median $Nu$ error to
+$0.58\%$ and the median local flux error from $4.94\%$ to $1.14\%$, while the median field error
+moves from $0.47\%$ to $0.49\%$. On average across five seeds, $66\%$ of these samples ($50$--$77\%$ across seeds)
 have the field error below $1\%$ and the $Nu$ error above $2\%$. The field norm is insensitive
 to the wall gradient in both families.
 
@@ -691,7 +691,8 @@ Le Qu\'er\'e \citep{lequere1991}; the $64^2$ and $128^2$ values are $8.563$ and 
 Grid refinement changes the size of the compressible correction (Table~\ref{tab:grid}). For the
 $c16$ configuration at $Ra=10^6$, the hot-wall $\Delta Nu$ at $\varepsilon=1.2$ is $+0.82\%$ at
 $64^2$, $+0.56\%$ at $128^2$ and $+0.44\%$ at $256^2$, with a Richardson limit of $+0.40\%$. At
-$\varepsilon=1.9$ it is $-1.50\%$, $-1.88\%$ and $-2.10\%$ at $192^2$. The $64^2$ target
+$\varepsilon=1.9$ the same sequence gives $-1.50\%$, $-1.88\%$ and $-2.10\%$ at $64^2$, $128^2$
+and $192^2$. The $64^2$ target
 therefore overstates the $\varepsilon=1.2$ change by about 0.4 percentage points and understates
 the $\varepsilon=1.9$ change by about 0.6 points. The scaling exponent is unaffected: the
 $64^2$/$128^2$ ratio of $R$ stays within 1\% up to $\varepsilon=1.2$ and within 3.4\% at
@@ -699,19 +700,19 @@ $\varepsilon=1.9$ across $Ra=10^4$--$10^6$.
 
 \begin{table}[htbp]
 \centering
-\caption{Grid convergence of the hot-wall
+\caption{Grid refinement of the hot-wall
 $\Delta Nu=(Nu_{\rm comp}-Nu_{\rm B})/Nu_{\rm B}$ for the $c16$ isothermal-sidewall
-configuration at $Ra=10^6$. The $\varepsilon=1.9$ sequence stops at $192^2$: the $256^2$ pair
-did not converge. The $64^2$ column is the target against which all surrogate errors in this
-paper are measured.}
+configuration at $Ra=10^6$. The $256^2$ pair at $\varepsilon=1.9$ did not converge, and the
+$192^2$ run was made only at $\varepsilon=1.9$. The $64^2$ column is the target against which
+all surrogate errors in this paper are measured.}
 \label{tab:grid}
 \setlength{\tabcolsep}{6pt}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}lcccc@{}}
 \toprule
-$\varepsilon$ & $64^2$ & $128^2$ & $192^2$ / $256^2$\\
+$\varepsilon$ & $64^2$ & $128^2$ & $192^2$ & $256^2$\\
 \midrule
-1.2 & $+0.82\%$ & $+0.56\%$ & $+0.44\%$ ($256^2$)\\
-1.9 & $-1.50\%$ & $-1.88\%$ & $-2.10\%$ ($192^2$)\\
+1.2 & $+0.82\%$ & $+0.56\%$ & --- & $+0.44\%$\\
+1.9 & $-1.50\%$ & $-1.88\%$ & $-2.10\%$ & ---\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -896,8 +897,9 @@ falls from 0.131 to 0.085, $3.1\times$ lower than returning the Boussinesq solut
 is not a universal accuracy win over an $\varepsilon$-aware model; it is the ability to apply a
 model trained at one contrast at another without new compressible solves.
 
-The combination of the scaling law and the wall-flux loss gives a surrogate that is both
-reusable across temperature contrast and meaningful for wall heat transfer.
+The combination of the scaling law and the wall-flux loss gives a surrogate that is reusable
+across temperature contrast; its heat-transfer accuracy is meaningful at the 0.4--0.6
+percentage-point resolution set by the $64^2$ target, not as an absolute wall-flux benchmark.
 
 \section*{Supplementary material}
 

@@ -30,7 +30,7 @@ def main(root):
     for td in cand:
         ds = os.path.join(td, 'dataset')
         if not os.path.isdir(ds):
-            continue
+            ds = td
         for d in sorted(glob.glob(os.path.join(ds, 'sample_*'))):
             if not os.path.exists(os.path.join(d, 'meta.json')):
                 continue

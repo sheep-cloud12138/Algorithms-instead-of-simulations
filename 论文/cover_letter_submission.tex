@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+\setlength{\parskip}{6pt}
+\begin{document}
+
+\noindent
+To the Editors,\\
+\emph{International Journal of Heat and Mass Transfer}
+
+\vspace{8pt}
+\noindent
+Dear Editors,
+
+\noindent
+Please consider our manuscript, ``Field accuracy is not heat accuracy:
+wall-flux-constrained surrogates for non-Boussinesq convection'', for publication in the
+\emph{International Journal of Heat and Mass Transfer} as a full-length article.
+
+Surrogates for thermal convection are usually trained on paired Boussinesq and compressible
+solutions. Public paired data sets fix the relative temperature contrast, so a network trained
+on them memorises one correction field and cannot rescale it at another contrast. The
+manuscript asks whether the metric used to select these surrogates is the right one. On 200
+held-out random-wall samples, a model with a 0.5\% median temperature-field error misses the
+both-wall integral Nusselt number by 4.0\%; in 66\% of the samples the field error is below 1\%
+and the $Nu$ error above 2\%. The same decoupling holds on the classical-cavity samples
+(0.09\% field error, 1.4--2.9\% $Nu$ error across seeds). A wall-flux penalty in the training
+loss reduces the integral error below 1\% and the local wall-flux error to about 1\% or less, with no
+loss of field accuracy.
+
+The underlying correction factorises as $D=\varepsilon P(X)+O(\varepsilon^2)$ with
+$\varepsilon=\Delta T/T_0$. Across 627 paired solutions, the velocity correction follows
+$R=A\varepsilon(1+\kappa\varepsilon)$ with exponents indistinguishable from one; the prefactor
+is a functional of the flow. Training a network on $P=D/\varepsilon$ and multiplying by
+$\varepsilon$ outside makes a public single-contrast data set reusable within its
+boundary-condition family, reducing the channel-averaged extrapolation error from 0.131 to
+0.085. A plain model trained at the same contrast and rescaled by $\varepsilon/\varepsilon_0$
+performs within a few per cent, so most of the gain comes from the scaling law rather than a new
+network architecture.
+
+The study is within the journal's scope: it quantifies the departure from the
+Oberbeck--Boussinesq approximation, tests it on independently generated public data, and
+provides a surrogate design that preserves wall heat transfer. The main sweep is
+two-dimensional and steady; a 33-sample three-dimensional check supports the exponent, and the
+remaining scope is stated explicitly. The 256$^2$ Boussinesq solution is within 0.37\% of the
+Le Qu\'er\'e benchmark at $Ra=10^6$. The work is original, is not under consideration
+elsewhere, and all authors have approved the submission. The authors declare no competing
+interests. The public data are cited, and our generated data, solver configuration and
+reproduction scripts are available at the repository listed in the manuscript.
+
+\vspace{4pt}
+\noindent
+Yours sincerely,\\
+{[Corresponding author name]}\\
+{[Affiliation]}\\
+{[Email]}
+
+\end{document}

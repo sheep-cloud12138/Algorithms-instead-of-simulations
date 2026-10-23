@@ -34,31 +34,30 @@ for non-Boussinesq convection}
 
 \begin{abstract}
 Paired Boussinesq and compressible simulations are expensive, and public data sets fix the
-relative temperature contrast $\varepsilon=\Delta T/T_0$. Such surrogates are usually
-selected by relative $L_2$ field error. We show that, for steady two-dimensional
-buoyancy-driven enclosure convection, this metric can rank a model above doing nothing on wall
-heat transfer. On 200 held-out classical-cavity samples, a prior with a $0.09\%$ median field
-error misses the both-wall integral Nusselt number by $2.0\%$ ($1.4$--$2.9\%$ across seeds), and
-$42\%$ of the samples have a field error below $1\%$ and a $Nu$ error above $2\%$. A
-22-sample random-wall replication at $\varepsilon\approx1.2$ gives $0.47\%$ field error and
-$4.04\%$ $Nu$ error, with $66\%$ of the samples in the same region. A wall-flux penalty
-reduces the both-wall error to $0.01\%$ on the classical cavity and $0.58\%$ in the replication,
-and the local flux error to $0.08\%$ and $1.14\%$; the median field error moves from $0.09\%$ to
-$0.10\%$ and from $0.47\%$ to $0.49\%$. The correction is largely a
-redistribution of wall flux: at $\varepsilon=1.2$ the hot-wall integral $Nu$ changes by
-$0.67\%$ while the local flux changes by $4.25\%$ in $L_1$. The underlying
-correction factorises as $D=\varepsilon P(X)+O(\varepsilon^2)$ across 627 paired solutions with
-$\varepsilon=0.02$--$1.9$; the velocity channels follow $R=A\varepsilon^m$ over the full window
-with $m=1.023\pm0.018$ and $0.995\pm0.019$. A quadratic refinement gives positive curvature
-$\kappa=0.70$ and $0.83$ (point estimates), and the prefactor $A$ is a functional of the flow.
-The law makes a public single-contrast data set usable at $\varepsilon=0.2$--$1.9$ within its
-boundary-condition family: a plain model trained at $\varepsilon_0=1.2$ and rescaled by
-$\varepsilon/\varepsilon_0$ performs within $0.2\%$ of the factorized target, so applying
-$\varepsilon$ outside the learned correction, rather than the residual parameterisation, carries
-the transfer. At
-$\varepsilon=1.9$ the integral $Nu$ change is $-5.1\%$ at $Ra=10^4$ and about $-2\%$ at
-$Ra=10^5$--$10^6$. Inference takes 6.3\,ms; replacing the compressible member saves
-$2.9\times$ per pair and $13\times$ for a 20-flow $\times$ 5-contrast scan.
+relative contrast $\varepsilon=\Delta T/T_0$, while surrogates are ranked by $L_2$ field error.
+For steady two-dimensional buoyancy-driven enclosure convection, this metric can rank a model
+above doing nothing on wall heat transfer. On 200 held-out classical-cavity samples, a prior
+with $0.09\%$ median field error misses the both-wall integral Nusselt number by $2.0\%$ on
+average ($1.4$--$2.9\%$ across seeds); in $42\%$ of samples on average ($23$--$82\%$ across
+seeds) field error is below $1\%$ but $Nu$ error above $2\%$. A 22-sample random-wall
+replication at $\varepsilon\approx1.2$ gives $0.47\%$ field error and $4.04\%$ $Nu$ error, with
+$66\%$ on average ($50$--$77\%$ across seeds) in that region. Under the training stencil, a
+wall-flux penalty reduces these $Nu$ errors to $0.01\%$ and $0.58\%$, relative to the $64^2$
+compressible target; four/eight-point stencils give $0.3$--$0.9\%$, overlapping returning $X$
+($0.4$--$0.9\%$). Six-point local errors are $0.08\%$ and $1.14\%$, and median field error
+moves to $0.10\%$ and $0.49\%$. At $\varepsilon=1.2$ the hot-wall integral $Nu$ changes by
+$0.67\%$ while the $L_1$ local-profile change is $4.25\%$ ($5.6\%$ with Table~2's denominator).
+The correction factorises as $D=\varepsilon P(X)+O(\varepsilon^2)$ across 627 paired solutions
+with $\varepsilon=0.02$--$1.9$; the velocity channels follow $R=A\varepsilon^m$ over the full
+window with $m=1.023\pm0.018$ and $0.995\pm0.019$. A quadratic refinement gives $\kappa=0.70$
+and $0.83$ (point estimates); $A$ is a functional of the flow. A public single-contrast data
+set then works at $\varepsilon=0.2$--$1.9$ within its boundary family: a plain model trained at
+$\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ is within $0.2\%$ of the
+factorized target, so applying $\varepsilon$ outside the learned correction, not the residual
+parameterisation, carries the transfer. At $\varepsilon=1.9$ the integral $Nu$ change is
+$-5.1\%$ at $Ra=10^4$ and $-1.5$ to $-1.8\%$ at $Ra=10^5$--$10^6$. Inference takes 6.3\,ms;
+replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a 20-flow
+$\times$ 5-contrast scan.
 \end{abstract}
 
 \begin{keyword}
@@ -84,6 +83,7 @@ $m$ & scaling exponent & $\kappa$ & curvature in $R=A\varepsilon(1+\kappa\vareps
 $Ma$ & Mach number & $\rho$ & density\\
 $Nu$ & Nusselt number & $\chi$ & base-flow advection strength\\
 $p$ & pressure & & \\
+$E,\,e$ & total and internal energy & $\bm P_{\rm work}$ & pressure-work tensor\\
 $P,\,Q$ & first- and second-order correction fields & & \\
 $Pr$ & Prandtl number & & \\
 $R$ & relative correction, $\|Y-X\|/\|Y\|$ & & \\
@@ -220,8 +220,11 @@ The low-fidelity member $X$ is the Boussinesq system in $(\bm u,T,p)$ on the sam
 \end{align}
 Both members use Taylor--Hood-type mixed elements, damped Newton iterations and a MUMPS
 factorisation. They start from the same initial field and the same wall-temperature seed, so
-they follow the same branch. The wall data are random Fourier temperatures with per-wall mode
-dials; the classical differentially heated cavity is the one-mode member of the same family.
+they follow the same branch. Left and right walls are Dirichlet; top and bottom walls are
+Dirichlet when their Fourier dial is nonzero and adiabatic otherwise; velocity is no-slip on
+all walls. The local Nusselt profile is $-\partial\theta/\partial n$ from a six-point one-sided
+stencil, and the integral $Nu$ is its wall average. The classical differentially heated cavity
+is the one-mode member of the same family.
 
 The generator draws $Ra$ and $\varepsilon$ independently. At fixed $Ra$, changing
 $\varepsilon$ changes $Fr=\sqrt{\varepsilon}$, the buoyancy scale, while $Re$, $Pr$ and
@@ -468,19 +471,21 @@ $\varepsilon=1.2$ and applied without retraining to the classical-cavity split.
 The field-only prior reduces the median field error from $8.4\%$ (returning $X$) to $0.09\%$.
 Its median integral-$Nu$ error is $1.4$--$2.9\%$ across the three seeds,
 against $0.48\%$ for returning $X$, and the fraction of samples with a field
-error below $1\%$ and a $Nu$ error above $2\%$ ranges from $23\%$ to $82\%$. Within a seed the two errors are anti-correlated
+error below $1\%$ and a $Nu$ error above $2\%$ is $42\%$ on average ($23$--$82\%$ across
+seeds). Within a seed the two errors are anti-correlated
 (Spearman $-0.73$ for the seed shown in Fig.~\ref{fig:fieldnu}): the samples whose field looks
 best are not the samples whose heat transfer is best. The wall-flux penalty moves the same
-model back into the low-error region: median $Nu$ error $0.01\%$, local wall-flux error below
-$0.1\%$, and field error $0.10\%$.
+model back into the low-error region under the six-point stencil: median $Nu$ error $0.01\%$,
+local wall-flux error below $0.1\%$, and field error $0.10\%$.
 
 The pattern is not an artefact of crossing boundary-condition families. The full held-out
 random-wall split has 200 samples, of which 22 lie at $\varepsilon=1.1$--$1.3$. On those 22, a
 prior trained on the other 400 random-wall samples has a $0.47\%$ median temperature-field error
 and a $4.04\%$ integral-$Nu$ error. The wall-flux penalty reduces the $Nu$ error to $0.58\%$ and
 the local flux error from $4.94\%$ to $1.14\%$, while the field error moves from $0.47\%$ to
-$0.49\%$. In $66\%$ of these samples the field error is below $1\%$ and the $Nu$ error above
-$2\%$. The field norm is insensitive to the wall gradient in both families.
+$0.49\%$. On average across five seeds, $66\%$ of these samples ($50$--$77\%$ across seeds)
+have the field error below $1\%$ and the $Nu$ error above $2\%$. The field norm is insensitive
+to the wall gradient in both families.
 
 \begin{table}[htbp]
 \centering
@@ -650,7 +655,7 @@ and $2.1\%$ (cold) values.
 \includegraphics[width=0.95\textwidth]{fig_nu_eps_ra.png}
 \caption{(a) Integral-$Nu$ change between the two members for the five isothermal-wall
 configurations at $Ra=10^2$--$10^6$. The change is not a single function of $\varepsilon$: it
-peaks at $-5.1\%$ at $Ra=10^4$ and is about $-2\%$ at higher $Ra$. (b) Hot-wall $Nu$ error of
+peaks at $-5.1\%$ at $Ra=10^4$ and is $-1.5$ to $-1.8\%$ at higher $Ra$. (b) Hot-wall $Nu$ error of
 the surrogate on the 600 random-wall samples. The wall-flux penalty reduces the error at
 intermediate contrast; at $\varepsilon=1.9$ the improvement is not resolved.}
 \label{fig:nu_eps_ra}
@@ -671,7 +676,7 @@ The Rayleigh dependence is equally important. On the five isothermal-sidewall
 configurations, the integral change at $\varepsilon=1.2$ spans $+0.01$ to $+0.87\%$. At
 $\varepsilon=1.9$ the same five configurations give $-0.01$, $-0.98$, $-5.14$, $-1.81$ and
 $-1.50\%$ for $Ra=10^2$, $10^3$, $10^4$, $10^5$ and $10^6$: the change peaks at $Ra=10^4$ and
-is about $-2\%$ at higher $Ra$. A model calibrated on $Nu$ alone does not transfer across
+is $-1.5$ to $-1.8\%$ at higher $Ra$. A model calibrated on $Nu$ alone does not transfer across
 $Ra$; the local field carries the correction. At $Ra=10^6$ the $256^2$ Boussinesq solution
 gives $Nu=8.793$ on the hot wall, $0.37\%$ below the benchmark $8.825$ of Le Qu\'er\'e
 \citep{lequere1991}; the $64^2$ and $128^2$ values are $8.563$ and $8.759$, so the grid
@@ -685,14 +690,14 @@ Table~\ref{tab:cost} gives the wall-clock cost. A paired solve splits into a Bou
 Per pair the cost falls from 33.9\,s to 11.7\,s, a factor 2.9. For a single flow swept over
 100 contrasts, one Boussinesq solve plus 100 inferences costs 16.6\,s against $3.77\times10^3$
 for 100 compressible solves, a factor $2.3\times10^2$. For the 20-flow $\times$ 5-contrast
-scan, the same-reuse comparison gives a factor 13. Inference takes 6.3\,ms on a GPU and
+scan, the same-reuse comparison gives $4.07\times10^3$\,s against 321\,s, a factor 13. Inference takes 6.3\,ms on a GPU and
 14.0\,ms on one CPU thread.
 
 \begin{table}[htbp]
 \centering
 \caption{Wall-clock cost on the $64^2$ mesh. Solver rows use eight CPU threads; the surrogate
 runs on an RTX 4060 Laptop GPU (batch 1) or one CPU thread. The 100-sample scan rows use that
-scan's own timings; medians are not additive.}
+scan's own timings; medians are not additive. The 20-flow row with reuse includes 20 Boussinesq solves and 100 inferences; its baseline repeats both members at all 100 points.}
 \label{tab:cost}
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lcccc@{}}
@@ -707,6 +712,8 @@ surrogate, GPU, batch 1 & 6.3\,ms & --- & --- & ---\\
 surrogate, GPU, batch 256 & 0.49\,ms/sample & --- & --- & ---\\
 surrogate, CPU, 1 thread & 14.0\,ms & --- & --- & ---\\
 end-to-end pair (Boussinesq + surrogate) & 11.7\,s & --- & --- & ---\\
+20-flow $\times$ 5-contrast scan, paired baseline & $4.07\times10^3$\,s & --- & --- & ---\\
+same scan, one Boussinesq per flow + 100 inferences & 321\,s & --- & --- & ---\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -808,28 +815,33 @@ The main sweep is two-dimensional and steady, with $\varepsilon<2$ and
 $Ma\lesssim2\times10^{-3}$. The three-dimensional check uses 33 pairs at one resolution
 ($res=16$) and three Rayleigh numbers; it supports the exponent, not a three-dimensional design
 study. The pressure channel is quoted in a fixed gauge. The temperature channel has a
-flow-dependent amplitude and is not part of the common-exponent claim. These are the boundaries
-of the present evidence, and they define the next experiments rather than weakening the
-result.
+flow-dependent amplitude and is not part of the common-exponent claim. All surrogate field and
+$Nu$ errors are relative to the $64^2$ compressible target $Y$; the $128^2$/$256^2$ check bounds
+the target's own wall-$Nu$ discretisation uncertainty at 0.38 percentage points, so the
+$0.01\%$ value is not an absolute physical accuracy. It also uses the six-point stencil of the
+training loss; the four- and eight-point evaluations are reported above. These limits define the
+next experiments.
 
 \section{Conclusion}
 
 Relative $L_2$ field error is not a sufficient selection metric for a heat-transfer surrogate.
 On 200 held-out classical-cavity samples, a model with a $0.09\%$ median temperature-field error
 missed the both-wall integral Nusselt number by $2.0\%$ ($1.4$--$2.9\%$ across seeds); in
-$42\%$ of the samples the field error was below $1\%$ and the $Nu$ error above $2\%$. On the
-22 random-wall samples at $\varepsilon=1.1$--$1.3$, the corresponding values are $0.47\%$ and
-$4.04\%$, with $66\%$ in that region. A wall-flux penalty reduced the both-wall error to
-$0.01\%$ and $0.58\%$, respectively, and the local wall-flux error to $0.08\%$ and $1.14\%$;
-the median field error moved to $0.10\%$ and $0.49\%$.
+$42\%$ of the samples on average ($23$--$82\%$ across seeds) the field error was below $1\%$ and
+the $Nu$ error above $2\%$. On the 22 random-wall samples at $\varepsilon=1.1$--$1.3$, the
+corresponding values are $0.47\%$ and $4.04\%$, with $66\%$ on average across five seeds
+($50$--$77\%$) in that region. Under the six-point training stencil, a wall-flux penalty reduced
+the both-wall error to $0.01\%$ and $0.58\%$, respectively, and the local wall-flux error to
+$0.08\%$ and $1.14\%$; four- and eight-point stencils give $0.3$--$0.9\%$, overlapping returning
+$X$ ($0.4$--$0.9\%$). The median field error moved to $0.10\%$ and $0.49\%$.
 
 The gap between Boussinesq and compressible steady convection factorises. The relative
 temperature contrast sets its leading-order amplitude, and the flow sets its spatial shape.
 Across 627 paired solutions, the velocity channels follow $R=A\varepsilon^m$ with exponents
 indistinguishable from one; a quadratic refinement gives positive curvature $\kappa=0.70$ and
 $0.83$ (point estimates). The prefactor is a functional of the flow and changes with geometry
-and boundary conditions but not with the fluid. A 33-sample three-dimensional check is
-consistent with the same exponent.
+and boundary conditions, and weakly with the fluid ($3.3\%$ for velocity and temperature,
+$6.1\%$ for pressure). A 33-sample three-dimensional check is consistent with the same exponent.
 
 The reusable element is the external $\varepsilon$ factorisation. A plain model trained at
 $\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ performs within $0.2\%$ of the

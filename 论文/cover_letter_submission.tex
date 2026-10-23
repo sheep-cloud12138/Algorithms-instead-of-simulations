@@ -24,12 +24,13 @@ solutions. Public paired data sets fix the relative temperature contrast, so a n
 on them memorises one correction field and cannot rescale it at another contrast. The
 manuscript asks whether the metric used to select these surrogates is the right one. On 200
 held-out classical-cavity samples, a model with a 0.09\% median temperature-field error misses the
-both-wall integral Nusselt number by 2.0\% (1.4--2.9\% across seeds); in 42\% of the samples the
-field error is below 1\% and the $Nu$ error above 2\%. On a 22-sample random-wall replication at
-$\varepsilon\approx1.2$, the corresponding field and $Nu$ errors are 0.47\% and 4.04\%, with
-66\% in the same region. A wall-flux penalty in the training loss reduces the both-wall error to
-0.01\% on the classical cavity and 0.58\% in the replication, and the local wall-flux error to
-0.08\% and 1.14\%; the median field error moves from 0.09\% to 0.10\% and from 0.47\% to 0.49\%.
+both-wall integral Nusselt number by 2.0\% on average (1.4--2.9\% across seeds); in 42\% of the
+samples on average the field error is below 1\% and the $Nu$ error above 2\%. On a 22-sample
+random-wall replication at $\varepsilon\approx1.2$, the corresponding field and $Nu$ errors are
+0.47\% and 4.04\%, with 66\% on average in the same region. A wall-flux penalty in the training
+loss reduces the both-wall error under the training six-point stencil to 0.01\% on the classical
+cavity and 0.58\% in the replication, and the local wall-flux error to 0.08\% and 1.14\%; the
+median field error moves from 0.09\% to 0.10\% and from 0.47\% to 0.49\%.
 
 The underlying correction factorises as $D=\varepsilon P(X)+O(\varepsilon^2)$ with
 $\varepsilon=\Delta T/T_0$. Across 627 paired solutions, the velocity correction follows

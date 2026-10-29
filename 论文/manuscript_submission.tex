@@ -1,4 +1,4 @@
-\documentclass[preprint,11pt,a4paper,times,doubleblind]{elsarticle}
+\documentclass[preprint,11pt,a4paper,times]{elsarticle}
 \usepackage{amsmath,amssymb,bm}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -28,37 +28,32 @@
 \title{Field accuracy is not heat accuracy: wall-flux-constrained surrogates
 for steady two-dimensional non-Boussinesq convection}
 
-\author[a]{}
-\address[a]{}
-\hypersetup{pdfauthor={Anonymous}}
+% TODO(author): IJHMT uses single-anonymized review -- fill in the real author list,
+% affiliations, corresponding-author e-mail and ORCID before submitting.
+\author[a]{Author Given Name(s) Family Name\corref{cor1}}
+\cortext[cor1]{Corresponding author.}
+\ead{corresponding.author@institution.edu}
+\address[a]{Department, Institution, City, Country}
 
 \begin{abstract}
-Paired Boussinesq and compressible simulations are expensive, and public data sets fix the
-relative contrast $\varepsilon=\Delta T/T_0$, while surrogates are ranked by $L_2$ field error.
-For steady two-dimensional buoyancy-driven enclosure convection, this metric can rank a model
-above doing nothing on wall heat transfer. On 200 held-out classical-cavity samples, a prior
-with $0.09\%$ median field error misses the both-wall integral Nusselt number by $2.0\%$ on
-average ($1.4$--$2.9\%$ across seeds); in $43\%$ of samples on average ($23$--$82\%$ across
-seeds) field error is below $1\%$ but $Nu$ error above $2\%$. A 22-sample random-wall
-replication at $\varepsilon\approx1.2$ gives $0.47\%$ median field error and $4.04\%$ median $Nu$
-error, with $66\%$ on average ($50$--$77\%$ across seeds) there. Under the training stencil, a
-wall-flux penalty reduces these $Nu$ errors to $0.01\%$ and $0.58\%$, relative to the $64^2$
-compressible target; four/eight-point stencils give $0.3$--$0.9\%$, overlapping returning $X$
-($0.4$--$0.9\%$). Six-point local errors are $0.08\%$ and $1.14\%$, and median field error
-moves to $0.10\%$ and $0.49\%$. At $\varepsilon=1.2$ the hot-wall integral $Nu$ changes by
-$0.67\%$ while the $L_1$ local-profile change is $4.25\%$ (Table~2's $5.6\%$ uses a
-different, mean-absolute denominator).
-The correction factorises as $D=\varepsilon P(X)+O(\varepsilon^2)$ across 627 paired solutions
-with $\varepsilon=0.02$--$1.9$; the velocity channels follow $R=A\varepsilon^m$ over the full
-window with $m=1.023\pm0.018$ and $0.995\pm0.019$. A quadratic refinement gives $\kappa=0.70$
-and $0.83$ (point estimates); $A$ is a functional of the flow. A public single-contrast data
-set then works at $\varepsilon=0.2$--$1.9$ within its boundary family: a plain model trained at
-$\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ agrees with the factorized
-target to $0.2\%$ relative, so applying $\varepsilon$ outside the learned correction, not the residual
-parameterisation, carries the transfer. At $\varepsilon=1.9$ the integral $Nu$ change is
-$-5.1\%$ at $Ra=10^4$ and $-1.5$ to $-1.8\%$ at $Ra=10^5$--$10^6$. Inference takes 6.3\,ms;
-replacing the compressible member saves $2.9\times$ per pair and $13\times$ for a 20-flow
-$\times$ 5-contrast scan.
+Surrogates for non-Boussinesq convection are ranked by relative $L_2$ field error. For
+steady two-dimensional enclosure convection, this metric can rank a model above doing
+nothing on wall heat transfer. On 200 held-out classical-cavity samples, a surrogate with
+$0.09\%$ median field error misses the both-wall integral Nusselt number by $2.0\%$ on
+average; in $43\%$ of samples field error is below $1\%$ while $Nu$ error exceeds $2\%$. A
+22-sample random-wall replication gives $0.47\%$ median field error and $4.04\%$ median $Nu$
+error. A wall-flux training penalty reduces these $Nu$ errors to $0.01\%$ and $0.58\%$
+($0.3$--$0.9\%$ under coarser stencils). The mechanism is a redistribution of the wall-normal
+gradient: at $\varepsilon=1.2$ the hot-wall integral $Nu$ changes by $0.67\%$ while the local
+profile changes by $4.25\%$. The correction factorises as
+$D=\varepsilon P(X)+O(\varepsilon^2)$ across 627 paired solutions with
+$\varepsilon=0.02$--$1.9$: velocity channels follow $R=A\varepsilon^m$ with
+$m=1.023\pm0.018$ and $0.995\pm0.019$, and $A$ is a functional of the flow. This scaling
+makes public single-contrast data reusable within its boundary family: a plain model trained
+at $\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ matches the factorized
+target to $0.2\%$. At $\varepsilon=1.9$ the integral $Nu$ change is $-5.1\%$ at $Ra=10^4$ and
+about $-2\%$ at $Ra\ge10^5$. Inference takes 6.3\,ms; replacing the compressible member saves
+$2.9\times$ per pair and $13\times$ for a 20-flow $\times$ 5-contrast scan.
 \end{abstract}
 
 \begin{keyword}
@@ -741,6 +736,7 @@ includes 20 Boussinesq solves and 100 inferences; its baseline repeats both memb
 points.}
 \label{tab:cost}
 \setlength{\tabcolsep}{4pt}
+\small
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 quantity & median & mean & p90 & max\\
@@ -755,8 +751,8 @@ surrogate, GPU, batch 1 & 6.3\,ms & --- & --- & ---\\
 surrogate, GPU, batch 256 & 0.49\,ms/sample & --- & --- & ---\\
 surrogate, CPU, 1 thread & 14.0\,ms & --- & --- & ---\\
 end-to-end pair (Boussinesq + surrogate) & 11.7\,s & --- & --- & ---\\
-20-flow $\times$ 5-contrast scan, paired baseline & $4.07\times10^3$\,s & --- & --- & ---\\
-same scan, one Boussinesq per flow + 100 inferences & 321\,s & --- & --- & ---\\
+20-flow $\times$ 5-contrast, paired baseline & $4.07\times10^3$\,s & --- & --- & ---\\
+same scan, 1 Boussinesq/flow + 100 inferences & 321\,s & --- & --- & ---\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -930,11 +926,15 @@ take full responsibility for the content of the publication.
 \section*{Data availability}
 
 \begin{sloppypar}
-The public paired data set of Menglik et al. \citep{menglik2026neural} is available under CC BY 4.0. Our
-generated data, solver configuration and scripts that reproduce the numbers in this paper are
-available at
-\url{https://github.com/sheep-cloud12138/Algorithms-instead-of-simulations} (branch \texttt{dev}).
-The raw solver output is available from the authors on request.
+The public paired data set of Menglik et al. \citep{menglik2026neural} is available under CC BY 4.0.
+The curated paired-solution data sets used here (the 627 main pairs and the
+paired-$\varepsilon$, low-contrast, $Pr=4.38$ and 2:1-geometry sets), all result files, solver
+configurations and the analysis scripts that reproduce every number in this paper are deposited
+at
+% TODO(author): replace XXXXXXXXX with the Zenodo DOI after upload (package: code/make_zenodo_package.sh)
+\url{https://doi.org/10.5281/zenodo.XXXXXXX}, mirrored at
+\url{https://github.com/sheep-cloud12138/Algorithms-instead-of-simulations} (branch
+\texttt{dev}); the raw solver output is available from the authors on request.
 \end{sloppypar}
 
 \bibliographystyle{elsarticle-num}

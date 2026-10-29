@@ -16,7 +16,8 @@ Dear Editors,
 
 \noindent
 Please consider our manuscript, ``Field accuracy is not heat accuracy:
-wall-flux-constrained surrogates for non-Boussinesq convection'', for publication in the
+wall-flux-constrained surrogates for steady two-dimensional non-Boussinesq convection'', for
+publication in the
 \emph{International Journal of Heat and Mass Transfer} as a full-length article.
 
 Surrogates for thermal convection are usually trained on paired Boussinesq and compressible
@@ -38,7 +39,7 @@ $R=A\varepsilon^m$ with exponents indistinguishable from one; a quadratic refine
 positive curvature $\kappa=0.70$ and $0.83$ (point estimates), and the prefactor is a functional
 of the flow. Training a network on $P=D/\varepsilon$ and multiplying by $\varepsilon$ outside
 makes a public single-contrast data set reusable within its boundary-condition family, reducing
-the channel-averaged extrapolation error from 0.131 to 0.085. A plain model trained at the same
+the channel-averaged extrapolation error from 0.129 to 0.085. A plain model trained at the same
 contrast and rescaled by $\varepsilon/\varepsilon_0$ performs within 0.2\% of the factorized
 target, so applying $\varepsilon$ outside the learned correction, rather than the residual
 parameterisation, is what makes the data reusable.

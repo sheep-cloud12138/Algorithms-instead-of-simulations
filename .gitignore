@@ -13,7 +13,6 @@ __pycache__/
 *.tmp
 *.log
 # ---- 公开数据集副本与 LaTeX 中间文件 ----
-data_public/
 *.aux
 *.bbl
 *.blg

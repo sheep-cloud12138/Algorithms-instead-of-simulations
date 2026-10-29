@@ -42,8 +42,8 @@ nothing on wall heat transfer. On 200 held-out classical-cavity samples, a surro
 $0.09\%$ median field error misses the both-wall integral Nusselt number by $2.0\%$ on
 average; in $43\%$ of samples field error is below $1\%$ while $Nu$ error exceeds $2\%$. A
 22-sample random-wall replication gives $0.47\%$ median field error and $4.04\%$ median $Nu$
-error. A wall-flux training penalty reduces these $Nu$ errors to $0.01\%$ and $0.58\%$
-($0.3$--$0.9\%$ under coarser stencils). The mechanism is a redistribution of the wall-normal
+error. A wall-flux training penalty reduces these $Nu$ errors to $0.01\%$ and $0.58\%$ relative to
+the $64^2$ compressible target ($0.3$--$0.9\%$ under coarser stencils). The mechanism is a redistribution of the wall-normal
 gradient: at $\varepsilon=1.2$ the hot-wall integral $Nu$ changes by $0.67\%$ while the local
 profile changes by $4.25\%$. The correction factorises as
 $D=\varepsilon P(X)+O(\varepsilon^2)$ across 627 paired solutions with
@@ -51,8 +51,8 @@ $\varepsilon=0.02$--$1.9$: velocity channels follow $R=A\varepsilon^m$ with
 $m=1.023\pm0.018$ and $0.995\pm0.019$, and $A$ is a functional of the flow. This scaling
 makes public single-contrast data reusable within its boundary family: a plain model trained
 at $\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ matches the factorized
-target to $0.2\%$. At $\varepsilon=1.9$ the integral $Nu$ change is $-5.1\%$ at $Ra=10^4$ and
-about $-2\%$ at $Ra\ge10^5$. Inference takes 6.3\,ms; replacing the compressible member saves
+target to $0.2\%$ relative. At $\varepsilon=1.9$ the integral $Nu$ change is $-5.1\%$ at
+$Ra=10^4$ and $-1.5$ to $-1.8\%$ at $Ra=10^5$--$10^6$. Inference takes 6.3\,ms; replacing the compressible member saves
 $2.9\times$ per pair and $13\times$ for a 20-flow $\times$ 5-contrast scan.
 \end{abstract}
 

@@ -31,6 +31,7 @@ python exp_eps_law.py         # scaling law on 627 pairs
 python exp_field_vs_nu.py     # per-sample field error vs Nu error
 python exp_ml_final.py        # ablations (3 seeds)
 python exp_fair_scaling.py    # fair plain x eps/eps0 baseline
+python audit_rigor_v2.py      # grid uncertainty, independent stencils, seed CIs, 3D ROM
 python make_tables.py         # all tables from JSONs
 python make_figs.py; python make_figs2.py; python fig1_law.py; python make_fig9.py   # all figures
 python audit_numbers.py       # recompute numbers quoted in the text

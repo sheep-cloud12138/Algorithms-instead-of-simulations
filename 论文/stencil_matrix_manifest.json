@@ -1,0 +1,28 @@
+{
+  "command": "for M in 4 8; do for S in 0 1; do python code/exp_flux_loss_mpts.py 1.0 $S $M; done; done; python code/exp_flux_loss_blend.py 0; python code/exp_flux_loss_blend.py 1; python code/eval_stencil_ckpt.py pub_flux_lam1.0_s0_m4.pt pub_flux_lam1.0_s1_m4.pt pub_flux_lam1.0.pt pub_flux_lam1.0_s1.pt pub_flux_lam1.0_s0_m8.pt pub_flux_lam1.0_s1_m8.pt pub_flux_lam1.0_s0_m10.pt pub_flux_lam1.0_s1_m10.pt pub_flux_blend_s0.pt pub_flux_blend_s1.pt; python code/summarize_stencil_matrix.py",
+  "protocol": {
+    "train_pairs": 4000,
+    "test_pairs": 200,
+    "epochs": 150,
+    "lambda": 1.0,
+    "seeds": [0, 1]
+  },
+  "data_sha256": {
+    "train/X.pt": "A76ADC9841E75BB02C98F0F2598ACD70C34159D8CB1ED91EAFE037C0817150B3",
+    "train/Y.pt": "DE76E33CD567897A27279CB52473A4C12F2DB128917A823795A484BBB3D303F0",
+    "test_legacy/X.pt": "FB3560455ED7371CA43A5833E4551C3E87931DA49C81821750E411D5AA514DA0",
+    "test_legacy/Y.pt": "5715E40F9AB32F23302C8313C79E459E8E91993CD653E01D7BF0E4E4CD89CD75"
+  },
+  "checkpoint_sha256": {
+    "pub_flux_lam1.0_s0_m4.pt": "65E95574BC69CFDABA9420FFC45B50FF643A9FAA0BAAFF73A0056F3B79B47241",
+    "pub_flux_lam1.0_s1_m4.pt": "51677F9D1EF9BF3EB9AC59CA6856637783B075FD868C128CFB51F0A9BD40F974",
+    "pub_flux_lam1.0.pt": "B056CAE112EA5088419155CD60F87950EAB83A2F5C746E7AD42DA328177ACB5C",
+    "pub_flux_lam1.0_s1.pt": "FD94BC50A464D9DA7FD7446D91BF91B75A4B1579F4CB197FE031F14A9BEF6817",
+    "pub_flux_lam1.0_s0_m8.pt": "4EC2B139887F5C1F18BC94E94F99676F30DDDE1AD86AE255EE3B75A34C8B33AF",
+    "pub_flux_lam1.0_s1_m8.pt": "C8CC9BDFC1086DD77431EB69C01C05E289858004D8A61EC53E5EEABB755049A8",
+    "pub_flux_lam1.0_s0_m10.pt": "93BD0900C99514FC0244B85062933E9E44CE929769AC40980EE01052F289FD32",
+    "pub_flux_lam1.0_s1_m10.pt": "864BA354B0DD59350696468D148E375B467C934B0B681877C621A06E9F6C20B0",
+    "pub_flux_blend_s0.pt": "3CF19E70CD682EFFF2526FCAB74FBFF9DF39DBBC100E8CC361236B659950D7EB",
+    "pub_flux_blend_s1.pt": "D5B5022B25162D8DBCAF4A8EDC65AF9CC06EE51CE7ADA993F2F5402DAF2BF899"
+  }
+}

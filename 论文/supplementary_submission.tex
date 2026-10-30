@@ -30,8 +30,9 @@ This supplement collects the material that supports the main text but is not nee
 its argument: the asymptotic predictions and their numerical confirmation, the two-parameter fits,
 the exact single-$\varepsilon$ transfer matrix, the learning curve, the public-data splits, the
 prefactor--velocity law, the pressure-alignment protocol, the shape-stability and data-set tables,
-the wall-heat-transfer tables, the full three-dimensional fits, and the mesh- and noise-audit
-details. Table and section numbers in cross-references refer to the main text.
+the wall-heat-transfer tables and complete 4/6/8/10 training/evaluation matrix, the full
+three-dimensional fits, and the mesh- and noise-audit details. Table and section numbers in
+cross-references refer to the main text.
 \end{abstract}
 \end{frontmatter}
 
@@ -50,8 +51,9 @@ $\varepsilon\to0$ (\path{run_eps0.sh}), 104 at $Pr=4.38$ (\path{run_water.sh});
 prediction & measurement\\
 \midrule
 $R\to0$ as $\varepsilon\to0$ & intercept $+0.0003\pm0.0047$ ($u_x$); $0.06\sigma$ from zero\\
-$R\propto\varepsilon$ & $m=1.023\pm0.018$ / $0.995\pm0.019$ / $1.009\pm0.015$
-($u_x/u_y/p$), window-averaged over the two decades; the residual is the $\varepsilon^2$ term
+$R\propto\varepsilon$ & nominal full-fit $m=1.023\pm0.018$ / $0.995\pm0.019$ /
+$1.009\pm0.015$ ($u_x/u_y/p$), window-averaged over the two decades. Family-cluster intervals
+are wider (Table~\ref{tab:cluster}); the residual is the $\varepsilon^2$ term
 (Sec.~\ref{sec:law})\\
 the shape of $D$ does not rotate with $\varepsilon$ & $\cos(D(\varepsilon),D(1.2))=0.95$--$1.00$,
 four channels $\times$ five values of $\varepsilon$\\
@@ -63,6 +65,43 @@ correction energy, $\varepsilon^1+\varepsilon^2$ carries 99.0\%, $\varepsilon^3$
 \bottomrule
 \end{tabular}
 \end{table}
+
+The full 627-point fit treats the 600 random-wall samples and 27 low-contrast anchors as
+point observations. This is not an appropriate independent-sample model for the random-wall
+part: the 600 samples occupy only 134 wall-mode families, with up to 34 samples in one family.
+We therefore resample whole families with replacement (5000 replicates) and report percentile
+intervals. The 27 low-contrast points are not members of these families and remain in the
+full-fit point estimates but are excluded from this family-cluster bootstrap.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Family-clustered uncertainty on the 600-point random-wall core. The nominal column is
+the 627-point fit reported in Table~\ref{tab:law}; the clustered columns are fits to the
+600-point core and 95\% family-bootstrap intervals, not confidence intervals centered on the
+full 627-point estimate. The quadratic is $R=a\varepsilon+c\varepsilon^2+b$ and
+$\kappa=c/a$.}
+\label{tab:cluster}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+channel & nominal full-fit $m$ & core $m$ & family-cluster 95\% & core $\kappa$ / family-cluster 95\%\\
+\midrule
+$u_x$ & $1.023\pm0.018$ & 1.082 & $1.030$--$1.136$ & $0.70$ / $0.15$--$3.14$\\
+$u_y$ & $0.995\pm0.019$ & 1.001 & $0.939$--$1.058$ & $0.83$ / $0.14$--$5.76$\\
+$\theta$ & $1.024\pm0.077$ & 1.216 & $0.985$--$1.451$ & $0.42$ / $-4.90$--$7.06$\\
+$p$ & $1.009\pm0.015$ & 1.121 & $1.075$--$1.166$ & $0.73$ / $0.22$--$2.80$\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+The exponent intervals are wider than the nominal standard errors, and the core point
+estimates differ from the full fit because the low-contrast anchors have substantial leverage.
+We consequently describe the velocity and pressure exponents as approximate leading-order
+values rather than precision measurements of unity. For curvature, the family intervals
+resolve a positive sign only for $u_x$, $u_y$ and $p$; the magnitude is unresolved in all
+channels, and the $\theta$ sign is unresolved. The pressure statement remains gauge-dependent.
 
 \begin{table}[htbp]
 \centering
@@ -188,7 +227,8 @@ three seeds (Secs.~\ref{sec:baselines}--\ref{sec:learning})\\
 \path{exp_direct_eps0.py} & the same one-Newton-step solve on the 27 low-contrast samples (Sec.~\ref{sec:baselines})\\
 \path{exp_heldout_loweps.py}, \path{run_loweps.sh} & the 38 held-out solutions at $\varepsilon=0.1,0.2$ and the extrapolated-$P$ check (Sec.~\ref{sec:baselines})\\
 \path{exp_direct_low.py}, \path{exp_fixed_flow_eps.py} & one-Newton-step solves at $\varepsilon=0.1,0.2$ on the paired flows and the fixed-flow $\varepsilon$-drift (Sec.~\ref{sec:baselines})\\
-\path{exp_cluster_boot.py} & family-cluster bootstrap of the exponent (Sec.~\ref{sec:law})\\
+\path{exp_cluster_boot.py} & 134-family bootstrap of the exponent and curvature
+(Sec.~\ref{sec:law})\\
 \path{exp_public_transfer.py} & external validation and transfer
 (Secs.~\ref{sec:public}--\ref{sec:transfer})\\
 \path{exp_fair_scaling.py} & fair baseline: plain model trained at $\varepsilon_0$ and
@@ -207,9 +247,10 @@ and timing (Secs.~\ref{sec:noise}--\ref{sec:cost})\\
 denominator audit (Sec.~\ref{sec:nu})\\
 \path{exp_nu_grid.py}, \path{exp_nu_grid_ra1e6.py}, \path{exp_nu_grid_ra1e5.py} & the
 $64^2$ versus $128^2$ wall-flux check (Supplementary Sec.~S10)\\
-\path{exp_public_nu.py}, \path{exp_flux_loss.py}, \path{exp_flux_stencil.py} & wall heat transfer of the
-public-data surrogate, with and without the wall-flux training penalty, and the cross-stencil check
-(Sec.~\ref{sec:nu})\\
+\path{exp_public_nu.py}, \path{exp_flux_loss.py}, \path{exp_flux_loss_mpts.py},
+\newline \path{exp_flux_loss_blend.py}, \path{eval_stencil_ckpt.py},
+\newline \path{summarize_stencil_matrix.py} & wall heat transfer, the complete two-seed
+4/6/8/10 stencil matrix, and the mean-target control (Sec.~\ref{sec:nu})\\
 \path{exp_field_vs_nu.py}, \path{exp_seed_sweep.py}, \path{exp_own_seed_sweep.py} & per-sample
 field-versus-$Nu$ statistics, the source-normalised multi-seed transfer, and the within-family
 replication (Sec.~\ref{sec:headline})\\
@@ -239,7 +280,7 @@ $[1,\varepsilon,\bm c_X]$, where $\bm c_X$ are at most four POD coefficients of 
 Boussinesq field; the prior ROM predicts $P=D/\varepsilon$ from
 $[1,\bm c_X]$ and multiplies by $\varepsilon$ outside. At most four modes are used,
 fewer than the twelve training samples. Averaged over the five held-out contrasts,
-the prior lowers the relative error in every channel (Table~\ref{tab:3drom}):
+the prior lowers the relative error in every channel (Table~\ref{tab:s3drom}):
 $u_x$ from 0.168 to 0.081, $u_y$ from 0.190 to 0.150, $\theta$ from 0.034 to
 0.027 and $p$ from 0.163 to 0.098. The gain is largest at $\varepsilon=0.2$ and
 0.4 ($14\times$ and $5\times$ in $u_x$) and is not uniform: at $\varepsilon=1.2$ the
@@ -257,7 +298,7 @@ Leave-one-contrast-out: train on three flows $\times$ four $\varepsilon$
 for the five contrasts. Entries are mean relative $L_2$ errors over the five
 folds (mean $\pm$ s.d.); the ROM uses at most four POD modes and ridge regression
 ($\lambda=10^{-4}$). The gain is the plain-ROM error divided by the prior-ROM error.}
-\label{tab:3drom}
+\label{tab:s3drom}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 channel & do nothing & plain ROM & prior ROM & gain\\
@@ -422,8 +463,8 @@ change for the five isothermal-sidewall configurations, one at each Rayleigh num
 \caption{Wall heat transfer at $\varepsilon=1.2$ over the 200 classical-cavity samples of the
 public data set. The local change is $\Delta Nu(y)/Nu(y)$ along the hot wall. The integral change is
 the mean of the per-sample ratios at the six-point stencil, with the median and the 10--90\% range;
-the ratio of the ensemble means is $+0.67\%$. The stencil range is the two- to eight-point
-one-sided estimate of the wall gradient.}
+the ratio of the ensemble means is $+0.67\%$. Stencil sensitivities are evaluated with four-,
+six-, eight- and ten-point one-sided estimates of the wall gradient.}
 \label{tab:nu}
 \begin{tabular}{@{}p{4.4cm}p{2.5cm}p{5.2cm}@{}}
 \toprule
@@ -432,7 +473,7 @@ quantity & value & spread over samples\\
 $Nu$, Boussinesq $X$ & 3.514 & ---\\
 $Nu$, compressible $Y$ & 3.538 & ---\\
 integral change $\Delta Nu/Nu$ & $+0.54\%$ & median $+0.58\%$, p10--p90 $+0.06$ to $+0.92\%$; per-sample mean $+0.35$ to $+0.62\%$ over stencils\\
-local change, $L_1$ norm over the wall & $4.25\%$ & p90 $7.33\%$; unchanged for two to eight points\\
+local change, $L_1$ norm over the wall & $4.25\%$ & p90 $7.33\%$; evaluated at four to ten points\\
 local change, pointwise & $-0.65\%$ (median) & p10--p90 $-9.1$ to $+9.8\%$\\
 \bottomrule
 \end{tabular}
@@ -463,7 +504,7 @@ $10^6$ & $+0.24$ & $+0.51$ & $+0.82$ & $+0.83$ & $-1.50$\\
 \end{tabular}
 \end{table}
 
-\section*{S8 Public-data splits and the theta collapse}
+\section*{S8 Public-data splits and the theta collapse: consistency checks}
 The release publishes three held-out splits generated by the same generator and the same solver
 commit (\path{v6_freefall_20260921}, \path{raw_both_deramp} pressure convention; the OOD split
 carries the later tag \path{v6_freefall_ood_20260925}): \path{test_in_distribution} (200 random-wall
@@ -471,20 +512,23 @@ pairs), \path{test_ood} (200 random-wall pairs whose vertical-wall Fourier dials
 training range) and \path{test_legacy} (200 classical-cavity pairs). The release also contains
 \path{train_legacy}, 5000 classical-cavity pairs, used in the transfer experiment of the main text.
 The $\theta$-channel prefactor collapses on the peak Boussinesq speed $\hat u$ across two
-independent generators and two boundary-condition families.
+independent generators and two boundary-condition families. These two public releases do not
+establish transfer to arbitrary boundary families, Rayleigh ranges or solver formulations.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.78\textwidth]{fig7_theta_flow.png}
 \caption{The $\theta$-channel prefactor collapses on the peak Boussinesq speed $\hat u$ across two
-independent generators and two boundary-condition families.}
+independent generators and two boundary-condition families. This is a consistency check over
+the released families, not a general transfer law.}
 \label{fig:stheta}
 \end{figure}
 
-\section*{S9 A three-dimensional check}
+\section*{S9 A three-dimensional consistency check}
 
 
-The law is calibrated in two dimensions. To check whether the exponent survives in three, we
+The law is calibrated in two dimensions. As a consistency check, rather than a validation of
+three-dimensional transfer, we
 generated thirty-three paired steady solutions with the same generator: three wall types---a
 three-cell Voronoi pair, a two-cell Voronoi pair and a constant-wall cavity---at $Ra=10^4$ over
 $\varepsilon=0.2$, $0.4$, $0.8$, $1.2$ and $1.6$ (fifteen samples), and the same three wall types
@@ -543,7 +587,7 @@ $[1,\varepsilon,\bm c_X]$, where $\bm c_X$ are at most four POD coefficients of 
 Boussinesq field; the prior ROM predicts $P=D/\varepsilon$ from
 $[1,\bm c_X]$ and multiplies by $\varepsilon$ outside. At most four modes are used,
 fewer than the twelve training samples. Averaged over the five held-out contrasts,
-the prior lowers the relative error in every channel (Table~\ref{tab:3drom}):
+the prior lowers the relative error in every channel (Table~\ref{tab:s3drom}):
 $u_x$ from 0.168 to 0.081, $u_y$ from 0.190 to 0.150, $\theta$ from 0.034 to
 0.027 and $p$ from 0.163 to 0.098. The gain is largest at $\varepsilon=0.2$ and
 0.4 ($14\times$ and $5\times$ in $u_x$) and is not uniform: at $\varepsilon=1.2$ the
@@ -615,8 +659,8 @@ $0.38$ percentage points, and the sign and order of the integral correction are 
 At $Ra=10^6$ the isothermal-wall pair was refined to $192^2$ and, at $\varepsilon=1.2$, to
 $256^2$. At $\varepsilon=1.2$ the wall-$Nu$ correction falls from $+0.82\%$ at $64^2$ to $+0.56\%$
 at $128^2$ and $+0.44\%$ at $256^2$, where eight temperature nodes span the thermal boundary layer.
-The absolute Boussinesq value at $256^2$ is $Nu=8.793$, $0.37\%$ below the benchmark $8.825$ of
-Le Qu\'er\'e \citep{lequere1991}; the $64^2$ and $128^2$ values are $8.563$ and $8.759$, so the
+The absolute Boussinesq value at $256^2$ is $Nu=8.793$, $0.37\%$ below the Le Qu\'er\'e (1991)
+benchmark $8.825$; the $64^2$ and $128^2$ values are $8.563$ and $8.759$, so the
 grid sequence approaches the benchmark.
 At $\varepsilon=1.9$ it moves from $-1.50\%$ at $64^2$ to $-1.88\%$ at $128^2$ and $-2.10\%$ at
 $192^2$. Both sequences are still moving at the finest mesh, by $0.12$ and $0.22$ percentage
@@ -686,6 +730,42 @@ classical cavity & prior & 0.09\% & 1.4--2.9\% & 23--82\% & 4.5\%\\
 classical cavity & prior + wall-flux & 0.10\% & 0.01\% & 0\% & 0.08\%\\
 random walls & prior & 0.47\% & 4.04\% & 66\% & 4.94\%\\
 random walls & prior + wall-flux & 0.49\% & 0.58\% & 16\% & 1.14\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{S12 Complete wall-stencil matrix}
+
+The main-text matrix uses two independently initialized seeds for each wall-flux target.
+All eight single-target checkpoints use the same 4000 public training pairs and the same
+200-pair classical-cavity test split. Table~\ref{tab:fullstencil} gives the individual seed
+values behind the seed means in Table~7. The four diagonal entries are the minimum of their
+respective rows in both seeds. The final two rows use the mean of the 4/6/8/10-point targets,
+not an average of the four trained models.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\caption{Complete wall-stencil evaluation. Entries are mean both-wall $Nu$ errors (\%).
+``train'' denotes the stencil used in the relative $L_1$ wall-flux loss; evaluation uses each
+column's stencil. Diagonal cells are highlighted in the main text.}
+\label{tab:fullstencil}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+target & seed & 4 pt & 6 pt & 8 pt & 10 pt\\
+\midrule
+train at 4 pt & 0 & 0.131 & 1.313 & 2.359 & 2.970\\
+ & 1 & 0.131 & 1.205 & 2.381 & 3.026\\
+train at 6 pt & 0 & 0.486 & 0.105 & 0.462 & 2.209\\
+ & 1 & 0.388 & 0.108 & 0.695 & 0.995\\
+train at 8 pt & 0 & 0.802 & 0.720 & 0.107 & 1.475\\
+ & 1 & 0.878 & 0.679 & 0.127 & 1.670\\
+train at 10 pt & 0 & 0.684 & 0.657 & 0.433 & 0.117\\
+ & 1 & 0.647 & 0.883 & 0.812 & 0.107\\
+\midrule
+mean-target loss & 0 & 0.835 & 0.648 & 0.336 & 1.576\\
+ & 1 & 1.058 & 0.739 & 0.207 & 1.970\\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -32,23 +32,39 @@ random-wall replication at $\varepsilon\approx1.2$, the corresponding field and 
 loss reduces the both-wall error under the training six-point stencil to 0.01\% on the classical
 cavity and 0.58\% in the replication, and the local wall-flux error to 0.08\% and 1.14\%; the
 median field error moves from 0.09\% to 0.10\% and from 0.47\% to 0.49\%.
+These six-point values are matched training/evaluation diagnostics against a non-converged
+$64^2$ target, not absolute physical accuracy. The target correction carries a 0.43--0.60
+percentage-point grid-refinement change, two orders of magnitude larger than 0.01\%, and a
+stencil-free scaling model is worse than returning the Boussinesq field for $Nu$ at four, six,
+eight and ten evaluation points. A complete two-seed $4\times4$ training/evaluation matrix
+puts every row minimum on its training stencil. At ten points the six-point-trained models
+give 1.00--2.21\%, against 1.11\% for returning $X$; the ten-point-trained models give
+0.107--0.117\%. The gain is therefore estimator-specific and is not presented as a universal
+physical improvement.
 
 The underlying correction factorises as $D=\varepsilon P(X)+O(\varepsilon^2)$ with
-$\varepsilon=\Delta T/T_0$. Across 627 paired solutions, the velocity correction follows
-$R=A\varepsilon^m$ with exponents indistinguishable from one; a quadratic refinement gives
-positive curvature $\kappa=0.70$ and $0.83$ (point estimates), and the prefactor is a functional
-of the flow. Training a network on $P=D/\varepsilon$ and multiplying by $\varepsilon$ outside
-makes a public single-contrast data set reusable within its boundary-condition family, reducing
+$\varepsilon=\Delta T/T_0$. Across 627 paired solutions, the velocity correction has nominal
+power-law exponents close to one, but resampling the 134 wall-mode families widens the
+intervals. The quadratic curvature is positive for velocity and pressure, while its magnitude
+and the temperature-curvature sign are unresolved. The prefactor is a functional of the flow.
+Training a network on $P=D/\varepsilon$ and multiplying by $\varepsilon$ outside
+makes a public single-contrast data set reusable within the tested boundary-condition family, reducing
 the channel-averaged extrapolation error from 0.129 to 0.085. A plain model trained at the same
 contrast and rescaled by $\varepsilon/\varepsilon_0$ performs within 0.2\% of the factorized
 target, so applying $\varepsilon$ outside the learned correction, rather than the residual
 parameterisation, is what makes the data reusable.
 
+The three-dimensional evidence includes both a 33-pair exponent check and a separate 15-field
+leave-one-contrast ROM evaluation. The 3D ROM improves the field floor by $1.26$--$2.40\times$,
+but it uses one resolution and does not include a wall-flux target. Alternate geometry, fluid and
+public-family tests are reported as consistency checks; none establishes general cross-family
+or three-dimensional transfer.
+
 The study is within the journal's scope: it quantifies the departure from the
-Oberbeck--Boussinesq approximation, tests it on independently generated public data, and
-provides a surrogate design that preserves wall heat transfer. The main sweep is
-two-dimensional and steady; a 33-sample three-dimensional check supports the exponent, and the
-remaining scope is stated explicitly. The 256$^2$ Boussinesq solution is within 0.37\% of the
+Oberbeck--Boussinesq approximation, checks it on independently generated public data, and
+provides a surrogate design that improves wall heat transfer under a matched estimator while
+stating the remaining uncertainty. The main sweep is two-dimensional and steady; the 3D ROM
+and exponent checks are reported separately, and the remaining scope is stated explicitly. The 256$^2$ Boussinesq solution is within 0.37\% of the
 Le Qu\'er\'e benchmark at $Ra=10^6$. The work is original, is not under consideration
 elsewhere, and all authors have approved the submission. The authors declare no competing
 interests. The public data are cited, and our generated data, solver configuration and

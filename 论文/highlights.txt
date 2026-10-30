@@ -1,5 +1,5 @@
-Boussinesq–compressible gap follows R = A ε^m with m = 1.02 in four channels
-Relative temperature contrast is the only axis; a 24× Ma change is unmeasurable
-627 paired solves fix the law; public data reproduce only its amplitude
-At ε = 1.2 integral Nu shifts 0.6% but local wall flux redistributes 4.25%
-Factored prior D = εP(X): 1.6× over plain and 1.9× over ε-blind networks
+Field error below 1% can coexist with >2% Nusselt error in 43% of cavity samples
+Wall-flux loss reduces matched six-point error against a non-converged 64^2 target
+A two-seed 4-by-4 matrix puts every wall-flux minimum on its training stencil
+A 134-family bootstrap leaves magnitude and temperature-curvature sign unresolved
+Contrast scaling and 3D tests are consistency checks, not general validation

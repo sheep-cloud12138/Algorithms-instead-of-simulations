@@ -42,18 +42,28 @@ nothing on wall heat transfer. On 200 held-out classical-cavity samples, a surro
 $0.09\%$ median field error misses the both-wall integral Nusselt number by $2.0\%$ on
 average; in $43\%$ of samples field error is below $1\%$ while $Nu$ error exceeds $2\%$. A
 22-sample random-wall replication gives $0.47\%$ median field error and $4.04\%$ median $Nu$
-error. A wall-flux training penalty reduces these $Nu$ errors to $0.01\%$ and $0.58\%$ relative to
-the $64^2$ compressible target ($0.3$--$0.9\%$ under coarser stencils). The mechanism is a redistribution of the wall-normal
+error. Against the same $64^2$ reference, a wall-flux training penalty reduces the matched
+six-point errors to $0.01\%$ and $0.58\%$. The target correction itself changes by
+$0.43$--$0.60$ percentage points under grid refinement, so these values are model-relative
+diagnostics, not converged absolute heat-transfer accuracy. At ten points, the two
+six-point-trained wall-flux U-Nets span $1.00$--$2.21\%$ versus $1.11\%$ for returning $X$.
+A complete two-seed $4\times4$ training/evaluation matrix puts every row minimum on its own
+training stencil. A stencil-free control is worse at every stencil. The mechanism is a redistribution of the wall-normal
 gradient: at $\varepsilon=1.2$ the hot-wall integral $Nu$ changes by $0.67\%$ while the local
-profile changes by $4.25\%$. The correction factorises as
+profile changes by $4.25\%$ on the same grid. The correction factorises as
 $D=\varepsilon P(X)+O(\varepsilon^2)$ across 627 paired solutions with
-$\varepsilon=0.02$--$1.9$: velocity channels follow $R=A\varepsilon^m$ with
-$m=1.023\pm0.018$ and $0.995\pm0.019$, and $A$ is a functional of the flow. This scaling
-makes public single-contrast data reusable within its boundary family: a plain model trained
-at $\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ matches the factorized
-target to $0.2\%$ relative. At $\varepsilon=1.9$ the integral $Nu$ change is $-5.1\%$ at
-$Ra=10^4$ and $-1.5$ to $-1.8\%$ at $Ra=10^5$--$10^6$. Inference takes 6.3\,ms; replacing the compressible member saves
-$2.9\times$ per pair and $13\times$ for a 20-flow $\times$ 5-contrast scan.
+$\varepsilon=0.02$--$1.9$: nominal velocity exponents are
+$m=1.023\pm0.018$ and $0.995\pm0.019$, and $A$ is a functional of the flow. A
+134-wall-family cluster bootstrap on the 600-point core gives wider intervals and does not
+resolve the curvature magnitude: positive curvature is established for velocity and pressure,
+but not for temperature. The scaling makes public single-contrast data reusable within the
+tested boundary family: a plain model trained at $\varepsilon_0=1.2$ and rescaled by
+$\varepsilon/\varepsilon_0$ matches the factorized target to $0.2\%$ relative. Comparisons in
+one alternate geometry, one alternate Prandtl number, two public families and one
+three-dimensional resolution are consistency checks, not evidence of universal transfer.
+At $\varepsilon=1.9$ the integral $Nu$ change is $-5.1\%$ at $Ra=10^4$ and $-1.5$ to
+$-1.8\%$ at $Ra=10^5$--$10^6$. Inference takes 6.3\,ms; replacing the compressible member
+saves $2.9\times$ per pair.
 \end{abstract}
 
 \begin{keyword}
@@ -140,7 +150,8 @@ scales with $\varepsilon$. The network has no signal with which to rescale what 
 The usual remedy is a second paired data set, which pays again the cost the surrogate was meant
 to remove.
 
-This paper removes that barrier. The correction between the two members factorises. An
+This paper characterises that barrier and extracts a portable scaling rule. The correction
+between the two members factorises. An
 $\varepsilon$-expansion of the compressible member gives the Boussinesq system at $O(1)$ and a
 linear, $\varepsilon$-independent operator at $O(\varepsilon)$. Hence
 \begin{equation}
@@ -153,9 +164,9 @@ $Fr^2=\varepsilon$ identically in the non-dimensionalisation used by the release
 our solver, while $Ma$ enters the retained equations only at $O(Ma^2)$. The break-symmetry
 axis is therefore one-dimensional.
 
-We test the consequence on 627 paired solutions in the unit square, on a second geometry, on a
-second Prandtl number, on 33 three-dimensional pairs, and on two public data sets generated
-independently of our solver. The law holds for the velocity and pressure channels; the temperature channel has a
+We test the consequence on 627 paired solutions in the unit square and use a second geometry, a
+second Prandtl number, 33 three-dimensional pairs, and two public data sets as consistency
+checks. The law describes the velocity and pressure channels; the temperature channel has a
 flow-dependent amplitude that collapses on the peak Boussinesq speed. The scaling law makes a
 single-contrast public data set reusable within its boundary-condition family, and the limit
 is equally clear: the law transfers the $\varepsilon$ dependence, not the flow-dependent
@@ -177,19 +188,24 @@ The contributions are:
 \item a per-sample demonstration that relative $L_2$ field accuracy does not imply
 Nusselt-number accuracy, with a mechanism: the correction redistributes the wall-normal
 temperature gradient while the integral almost cancels;
-\item a wall-flux training penalty that reduces the both-wall $Nu$ error from $4.0\%$ to
-$0.58\%$ on the random-wall replication ($0.01\%$ on the classical cavity), and the local
-wall-flux error to $1.2\%$ or below;
+\item a wall-flux training penalty that reduces the both-wall error against the $64^2$ target
+from $4.0\%$ to $0.58\%$ on the random-wall replication ($0.01\%$ on the classical cavity)
+under the matched six-point estimator. A full two-seed $4\times4$ train/evaluate matrix shows
+that each training stencil is optimal only on its matching evaluation stencil; we make no
+claim of absolute or stencil-independent wall-flux accuracy;
 \item a quantitative law for the Boussinesq--compressible gap, $R=A\varepsilon^m$ with
-$m$ indistinguishable from one over the full window and a positive quadratic curvature,
-calibrated over two decades of $\varepsilon$ and tested across geometry and fluid, with a
-33-pair three-dimensional consistency check, together with a within-family data-reuse rule. The factorized target is one
+$m$ close to one over the full window and a positive curvature for velocity and pressure whose
+magnitude is not resolved, calibrated over two decades of $\varepsilon$ with 134-family
+cluster uncertainty. Alternate geometry, fluid, public-family and 33-pair three-dimensional
+checks support consistency within their tested ranges; they are not a universality claim.
+The factorized target is one
 implementation; applying the known $\varepsilon$ scaling is what makes the data reusable, so
 the factorisation, not the network, is the reusable object.
 \end{enumerate}
 
-The main sweep is two-dimensional and steady. The three-dimensional check uses 33 pairs at three
-Rayleigh numbers and one resolution; it tests the exponent, not a three-dimensional design
+The main sweep is two-dimensional and steady. The three-dimensional evidence consists of
+33 pairs at three Rayleigh numbers for the exponent and a 12-train/3-test leave-one-contrast
+ROM at five contrasts. It does not establish a three-dimensional wall-flux model or design
 workflow. The scope is stated in Sec.~\ref{sec:discussion}.
 
 \section{Physical scaling}
@@ -304,14 +320,27 @@ condition. The $600+27=627$ points
 enter the fit; the low-contrast points anchor the $\varepsilon\to0$ end. The relative
 correction is $R=\|Y-X\|/\|Y\|$.
 
-Table~\ref{tab:law} and Fig.~\ref{fig:law} give the result. For $u_x$ and $u_y$ the free
-power law returns $m=1.023\pm0.018$ and $0.995\pm0.019$. The pressure channel gives
-$m=1.009\pm0.015$ in the fixed gauge described below; it is a numerical observation, not a
-gauge-invariant exponent. The intercepts are consistent with zero. A quadratic fit
-$R=a\varepsilon+c\varepsilon^2+b$ gives $c>0$ in all four channels with point estimates
-$\kappa_{\rm fit}=c/a=0.70/0.83/0.42/0.73$ for $u_x/u_y/\theta/p$ (no confidence intervals are
-available). A compact description is therefore
-$R=A\varepsilon(1+O(\varepsilon))$ rather than an exact power. Fitting only
+Table~\ref{tab:law} and Fig.~\ref{fig:law} give the result. For $u_x$ and $u_y$ the full
+627-point fit returns nominal exponents $m=1.023\pm0.018$ and $0.995\pm0.019$. The pressure
+channel gives $m=1.009\pm0.015$ in the fixed gauge described below; it is a numerical
+observation, not a gauge-invariant exponent. The intercepts are consistent with zero. These
+$\pm$ values are conventional pointwise standard errors and are not treated as family-level
+uncertainties.
+
+The 600-point random-wall core contains only 134 independent wall-mode families, with up to
+34 samples in one family. Resampling whole families gives 95\% exponent intervals
+$1.030$--$1.136$ ($u_x$), $0.939$--$1.058$ ($u_y$), $1.075$--$1.166$ ($p$) and
+$0.985$--$1.451$ ($\theta$) on the 600-point core. The 27 low-contrast points are not members
+of these families and are excluded from the cluster resampling; they only anchor the full
+627-point fit. The full-fit exponents should therefore be read as approximate leading-order
+values, not as precision measurements of unity.
+
+A quadratic fit $R=a\varepsilon+c\varepsilon^2+b$ gives point estimates
+$\kappa_{\rm fit}=c/a=0.70/0.83/0.42/0.73$ for $u_x/u_y/\theta/p$. The corresponding
+134-family cluster intervals are $0.15$--$3.14$, $0.14$--$5.76$, $-4.90$--$7.06$ and
+$0.22$--$2.80$. Thus the sign is resolved for velocity and pressure, but not for temperature,
+and the curvature magnitude is not. A compact description is
+$R=A\varepsilon[1+O(\varepsilon)]$ rather than an exact power. Fitting only
 $\varepsilon\ge0.8$ returns $m=1.23$--$1.32$, the window average of the same curvature.
 
 \begin{table}[htbp]
@@ -432,8 +461,11 @@ $L_1$ penalty on the wall-normal gradient,
   \qquad q=-\frac{\partial\theta}{\partial n},
   \label{eq:fluxloss}
 \end{equation}
-with $\lambda=1$ and a six-point one-sided stencil. The same models are evaluated with two-,
-four-, six- and eight-point stencils to separate the loss from the estimator.
+with $\lambda=1$ and a six-point one-sided stencil. The same models are evaluated with four-,
+six-, eight- and ten-point stencils to separate the loss from the estimator. The six-point
+result is a matched training/evaluation diagnostic and is not independent evidence. The
+four-, eight- and ten-point results are sensitivity checks. A separate stencil-free control
+below checks whether the result can be reproduced without wall-gradient training.
 
 \subsection{Data, splits and metrics}
 
@@ -492,7 +524,8 @@ to the wall gradient in both families.
 $\varepsilon=1.2$. $T$ is the per-sample median relative $L_2$ error; the $Nu$
 columns are the hot wall, cold wall, and both walls normalised by the true total; the last two
 columns are the mean absolute wall-flux profile error and the fraction of
-samples with $T<1\%$ and $Nu>2\%$. Values are means across three seeds; for the field-only
+samples with $T<1\%$ and $Nu>2\%$. All errors are relative to the $64^2$ target. Values are
+means across three seeds; for the field-only
 prior the both-wall error ranges from $1.4$ to $2.9\%$ and the fraction from $23$ to $82\%$.
 The wall-flux row uses the penalty of Eq.~\eqref{eq:fluxloss}.}
 \label{tab:headline}
@@ -625,8 +658,9 @@ one-mode classical cavity as a special case. The broad-family prior reaches $0.0
 $L_2$ on the 200 classical-cavity samples at $\varepsilon=1.2$, and its wall-flux variant
 $0.10\%$ (Table~\ref{tab:headline}); the field-only prior's both-wall $Nu$ error still spans
 $1.4$--$2.9\%$ across seeds (2.0\% seed mean). The asymmetry is coverage, not a violation of the law: a model trained on a narrow
-family cannot cover a broader one, while a model trained on a broad family can cover a
-subfamily. This is the practical rule for choosing the training set.
+family cannot cover a broader one, while a model trained on the released broad family covers
+its one-mode subfamily. This is a training-set design rule supported by these families, not a
+guarantee for an unseen family.
 
 The accuracy trade-off is visible when $\varepsilon$ is available at training time. On our own
 \label{sec:blind}
@@ -664,16 +698,54 @@ intermediate contrast; at $\varepsilon=1.9$ the improvement is not resolved.}
 \label{fig:nu_eps_ra}
 \end{figure}
 
-The public prior reduces the median global temperature-field error from 8.4\% to 0.09\%, but
-its both-wall integral $Nu$ error is 2.0\% (1.4--2.9\% across seeds), larger than the 0.48\% of
-returning $X$. The wall-normal derivative carries a bias that the field norm does not see. Adding the
-wall-flux penalty brings the six-point integral error to 0.01\% and the local flux error to
-0.08\%, at a cost of 0.01 percentage point in the median field error (0.09\% to 0.10\%).
-With four- and eight-point stencils the same models give 0.3--0.9\%, against 1.8--3.6\% for the
-field-only prior and 0.4--0.9\% for returning $X$; the ordering is stable, the absolute value
-depends on the stencil. At $\varepsilon=0.4/0.8/1.6$ the penalty gives
+All heat-transfer errors in this section are evaluated on the $64^2$ compressible field. The
+grid audit shows that the pair correction itself changes by 0.43--0.60 percentage points under
+refinement, so a sub-percent value below measures agreement with this target, not converged
+physical accuracy. The public prior reduces the median global temperature-field error from
+8.4\% to 0.09\%, but its both-wall integral $Nu$ error is 2.0\% (1.4--2.9\% across seeds),
+larger than the 0.48\% of returning $X$. The wall-normal derivative carries a bias that the
+field norm does not see. Adding the wall-flux penalty brings the six-point integral error to
+0.01\% and the local flux error to 0.08\%, at a cost of 0.01 percentage point in the median
+field error (0.09\% to 0.10\%). When the six-point-trained models are instead evaluated
+with four- and eight-point stencils, their seed ranges are 0.39--0.49\% and
+0.46--0.70\%, against 1.45\% and 2.88\% for the field-only prior and 0.39\% and
+0.90\% for returning $X$. Dedicated training at those two stencils reaches $0.131\%$
+and $0.117\%$ (Table~\ref{tab:unetstencil}).
+At ten points the six-point-trained wall-flux models give 1.00\% and 2.21\% against the
+1.11\% floor; seed 0 is worse than returning $X$. We therefore report no ten-point gain. The
+ordering is stable at four and eight points, while the absolute value depends on the stencil.
+At $\varepsilon=0.4/0.8/1.6$ the penalty gives
 0.17/0.20/1.21\% against 0.45/1.08/4.08\% for returning $X$; at $\varepsilon=1.9$ the gain is
 not resolved.
+
+Table~\ref{tab:seedci} reports the seed-level uncertainty. On the 200 classical-cavity samples,
+the field-only prior has a both-wall $Nu$ error of $2.04\%$ (95\% CI $1.00$--$3.08\%$), while
+the wall-flux model has $0.011\%$ ($0.009$--$0.013\%$). The paired across-sample difference
+between the two errors is $2.03$ percentage points ($1.97$--$2.10$). On the 22 random-wall
+samples at $\varepsilon=1.1$--$1.3$, the corresponding $Nu$ values are $4.04\%$
+($2.68$--$5.40\%$) and $0.58\%$ ($0.45$--$0.71\%$). These intervals quantify seed variability;
+they do not remove the target-grid and matched-stencil limitations.
+
+\begin{table}[htbp]
+\centering
+\caption{Seed-level means and 95\% confidence intervals for the wall-heat-transfer audits.
+Errors are percentages; the interval is a $t$ interval over three seeds for the classical
+cavity and five seeds for the random-wall subset.}
+\label{tab:seedci}
+\small
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llccc@{}}
+\toprule
+split & model & temperature field & both-wall $Nu$ & local flux\\
+\midrule
+200 classical & field-only prior & 0.094 (0.091--0.096) & 2.04 (1.00--3.08) & 4.46 (3.69--5.24)\\
+200 classical & prior + wall flux & 0.123 (0.119--0.127) & 0.011 (0.009--0.013) & 0.081 (0.080--0.081)\\
+22 random-wall & field-only prior & 0.467 (0.442--0.491) & 4.04 (2.68--5.40) & 4.94 (3.64--6.25)\\
+22 random-wall & prior + wall flux & 0.489 (0.463--0.515) & 0.58 (0.45--0.71) & 1.14 (1.05--1.23)\\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 The Rayleigh dependence is equally important. On the five isothermal-sidewall
 configurations, the integral change at $\varepsilon=1.2$ spans $+0.01$ to $+0.87\%$. At
@@ -709,6 +781,109 @@ $\varepsilon$ & $64^2$ & $128^2$ & $192^2$ & $256^2$\\
 \midrule
 1.2 & $+0.82\%$ & $+0.56\%$ & --- & $+0.44\%$\\
 1.9 & $-1.50\%$ & $-1.88\%$ & $-2.10\%$ & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Wall-stencil matrix and three-dimensional consistency checks}
+\label{sec:stencil3d}
+
+The six-point result is not an independent validation because the same stencil defines the
+training penalty. To separate the metric effect from the estimator, we fit a scaling-only
+field map $D/\varepsilon=\alpha_c X_c$ from the paired fields and never use a wall gradient in
+training. We then evaluate integral $Nu$ with four-, six-, eight- and ten-point one-sided
+stencils. Table~\ref{tab:stencil} shows that this field map is worse than returning $X$ for
+both-wall $Nu$ at every stencil and on both splits. The result is the intended warning: a
+correction can be built without wall information and still fail heat transfer.
+
+We also trained the wall-flux U-Net at 4, 6, 8 and 10 points, with two seeds for each target,
+and evaluated every checkpoint at all four stencils. The NumPy re-execution reproduces the
+stored four-, six- and eight-point values to within $7.1\times10^{-6}$ absolute error.
+Table~\ref{tab:unetstencil} gives the complete two-seed matrix. The minimum in each row is
+the diagonal cell: training and evaluating on 4, 6, 8 and 10 points gives $0.131\%$,
+$0.107\%$, $0.117\%$ and $0.112\%$, respectively. The off-diagonal errors are generally at
+or above the $0.39$--$1.11\%$ floor of returning $X$. In particular, the six-point-trained
+model gives $0.995$--$2.209\%$ at ten points, while the ten-point-trained model gives
+$0.657$--$0.883\%$ at six points. The apparent wall-flux gain is therefore tied to the
+training estimator rather than to a stencil-independent physical $Nu$.
+
+\begin{table}[htbp]
+\centering
+\caption{Stencil-independent audit of a scaling-only field map. Entries are mean both-wall
+$Nu$ errors (\%) on held-out samples. The map is fitted from paired fields only; no wall
+gradient, four-point, six-point, eight-point or ten-point stencil is used in training.}
+\label{tab:stencil}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+split & model & 4 pt & 6 pt & 8 pt & 10 pt\\
+\midrule
+extrapolation & return $X$ & 4.96 & 4.80 & 4.82 & 4.88\\
+extrapolation & scaling-only & 5.92 & 5.76 & 5.77 & 5.84\\
+interpolation & return $X$ & 3.75 & 3.57 & 3.56 & 3.61\\
+interpolation & scaling-only & 4.42 & 4.26 & 4.24 & 4.29\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.84\textwidth]{fig_stencil_audit.png}
+\caption{Stencil-independent audit. The scaling-only field map is worse than returning the
+Boussinesq field for both-wall $Nu$ at every evaluation stencil. The ordering is stable;
+therefore the field-error/Nu-error decoupling is not produced by the six-point estimator.}
+\label{fig:stencil}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Complete wall-stencil matrix on 200 held-out classical-cavity samples at
+$\varepsilon=1.2$. Rows labelled ``train'' use a wall-flux penalty at that stencil; entries
+are mean both-wall $Nu$ errors (\%) over seeds 0 and 1, with exact per-seed values in the
+supplement. Bold entries are the four diagonal cells and are the row minima. The final row
+trains against the mean of the four stencil targets; it is not an average of four trained
+models. All wall-flux models use the same 4000-pair training split.}
+\label{tab:unetstencil}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+model & 4 pt & 6 pt & 8 pt & 10 pt\\
+\midrule
+return $X$ & 0.39 & 0.67 & 0.90 & 1.11\\
+field-only prior & 1.45 & 2.14 & 2.88 & 3.93\\
+train at 4 pt & \textbf{0.13} & 1.26 & 2.37 & 3.00\\
+train at 6 pt & 0.44 & \textbf{0.11} & 0.58 & 1.60\\
+train at 8 pt & 0.84 & 0.70 & \textbf{0.12} & 1.57\\
+train at 10 pt & 0.67 & 0.77 & 0.62 & \textbf{0.11}\\
+mean-target loss & 0.95 & 0.69 & 0.27 & 1.77\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The existing three-dimensional ROM provides a second check on field prediction rather than only
+the scaling exponent. It trains on 12 of the 15 available 3D fields and tests on three held-out
+flows for each of five contrast values. Table~\ref{tab:3drom} reports the leave-one-contrast
+results. The structured 3D ROM improves the floor on all four channels, but the velocity-$y$
+gain is only $1.26\times$ and the test covers one resolution. It is a field check, not a
+three-dimensional wall-flux result.
+
+\begin{table}[htbp]
+\centering
+\caption{Leave-one-contrast 3D ROM check. For each of five contrasts, 12 fields train the model
+and three held-out flows test it. Values are mean relative $L_2$ errors ($\pm$ standard
+deviation across the five leave-one-contrast fits); the last column is the gain over returning
+the Boussinesq field.}
+\label{tab:3drom}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+channel & return $X$ & structured 3D ROM & gain\\
+\midrule
+$u_x$ & $19.3\pm13.2\%$ & $8.1\pm6.1\%$ & $2.40\times$\\
+$u_y$ & $18.8\pm12.7\%$ & $15.0\pm10.0\%$ & $1.26\times$\\
+$\theta$ & $3.62\pm2.51\%$ & $2.70\pm1.89\%$ & $1.34\times$\\
+$p$ & $16.2\pm11.7\%$ & $9.80\pm7.71\%$ & $1.65\times$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -794,12 +969,13 @@ The result is a model-selection rule plus a scaling law, not a universal surroga
 selection rule is the one that matters for heat transfer: relative $L_2$ field error can rank
 a model above doing nothing on integral $Nu$. The scaling law explains why the two can
 disagree: the correction is largely a wall-flux redistribution that almost cancels in the
-integral. The law itself is stable across geometry and fluid, and a 33-pair three-dimensional
-check is consistent with it; the prefactor is a functional of the flow. Across the three 3-D
-wall types it varies by factors of 2--13, and
-changing the fluid from $Pr=0.71$ to $4.38$ moves it by 3.3\% for the velocity and temperature
-channels and 6.1\% for pressure. A surrogate that takes $X$ as input can learn the prefactor; a
-lookup table of $A$ cannot.
+integral. The leading exponent is consistent with the same value in the one alternate geometry,
+one alternate fluid and the three public splits tested; this is not evidence that it is
+geometry- or fluid-independent beyond those cases. The prefactor is a functional of the flow.
+Across the three 3-D wall types it varies by factors of 2--13, and changing the fluid from
+$Pr=0.71$ to $4.38$ moves it by 3.3\% for the velocity and temperature channels and 6.1\% for
+pressure. A surrogate that takes $X$ as input can learn the prefactor; a lookup table of $A$
+cannot.
 
 This also explains the cross-family failure. The law transfers the $\varepsilon$ scaling,
 which is universal within the retained equations, and not the flow-dependent amplitude. For an
@@ -852,17 +1028,24 @@ not the residual parameterisation or a network-free scaling law.
 \subsection{Scope}
 
 The main sweep is two-dimensional and steady, with $\varepsilon<2$ and
-$Ma\lesssim2\times10^{-3}$. The three-dimensional check uses 33 pairs at one resolution
-($res=16$) and three Rayleigh numbers; it supports the exponent, not a three-dimensional design
-study. The pressure channel is quoted in a fixed gauge. The temperature channel has a
-flow-dependent amplitude and is not part of the common-exponent claim. All surrogate field and
-$Nu$ errors are relative to the $64^2$ compressible target $Y$. That target is not
-grid-converged: at $Ra=10^6$ the hot-wall $\Delta Nu$ changes from $0.82\%$ ($64^2$) to $0.44\%$
-($256^2$) at $\varepsilon=1.2$, and from $-1.50\%$ to $-2.10\%$ at $\varepsilon=1.9$
-($192^2$; Table~\ref{tab:grid}). The $0.01\%$ value is therefore an error against the $64^2$
-target, not an absolute physical accuracy. It also uses the six-point stencil of the training
-loss; the four- and eight-point evaluations are reported above. These limits define the next
-experiments.
+$Ma\lesssim2\times10^{-3}$. The three-dimensional evidence has two parts: 33 pairs at one
+resolution ($res=16$) provide an exponent consistency check, and the five leave-one-contrast
+ROM fits test 15 held-out 3D fields. The latter improves the field floor but has a weak $u_y$
+gain and contains no 3D wall-flux target. Neither part establishes a three-dimensional design
+workflow. The public-transfer evidence is likewise limited to two generator families and one
+pairs release; it establishes a within-family reuse rule, not general cross-family transfer.
+The pressure channel is quoted in a fixed gauge. The temperature channel has a flow-dependent
+amplitude and is not part of the common-exponent claim. All surrogate field and $Nu$ errors
+are relative to the $64^2$ compressible target $Y$. That target is not grid-converged: at
+$Ra=10^6$ the hot-wall $\Delta Nu$ changes from $0.82\%$ ($64^2$) to $0.44\%$ ($256^2$) at
+$\varepsilon=1.2$, and from $-1.50\%$ to $-2.10\%$ at $\varepsilon=1.9$ ($192^2$;
+Table~\ref{tab:grid}). The $0.01\%$ value is therefore an error against the $64^2$ target, not
+an absolute physical accuracy. The $4\times4$ matrix spans training and evaluation at
+4/6/8/10 points with two seeds per trained target; every row minimum is its diagonal cell.
+At ten points the six-point-trained model is worse than returning $X$ for seed 0 and only
+slightly better for seed 1, whereas the ten-point-trained models recover the low error. These
+distinctions prevent the matched-stencil result from being read as independent physical
+validation.
 
 \section{Conclusion}
 
@@ -874,29 +1057,48 @@ the $Nu$ error above $2\%$. On the 22 random-wall samples at $\varepsilon=1.1$--
 corresponding values are $0.47\%$ and $4.04\%$, with $66\%$ on average across five seeds
 ($50$--$77\%$) in that region. Under the six-point training stencil, a wall-flux penalty reduced
 the both-wall error to $0.01\%$ and $0.58\%$, respectively, and the local wall-flux error to
-$0.08\%$ and $1.14\%$; four- and eight-point stencils give $0.3$--$0.9\%$, overlapping returning
-$X$ ($0.4$--$0.9\%$). The median field error moved to $0.10\%$ and $0.49\%$.
+$0.08\%$ and $1.14\%$. The fixed six-point models give $0.39$--$0.49\%$ and
+$0.46$--$0.70\%$ when evaluated at four and eight points; dedicated training at
+those orders reaches $0.131\%$ and $0.117\%$. The median field error moved to
+$0.10\%$ and $0.49\%$.
+The six-point values are matched training/evaluation diagnostics, not independent physical
+accuracy. In the complete two-seed $4\times4$ matrix, the minimum in every training-stencil
+row is the matching evaluation stencil: the diagonal means are $0.131$, $0.107$, $0.117$ and
+$0.112\%$ for 4, 6, 8 and 10 points. The six-point-trained model gives $0.995$--$2.209\%$ at
+ten points, while the ten-point-trained model gives $0.657$--$0.883\%$ at six points. Thus
+the apparent gain is estimator-specific, not a stencil-independent physical $Nu$ improvement.
+A scaling-only field map that never uses a wall-gradient penalty is worse than returning $X$
+at all four stencils, confirming that field accuracy alone is an unreliable model-selection
+criterion.
 
 The gap between Boussinesq and compressible steady convection factorises. The relative
 temperature contrast sets its leading-order amplitude, and the flow sets its spatial shape.
-Across 627 paired solutions, the velocity channels follow $R=A\varepsilon^m$ with exponents
-indistinguishable from one; a quadratic refinement gives positive curvature $\kappa=0.70$ and
-$0.83$ (point estimates). The prefactor is a functional of the flow and changes with geometry
-and boundary conditions, and weakly with the fluid ($3.3\%$ for velocity and temperature,
-$6.1\%$ for pressure). A 33-sample three-dimensional check is consistent with the same exponent.
+Across 627 paired solutions, the velocity channels have nominal exponents close to one, with
+family-cluster intervals reported in the text; the curvature sign is resolved for velocity and
+pressure, but its magnitude is not, and the temperature curvature is not resolved. The
+prefactor is a functional of the flow and changes with geometry and boundary conditions, and
+weakly with the fluid in the one paired Prandtl-number comparison ($3.3\%$ for velocity and
+temperature, $6.1\%$ for pressure). A 33-sample three-dimensional check at one resolution is
+consistent with the same exponent; a separate 15-field leave-one-contrast 3D ROM improves the
+field floor by $1.26$--$2.40\times$, but provides no 3D wall-flux result. Both are consistency
+checks, not a general three-dimensional validation.
 
 The reusable element is the external $\varepsilon$ factorisation. A plain model trained at
 $\varepsilon_0=1.2$ and rescaled by $\varepsilon/\varepsilon_0$ agrees with the factorized
 target to $0.2\%$ relative on the extrapolation split (0.0912 vs 0.0914); the residual parameterisation is a convenient
 implementation, not the source of the transfer. The law makes a public single-contrast
-data set usable within its boundary-condition family: the channel-averaged extrapolation error
+data set usable within the tested boundary-condition family: the channel-averaged extrapolation error
 falls from 0.129 to 0.085, $3.1\times$ lower than returning the Boussinesq solution. The gain
 is not a universal accuracy win over an $\varepsilon$-aware model; it is the ability to apply a
-model trained at one contrast at another without new compressible solves.
+model trained at one contrast at another without new compressible solves. The public tests do
+not establish transfer to an unseen family; the one reverse cross-family experiment fails, as
+expected from the flow dependence of $A$.
 
-The combination of the scaling law and the wall-flux loss gives a surrogate that is reusable
-across temperature contrast; its heat-transfer accuracy is meaningful at the 0.4--0.6
-percentage-point resolution set by the $64^2$ target, not as an absolute wall-flux benchmark.
+Accordingly, the learned residual parameterisation should not be presented as a new surrogate
+architecture. For wall heat transfer, the penalty reduces the matched six-point bias, but its
+gain can overlap or fall below that of the cheap Boussinesq solution at ten points. All
+heat-transfer accuracy claims are therefore meaningful at the 0.4--0.6 percentage-point
+resolution of the $64^2$ target, not as absolute wall-flux benchmarks.
 
 \section*{Supplementary material}
 

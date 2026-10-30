@@ -42,4 +42,5 @@ review_tmp/
 
 # ---- 盲审材料与文献缓存（含他人论文正文，不进公开仓库） ----
 blind_review_packet/
+/ijhmt_blind_review_*/
 tmp/

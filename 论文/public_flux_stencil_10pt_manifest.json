@@ -1,0 +1,19 @@
+{
+  "command": "python code/eval_flux_stencil10_np.py --samples 200 --out 论文/public_flux_stencil_10pt.json",
+  "sample_count": 200,
+  "split": "public legacy classical cavity, held out",
+  "input_scale": [
+    0.052566174417734146,
+    0.05272869020700455,
+    0.15830989181995392,
+    0.020859437063336372
+  ],
+  "reproduction_max_abs_difference_4_6_8_point": 7.100208038717665e-06,
+  "recovered_files": {
+    "home/wjh/nc_run/p4/common.py": "FE5DA1386DB7C8E7B7E4041C90B7E7C21484D8B1266C3AB6D0CA6D60B679B04B",
+    "home/wjh/nc_run/p7/pub_nets.pt": "18FAEDA77A3ADD5BA78209F2E1774B1FA38DFAC318A51098283F3EA4D85CE75B",
+    "home/wjh/nc_run/p7/pub_flux_lam1.0.pt": "B056CAE112EA5088419155CD60F87950EAB83A2F5C746E7AD42DA328177ACB5C",
+    "home/wjh/nc_run/p7/pub_flux_lam1.0_s1.pt": "FD94BC50A464D9DA7FD7446D91BF91B75A4B1579F4CB197FE031F14A9BEF6817",
+    "home/wjh/nc_run/pub/train/X.pt": "C6D1296FD15250953C2784319207739849AEA1770CCAE5F3A83E671EBE64D487"
+  }
+}

@@ -9,10 +9,10 @@
 {\itshape surrogates for non-Boussinesq convection}
 \end{center}
 \begin{itemize}\setlength{\itemsep}{8pt}
-\item 0.09\% field error can coexist with 2.0\% integral $Nu$ error (200 samples).
-\item Random-wall replication: 0.47\% field error, 4.04\% $Nu$ error (22 samples).
-\item Wall-flux penalty cuts $Nu$ error to 0.01\% and 0.58\% (six-point).
-\item Boussinesq--compressible gap factorises as $D=\varepsilon P(X)$ over 627 pairs.
-\item External $\varepsilon$ factorisation transfers within 0.2\% without retraining.
+\item Field error below 1\% can coexist with $>2\%$ $Nu$ error in 43\% of cavity samples.
+\item Wall-flux loss reduces matched six-point error against a non-converged $64^2$ target.
+\item In a two-seed 4-by-4 matrix, every trained stencil is optimal only at its own order.
+\item A 134-family bootstrap leaves magnitude and temperature-curvature sign unresolved.
+\item Contrast scaling and 3D tests are consistency checks, not general validation.
 \end{itemize}
 \end{document}

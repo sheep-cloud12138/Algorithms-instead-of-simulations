@@ -107,7 +107,13 @@ def redact_identifiers(text: str) -> str:
     )
     text = re.sub(r"\[citation\]{2,}", "[citation]", text)
     text = re.sub(r"DOI\s*:\s*\S+", "[source identifier]", text, flags=re.I)
-    text = re.sub(r"\b(?:arXiv|HAL|DOI)\s*:?\s*[A-Za-z0-9./_-]+", "[source identifier]", text, flags=re.I)
+    text = re.sub(
+        r"\b(?:arXiv|DOI)\s*:\s*[A-Za-z0-9./_-]+",
+        "[source identifier]",
+        text,
+        flags=re.I,
+    )
+    text = re.sub(r"\bHAL\s*:\s*[A-Za-z0-9./_-]+", "[source identifier]", text)
     text = re.sub(r"\b(?:https?|ftp)://\S+", "[URL]", text, flags=re.I)
     text = re.sub(r"\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b", "[email]", text)
     for name in (
@@ -174,6 +180,28 @@ def redact_identifiers(text: str) -> str:
         "Andaç Batur Çolak",
         "A. Çolak",
         "Çolak",
+        "David Barreiro-Villaverde",
+        "D. Barreiro-Villaverde",
+        "Barreiro-Villaverde",
+        "David Barreiro",
+        "Antonio Cantiani",
+        "M. A. Mendez",
+        "M.A. Mendez",
+        "De Ryck",
+        "Mishra",
+        "Nguyen",
+        "Vesper",
+        "Rokicki",
+        "Yong",
+        "He and Luo",
+        "Sun and Tao",
+        "Luo",
+        "Chen",
+        "Zhao",
+        "Xu",
+        "Tao",
+        "Yaji",
+        "Barreiro",
     ):
         text = re.sub(re.escape(name), "[redacted name]", text, flags=re.I)
     text = re.sub(r"\bthe authors\b", "the manuscript", text, flags=re.I)
